@@ -1,0 +1,6 @@
+Flammenwerfer 35<br>
+The Flammenwerfer 35 was designed for clearing bunkers and rooms.
+<br><br>
+
+Type: Flamethrower<br>
+Caliber:    -

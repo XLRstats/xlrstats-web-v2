@@ -1,0 +1,9 @@
+Gewehr 43 with Grenade Launcher<br>
+The Gewehr 43 or Karabiner 43 (G43, K43, Gew 43, Kar 43) is a 7.92x57mm Mauser caliber semi-automatic rifle developed by Nazi Germany during World War II. It was a modification of the G41(W) using an improved gas system similar to that of the Soviet Tokarev SVT40.
+<br><br>
+
+Cartrige: 7.92x57mm Mauser<br>
+Feed system: 10-round detachable box magazine<br>
+Effective range: 500 m
+
+<br><br><a href=http://en.wikipedia.org/wiki/Gewehr_43 target=_blank>More about this gun online...</a><br>

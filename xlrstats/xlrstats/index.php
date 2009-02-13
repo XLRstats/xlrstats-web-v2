@@ -102,7 +102,7 @@ if (isset($_GET['style']))
 //------------------------------------------------------------------------------
 $coddb = new sql_db($db_host, $db_user, $db_pass, $db_db, false);
 if(!$coddb->db_connect_id) 
-  die("Could not connect to the database");
+  die($text["cantconnectdb"]);
 
 //------------------------------------------------------------------------------
 // fetch the func variable, which tells us what we need to do
@@ -120,8 +120,8 @@ if ($func == "")
 // Save cookies if requested
 if ($func == "saveme")
 {
-  $errmsg = "<span class=\"attention\">Oops, cookies are disabled, cannot save you :( <br /><a href=\"http://www.google.com/cookies.html\" target=\"_blank\">Google is your best friend!</a><br /><br /></span>";
-  $okmsg = "<span class=\"highlight\">PlayerID saved! You should now be able access this page by clicking the 'MyStats' link at the top.<br /> Cookies should however be enabled for this feature to work!<br /><br />Going back where we came from.<br /><br /></span>";
+  $errmsg = "<span class=\"attention\">".$text["errmsg"]." <br /><a href=\"http://www.google.com/cookies.html\" target=\"_blank\">".$text["googleisbest"]."</a><br /><br /></span>";
+  $okmsg = "<span class=\"highlight\">".$text["okmsg"]."<br /><br />".$text["goingback"]."<br /><br /></span>";
   if (isset($_GET['playerid']))
     $myplayerid = escape_string($_GET['playerid']);
 
@@ -189,9 +189,9 @@ if ($func == "search")
     if ($result == 0)
     {
       if (strlen($input_name) < 3)
-        echo "<span class=\"attention\">Search terms should be at least 3 characters long.</span><br/></br>";
+        echo "<span class=\"attention\">".$text["searchterm"]."</span><br/></br>";
       else
-        echo "<span class=\"attention\">Your search yielded no results.</span><br/><br/>";
+        echo "<span class=\"attention\">".$text["searchresult"]."</span><br/><br/>";
           
       $func = "index";
     }
@@ -245,16 +245,16 @@ if ($func == "player")
     if ($groupbits > 0 || $limitplayerstats == 0)
     {
       $tabControl->defineSettings(1,$main_width,100,5,2,"center","middle",
-        array("Activity","Weapons","Hitzones","Map achievements", "Your worst enemies"),
+        array($text["activity"],$text["actweapons"],$text["hitzones"],$text["mapachieve"], $text["worstenemies"]),
         array($content5, $content1, $content2, $content3, $content4),
-        array("Connection to the gameserver in the last 31 days","Favorit weapons used","Your favorit hitzones - Body Parts","Your map achievements","Your worst enemies"));
+        array($text["last31days"],$text["favweapused"],$text["favhitzones"],$text["yourmapachiev"],$text["worstenemies"]));
     }
     else
     {
       $tabControl->defineSettings(1,$main_width,100,2,2,"center","middle",
-        array("Activity", "Hitzones"),
+        array($text["activity"], $text["hitzones"]),
         array($content5, $content2),
-        array("Connection to the gameserver in the last 31 days","Your favorit hitzones - Body Parts"));
+        array($text["last31days"],$text["favhitzones"]));
     }
     
     $tabControl->defineStyle($ptab_backgroundColor,$ptab_selectedBgColor,$ptab_mouseOverColor,$ptab_borderColor,$ptab_borderSize,$ptab_borderStyle,$ptab_font,$ptab_textAlign,$ptab_fontSize,$ptab_fontWeight,$ptab_Color);
@@ -286,16 +286,16 @@ if ($func == "player")
     if ($groupbits > 0 || $limitplayerstats == 0)
     {
       $tabControl->defineSettings(1,$main_width,100,5,2,"center","middle",
-        array("Activity","Weapons","Hitzones","Map achievements", "Your worst enemies"),
+        array($text["activity"],$text["actweapons"],$text["hitzones"],$text["mapachieve"], $text["worstenemies"]),
         array($content5, $content1, $content2, $content3, $content4),
-        array("Connection to the gameserver in the last 31 days","Favorit weapons used","Your favorit hitzones - Body Parts","Your map achievements","Your worst enemies"));
+        array($text["last31days"],$text["favweapused"],$text["favhitzones"],$text["yourmapachiev"],$text["worstenemies"]));
     }
     else
     {
       $tabControl->defineSettings(1,$main_width,100,2,2,"center","middle",
-        array("Activity", "Hitzones"),
+        array($text["activity"], $text["hitzones"]),
         array($content5, $content2),
-        array("Connection to the gameserver in the last 31 days","Your favorit hitzones - Body Parts"));
+        array($text["last31days"],$text["favhitzones"]));
     }
 
     $tabControl->defineStyle($ptab_backgroundColor,$ptab_selectedBgColor,$ptab_mouseOverColor,$ptab_borderColor,$ptab_borderSize,$ptab_borderStyle,$ptab_font,$ptab_textAlign,$ptab_fontSize,$ptab_fontWeight,$ptab_Color);
@@ -311,9 +311,9 @@ if ($func == "comp")
   $playerid2 = escape_string($_GET['playerid2']);    
 
   if (!isset($_GET['playerid']))
-    die('oops, no playerid set!');
+    die($text["noplayedid"]);
   if (!isset($playerid2))
-    die('oops, I don\'t know who you are');
+    die($text["whoareyou"]);
 
   player_compare($playerid2, $playerid);
 }

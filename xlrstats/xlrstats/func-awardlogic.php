@@ -50,15 +50,16 @@ function global_awards()
   $link = baselink();
   global $pro_medals;
   global $main_width;
+  global $text;
   
   $nr_awards = intval($main_width / 160); 
 
-  pro_medals_begin();
+  pro_medals_begin($text["winner"], $text["pro"]);
   shuffle($pro_medals);
   foreach(array_slice($pro_medals, 0, $nr_awards) as $m)
     eval($m.";");
   unset($m);
-  pro_medals_end();
+  pro_medals_end($text["topthisplayers"]);
 }
 
 function pro_medal_punchy_killer()
@@ -74,6 +75,7 @@ function pro_medal_punchy_killer()
   global $minrounds;
   global $maxdays;
   global $wp_punchy;
+  global $text;
 
   $current_time = gmdate("U");
 
@@ -94,7 +96,8 @@ function pro_medal_punchy_killer()
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal("Punchy fan", "Punchy kills", $row['kills'], $row['id'], $name  , "xlr_pro_default.gif", "Most Punchy kills");  
+  
+  ShowMedal($text["punchy"], $text["punchykill"], $row['kills'], $row['id'], $name  , "xlr_pro_default.gif", $text["mostpunchy"]);  
 }
 
 function pro_medal_ballooney_killer()
@@ -110,6 +113,7 @@ function pro_medal_ballooney_killer()
   global $minrounds;
   global $maxdays;
   global $wp_ballooney;
+  global $text;
 
   $current_time = gmdate("U");
 
@@ -130,7 +134,7 @@ function pro_medal_ballooney_killer()
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal("Ballooney Pitcher", "Ballooney kills", $row['kills'], $row['id'], $name  , "xlr_pro_default.gif", "Most Ballooney kills");  
+  ShowMedal($text["balooney"], $text["balooneykill"], $row['kills'], $row['id'], $name  , "xlr_pro_default.gif", $text["mostbalooney"]);  
 }
 
 function pro_medal_betty_killer()
@@ -146,6 +150,7 @@ function pro_medal_betty_killer()
   global $minrounds;
   global $maxdays;
   global $wp_betty;
+  global $text;
 
   $current_time = gmdate("U");
 
@@ -166,7 +171,7 @@ function pro_medal_betty_killer()
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal("Betty SharpShooter", "Betty kills", $row['kills'], $row['id'], $name  , "xlr_pro_sniper.gif", "Most Betty kills");  
+  ShowMedal($text["betty"], $text["bettykill"], $row['kills'], $row['id'], $name  , "xlr_pro_sniper.gif", $text["mostbetty"]);  
 }
 
 function pro_medal_killerducks_killer()
@@ -182,6 +187,7 @@ function pro_medal_killerducks_killer()
   global $minrounds;
   global $maxdays;
   global $wp_killerducks;
+  global $text;
 
   $current_time = gmdate("U");
 
@@ -202,7 +208,7 @@ function pro_medal_killerducks_killer()
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal("Lazy Larry", "Killer Duck kills", $row['kills'], $row['id'], $name  , "xlr_pro_default.gif", "Most Killer Ducks kills");  
+  ShowMedal($text["lazy"], $text["duckkill"], $row['kills'], $row['id'], $name  , "xlr_pro_default.gif", $text["mostlazy"]);  
 }
 
 function pro_medal_cold_weapon_killer()
@@ -218,6 +224,7 @@ function pro_medal_cold_weapon_killer()
   global $minrounds;
   global $maxdays;
   global $wp_knives;
+  global $text;
 
   $current_time = gmdate("U");
 
@@ -238,7 +245,7 @@ function pro_medal_cold_weapon_killer()
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal("Cold weapon fan", "Knife kills", $row['kills'], $row['id'], $name  , "xlr_pro_knives.gif", "Most knife kills");  
+  ShowMedal($text["cldweapon"], $text["knifekill"], $row['kills'], $row['id'], $name  , "xlr_pro_knives.gif", $text["mostknife"]);  
 }
 
 function pro_medal_bash_killer()
@@ -254,6 +261,7 @@ function pro_medal_bash_killer()
   global $minrounds;
   global $maxdays;
   global $wp_bashes;
+  global $text;
 
   $current_time = gmdate("U");
 
@@ -274,7 +282,7 @@ function pro_medal_bash_killer()
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal("Bash King", "Bashes", $row['kills'], $row['id'], $name  , "xlr_pro_bash.gif", "Most bash kills");  
+  ShowMedal($text["bashking"], $text["bashes"], $row['kills'], $row['id'], $name  , "xlr_pro_bash.gif", $text["mostbash"]);  
 }
 
 function pro_medal_sniper_killer()
@@ -290,6 +298,7 @@ function pro_medal_sniper_killer()
   global $minrounds;
   global $maxdays;
   global $wp_snipers;
+  global $text;
 
   $current_time = gmdate("U");
 
@@ -310,7 +319,7 @@ function pro_medal_sniper_killer()
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal("Super Sniper", "Kills", $row['kills'], $row['id'], $name  , "xlr_pro_sniper.gif", "Most sniper kills");  
+  ShowMedal($text["supersniper"], $text["kills"], $row['kills'], $row['id'], $name  , "xlr_pro_sniper.gif", $text["mostsniper"]);  
 }
 
 function pro_medal_pistol_killer()
@@ -326,6 +335,7 @@ function pro_medal_pistol_killer()
   global $minrounds;
   global $maxdays;
   global $wp_pistols;
+  global $text;
 
   $current_time = gmdate("U");
 
@@ -346,7 +356,7 @@ function pro_medal_pistol_killer()
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal("Close Combat Pistol Hero", "Kills", $row['kills'], $row['id'], $name  , "xlr_pro_pistol.gif", "Most pistol kills");  
+  ShowMedal($text["clscombat"], $text["kills"], $row['kills'], $row['id'], $name  , "xlr_pro_pistol.gif", $text["mostpistol"]);  
 }
 
 function pro_medal_nade_killer()
@@ -362,6 +372,7 @@ function pro_medal_nade_killer()
   global $minrounds;
   global $maxdays;
   global $wp_nades;
+  global $text;
 
   $current_time = gmdate("U");
 
@@ -383,7 +394,7 @@ function pro_medal_nade_killer()
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal("Nade killer", "Nade kills", $row['total_kills'], $row['id'], $name  , "xlr_pro_nade.gif", "Most nade kills");  
+  ShowMedal($text["nadekiller"], $text["nadekill"], $row['total_kills'], $row['id'], $name  , "xlr_pro_nade.gif", $text["mostnade"]);  
 }
 
 function pro_medal_remote_bomb_fan()
@@ -399,6 +410,7 @@ function pro_medal_remote_bomb_fan()
   global $minrounds;
   global $maxdays;
   global $wp_bomb;
+  global $text;
 
   $current_time = gmdate("U");
 
@@ -419,7 +431,7 @@ function pro_medal_remote_bomb_fan()
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
-  ShowMedal("Remote bomb fan", "C4 Kills", $row['total_kills'], $row['id'], $name  , "xlr_pro_c4.gif", "Most C4 kills");  
+  ShowMedal($text["remotebomb"], $text["c4kill"], $row['total_kills'], $row['id'], $name  , "xlr_pro_c4.gif", $text["mostc4"]);  
 }   
 
 function pro_medal_surprise_lover()
@@ -435,6 +447,7 @@ function pro_medal_surprise_lover()
   global $minrounds;
   global $maxdays;
   global $wp_claymore;
+  global $text;
 
   $current_time = gmdate("U");
 
@@ -456,7 +469,7 @@ function pro_medal_surprise_lover()
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal("Surprise lover", "Claymore kills", $row['total_kills'], $row['id'], $name  , "xlr_pro_claymore.gif", "Most Claymore kills");  
+  ShowMedal($text["surpriselover"], $text["claymorekill"], $row['total_kills'], $row['id'], $name  , "xlr_pro_claymore.gif", $text["mostclaymore"]);  
 }
 
 function pro_medal_nothing_better_to_do()
@@ -471,6 +484,7 @@ function pro_medal_nothing_better_to_do()
   global $minkills;
   global $maxdays;
   global $minrounds;
+  global $text;
 
   $current_time = gmdate("U");
 
@@ -488,7 +502,7 @@ function pro_medal_nothing_better_to_do()
 
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal("Nothing better to do", "Rounds", $row['rounds'], $row['id'], $name  , "xlr_pro_rounds.gif", "Most rounds played");  
+  ShowMedal($text["notingbetr"], $text["rounds"], $row['rounds'], $row['id'], $name  , "xlr_pro_rounds.gif", $text["mostround"]);  
     
 }
 
@@ -504,6 +518,7 @@ function pro_medal_serial_killer()
   global $minkills;
   global $maxdays;
   global $minrounds;
+  global $text;
 
   $current_time = gmdate("U");
 
@@ -524,7 +539,7 @@ function pro_medal_serial_killer()
 
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal("Serial Killer", "Win streak", $row['winstreak'], $row['id'], $name  , "xlr_pro_killstreak.gif", "Best winstreak");
+  ShowMedal($text["serialkiller"], $text["winstrk"], $row['winstreak'], $row['id'], $name  , "xlr_pro_killstreak.gif", $text["bestwinstrk"]);
 
 }
 
@@ -541,6 +556,7 @@ function pro_medal_head_hunter()
   global $minrounds;
   global $maxdays;
   global $bp_head;
+  global $text;
 
   $current_time = gmdate("U");
 
@@ -563,7 +579,7 @@ function pro_medal_head_hunter()
 
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal("Head hunter", "Headshots", $row['total_kills'], $row['id'],$name  , "xlr_pro_headshots.gif", "Most headshots");
+  ShowMedal($text["headhunter"], $text["headshots"], $row['total_kills'], $row['id'],$name  , "xlr_pro_headshots.gif", $text["mosthdsht"]);
 }
 
 function ShowMedal($MedalName, $ArchieveName, $ArchValue, $PlayerId, $Nick, $MedalPicture, $Description)
@@ -571,6 +587,7 @@ function ShowMedal($MedalName, $ArchieveName, $ArchValue, $PlayerId, $Nick, $Med
   $link = baselink();
   global $game;
   global $currentconfignumber;
+  global $text;
   // do we have game specific medals?
   if (file_exists("./images/medals/$game/"))
     $MedalSrc = "./images/medals/$game/$MedalPicture";
@@ -580,7 +597,7 @@ function ShowMedal($MedalName, $ArchieveName, $ArchValue, $PlayerId, $Nick, $Med
   if ($ArchValue == 0 || $ArchValue == "" || $ArchValue == false)
   {
     $PlayerId = "";
-    $ArchValue = "Award Still Available ::";
+    $ArchValue = $text["awardavailable"];
     $ArchieveName = ":";
     $Nick = "";
   }
@@ -614,16 +631,17 @@ function global_lame_awards()
   $link = baselink();
   global $shame_medals;
   global $main_width;
+  global $text;
   
   $nr_awards = intval($main_width / 160); 
 
-  pro_medals_begin("Our shame award winners", "shame Medals");
+  pro_medals_begin($text["shameaward"], $text["shame"]);
   shuffle($shame_medals);
   foreach(array_slice($shame_medals, 0, $nr_awards) as $m)
     eval($m.";");
   unset($m);
 
-  pro_medals_end("Do not try to be on top in here ;)"); 
+  pro_medals_end($text["dontbetophere"]); 
 }
 
 function shame_medal_target_no_one()
@@ -638,6 +656,7 @@ function shame_medal_target_no_one()
   global $maxdays;
   global $minkills;
   global $minrounds;
+  global $text;
   $current_time = gmdate("U");
 
   $query = "SELECT ${t['b3_clients']}.name, ${t['b3_clients']}.time_edit, ${t['players']}.id, kills,  deaths, fixed_name
@@ -656,7 +675,7 @@ function shame_medal_target_no_one()
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
   //ShowMedal($MedalName, $ArchieveName, $ArchValue, $PlayerId, $Nick, $MedalPicture, $Description)
-  ShowMedal("Got pwned!", "Deaths", $row['deaths'],  $row['id'] , $name  , "xlr_shame_deaths.gif", "Target no. 1");  
+  ShowMedal($text["pwned"], $text["deaths"], $row['deaths'],  $row['id'] , $name  , "xlr_shame_deaths.gif", $text["target1"]);  
 }
 
 function shame_medal_most_teamkills()
@@ -671,6 +690,7 @@ function shame_medal_most_teamkills()
   global $maxdays;
   global $minkills;
   global $minrounds;
+  global $text;
   $current_time = gmdate("U");
 
   $query = "SELECT ${t['b3_clients']}.name, ${t['b3_clients']}.time_edit, ${t['players']}.id, kills,  teamkills, fixed_name
@@ -689,7 +709,7 @@ function shame_medal_most_teamkills()
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
   //ShowMedal($MedalName, $ArchieveName, $ArchValue, $PlayerId, $Nick, $MedalPicture, $Description)
-  ShowMedal("Eyes Wide Shut!", "Teamkills", $row['teamkills'],  $row['id'] , $name  , "xlr_shame_teamkills.gif", "Most Teamkills");  
+  ShowMedal($text["eyeshot"], $text["teamkil"], $row['teamkills'],  $row['id'] , $name  , "xlr_shame_teamkills.gif", $text["mostteamkill"]);  
 }
 
 function shame_medal_most_teamdeaths()
@@ -704,6 +724,7 @@ function shame_medal_most_teamdeaths()
   global $maxdays;
   global $minkills;
   global $minrounds;
+  global $text;
   $current_time = gmdate("U");
 
   $query = "SELECT ${t['b3_clients']}.name, ${t['b3_clients']}.time_edit, ${t['players']}.id, kills,  teamdeaths, fixed_name
@@ -722,7 +743,7 @@ function shame_medal_most_teamdeaths()
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
   //ShowMedal($MedalName, $ArchieveName, $ArchValue, $PlayerId, $Nick, $MedalPicture, $Description)
-  ShowMedal("Send Joey, he'll do anything!", "Teamdeaths", $row['teamdeaths'],  $row['id'] , $name  , "xlr_shame_teamdeaths.gif", "Most Teamdeaths");  
+  ShowMedal($text["sendjoey"], $text["teamdeth"], $row['teamdeaths'],  $row['id'] , $name  , "xlr_shame_teamdeaths.gif", $text["mosteamdeth"]);  
 }
 
 function shame_medal_nade_magneto()
@@ -738,6 +759,7 @@ function shame_medal_nade_magneto()
   global $minkills;
   global $minrounds;
   global $wp_nades;
+  global $text;
 
   $current_time = gmdate("U");
 
@@ -758,7 +780,7 @@ function shame_medal_nade_magneto()
   $row = $coddb->sql_fetchrow($result);
   $name = $row['name'];
 
-  ShowMedal("Mmmm nades!", "Nade deaths", $row['total_deaths'], $row['id'], $name  , "xlr_shame_nade.gif", "Most nade deaths");  
+  ShowMedal($text["mmnades"], $text["nadedeth"], $row['total_deaths'], $row['id'], $name  , "xlr_shame_nade.gif", $text["mostnadeth"]);  
 }
 
 function shame_medal_need_some_practice()
@@ -773,6 +795,7 @@ function shame_medal_need_some_practice()
   global $minkills;
   global $minrounds;
   global $maxdays;
+  global $text;
   $current_time = gmdate("U");
 
 
@@ -793,7 +816,7 @@ function shame_medal_need_some_practice()
 
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal("Needs some practice", "Lose streak", abs($row['losestreak']), $row['id'], $name  , "xlr_shame_loosestreak.gif", "Higher losestreak");
+  ShowMedal($text["needpractice"], $text["losstrk"], abs($row['losestreak']), $row['id'], $name  , "xlr_shame_loosestreak.gif", $text["highlosstrk"]);
 }
 
 function shame_medal_def_punchy()
@@ -809,6 +832,7 @@ function shame_medal_def_punchy()
   global $maxdays;
   global $minrounds;
   global $wp_punchy;
+  global $text;
   $current_time = gmdate("U");
 
 
@@ -831,7 +855,7 @@ function shame_medal_def_punchy()
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal("Punch me Now!", "Punchy deaths", $row['total_deaths'], $row['id'], $name  , "xlr_shame_knives.gif", "Most Punchy deaths");  
+  ShowMedal($text["punchme"], $text["punchdeath"], $row['total_deaths'], $row['id'], $name  , "xlr_shame_knives.gif", $text["mostpunchy"]);  
 }
 
 function shame_medal_def_ballooney()
@@ -847,6 +871,7 @@ function shame_medal_def_ballooney()
   global $maxdays;
   global $minrounds;
   global $wp_ballooney;
+  global $text;
   $current_time = gmdate("U");
 
 
@@ -869,7 +894,7 @@ function shame_medal_def_ballooney()
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal("Need Balloons!", "Ballooney deaths", $row['total_deaths'], $row['id'], $name  , "xlr_shame_knives.gif", "Most Ballooney deaths");  
+  ShowMedal($text["needbaloon"], $text["balonydeath"], $row['total_deaths'], $row['id'], $name  , "xlr_shame_knives.gif", $text["mostbalondeth"]);  
 }
 
 function shame_medal_def_betty()
@@ -885,6 +910,7 @@ function shame_medal_def_betty()
   global $maxdays;
   global $minrounds;
   global $wp_betty;
+  global $text;
   $current_time = gmdate("U");
 
 
@@ -907,7 +933,7 @@ function shame_medal_def_betty()
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal("Bettys Target", "Betty deaths", $row['total_deaths'], $row['id'], $name  , "xlr_shame_knives.gif", "Most Betty deaths");  
+  ShowMedal($text["bettytarget"], $text["bettydeath"], $row['total_deaths'], $row['id'], $name  , "xlr_shame_knives.gif", $text["mostbetydeth"]);  
 }
 
 function shame_medal_killerducks()
@@ -923,6 +949,7 @@ function shame_medal_killerducks()
   global $maxdays;
   global $minrounds;
   global $wp_killerducks;
+  global $text;
   $current_time = gmdate("U");
 
 
@@ -945,7 +972,7 @@ function shame_medal_killerducks()
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal("I hate Ducks!", "Killerducks deaths", $row['total_deaths'], $row['id'], $name  , "xlr_shame_knives.gif", "Most Killerducks deaths");  
+  ShowMedal($text["ihateducks"], $text["duckdeath"], $row['total_deaths'], $row['id'], $name  , "xlr_shame_knives.gif", $text["mostduckdeth"]);  
 }
 
 function shame_medal_fireman()
@@ -961,6 +988,7 @@ function shame_medal_fireman()
   global $minrounds;
   global $maxdays;
   global $wp_fireman;
+  global $text;
   $current_time = gmdate("U");
 
   $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, SUM(${t['weaponusage']}.deaths) AS total_deaths
@@ -981,9 +1009,9 @@ function shame_medal_fireman()
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
   if ($row['total_deaths'] > 0)
-    ShowMedal("Mechanic", "Deaths by vehicle", $row['total_deaths'], $row['id'], $name  , "xlr_shame_vehicle_deaths.gif", "Most deaths by exploding vehicle");  
+    ShowMedal($text["mechanic"], $text["vehicledeth"], $row['total_deaths'], $row['id'], $name  , "xlr_shame_vehicle_deaths.gif", $text["mostcardeath"]);  
   else
-    ShowMedal("Mechanic", "Deaths by vehicle", $row['total_deaths'], $row['id'], $name  , "xlr_shame_vehicle_deaths.gif", "Most deaths by exploding vehicle");  
+    ShowMedal($text["mechanic"], $text["vehicledeth"], $row['total_deaths'], $row['id'], $name  , "xlr_shame_vehicle_deaths.gif", $text["mostcardeath"]);  
 }
 
 function shame_medal_def_knifes()
@@ -999,6 +1027,7 @@ function shame_medal_def_knifes()
   global $maxdays;
   global $minrounds;
   global $wp_knives;
+  global $text;
   $current_time = gmdate("U");
 
 
@@ -1021,7 +1050,7 @@ function shame_medal_def_knifes()
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal("Shave me please!", "Knife deaths", $row['total_deaths'], $row['id'], $name  , "xlr_shame_knives.gif", "Most knife deaths");  
+  ShowMedal($text["shaveme"], $text["knifedeath"], $row['total_deaths'], $row['id'], $name  , "xlr_shame_knives.gif", $text["mostknifedeth"]);  
 }
 
 function shame_medal_def_bashes()
@@ -1037,6 +1066,7 @@ function shame_medal_def_bashes()
   global $maxdays;
   global $minrounds;
   global $wp_bashes;
+  global $text;
   $current_time = gmdate("U");
 
 
@@ -1057,7 +1087,7 @@ function shame_medal_def_bashes()
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal("Hit me please!", "Bash deaths", $row['total_deaths'], $row['id'], $name  , "xlr_shame_bash.gif", "Most bash deaths");  
+  ShowMedal($text["hitme"], $text["bashdeath"], $row['total_deaths'], $row['id'], $name  , "xlr_shame_bash.gif", $text["mostbashdeth"]);  
 }
 
 function shame_medal_sniped()
@@ -1073,6 +1103,7 @@ function shame_medal_sniped()
   global $maxdays;
   global $minrounds;
   global $wp_snipers;
+  global $text;
   $current_time = gmdate("U");
 
 
@@ -1093,7 +1124,7 @@ function shame_medal_sniped()
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal("Target Practice!", "Sniper deaths", $row['total_deaths'], $row['id'], $name  , "xlr_shame_sniper.gif", "Most sniper deaths");  
+  ShowMedal($text["targtpract"], $text["sniperdeath"], $row['total_deaths'], $row['id'], $name  , "xlr_shame_sniper.gif", $text["mostsniped"]);  
 }
 
 function shame_medal_careless()
@@ -1109,6 +1140,7 @@ function shame_medal_careless()
   global $minrounds;
   global $maxdays;
   global $wp_accidents;
+  global $text;
 
   $current_time = gmdate("U");
 
@@ -1131,6 +1163,6 @@ function shame_medal_careless()
 
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal("Accidental Hero", "Blind as a Bat", $row['total_suicides'], $row['id'], $name  , "xlr_shame_blind.gif", "Most accidental deaths");  
+  ShowMedal($text["accidenthero"], $text["blindasbat"], $row['total_suicides'], $row['id'], $name  , "xlr_shame_blind.gif", $text["mostaccdeath"]);  
 }
 ?>

@@ -50,6 +50,7 @@ function topplayers($sortby = "skill", $direction = "DESC", $offset = 0, $clan_n
   global $exclude_ban;
   global $rss_sortby;
   global $currentconfignumber;
+  global $text;
 
   $current_time = gmdate("U");
 
@@ -62,38 +63,38 @@ function topplayers($sortby = "skill", $direction = "DESC", $offset = 0, $clan_n
   $rss_sortby = $sortby;
 
   if ($clan_name != "")
-    echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">Top $toplist_max - $sortby (Filtered by: ". htmlspecialchars(utf2iso($clan_name)) .") ".feedlink()."</td></tr><tr><td>";
+    echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">".$text["top"]." $toplist_max - ".$text["$sortby"]." (".$text["filteredby"]." ". htmlspecialchars(utf2iso($clan_name)) .") ".feedlink()."</td></tr><tr><td>";
   else
-    echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">Top $toplist_max - $sortby ".feedlink()."</td></tr><tr><td>";
+    echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">".$text["top"]." $toplist_max - ".$text["$sortby"]." ".feedlink()."</td></tr><tr><td>";
 
   echo "
         <table width=\"100%\" border=\"0\" cellspacing=\"2\" cellpadding=\"0\" class=\"innertable\">
         <tr class=\"outertable\">
-        <td align=\"center\" width=\"40\">Place</td>
-        <td align=\"center\" width=\"30\">Rank</td> 
-        <td>Name</td>";
+        <td align=\"center\" width=\"40\">".$text["place"]."</td>
+        <td align=\"center\" width=\"30\">".$text["rank"]."</td> 
+        <td>".$text["name"]."</td>";
 
   if (file_exists($geoip_path."GeoIP.dat"))
-    echo "<td width=\"20\">Cntry</td>";
+    echo "<td width=\"20\">".$text["cntry"]."</td>";
 
     $KillRatioTableWidth = 100;
 
   if ($sortby == "skill")
-    echo "        <td align=\"center\">[ Skill ]</td>";
+    echo "        <td align=\"center\">[ ".$text["skill"]." ]</td>";
   else
-    echo "        <td align=\"center\">Skill</td>";
+    echo "        <td align=\"center\">".$text["skill"]."</td>";
   if ($sortby == "kills")
-    echo "        <td align=\"center\">[ Kills ]</td>";
+    echo "        <td align=\"center\">[ ".$text["kills"]." ]</td>";
   else
-    echo "        <td align=\"center\">Kills</td>";
-  echo "        <td align=\"center\">Deaths</td>";
+    echo "        <td align=\"center\">".$text["kills"]."</td>";
+  echo "        <td align=\"center\">".$text["deaths"]."</td>";
   if ($sortby == "ratio")
-    echo "        <td width=\"$KillRatioTableWidth\" align=\"center\">[ Ratio ]</td>";
+    echo "        <td width=\"$KillRatioTableWidth\" align=\"center\">[ ".$text["ratio"]." ]</td>";
   else
-    echo "        <td width=\"$KillRatioTableWidth\" align=\"center\">Ratio</td>";
-  echo "        <td align=\"center\">Rounds</td>";
-  echo "        <td align=\"center\">Win streak</td>";
-  echo "        <td align=\"center\">Loss streak</td>";
+    echo "        <td width=\"$KillRatioTableWidth\" align=\"center\">".$text["ratio"]."</td>";
+  echo "        <td align=\"center\">".$text["rounds"]."</td>";
+  echo "        <td align=\"center\">".$text["winstrk"]."</td>";
+  echo "        <td align=\"center\">".$text["losstrk"]."</td>";
   echo "        </tr>";
   
   if ($MaxKillRatio == 0)
@@ -331,7 +332,7 @@ function topplayers($sortby = "skill", $direction = "DESC", $offset = 0, $clan_n
     $rank += $rank_step;
     }
     echo "</table>";
-    echo "</td></tr><tr><td class=\"tiny\" align =\"right\">You need at least $minrounds rounds or $minkills kills to appear on this list!";
+    echo "</td></tr><tr><td class=\"tiny\" align =\"right\">".$text["youneedweap"]."";
     echo "</td></tr></table>";    // Closing extra border-table
 }
 
@@ -348,6 +349,7 @@ function topweapons($showplayercount = false, $sortby = "kills", $direction = "D
   global $separatorline;
   global $t;  //table names
   global $w;  //weapon aliases
+  global $text;
   
   global $weaplist_max;
 
@@ -359,13 +361,13 @@ function topweapons($showplayercount = false, $sortby = "kills", $direction = "D
     $direction = "DESC";
 
 echo "
-  <table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">Top $weaplist_max - Weapons with most $sortby</span></td></tr><tr><td>
+  <table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">".$text["top"]." ".$weaplist_max." ".$text["weapmost"]." ".$text["$sortby"]."</span></td></tr><tr><td>
   <table width=\"100%\" border=\"0\" cellspacing=\"2\" cellpadding=\"0\" class=\"innertable\">
     <tr class=\"outertable\">
-     <td align=\"center\" width=\"40\">Rank</td>
+     <td align=\"center\" width=\"40\">".$text["place"]."</td>
       <td>Name</td>
-     <td align=\"center\" width=\"60\">View</td>
-      <td align=\"center\">Total Kills</td>
+     <td align=\"center\" width=\"60\">".$text["view"]."</td>
+      <td align=\"center\">".$text["totkill"]."</td>
 <!--      <td align=\"center\">Total Teamkills</td> -->
 <!--      <td align=\"center\">Total Suicides</td> -->
       ";
@@ -418,7 +420,7 @@ echo "
     $rank += $rank_step;
   }
   echo "</table>";
-  echo "</td></tr><tr><td class=\"tiny\" align =\"right\">Click on the weapon to see its stats!";
+  echo "</td></tr><tr><td class=\"tiny\" align =\"right\">".$text["weaponstats"];
   echo "</td></tr></table>"; // Closing extra border-table
 }
 
@@ -432,6 +434,7 @@ function topmaps($showplayercount = false, $sortby = "kills", $direction = "DESC
   global $coddb;
   global $game;
   global $separatorline;
+  global $text;
   
   global $t;  //table names
   global $m;  //map aliases
@@ -444,14 +447,14 @@ function topmaps($showplayercount = false, $sortby = "kills", $direction = "DESC
   if ( $direction != "ASC")
     $direction = "DESC";
 
-echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">Top $maplist_max - Maps with most $sortby</td></tr><tr><td>
+echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">".$text["top"]." ".$maplist_max." ".$text["mapsmost"]." ".$text["$sortby"]."</td></tr><tr><td>
   <table width=\"100%\" border=\"0\" cellspacing=\"2\" cellpadding=\"0\" class=\"innertable\">
     <tr class=\"outertable\">
-      <td align=\"center\" width=\"40\">Rank</td>
-      <td align=\"center\">Map</td>
-      <td align=\"center\" width=\"60\">View</td>
-      <td align=\"center\">Total Kills</td>
-      <td align=\"center\">Rounds</td>
+      <td align=\"center\" width=\"40\">".$text["rank"]."</td>
+      <td align=\"center\">".$text["map"]."</td>
+      <td align=\"center\" width=\"60\">".$text["view"]."</td>
+      <td align=\"center\">".$text["totkill"]."</td>
+      <td align=\"center\">".$text["rounds"]."</td>
     ";
 
   if ($showplayercount == true)
@@ -505,7 +508,7 @@ echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" cla
     $rank += $rank_step;
   }
   echo "</table>";
-  echo "</td></tr><tr><td class=\"tiny\" align =\"right\">Click on the map to see its stats!";
+  echo "</td></tr><tr><td class=\"tiny\" align =\"right\">".$text["mapstats"];
   echo "</td></tr></table>";                                                                // Closing extra border-table
 }
 
@@ -555,7 +558,8 @@ function player_badges($playerid, $dbID = false)
     
   global $rankname;
   global $killsneeded;
-  global $rankimage;   
+  global $rankimage;
+  global $text;
   
   $kills =  get_rank_badge($row['kills']); 
   $next = 0;
@@ -585,21 +589,21 @@ function player_badges($playerid, $dbID = false)
   echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td>";
   echo "    <table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"innertable\">";
   echo "        <tr class=\"outertable\">";
-  echo "            <td colspan=\"3\" align=\"center\"><font class=\"fontNormal\" size=\"5\" face=\"Geneva, Arial, Helvetica, sans-serif\"><font color=\"#000000\">Rank</font></font></td>";
+  echo "            <td colspan=\"3\" align=\"center\"><font class=\"fontNormal\" size=\"5\" face=\"Geneva, Arial, Helvetica, sans-serif\"><font color=\"#000000\">".$text["rank"]."</font></font></td>";
   echo "         </tr>";
   echo "         <tr bgcolor=\"#edf3f9\">";  
   echo "            <td colspan=\"3\">";  
   echo "              <table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"innertable\">";   
   echo "                  <tr bgcolor=\"#edf3f9\">";                
   echo "                      <tr bgcolor=\"#dde3e9\">";  
-  echo "                        <td align='center'>Previous</td><td align='center'>Current rank<br><strong>".$rankname[$kills]."</strong></td><td align='center'>Next</td>";
+  echo "                        <td align='center'>".$text["previous"]."</td><td align='center'>".$text["currank"]."<br><strong>".$rankname[$kills]."</strong></td><td align='center'>".$text["next"]."</td>";
   echo "                      </tr>";  
   echo "             <td width=\"25%\" class=\"outertable\" colspan=\"1\" align=\"center\"><font class=\"fontNormal\" size=\"2\" face=\"Geneva, Arial, Helvetica, sans-serif\">";
   if($previmage != -1)
     echo "             <img src=\"images/ranks/".$rankimage[$previmage]."\" width=\"60\" height=\"60\" border=\"1\">";
 
   else
-    echo "None";
+    echo $text["none"];
   
   echo "             </font></td> ";
   echo "             <td class=\"highlight\" colspan=\"1\" align=\"center\"><font class=\"fontNormal\" size=\"2\" face=\"Geneva, Arial, Helvetica, sans-serif\"><img src=\"images/ranks/".$rankimage[$kills]."\" width=\"112\" height=\"112\" border=\"1\"></font></td> ";
@@ -617,7 +621,7 @@ function player_badges($playerid, $dbID = false)
   echo "         <tr bgcolor=\"#e8e8e8\"> "; 
   echo "          <td colspan=\"2\" width=\"600\">  "; 
   echo "          <div style=\"padding: 0px; background-image: url('images/bars/bar-small/red_middle_9.gif'); background-repeat: repeat-x;\" height=\"9\"><img src=\"images/bars/bar-small/green_middle_9.gif\" alt=\"&nbsp;Progress till next rank\" width=\"".$percent."%\" height=\"9\"></div></td> "; 
-  echo "          <td align=\"center\" width=\"200\"><font color=\"#000000\" size=\"2\">Kills needed: <b>".$neexed." (".$percent."%)</b></font></td></tr>  "; 
+  echo "          <td align=\"center\" width=\"200\"><font color=\"#000000\" size=\"2\">".$text["killsneed"]." <b>".$neexed." (".$percent."%)</b></font></td></tr>  "; 
   echo "     </table>";
   echo "</table>";
 }
@@ -823,6 +827,7 @@ function player_short_comparison($playerid)
   global $exclude_ban;
   global $myplayerid;
   global $func;
+  global $text;
 
   $current_time = time();
   $timelimit = $maxdays*60*60*24;
@@ -881,19 +886,19 @@ function player_short_comparison($playerid)
 
   if (($playerrank == "n.a.") && (($row['kills'] <= $minkills) || ($row['rounds'] <= $minrounds) || ($current_time - $row4['time_edit'] >= $timelimit)))
     {
-    //$playerrankdef = "Topskill Ranking is not (yet) available, so you're currently not competing. Reason(s) are:";
-    $playerrankdef = "Topskill Ranking is not (yet) available:";
+    //$playerrankdef = $text["playerrankdefinactive"];
+    $playerrankdef = $text["playerrankdef"];
     if ($row['kills'] <= $minkills)
-      $playerrankdef .= " - You have not enough kills yet. You need more than $minkills.";
+      $playerrankdef .= $text["playerrankdefa"];
     if ($row['rounds'] <= $minrounds)
-      $playerrankdef .= " - You have not played enough rounds yet. You need more than $minrounds.";
+      $playerrankdef .= $text["playerrankdefb"];
     if ($current_time - $row4['time_edit'] < $timelimit)
-      $playerrankdef .= " - You have not played in the last $maxdays days. You ranking expired.";
+      $playerrankdef .= $text["playerrankdefc"];
     }
   elseif ($playerrank == 1)
-    $playerrankdef = "Congratulations, First place in the topskill ranking! Try to maintain this position!";
+    $playerrankdef = $text["congrats"];
   else
-    $playerrankdef = "Try to be number one in this ranking!";
+    $playerrankdef = $text["trytobetop"];
   
   $cplayer['playerrank'] = $playerrank;
   $cplayer['playerrankdef'] = $playerrankdef;
@@ -1009,6 +1014,7 @@ function player_short($playerid, $dbID = false)
   global $myplayerid;
   global $func;
   global $currentconfignumber;
+  global $text;
 
   if($dbID == false)
   {
@@ -1091,19 +1097,19 @@ function player_short($playerid, $dbID = false)
 
   if (($playerrank == "n.a.") && (($row['kills'] <= $minkills) || ($row['rounds'] <= $minrounds) || ($current_time - $row4['time_edit'] >= $timelimit)))
     {
-    //$playerrankdef = "Topskill Ranking is not (yet) available, so you're currently not competing. Reason(s) are:";
-    $playerrankdef = "Topskill Ranking is not (yet) available:";
+    //$playerrankdef = $text["playerrankdefinactive"];
+    $playerrankdef = $text["playerrankdef"];
     if ($row['kills'] <= $minkills)
-      $playerrankdef .= " - You have not enough kills yet. You need more than $minkills.";
+      $playerrankdef .= $text["playerrankdefa"];
     if ($row['rounds'] <= $minrounds)
-      $playerrankdef .= " - You have not played enough rounds yet. You need more than $minrounds.";
+      $playerrankdef .= $text["playerrankdefb"];
     if ($current_time - $row4['time_edit'] < $timelimit)
-      $playerrankdef .= " - You have not played in the last $maxdays days. You ranking expired.";
+      $playerrankdef .= $text["playerrankdefc"];
     }
   elseif ($playerrank == 1)
-    $playerrankdef = "Congratulations, First place in the topskill ranking! Try to maintain this position!";
+    $playerrankdef = $text["congrats"];
   else
-    $playerrankdef = "Try to be number one in this ranking!";
+    $playerrankdef = $text["trytobetop"];
   
  
   if (file_exists($geoip_path."GeoIP.dat"))
@@ -1125,61 +1131,61 @@ function player_short($playerid, $dbID = false)
   echo "  <tr>";
   echo "    <td width=\"300\" valign=\"top\" class=\"innertable\"><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"innertable\">";
   echo "      <tr>";
-  echo "        <td class=\"attention\">Topskill Ranking</td>";
+  echo "        <td class=\"attention\">".$text["topskillrank"]."</td>";
   echo "        <td class=\"attention\" title=\"$playerrankdef\">$playerrank</td>";
   echo "      </tr>";
   echo "      <tr>";
   $temp = sprintf("%.1f",$row['skill']);
-  echo "        <td class=\"attention\">Skill</td>";
-  echo "        <td class=\"attention\" title=\"Skill is based on who you kill with what weapon. Kill higher ranked players for extra skillpoints!\">$temp</td>";
+  echo "        <td class=\"attention\">".$text["skill"]."</td>";
+  echo "        <td class=\"attention\" title=\"".$text["descskill"]."\">$temp</td>";
   echo "      </tr>";
   echo  "     <tr><td colspan=\"2\" class=\"outertable\"><img src=\"images/spacer.gif\" width=\"1\" height=\"1\" alt=\"\"></td></tr>";
   echo "      <tr>";
-  echo "        <td>Kills</td>";
+  echo "        <td>".$text["kills"]."</td>";
   echo "        <td>${row['kills']}</td>";
   echo "      </tr>";
   echo "      <tr>";
-  echo "        <td>Deaths</td>";
+  echo "        <td>".$text["deaths"]."</td>";
   echo "        <td>${row['deaths']}</td>";
   echo "      </tr>";
   echo "      <tr>";
   $temp = sprintf("%.2f",$row['ratio']);
-  echo "        <td>Ratio</td>";
+  echo "        <td>".$text["ratio"]."</td>";
   if ($row['ratio'] <= 1)
-    echo "        <td title=\"Ratio = Kills / Deaths. Try to get your Ratio above 1!\">$temp</td>";
+    echo "        <td title=\"".$text["descratio"]."\">$temp</td>";
   else
-    echo "        <td title=\"Ratio = Kills / Deaths. Your Ratio is okay!\">$temp</td>";
+    echo "        <td title=\"".$text["descratiook"]."\">$temp</td>";
   echo "      </tr>";
   echo  "     <tr><td colspan=\"2\" class=\"outertable\"><img src=\"images/spacer.gif\" width=\"1\" height=\"1\" alt=\"\"></td></tr>";
   echo "      <tr>";
-  echo "        <td>Rounds</td>";
+  echo "        <td>".$text["rounds"]."</td>";
   echo "        <td>${row['rounds']}</td>";
   echo "      </tr>";
   echo "      <tr>";
-  echo "        <td>Longest winning streak</td>";
-  echo "        <td title=\"Your longest Killing Spree.\">${row['winstreak']}</td>";
+  echo "        <td>".$text["longestwinstrk"]."</td>";
+  echo "        <td title=\"".$text["descwinstrk"]."\">${row['winstreak']}</td>";
   echo "      </tr>";
   echo "      <tr>";
-  echo "        <td>Longest losing streak</td>";
-  echo "        <td title=\"Your longest Losing Spree.\">".-1*$row['losestreak']."</td>";
+  echo "        <td>".$text["longestlosstrk"]."</td>";
+  echo "        <td title=\"".$text["desclosstrk"]."\">".-1*$row['losestreak']."</td>";
   echo "      </tr>";
   echo  "     <tr><td colspan=\"2\" class=\"outertable\"><img src=\"images/spacer.gif\" width=\"1\" height=\"1\" alt=\"\"></td></tr>";
   echo "      <tr>";
-  echo "        <td>Team kills</td>";
-  echo "        <td title=\"How many friendlies did you kill? Always too many!\">${row['teamkills']}</td>";
+  echo "        <td>".$text["teamkills"]."</td>";
+  echo "        <td title=\"".$text["descteamkill"]."\">${row['teamkills']}</td>";
   echo "      </tr>";
   echo "      <tr>";
-  echo "        <td>Team deaths</td>";
-  echo "        <td title=\"Don't try to step in firefights and try to avoid crossfire situations.\">${row['teamdeaths']}</td>";
+  echo "        <td>".$text["teamdeaths"]."</td>";
+  echo "        <td title=\"".$text["descteamdeath"]."\">${row['teamdeaths']}</td>";
   echo "      </tr>";
   echo "      <tr>";
-  echo "        <td>Suicides</td>";
+  echo "        <td>".$text["suicides"]."</td>";
   echo "        <td title=\"...\">${row['suicides']}</td>";
   echo "      </tr>";
   echo  "     <tr><td colspan=\"2\" class=\"outertable\"><img src=\"images/spacer.gif\" width=\"1\" height=\"1\" alt=\"\"></td></tr>";
   echo "      <tr>";
   echo "        <td><span class=\"tiny\">XLRstatsID: $playerid</span></td>";
-  echo "        <td><span class=\"tiny\" title=\"For Admin purposes only\">B3-ID: @$databaseid</span></td>";
+  echo "        <td><span class=\"tiny\" title=\"".$text["adminpurp"]."\">B3-ID: @$databaseid</span></td>";
   echo "      </tr>";
   echo "    </table></td>";
 
@@ -1188,14 +1194,14 @@ function player_short($playerid, $dbID = false)
   $groupbits = $row['group_bits'];
 
   echo "<td valign=\"top\">";
-  echo "Personal statistics of <span class=\"highlight\">", $playername, "</span>";
-  echo "<br/><br/><span class=\"highlight\">".$playername."</span> was first registered by B3 on <span class=\"highlight\">";
+  echo "".$text["statsof"]."<span class=\"highlight\">", $playername, "</span>";
+  echo "<br/><br/><span class=\"highlight\">".$playername."</span>"." ".$text["wasfirstreg"]." "."<span class=\"highlight\">";
   if ($use_localtime == 1)
     echo date("j F Y, G:i T", $row['time_add']+date("Z")). ",</span><br/>";
   else
     echo date("j F Y, G:i", $row['time_add']). " GMT,</span><br/>";
-  echo "connected <span class=\"highlight\">${row['connections']}</span> times,<br/>";
-  echo "was last seen playing on <span class=\"highlight\">"; 
+  echo $text["connected"]." <span class=\"highlight\">${row['connections']}</span> ".$text["times"].",<br/>";
+  echo $text["lastseen"]. " <span class=\"highlight\">"; 
   if ($use_localtime == 1)
     echo date("j F Y, G:i T", $row['time_edit']+date("Z")). ",</span><br/>";
   else
@@ -1204,11 +1210,10 @@ function player_short($playerid, $dbID = false)
   // Getting the highest group a player is in. 
   if ($groupbits == 0)
   {
-  echo "and has not registered with B3 yet!<br/>Register as a User: While ingame type !register</span> in chat.";
+  echo $text["notregyet"];
   if ($limitplayerstats == 1)
-    echo "<br/><span class=\"attention\">Registering will enable more player specific statistics";
-    if ($sig == 1) echo " and the 'Signature Generator'";
-    echo " on this page!</span>";
+    echo "<br/><span class=\"attention\">".$text["regwillenstats"]."";
+    if ($sig == 1) echo " ".$text["andthesiggen"]."</span>";
   echo "<br/><br/>";
   }
   else
@@ -1221,16 +1226,16 @@ function player_short($playerid, $dbID = false)
     if ($coddb->sql_numrows($result2) > 0)
     {
         $row2 = $coddb->sql_fetchrow($result2);
-        echo "and is known as <span class=\"highlight\">${row2['name']}.</span><br/><br/>";
+        echo $text["nknownas"]." <span class=\"highlight\">${row2['name']}.</span><br/><br/>";
     }
     else
     {
-        echo "and is member of an unknown group.<br/><br/>";
+        echo $text["memofunknown"]."<br/><br/>";
     }
   }
   if (file_exists($geoip_path."GeoIP.dat"))
   {
-    echo "<span class=\"highlight\">$playername</span> is connecting from: ";
+    echo "<span class=\"highlight\">$playername</span> ".$text["conctfrom"]." ";
     echo $flag." ";
     echo "<span class=\"highlight\">$country.</span><br/><br/>";
     
@@ -1252,7 +1257,7 @@ $result3 = $coddb->sql_query($query3);
   {
     if ($row3 = $coddb->sql_fetchrow($result3))
     {
-      echo "Known aliases for this player are:<br/>";
+      echo $text["knownaliases"]."<br/>";
       echo "<span class=\"highlight\">". htmlspecialchars(utf2iso($row3['alias'])) ."</span>";
       while ($row3 = $coddb->sql_fetchrow($result3))
         echo ", <span class=\"highlight\">". htmlspecialchars(utf2iso($row3['alias'])) ."</span>";
@@ -1267,11 +1272,11 @@ $result3 = $coddb->sql_query($query3);
 
   echo "<td width=\"90\" valign=\"top\" align=\"center\" class=\"innertable\">";
   if (($groupbits > 0 || $limitplayerstats == 0) && ($playerid != $myplayerid))
-    echo "<a href=\"", $link, "?func=saveme&playerid=", $playerid, "\"><img src=\"images/ico/remember.png\" border=\"0\" align=\"absbottom\" title=\"This is me! Remember me in 'MyStats'!\"  style=\"margin: 4px; margin-bottom: 0px\"></a><br>";
+    echo "<a href=\"", $link, "?func=saveme&playerid=", $playerid, "\"><img src=\"images/ico/remember.png\" border=\"0\" align=\"absbottom\" title=\"".$text["rememberme"]."\"  style=\"margin: 4px; margin-bottom: 0px\"></a><br>";
   elseif ($groupbits > 0 || $limitplayerstats == 0)
-    echo "<img src=\"images/ico/mystats.png\" border=\"0\" align=\"absbottom\" title=\"This is me!\" style=\"margin: 4px; margin-bottom: 0px\"><br>";
+    echo "<img src=\"images/ico/mystats.png\" border=\"0\" align=\"absbottom\" title=\"".$text["thisisme"]."\" style=\"margin: 4px; margin-bottom: 0px\"><br>";
   if (($playerid != $myplayerid) && ($func != "comp") && isset($myplayerid) )
-    echo "<a href=\"", $link, "?func=comp&conf=", $currentconfignumber ,"&playerid=", $playerid, "&playerid2=", $myplayerid ,"\"><img src=\"images/ico/compare.png\" border=\"0\" align=\"absbottom\" title=\"Compare this player to me!\" style=\"margin: 4px; margin-bottom: 0px\"></a>";
+    echo "<a href=\"", $link, "?func=comp&conf=", $currentconfignumber ,"&playerid=", $playerid, "&playerid2=", $myplayerid ,"\"><img src=\"images/ico/compare.png\" border=\"0\" align=\"absbottom\" title=\"".$text["compareme"]."\" style=\"margin: 4px; margin-bottom: 0px\"></a>";
 
 // Closing the tables
   echo "</td></tr></table>";
@@ -1287,17 +1292,18 @@ function player_weapons_s($playerid, $dbID = false)
      
   global $t; // table names from config
   global $w; // weapon names from config
+  global $text;
   $Output = "";
   //<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">Weapon achievements</td></tr><tr><td>
   $Output = "
   <table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td>
     <table width=\"100%\" border=\"0\" cellspacing=\"2\" cellpadding=\"0\" class=\"innertable\">
         <tr class=\"outertable\">
-            <td colspan=\"1\" align=\"left\">Your favorite weapons</td>
-            <td width=\"80\" align=\"center\">Your Kills</td>
-            <td width=\"250\" align=\"center\">Percentage of total kills</td>
-            <td width=\"100\" colspan=\"2\" align=\"center\">Your Deaths</td>
-            <td width=\"100\" colspan=\"2\" align=\"center\">Your Suicides</td>
+            <td colspan=\"1\" align=\"left\">".$text["favweapons"]."</td>
+            <td width=\"80\" align=\"center\">".$text["yourkill"]."</td>
+            <td width=\"250\" align=\"center\">".$text["peroftotkil"]."</td>
+            <td width=\"100\" colspan=\"2\" align=\"center\">".$text["yourdeath"]."</td>
+            <td width=\"100\" colspan=\"2\" align=\"center\">".$text["yoursuicide"]."</td>
     ";
     
     if($dbID == false)
@@ -1449,7 +1455,7 @@ function player_weapons_s($playerid, $dbID = false)
   }                              
   $Output .= "</table>
   ";
-  $Output .= "</td></tr><tr><td class=\"tiny\" align =\"right\">Extra skillpoints are awarded for bashing, killing with pistols and other difficult weapons!
+  $Output .= "</td></tr><tr><td class=\"tiny\" align =\"right\">".$text["extraskilpoint"]."
   ";
   $Output .= "</td></tr></table>
   ";     // Closing extra border-table
@@ -1466,17 +1472,18 @@ function player_weapons($playerid, $dbID = false)
      
   global $t; // table names from config
   global $w; // weapon names from config
+  global $text;
   
-echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">Weapon achievements</td></tr><tr><td>
+echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">".$text["weapachieve"]."</td></tr><tr><td>
       <table width=\"100%\" border=\"0\" cellspacing=\"2\" cellpadding=\"0\" class=\"innertable\">
       <tr class=\"outertable\">
-        <td width=250 colspan=\"1\" >Weapon</td>
-        <td align=\"center\">Kills</td>
-        <td width=320 align=\"center\">Ratio</td>
-        <td colspan=\"2\" align=\"center\">Deaths</td>
-      <!--    <td colspan=\"2\" align=\"center\">Suicides</td> -->
-      <!--    <td colspan=\"2\" align=\"center\">Team Kills</td> -->
-      <!--    <td colspan=\"2\" align=\"center\">Team Deaths</td></tr> -->
+        <td width=250 colspan=\"1\" >".$text["weapon"]."</td>
+        <td align=\"center\">".$text["kills"]."</td>
+        <td width=320 align=\"center\">".$text["ratio"]."</td>
+        <td colspan=\"2\" align=\"center\">".$text["deaths"]."</td>
+      <!--    <td colspan=\"2\" align=\"center\">".$text["suicides"]."</td> -->
+      <!--    <td colspan=\"2\" align=\"center\">".$text["teamkills"]."</td> -->
+      <!--    <td colspan=\"2\" align=\"center\">".$text["teamdeaths"]."</td></tr> -->
      ";
   
   if($dbID == false)
@@ -1561,7 +1568,7 @@ echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" cla
     echo "</tr>";
   }
   echo "</table>";
-  echo "</td></tr><tr><td class=\"tiny\" align =\"right\">Extra skillpoints are awarded for bashing, killing with pistols and other difficult weapons!";
+  echo "</td></tr><tr><td class=\"tiny\" align =\"right\">".$text["extraskilpoint"]."";
   echo "</td></tr></table>";     // Closing extra border-table
 }
   
@@ -1576,6 +1583,7 @@ function player_bodyparts_s($playerid, $dbID = false)
   global $b; // bodypart names from config
   global $game;
   global $groupbits;
+  global $text;
   //<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">Hitzones</td></tr><tr><td>   
   
   $Output = 
@@ -1583,9 +1591,9 @@ function player_bodyparts_s($playerid, $dbID = false)
     <table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td>
         <table width=\"100%\" border=\"0\" cellspacing=\"2\" cellpadding=\"0\" class=\"innertable\">
             <tr class=\"outertable\">
-                <td width=\"250\" align=\"left\">Bodyparts</td>
-                <td width=\"140\"colspan=\"2\" align=\"center\">Your Kills</td>
-                <td width=\"140\"colspan=\"2\" align=\"center\">Your Deaths</td>
+                <td width=\"250\" align=\"left\">".$text["bodyparts"]."</td>
+                <td width=\"140\"colspan=\"2\" align=\"center\">".$text["yourkill"]."</td>
+                <td width=\"140\"colspan=\"2\" align=\"center\">".$text["yourdeath"]."</td>
     ";
     if($dbID == false)
     {
@@ -1694,7 +1702,7 @@ function player_bodyparts_s($playerid, $dbID = false)
     $Output .= "</td>
     </tr>
     <tr>    
-        <td class=\"tiny\" align =\"right\">Watch your cover and aim for deadly hitzones on your opponents!
+        <td class=\"tiny\" align =\"right\">".$text["watchcover"]."
     ";
     $Output .= "    </td>
             </tr>
@@ -1782,7 +1790,7 @@ function player_bodyparts_s($playerid, $dbID = false)
       <table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td>
         <table width=\"100%\" border=\"0\" cellspacing=\"2\" cellpadding=\"0\" class=\"innertable\">
             <tr class=\"outertable\">
-                <td width=\"250\">Accuracy (you hit the red parts more frequently)</td> 
+                <td width=\"250\"><center>".$text["accuracy"]."</center></td> 
                 <tr>
                     <td>   
                         <table id=\"Table_01\" width=\"370\" height=\"584\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\">
@@ -1950,11 +1958,11 @@ echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" cla
 <table width=\"100%\" border=\"0\" cellspacing=\"2\" cellpadding=\"0\" class=\"innertable\">
   <tr class=\"outertable\">
     <td>Bodypart</td>
-    <td colspan=\"2\" align=\"center\">Kills</td>
-    <td colspan=\"2\" align=\"center\">Deaths</td>
-<!--    <td colspan=\"2\" align=\"center\">Suicides</td> -->
-<!--    <td colspan=\"2\" align=\"center\">Team Kills</td> -->
-<!--    <td colspan=\"2\" align=\"center\">Team Deaths</td> -->
+    <td colspan=\"2\" align=\"center\">".$text["kills"]."</td>
+    <td colspan=\"2\" align=\"center\">".$text["deaths"]."</td>
+<!--    <td colspan=\"2\" align=\"center\">".$text["suicides"]."</td> -->
+<!--    <td colspan=\"2\" align=\"center\">".$text["teamkills"]."</td> -->
+<!--    <td colspan=\"2\" align=\"center\">".$text["teamdeaths"]."</td> -->
   ";
 
   if($dbID == false)
@@ -2019,7 +2027,7 @@ echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" cla
     echo "</tr>";
   }
   echo "</table>";
-  echo "</td></tr><tr><td class=\"tiny\" align =\"right\">Watch your cover and aim for deadly hitzones on your opponents!";
+  echo "</td></tr><tr><td class=\"tiny\" align =\"right\">".$text["watchcover"]."";
   echo "</td></tr></table>";                                                                // Closing extra border-table
 }
 
@@ -2031,6 +2039,7 @@ function player_maps_s($playerid, $dbID = false)
   $link = baselink();
   global $coddb;
   global $separatorline;
+  global $text;
     
   global $t; // table names from config
   global $m; // map names from config
@@ -2039,13 +2048,13 @@ function player_maps_s($playerid, $dbID = false)
     <table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td>
         <table width=\"100%\" border=\"0\" cellspacing=\"2\" cellpadding=\"0\" class=\"innertable\">
             <tr class=\"outertable\">
-                <td align=\"left\">Map</td>
-                <td align=\"center\">Rounds</td>
-                <td colspan=\"2\" align=\"center\">Kills</td>
-                <td colspan=\"2\" align=\"center\">Deaths</td>
-                <td colspan=\"2\" align=\"center\">Suicides</td>
-                <td colspan=\"2\" align=\"center\">Team Kills</td>
-                <td colspan=\"2\" align=\"center\">Team Deaths</td>
+                <td align=\"left\">".$text["map"]."</td>
+                <td align=\"center\">".$text["rounds"]."</td>
+                <td colspan=\"2\" align=\"center\">".$text["kills"]."</td>
+                <td colspan=\"2\" align=\"center\">".$text["deaths"]."</td>
+                <td colspan=\"2\" align=\"center\">".$text["suicides"]."</td>
+                <td colspan=\"2\" align=\"center\">".$text["teamkills"]."</td>
+                <td colspan=\"2\" align=\"center\">".$text["teamdeaths"]."</td>
                 ";
 
     if($dbID == false)
@@ -2236,7 +2245,7 @@ function player_maps_s($playerid, $dbID = false)
     ";
   }
   $Output .=  "</table>";
-  $Output .=  "</td></tr><tr><td class=\"tiny\" align =\"right\">Click the mapname to see who does well on this map";
+  $Output .=  "</td></tr><tr><td class=\"tiny\" align =\"right\">".$text["clickmapname"]."";
   $Output .=  "</td></tr></table>";       
   return $Output;                                                         // Closing extra border-table
 }
@@ -2248,6 +2257,7 @@ function player_maps($playerid, $dbID = false)
   $link = baselink();
   global $coddb;
   global $separatorline;
+  global $text;
     
   global $t; // table names from config
   global $m; // bodypart names from config
@@ -2257,11 +2267,11 @@ echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" cla
         <tr class=\"outertable\">
           <td>Map</td>
           <td>Rounds</td>
-          <td colspan=\"2\" align=\"center\">Kills</td>
-          <td colspan=\"2\" align=\"center\">Deaths</td>
-          <td colspan=\"2\" align=\"center\">Suicides</td>
-          <td colspan=\"2\" align=\"center\">Team Kills</td>
-          <td colspan=\"2\" align=\"center\">Team Deaths</td>
+          <td colspan=\"2\" align=\"center\">".$text["kills"]."</td>
+          <td colspan=\"2\" align=\"center\">".$text["deaths"]."</td>
+          <td colspan=\"2\" align=\"center\">".$text["suicides"]."</td>
+          <td colspan=\"2\" align=\"center\">".$text["teamkills"]."</td>
+          <td colspan=\"2\" align=\"center\">".$text["teamdeaths"]."</td>
     ";
   if($dbID == false)
   {
@@ -2353,7 +2363,7 @@ echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" cla
     echo "</tr>";
   }
   echo "</table>";
-  echo "</td></tr><tr><td class=\"tiny\" align =\"right\">Click the mapname to see who does well on this map";
+  echo "</td></tr><tr><td class=\"tiny\" align =\"right\">".$text["clickmapname"]."";
   echo "</td></tr></table>";                                                                // Closing extra border-table
 }
 
@@ -2369,15 +2379,16 @@ function player_opponents_s($playerid, $dbID = false)
   global $enemies_max;
   global $playername;
   global $currentconfignumber;
+  global $text;
 
   $Output = "
   <table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td>
     <table width=\"100%\" border=\"0\" cellspacing=\"2\" cellpadding=\"0\" class=\"innertable\">
         <tr class=\"outertable\">
-            <td align=\"left\">Your worst enemies</td>
-            <td width=\"75\" colspan=\"2\" align=\"center\">Your Deaths</td>
-            <td width=\"75\" colspan=\"2\" align=\"center\">Your Kills</td>
-            <td width=\"150\" align=\"center\">Your K/D Ratio</td>
+            <td align=\"left\">".$text["worstenemies"]."</td>
+            <td width=\"75\" colspan=\"2\" align=\"center\">".$text["yourdeath"]."</td>
+            <td width=\"75\" colspan=\"2\" align=\"center\">".$text["yourkill"]."</td>
+            <td width=\"150\" align=\"center\">".$text["yourkdratio"]."</td>
             ";
     
     if($dbID == false)
@@ -2489,7 +2500,7 @@ function player_opponents_s($playerid, $dbID = false)
   
   $Output .= "</table>
   ";
-  $Output .= "</td></tr><tr><td class=\"tiny\" align =\"right\">Who's your worst enemy?
+  $Output .= "</td></tr><tr><td class=\"tiny\" align =\"right\">".$text["whosyourenemy"]."
   ";
   $Output .= "</td></tr></table>
   ";     // Closing extra border-table
@@ -2508,14 +2519,15 @@ function player_opponents($playerid, $dbID = false)
   global $t; // table names from config
   global $enemies_max;
   global $currentconfignumber;
+  global $text;
 
-  echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">Your worst enemies</td></tr><tr><td>
+  echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">".$text["worstenemies"]."</td></tr><tr><td>
         <table width=\"100%\" border=\"0\" cellspacing=\"2\" cellpadding=\"0\" class=\"innertable\">
           <tr class=\"outertable\">
             <td>Player</td>
-            <td colspan=\"2\" align=\"center\">Kills</td>
-            <td colspan=\"2\" align=\"center\">Deaths</td>
-            <td align=\"center\">Ratio</td>
+            <td colspan=\"2\" align=\"center\">".$text["kills"]."</td>
+            <td colspan=\"2\" align=\"center\">".$text["deaths"]."</td>
+            <td align=\"center\">".$text["ratio"]."</td>
   ";
 
   if($dbID == false)
@@ -2590,7 +2602,7 @@ function player_opponents($playerid, $dbID = false)
   }
   
   echo "</table>";
-  echo "</td></tr><tr><td class=\"tiny\" align =\"right\">Who's your worst enemy?";
+  echo "</td></tr><tr><td class=\"tiny\" align =\"right\">".$text["whosyourenemy"]."";
   echo "</td></tr></table>";     // Closing extra border-table
 }
 
@@ -2611,6 +2623,7 @@ function weapon_short($weaponid)
   global $game;
   global $t; // table names from config
   global $w; // weapon aliases
+  global $text;
  
   $query = "SELECT * 
             FROM ${t['weapons']}
@@ -2626,9 +2639,9 @@ function weapon_short($weaponid)
   else
     echo "  <tr><td colspan=\"3\" align=\"center\" valign=\"top\">${row['name']}</td></tr><tr class=\"innertable\"><td valign=\"top\" width=\"150\">";
   echo "    <table width=\"150\">";
-  echo "      <tr><td class=\"innertable\">Total Kills</td><td align=\"center\" class=\"innertable\">${row['kills']}</td></tr>";
-  echo "      <tr><td class=\"innertable\">Total Team kills</td><td align=\"center\" class=\"innertable\">${row['teamkills']}</td></tr>";
-  echo "      <tr><td class=\"innertable\">Total Suicides</td><td align=\"center\" class=\"innertable\">${row['suicides']}</td></tr>";
+  echo "      <tr><td class=\"innertable\">".$text["totkill"]."</td><td align=\"center\" class=\"innertable\">${row['kills']}</td></tr>";
+  echo "      <tr><td class=\"innertable\">".$text["totteamkill"]."</td><td align=\"center\" class=\"innertable\">${row['teamkills']}</td></tr>";
+  echo "      <tr><td class=\"innertable\">".$text["totsuicide"]."</td><td align=\"center\" class=\"innertable\">${row['suicides']}</td></tr>";
   echo "    </table>";
   echo "  </td><td width=\"50\" valign=\"top\">";
   // catch cod1, coduo and cod2 in one imagefolder
@@ -2656,16 +2669,17 @@ function weapon_players($weaponid)
   global $weap_minkills;
   global $exclude_ban;
   global $currentconfignumber;
+  global $text;
   
-echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">Playerstats for this weapon</td></tr><tr><td>
+echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">".$text["playerweaponstats"]."</td></tr><tr><td>
       <table width=\"100%\" border=\"0\" cellspacing=\"2\" cellpadding=\"0\" class=\"innertable\">
         <tr class=\"outertable\">
-          <td>Player</td>
-          <td colspan=\"2\" align=\"center\">Kills</td>
-          <td colspan=\"2\" align=\"center\">Deaths</td>
-          <td colspan=\"2\" align=\"center\">Suicides</td>
-          <td colspan=\"2\" align=\"center\">Team Kills</td>
-          <td colspan=\"2\" align=\"center\">Team Deaths</td>
+          <td>".$text["player"]."</td>
+          <td colspan=\"2\" align=\"center\">".$text["kills"]."</td>
+          <td colspan=\"2\" align=\"center\">".$text["deaths"]."</td>
+          <td colspan=\"2\" align=\"center\">".$text["suicides"]."</td>
+          <td colspan=\"2\" align=\"center\">".$text["teamkills"]."</td>
+          <td colspan=\"2\" align=\"center\">".$text["teamdeaths"]."</td>
       ";
 
   $query = "SELECT kills, suicides, teamkills
@@ -2757,7 +2771,7 @@ echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" cla
     echo "</tr>\n";
   }
   echo "</table>";
-  echo "</td></tr><tr><td class=\"tiny\" align =\"right\">You need at least $weap_minkills kills/suicides with this weapon to appear on this list!";
+  echo "</td></tr><tr><td class=\"tiny\" align =\"right\">".$text["minweapon"]."";
   echo "</td></tr></table>";                                                                // Closing extra border-table
 }
 
@@ -2778,6 +2792,7 @@ function map_short($mapid)
   global $separatorline;
   global $t; // table names from config
   global $m; // map aliases
+  global $text;
 
   $query = "SELECT * 
             FROM ${t['maps']}
@@ -2793,9 +2808,9 @@ function map_short($mapid)
   else
     echo "  <tr><td colspan=\"3\" align=\"center\" valign=\"top\">${row['name']}</td></tr><tr class=\"innertable\"><td valign=\"top\" width=\"150\">";
   echo "    <table width=\"150\">";
-  echo "      <tr><td class=\"innertable\">Total Kills</td><td align=\"center\" class=\"innertable\">${row['kills']}</td></tr>";
-  echo "      <tr><td class=\"innertable\">Total Team kills</td><td align=\"center\" class=\"innertable\">${row['teamkills']}</td></tr>";
-  echo "      <tr><td class=\"innertable\">Total Suicides</td><td align=\"center\" class=\"innertable\">${row['suicides']}</td></tr>";
+  echo "      <tr><td class=\"innertable\">".$text["totkill"]."</td><td align=\"center\" class=\"innertable\">${row['kills']}</td></tr>";
+  echo "      <tr><td class=\"innertable\">".$text["totteamkill"]."</td><td align=\"center\" class=\"innertable\">${row['teamkills']}</td></tr>";
+  echo "      <tr><td class=\"innertable\">".$text["totsuicide"]."</td><td align=\"center\" class=\"innertable\">${row['suicides']}</td></tr>";
   echo "    </table>";
   echo "  </td><td width=\"50\" valign=\"top\">";
 
@@ -2825,15 +2840,16 @@ function map_players($mapid)
   global $map_minrounds;
   global $exclude_ban;
   global $currentconfignumber;
+  global $text;
   
-echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">Playerstats for this map</td></tr><tr><td>
+echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">".$text["playermapstats"]."</td></tr><tr><td>
       <table width=\"100%\" border=\"0\" cellspacing=\"2\" cellpadding=\"0\" class=\"innertable\">
         <tr class=\"outertable\">
-          <td>Player</td>
-          <td colspan=\"2\" align=\"center\">Kills</td>
-          <td colspan=\"2\" align=\"center\">Suicides</td>
-          <td colspan=\"2\" align=\"center\">Team Kills</td>
-          <td align=\"center\">Rounds</td>
+          <td>".$text["player"]."</td>
+          <td colspan=\"2\" align=\"center\">".$text["kills"]."</td>
+          <td colspan=\"2\" align=\"center\">".$text["suicides"]."</td>
+          <td colspan=\"2\" align=\"center\">".$text["teamkills"]."</td>
+          <td align=\"center\">".$text["rounds"]."</td>
     ";
 
   $query = "SELECT kills, suicides, teamkills, rounds
@@ -2912,7 +2928,7 @@ echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" cla
       echo "</tr>";
     }
     echo "</table>";
-    echo "</td></tr><tr><td class=\"tiny\" align =\"right\">You need at least $map_minrounds rounds or $map_minkills kills on this map to appear on this list!";
+    echo "</td></tr><tr><td class=\"tiny\" align =\"right\">".$text["youneedmap"]."";
     echo "</td></tr></table>";    // Closing extra border-table
 }
 

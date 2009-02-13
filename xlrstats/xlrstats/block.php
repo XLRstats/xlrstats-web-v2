@@ -59,7 +59,7 @@ include($currentconfig);
 //------------------------------------------------------------------------------
 $coddb = new sql_db($db_host, $db_user, $db_pass, $db_db, false);
 if(!$coddb->db_connect_id) {
-    die("Could not connect to the database");
+    die($text["cantconnectdb"]);
 }
 
 //------------------------------------------------------------------------------

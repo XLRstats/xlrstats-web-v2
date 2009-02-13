@@ -178,26 +178,26 @@ function currentplayers()
 
   echo "
     <table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\">
-    <tr><td align=\"center\">Currently playing
+    <tr><td align=\"center\">".$text["curplay"]."
   ";
 
-  echo " (".(count($clientsBlue) + count($clientsRed) + count($clientsSpec))." players)";
+  echo " (".(count($clientsBlue) + count($clientsRed) + count($clientsSpec))." ".$text["players"].")";
   if (file_exists("lib/worldmap/") && file_exists($geoip_path."GeoLiteCity.dat"))
     echo "&nbsp;&nbsp;&nbsp;<a href=\"worldmap/\" onclick=\"window.open('lib/worldmap/?config=$currentconfignumber', 'worldmap', 'width=550,height=300,scrollbars=no,toolbar=no,location=no'); return false\"><img src=\"images/ico/world_go.png\" border=\"0\" align=\"absbottom\" title=\"Show a Worldmap with current players\"></a>";
   echo "
     </td></tr><tr><td>
     <table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"innertable\">
     <tr class=\"outertable\">
-    <td align=\"center\" width=\"40\">Lp.</td>
-    <td align=\"center\" width=\"300\">Nick</td>
-    <td align=\"center\">Score</td>";
+    <td align=\"center\" width=\"40\">".$text["lp"]."</td>
+    <td align=\"center\" width=\"300\">".$text["nick"]."</td>
+    <td align=\"center\">".$text["score"]."</td>";
 
   if (file_exists($geoip_path."GeoIP.dat"))
-    echo "<td align=\"center\">Country</td>";
+    echo "<td align=\"center\">".$text["country"]."</td>";
 
-  echo "    <td align=\"center\">Level</td>
-    <!--<td align=\"center\">Team</td>-->
-    <td align=\"center\">Connections</td>
+  echo "    <td align=\"center\">".$text["level"]."</td>
+    <!--<td align=\"center\">".$text["team"]."</td>-->
+    <td align=\"center\">".$text["connections"]."</td>
     </tr>
   ";
  	

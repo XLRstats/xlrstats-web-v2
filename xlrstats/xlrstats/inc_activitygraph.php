@@ -201,12 +201,12 @@ if($suma > 0)
 }
 else
 {
-  $bar = new GanttBar(0,"No Activity detected","23:59","00:00");
+  $bar = new GanttBar(0,$text["noactivity"],"23:59","00:00");
   $bar->SetPattern(BAND_RDIAG, 'white@1');
   $graph->Add($bar);
 }
 
-$graph->footer->left->Set("Total ingame: ".formatTD($suma));
+$graph->footer->left->Set($text["totalingame"]." ".formatTD($suma));
 $graph->footer->left->SetColor('black@0.5');
 $graph->footer->left->SetFont(FF_FONT2,FS_BOLD);
 $graph->Stroke();

@@ -209,22 +209,22 @@ $e['re_drop'] = "Drop";
 //*********************
 // Bodypart names
 //*********************
-$b['head'] = "Head";
-$b['neck'] = "Neck";
-$b['torso_lower'] = "Abdomen";
-$b['torso_upper'] = "Chest";
-$b['left_arm_upper'] = "Left Arm (Upper)";
-$b['left_arm_lower'] = "Left Arm (Lower)";
-$b['left_hand'] = "Left Hand";
-$b['right_arm_upper'] = "Right Arm (Upper)";
-$b['right_arm_lower'] = "Right Arm (Lower)";
-$b['right_hand'] = "Right Arm";
-$b['left_leg_upper'] = "Left Leg (Upper)";
-$b['left_leg_lower'] = "Left Leg (Lower)";
-$b['left_foot'] = "Left Foot";
-$b['right_leg_upper'] = "Right Leg (Upper)";
-$b['right_leg_lower'] = "Right Leg (Lower)";
-$b['right_foot'] = "Right Foot";
-$b['none'] = "Total Disruption";
+$b['head'] = $text["head"];
+$b['neck'] = $text["neck"];
+$b['torso_lower'] = $text["torso_lower"];
+$b['torso_upper'] = $text["torso_upper"];
+$b['left_arm_upper'] = $text["left_arm_upper"];
+$b['left_arm_lower'] = $text["left_arm_lower"];
+$b['left_hand'] = $text["left_hand"];
+$b['right_arm_upper'] = $text["right_arm_upper"];
+$b['right_arm_lower'] = $text["right_arm_lower"];
+$b['right_hand'] = $text["right_hand"];
+$b['left_leg_upper'] = $text["left_leg_upper"];
+$b['left_leg_lower'] = $text["left_leg_lower"];
+$b['left_foot'] = $text["left_foot"];
+$b['right_leg_upper'] = $text["right_leg_upper"];
+$b['right_leg_lower'] = $text["right_leg_lower"];
+$b['right_foot'] = $text["right_foot"];
+$b['none'] = $text["totaldisrupt"];
 
 ?>

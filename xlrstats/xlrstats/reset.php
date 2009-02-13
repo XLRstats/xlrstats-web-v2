@@ -22,7 +22,7 @@
  *
  *  http://www.gnu.org/copyleft/gpl.html
  ***************************************************************************/
-
+include ("inc_activitygraph.php");
 // reset session
 session_start();
 session_unset();
@@ -58,7 +58,7 @@ echo "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">
 <html>
 <head>
 <title>XLRstats reset data.</title>
-<meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\">
+<meta http-equiv=\"Content-Type\" content=\"text/html; charset=".$text["charset"]."\">
 <style type=\"text/css\">
 <!--
 body {
@@ -83,22 +83,21 @@ a {
 <body>
 <table width=\"800\" border=\"0\" align=\"center\">
   <tr align=\"center\"> 
-    <td colspan=\"2\"><strong>Removed saved data!</strong></td>
+    <td colspan=\"2\"><strong>".$text["removedata"]."</strong></td>
   </tr>
   <tr align=\"center\">
     <td colspan=\"2\">&nbsp;</td>
   </tr>
   <tr align=\"center\"> 
-    <td colspan=\"2\">Resetting session and all saved data, please reload this page 
-      several times before returning to the homepage!</td>
+    <td colspan=\"2\">".$text["resettingsession"]."</td>
   </tr>
   <tr align=\"center\"> 
     <td>&nbsp;</td>
     <td>&nbsp;</td>
   </tr>
   <tr align=\"center\"> 
-    <td><a href=\"reset.php\">Reload this page</a></td>
-    <td><a href=\"index.php\">Go to homepage</a> </td>
+    <td><a href=\"reset.php\">".$text["reloadpage"]."</a></td>
+    <td><a href=\"index.php\">".$text["gotohome"]."</a> </td>
   </tr>
 </table>
 </body>

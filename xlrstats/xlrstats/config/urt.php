@@ -124,14 +124,14 @@ $e['re_drop'] = "Drop";
 //*********************
 // Bodypart names
 //*********************
-$b['0'] = "Head";
-$b['1'] = "Helmet";
-$b['2'] = "Torso";
-$b['3'] = "Kevlar";
-$b['4'] = "Arms";
-$b['5'] = "Legs";
-$b['6'] = "Body";
-$b['None'] = "-Unknown-";
-$b['body'] = "-Could not identify-";
+$b['0'] = $text["head"];
+$b['1'] = $text["helmet"];
+$b['2'] = $text["torso"];
+$b['3'] = $text["kevlar"];
+$b['4'] = $text["arms"];
+$b['5'] = $text["legs"];
+$b['6'] = $text["body"];
+$b['None'] = $text["noneurt"];
+$b['body'] = $text["notidentify"];
  
 ?>

@@ -98,7 +98,7 @@ $e[''] = "";
 //*********************
 // Bodypart names
 //*********************
-$b['none'] = "This game has no bodypart information";
-$b['body'] = "Body (no hitzones defined)";
+$b['none'] = $text["nonewop"];
+$b['body'] = $text["bodywop"];
 
 ?>

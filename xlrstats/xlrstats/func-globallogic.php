@@ -425,14 +425,14 @@ function welcometext($pop=0)
     $currentmap = $m[$currentmap];
 
   $today = date('l jS \of F Y h:i:s A');
-  echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Welcome to our statspages&nbsp;&nbsp;&nbsp;<span class=\"tiny\">($today)</span></td><td width=\"20px\"><a href=\"http://xlrstatshelp.xlr8or.com\" target=\"_blank\"><img src=\"".pathlink($pop)."images/ico/help.png\" border=\"0\" align=\"absbottom\" title=\"Need help on XLRstats?\"></a></td></tr>
+  echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$text["welcome"]."&nbsp;&nbsp;&nbsp;<span class=\"tiny\">($today)</span></td><td width=\"20px\"><a href=\"http://xlrstatshelp.xlr8or.com\" target=\"_blank\"><img src=\"".pathlink($pop)."images/ico/help.png\" border=\"0\" align=\"absbottom\" title=\"Need help on XLRstats?\"></a></td></tr>
       <tr>
       <td colspan=\"2\">
         <table align=\"center\" bgcolor=\"#99aaaa\" border=\"0\" cellpadding=\"2\" cellspacing=\"1\" width=\"100%\">
       	<tr bgcolor=\"#cccccc\" valign=\"bottom\">
       		<td style=\"padding: 4px;\" width=\"37%\">
             <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\">
-            <tr><td><font class=\"fontSmall\" size=\"1\"><font color=\"#000000\">&nbsp;Server</font></font></td>
+            <tr><td><font class=\"fontSmall\" size=\"1\"><font color=\"#000000\">&nbsp;".$text["server"]."</font></font></td>
             <td><div align=\"right\">
     ";
       echo gamelauncher('xfire');
@@ -443,14 +443,14 @@ function welcometext($pop=0)
       echo "
       </div></td><tr></table>
       </td>
-  		<td style=\"padding: 4px;\" width=\"18%\"><font class=\"fontSmall\" size=\"1\"><font color=\"#000000\">&nbsp;Address</font></font></td>
-  		<td style=\"padding: 4px;\" align=\"center\" width=\"14%\"><font class=\"fontSmall\" size=\"1\"><font color=\"#000000\">&nbsp;Map</font></font></td>
-  		<td style=\"padding: 4px;\" align=\"center\" width=\"10%\"><font class=\"fontSmall\" size=\"1\"><font color=\"#000000\">&nbsp;Playing</font></font></td>
-  		<td style=\"padding: 4px;\" align=\"center\" width=\"7%\"><font class=\"fontSmall\" size=\"1\"><font color=\"#000000\">&nbsp;Rounds</font></font></td>
-  		<td style=\"padding: 4px;\" align=\"center\" width=\"10%\"><font class=\"fontSmall\" size=\"1\"><font color=\"#000000\">&nbsp;Players</font></font></td>
-  		<td style=\"padding: 4px;\" align=\"center\" width=\"6%\"><font class=\"fontSmall\" size=\"1\"><font color=\"#000000\">&nbsp;Killed</font></font></td>
-  		<td style=\"padding: 4px;\" align=\"center\" width=\"6%\"><font class=\"fontSmall\" size=\"1\"><font color=\"#000000\">&nbsp;Headshots</font></font></td>
-  		<td style=\"padding: 4px;\" align=\"center\" width=\"6%\"><font class=\"fontSmall\" size=\"1\"><font color=\"#000000\">&nbsp;Hpk</font></font></td>
+  		<td style=\"padding: 4px;\" width=\"18%\"><font class=\"fontSmall\" size=\"1\"><font color=\"#000000\">&nbsp;".$text["address"]."</font></font></td>
+  		<td style=\"padding: 4px;\" align=\"center\" width=\"14%\"><font class=\"fontSmall\" size=\"1\"><font color=\"#000000\">&nbsp;".$text["map"]."</font></font></td>
+  		<td style=\"padding: 4px;\" align=\"center\" width=\"10%\"><font class=\"fontSmall\" size=\"1\"><font color=\"#000000\">&nbsp;".$text["playing"]."</font></font></td>
+  		<td style=\"padding: 4px;\" align=\"center\" width=\"7%\"><font class=\"fontSmall\" size=\"1\"><font color=\"#000000\">&nbsp;".$text["rounds"]."</font></font></td>
+  		<td style=\"padding: 4px;\" align=\"center\" width=\"10%\"><font class=\"fontSmall\" size=\"1\"><font color=\"#000000\">&nbsp;".$text["players"]."</font></font></td>
+  		<td style=\"padding: 4px;\" align=\"center\" width=\"6%\"><font class=\"fontSmall\" size=\"1\"><font color=\"#000000\">&nbsp;".$text["killed"]."</font></font></td>
+  		<td style=\"padding: 4px;\" align=\"center\" width=\"6%\"><font class=\"fontSmall\" size=\"1\"><font color=\"#000000\">&nbsp;".$text["headshots"]."</font></font></td>
+  		<td style=\"padding: 4px;\" align=\"center\" width=\"6%\"><font class=\"fontSmall\" size=\"1\"><font color=\"#000000\">&nbsp;".$text["hpk"]."</font></font></td>
   	</tr>
   	<tr bgcolor=\"#cccccf\" valign=\"middle\">
   		<td style=\"background: white none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; color: black;\" align=\"left\"><font class=\"fontNormal\" size=\"2\"><img style=\"vertical-align: middle;\" src=\"images/ico/icon_$game.gif\">&nbsp;<b><a class=info  href=\"#\">$sv_hostname<span>Server version: $shortversion</span></a></b></font></td>
@@ -555,7 +555,7 @@ function get_desc($name)
     if ( file_exists("$path") )
       readfile($path);
     else
-      echo "No description available.";
+      echo $text["nodescavail"];
   }
 }
 
@@ -804,7 +804,8 @@ function displayheader($pop=0)
   global $ptab_textAlign;
   global $ptab_fontSize;
   global $ptab_fontWeight;
-  global $ptab_Color;  
+  global $ptab_Color;
+  global $text;  
 
   if (isset($_SESSION['template']))
     $template = $_SESSION['template'];
@@ -861,7 +862,7 @@ function displayheader($pop=0)
   echo "<html>\n";
   echo "<head>\n";
   echo "<title>XLRstats for B3 (www.xlr8or.com)</title>\n";
-  echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\">\n";
+  echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=".$text["charset"]."\">\n";
   echo "<link rel=\"shortcut icon\" href=\"".$xlrpath."favicon.ico\">\n";
   echo "<style type=\"text/css\">\n";
   echo "<!--\n";
@@ -897,6 +898,8 @@ $(document).ready(function(){
     .boxy({title: 'World map'});
 });
 <?php
+  global $text;
+
   echo  "//-->\n";
   echo  "</script>\n";
 
@@ -992,15 +995,15 @@ $(document).ready(function(){
   		<tr>
   			<td width=500 align=\"left\">
     				<form action=\"$link?func=search\" method=\"post\" class=\"aliassearch\">
-  	  			<input type=\"text\" name=\"input_name\" size=\"30\" />&nbsp; <input type=\"submit\" value=\"Search\"></input>
-    				<input type=\"checkbox\" name=\"aliases\" value=\"true\">Include aliases</input>
+  	  			<input type=\"text\" name=\"input_name\" size=\"30\" />&nbsp; <input type=\"submit\" value=\"".$text["search"]."\"></input>
+    				<input type=\"checkbox\" name=\"aliases\" value=\"true\">".$text["incalias"]."</input>
       ";
 
 	if ($showclansearch == "1")
-      echo "<input type=\"checkbox\" name=\"clansearch\" value=\"true\">Clantag</input>";
+      echo "<input type=\"checkbox\" name=\"clansearch\" value=\"true\">".$text["clantag"]."</input>";
   echo "  				</form>
 			</td>
-			<td><div id=\"inea\"><div class=\"opis\">Powered by: </div></div>
+			<td><div id=\"inea\"><div class=\"opis\">".$text["poweredby"]." </div></div>
 			</td>
 		</tr>
 		</table>
@@ -1024,9 +1027,9 @@ function displaysimplefooter($pop=0)
   ";
   $now = date('Y');
 
-	echo "<td class=\"tiny\" width=\"85px\"><span class=\"footer\"><a href=\"http://www.xlr8or.com\" class=\"footer\" target=\"_blank\"><img src=\"".pathlink($pop)."images/ico/xlr8or.png\" border=\"0\" align=\"absbottom\" title=\"Visit the creator of XLRstats\"></a></span></td>\n";
-	echo "<td class=\"tiny\" width=\"85px\"><span class=\"footer\"><a href=\"http://www.bigbrotherbot.com\" class=\"footer\" target=\"_blank\"><img src=\"".pathlink($pop)."images/ico/b3.png\" border=\"0\" align=\"absbottom\" title=\"BigBrotherBot Automated Gameadministration\"></a></span></td>\n";
-	echo "<td class=\"tiny\" width=\"20px\"><span class=\"footer\"><a href=\"".pathlink($pop)."reset.php\" class=\"footer\" target=\"_blank\"><img src=\"".pathlink($pop)."images/ico/error_delete.png\" border=\"0\" align=\"absbottom\" title=\"Getting errors? Click here to reset all cookies.\"></a></span></td>\n";
+	echo "<td class=\"tiny\" width=\"85px\"><span class=\"footer\"><a href=\"http://www.xlr8or.com\" class=\"footer\" target=\"_blank\"><img src=\"".pathlink($pop)."images/ico/xlr8or.png\" border=\"0\" align=\"absbottom\" title=\"".$text["visitxlr"]."\"></a></span></td>\n";
+	echo "<td class=\"tiny\" width=\"85px\"><span class=\"footer\"><a href=\"http://www.bigbrotherbot.com\" class=\"footer\" target=\"_blank\"><img src=\"".pathlink($pop)."images/ico/b3.png\" border=\"0\" align=\"absbottom\" title=\"".$text["b3automated"]."\"></a></span></td>\n";
+	echo "<td class=\"tiny\" width=\"20px\"><span class=\"footer\"><a href=\"".pathlink($pop)."reset.php\" class=\"footer\" target=\"_blank\"><img src=\"".pathlink($pop)."images/ico/error_delete.png\" border=\"0\" align=\"absbottom\" title=\"".$text["gettingerros"]."\"></a></span></td>\n";
 	echo "<td align=\"right\" class=\"tiny\"><span class=\"footer\">&copy; 2005-$now XLRstats by </span><a href=\"http://www.xlr8or.com/\" target=\"_blank\" class=\"footer\">www.xlr8or.com</a></td>\n";
 	echo "</tr></table>\n";
 	// Close the MAIN table
@@ -1048,6 +1051,7 @@ function displayfooter($pop=0)
   global $total_uniques;
   global $clan_name;
   global $rss_sortby;
+  global $text;
   
   echo "  	<br/>
     <table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"footer\">
@@ -1059,12 +1063,12 @@ function displayfooter($pop=0)
     echo "<td class=\"tiny\">&nbsp;</td>";
   $now = date('Y');
 
-	echo "<td class=\"tiny\" width=\"85px\"><span class=\"footer\"><a href=\"http://www.xlr8or.com\" class=\"footer\" target=\"_blank\"><img src=\"".pathlink($pop)."images/ico/xlr8or.png\" border=\"0\" align=\"absbottom\" title=\"Visit the creator of XLRstats\"></a></span></td>\n";
-	echo "<td class=\"tiny\" width=\"85px\"><span class=\"footer\"><a href=\"http://www.bigbrotherbot.com\" class=\"footer\" target=\"_blank\"><img src=\"".pathlink($pop)."images/ico/b3.png\" border=\"0\" align=\"absbottom\" title=\"BigBrotherBot Automated Gameadministration\"></a></span></td>\n";
-	echo "<td class=\"tiny\" width=\"85px\"><span class=\"footer\"><a href=\"http://www.cback.de\" class=\"footer\" target=\"_blank\"><img src=\"".pathlink($pop)."images/ico/ctracker.png\" border=\"0\" align=\"absbottom\" title=\"CrackerTracker Anti Injection and Worm Protection Software\"></a></span></td>\n";
-	echo "<td class=\"tiny\" width=\"20px\"><span class=\"footer\"><a href=\"".pathlink($pop)."reset.php\" class=\"footer\" target=\"_blank\"><img src=\"".pathlink($pop)."images/ico/error_delete.png\" border=\"0\" align=\"absbottom\" title=\"Getting errors? Click here to reset all cookies.\"></a></span></td>\n";
-	echo "<td align=\"center\" class=\"tiny\"><span class=\"footer\">&nbsp;[Visitors: $total_uniques, Pageviews: $pageviews]&nbsp;</span></td>\n";
-	echo "<td align=\"center\" class=\"tiny\"><span class=\"footer\">&nbsp;[Page loaded in ".pageloader_end()." seconds]&nbsp;</span></td>\n";
+	echo "<td class=\"tiny\" width=\"85px\"><span class=\"footer\"><a href=\"http://www.xlr8or.com\" class=\"footer\" target=\"_blank\"><img src=\"".pathlink($pop)."images/ico/xlr8or.png\" border=\"0\" align=\"absbottom\" title=\"".$text["visitxlr"]."\"></a></span></td>\n";
+	echo "<td class=\"tiny\" width=\"85px\"><span class=\"footer\"><a href=\"http://www.bigbrotherbot.com\" class=\"footer\" target=\"_blank\"><img src=\"".pathlink($pop)."images/ico/b3.png\" border=\"0\" align=\"absbottom\" title=\"".$text["b3automated"]."\"></a></span></td>\n";
+	echo "<td class=\"tiny\" width=\"85px\"><span class=\"footer\"><a href=\"http://www.cback.de\" class=\"footer\" target=\"_blank\"><img src=\"".pathlink($pop)."images/ico/ctracker.png\" border=\"0\" align=\"absbottom\" title=\"".$text["cracktrack"]."\"></a></span></td>\n";
+	echo "<td class=\"tiny\" width=\"20px\"><span class=\"footer\"><a href=\"".pathlink($pop)."reset.php\" class=\"footer\" target=\"_blank\"><img src=\"".pathlink($pop)."images/ico/error_delete.png\" border=\"0\" align=\"absbottom\" title=\"".$text["gettingerros"]."\"></a></span></td>\n";
+	echo "<td align=\"center\" class=\"tiny\"><span class=\"footer\">&nbsp;[".$text["visitors"]." $total_uniques, ".$text["pageview"]." $pageviews]&nbsp;</span></td>\n";
+	echo "<td align=\"center\" class=\"tiny\"><span class=\"footer\">&nbsp;[".$text["pageloaded"]." ".pageloader_end()." ".$text["seconds"]."]&nbsp;</span></td>\n";
 	echo "<td align=\"right\" class=\"tiny\"><span class=\"footer\">&nbsp;&copy; 2005-$now&nbsp;</span><a href=\"http://www.xlr8or.com/\" target=\"_blank\" class=\"footer\">www.xlr8or.com</a> </td>\n";
 	echo "</tr></table>\n";
 	// Close the MAIN table
@@ -1096,6 +1100,7 @@ function displayhomelink($pop=0)
 function showsig($playerid)
 {
   global $sig;
+  global $text;
   $phpver = phpversion();
   // imagecolorallocatealpha requires 4.3.2
   if (( version_compare($phpver, "4.3.2", ">=") ) && ( function_exists('imagecreate') ) && ($sig == 1) && (file_exists("./sig/")) )
@@ -1105,7 +1110,7 @@ function showsig($playerid)
     echo "    <input name='id' type='hidden' id='id' value='$playerid'>";
     echo "  </p>";
     echo "  <p>";
-    echo "    <input type='submit' name='submit' value='Generate Signature'>";
+    echo "    <input type='submit' name='submit' value='".$text["generatesig"]."'>";
     echo "</p>";
     echo "</form>";
     
@@ -1149,13 +1154,13 @@ function searchbox()
 {
   $link = baselink();
 
-  echo "<table width=\"100%\" height=\"60\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">Player Search</td></tr><tr><td>";
+  echo "<table width=\"100%\" height=\"60\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">".$text["playersearch"]."</td></tr><tr><td>";
   echo "<table width=\"100%\" height=\"60\" border=\"0\" cellspacing=\"2\" cellpadding=\"0\" class=\"innertable\">";
   echo "	<tr><td align=\"center\">";
   echo "		<form action=\"$link?func=search\" method=\"post\">";
   echo "			<input type=\"text\" name=\"input_name\" size=\"20\" />&nbsp;";
-  echo "			<input type=\"submit\" value=\"Search\" />";
-  echo "			<br /><input type=\"checkbox\" name=\"aliases\" value=\"true\" />Search aliases too";
+  echo "			<input type=\"submit\" value=\"".$text["search"]."\" />";
+  echo "			<br /><input type=\"checkbox\" name=\"aliases\" value=\"true\" />".$text["incalias"]."";
   echo "		</form>";
   echo "	</td></tr></table>";
   echo "</td></tr></table>";
@@ -1300,6 +1305,7 @@ function menubox($menuselected, $clan_name = "")
   global $toplist_max;
   global $maplist_max;
   global $hide_menu_header;
+  global $text;
 
   $link = baselink();
   $func = "show";
@@ -1309,49 +1315,49 @@ function menubox($menuselected, $clan_name = "")
   if ($hide_menu_header == 1)
     echo "<table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"outertable\"><tr><td>";
   else
-    echo "<table width=\"100%\" height=\"20\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">Menu</td></tr><tr><td>";
+    echo "<table width=\"100%\" height=\"20\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">".$text["menu"]."</td></tr><tr><td>";
   echo "<table width=\"100%\" height=\"40\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"innertable\">";
   echo "	<tr>";//<td align=\"center\">
 
   if($menuselected == 1 || $menuselected < 0 || $menuselected > 5)
-    echo "		<td width=\"20%\" align=\"center\" class=\"with_border\">Top $toplist_max skill</td>";
+    echo "		<td width=\"20%\" align=\"center\" class=\"with_border\">".$text["top"]." ".$toplist_max." ".$text["skill"]."</td>";
   else 
     if (isset($clan_name))
-      echo "		<td width=\"20%\" align=\"center\" class=\"with_border_alternate\"><a href=\"$link?func=$func&page=1&filter=$url_clan_name\">Top $toplist_max skill</a></td>";
+      echo "		<td width=\"20%\" align=\"center\" class=\"with_border_alternate\"><a href=\"$link?func=$func&page=1&filter=$url_clan_name\">".$text["top"]." ".$toplist_max." ".$text["skill"]."</a></td>";
     else
-      echo "		<td width=\"20%\" align=\"center\" class=\"with_border_alternate\"><a href=\"$link?func=$func&page=1\">Top $toplist_max skill</a></td>";
+      echo "		<td width=\"20%\" align=\"center\" class=\"with_border_alternate\"><a href=\"$link?func=$func&page=1\">".$text["top"]." ".$toplist_max." ".$text["skill"]."</a></td>";
 
   if($menuselected == 2)	
-    echo "		<td width=\"20%\" align=\"center\" class=\"with_border\">Top $toplist_max kills</td>";
+    echo "		<td width=\"20%\" align=\"center\" class=\"with_border\">".$text["top"]." ".$toplist_max." ".$text["kills"]."</td>";
   else
     if (isset($clan_name))
-      echo "		<td width=\"20%\" align=\"center\" class=\"with_border_alternate\"><a href=\"$link?func=$func&page=2&filter=$url_clan_name\">Top $toplist_max kills</a></td>";
+      echo "		<td width=\"20%\" align=\"center\" class=\"with_border_alternate\"><a href=\"$link?func=$func&page=2&filter=$url_clan_name\">".$text["top"]." ".$toplist_max." ".$text["kills"]."</a></td>";
     else
-      echo "		<td width=\"20%\" align=\"center\" class=\"with_border_alternate\"><a href=\"$link?func=$func&page=2\">Top $toplist_max kills</a></td>";
+      echo "		<td width=\"20%\" align=\"center\" class=\"with_border_alternate\"><a href=\"$link?func=$func&page=2\">".$text["top"]." ".$toplist_max." ".$text["kills"]."</a></td>";
 
   if($menuselected == 3)
-    echo "		<td width=\"20%\" align=\"center\" class=\"with_border\">Top $toplist_max ratio</td>";
+    echo "		<td width=\"20%\" align=\"center\" class=\"with_border\">".$text["top"]." ".$toplist_max." ".$text["ratio"]."</td>";
   else 
     if (isset($clan_name))
-      echo "		<td width=\"20%\" align=\"center\" class=\"with_border_alternate\"><a href=\"$link?func=$func&page=3&filter=$url_clan_name\">Top $toplist_max ratio</a></td>";
+      echo "		<td width=\"20%\" align=\"center\" class=\"with_border_alternate\"><a href=\"$link?func=$func&page=3&filter=$url_clan_name\">".$text["top"]." ".$toplist_max." ".$text["ratio"]."</a></td>";
     else
-      echo "		<td width=\"20%\" align=\"center\" class=\"with_border_alternate\"><a href=\"$link?func=$func&page=3\">Top $toplist_max ratio</a></td>";
+      echo "		<td width=\"20%\" align=\"center\" class=\"with_border_alternate\"><a href=\"$link?func=$func&page=3\">".$text["top"]." ".$toplist_max." ".$text["ratio"]."</a></td>";
 
   if($menuselected == 4)
-    echo "		<td width=\"20%\" align=\"center\" class=\"with_border\">Top $weaplist_max weapons</td>";
+    echo "		<td width=\"20%\" align=\"center\" class=\"with_border\">".$text["top"]." ".$weaplist_max." ".$text["weapons"]."</td>";
   else 
     if (isset($clan_name))
-      echo "		<td width=\"20%\" align=\"center\" class=\"with_border_alternate\"><a href=\"$link?func=$func&page=4&filter=$url_clan_name\">Top $weaplist_max weapons</a></td>";
+      echo "		<td width=\"20%\" align=\"center\" class=\"with_border_alternate\"><a href=\"$link?func=$func&page=4&filter=$url_clan_name\">".$text["top"]." ".$weaplist_max." ".$text["weapons"]."</a></td>";
     else
-      echo "		<td width=\"20%\" align=\"center\" class=\"with_border_alternate\"><a href=\"$link?func=$func&page=4\">Top $weaplist_max weapons</a></td>";
+      echo "		<td width=\"20%\" align=\"center\" class=\"with_border_alternate\"><a href=\"$link?func=$func&page=4\">".$text["top"]." ".$weaplist_max." ".$text["weapons"]."</a></td>";
 
   if($menuselected == 5)
-    echo "		<td width=\"20%\" align=\"center\" class=\"with_border\">Top $maplist_max maps</td>";
+    echo "		<td width=\"20%\" align=\"center\" class=\"with_border\">".$text["top"]." ".$maplist_max." ".$text["maps"]."</td>";
   else 
     if (isset($clan_name))
-      echo "		<td width=\"20%\" align=\"center\" class=\"with_border_alternate\"><a href=\"$link?func=$func&page=5&filter=$url_clan_name\">Top $maplist_max maps</a></td>";
+      echo "		<td width=\"20%\" align=\"center\" class=\"with_border_alternate\"><a href=\"$link?func=$func&page=5&filter=$url_clan_name\">".$text["top"]." ".$maplist_max." ".$text["maps"]."</a></td>";
     else
-      echo "		<td width=\"20%\" align=\"center\" class=\"with_border_alternate\"><a href=\"$link?func=$func&page=5\">Top $maplist_max maps</a></td>";
+      echo "		<td width=\"20%\" align=\"center\" class=\"with_border_alternate\"><a href=\"$link?func=$func&page=5\">".$text["top"]." ".$maplist_max." ".$text["maps"]."</a></td>";
 
   echo "</tr></table>";
   echo "</td></tr></table>";

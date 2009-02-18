@@ -65,6 +65,12 @@ elseif (file_exists("config/statsconfig1.php"))
     $currentconfignumber = $_SESSION['currentconfignumber'];
     $currentconfig = "config/statsconfig".$currentconfignumber.".php";
   }
+  // double check config number found point to an existing config file or fallback to config 1
+  if (!file_exists($currentconfig)) 
+  {
+    $currentconfig = "config/statsconfig1.php";
+    $currentconfignumber = 1;
+  }
 }
 include($currentconfig);
 if ($currentconfignumber == 0)

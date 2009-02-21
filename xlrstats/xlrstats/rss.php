@@ -59,6 +59,7 @@ elseif (file_exists("config/statsconfig1.php"))
   }
 }
 include($currentconfig);
+include("languages/languages.php");
 
 // Get other commandline parameters
 if (isset($_GET['sortby']) && $_GET['sortby']!= "")

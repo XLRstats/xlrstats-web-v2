@@ -73,6 +73,7 @@ elseif (file_exists("config/statsconfig1.php"))
   }
 }
 include($currentconfig);
+include("languages/languages.php");
 if ($currentconfignumber == 0)
   include("dynamic/award_idents.php");
 else

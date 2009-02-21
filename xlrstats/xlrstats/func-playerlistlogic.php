@@ -172,6 +172,7 @@ function currentplayers()
   global $clientsSpec;
   global $ffa_modes;
   global $gameType;
+  global $text;
   
   if (!isset($pll_noteams))
     $pll_noteams = 0;

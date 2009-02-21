@@ -42,6 +42,19 @@ function baselink()
   return $_SERVER['PHP_SELF'];
 }
 
+function abs_pathlink($pop=0)
+{
+  $ptemp = explode("/", GetFileDir($_SERVER['SCRIPT_FILENAME']));
+  //array_shift($ptemp);
+  array_pop($ptemp);
+  while ($pop > 0)
+  {
+    array_pop($ptemp);
+    $pop--;
+  }
+  return implode("/", $ptemp)."/";
+}
+
 function pathlink($pop=0)
 {
   $ptemp = explode("/", GetFileDir($_SERVER['PHP_SELF']));
@@ -343,6 +356,7 @@ function welcometext($pop=0)
   global $minkills;
   global $minrounds;
   global $bp_head;
+  global $text;
   
   // test if the status file exists
   $fp = @fopen($b3_status_url, "r");
@@ -597,6 +611,9 @@ function configpicker($cpath="config")
 {
   global $currentconfignumber;
   //$currentconfignumber = trim(trim($currentconfig, "config/statsconfig"), ".php");
+  global $disable_configpicker;
+
+  if ($disable_configpicker) return;
 
   $c = true;
   $cnt = 0;
@@ -1066,7 +1083,7 @@ function displayfooter($pop=0)
 	echo "<td class=\"tiny\" width=\"85px\"><span class=\"footer\"><a href=\"http://www.xlr8or.com\" class=\"footer\" target=\"_blank\"><img src=\"".pathlink($pop)."images/ico/xlr8or.png\" border=\"0\" align=\"absbottom\" title=\"".$text["visitxlr"]."\"></a></span></td>\n";
 	echo "<td class=\"tiny\" width=\"85px\"><span class=\"footer\"><a href=\"http://www.bigbrotherbot.com\" class=\"footer\" target=\"_blank\"><img src=\"".pathlink($pop)."images/ico/b3.png\" border=\"0\" align=\"absbottom\" title=\"".$text["b3automated"]."\"></a></span></td>\n";
 	echo "<td class=\"tiny\" width=\"85px\"><span class=\"footer\"><a href=\"http://www.cback.de\" class=\"footer\" target=\"_blank\"><img src=\"".pathlink($pop)."images/ico/ctracker.png\" border=\"0\" align=\"absbottom\" title=\"".$text["cracktrack"]."\"></a></span></td>\n";
-	echo "<td class=\"tiny\" width=\"20px\"><span class=\"footer\"><a href=\"".pathlink($pop)."reset.php\" class=\"footer\" target=\"_blank\"><img src=\"".pathlink($pop)."images/ico/error_delete.png\" border=\"0\" align=\"absbottom\" title=\"".$text["gettingerros"]."\"></a></span></td>\n";
+	echo "<td class=\"tiny\" width=\"20px\"><span class=\"footer\"><a href=\"".pathlink($pop)."reset.php?config=".$currentconfignumber."\" class=\"footer\" target=\"_blank\"><img src=\"".pathlink($pop)."images/ico/error_delete.png\" border=\"0\" align=\"absbottom\" title=\"".$text["gettingerros"]."\"></a></span></td>\n";
 	echo "<td align=\"center\" class=\"tiny\"><span class=\"footer\">&nbsp;[".$text["visitors"]." $total_uniques, ".$text["pageview"]." $pageviews]&nbsp;</span></td>\n";
 	echo "<td align=\"center\" class=\"tiny\"><span class=\"footer\">&nbsp;[".$text["pageloaded"]." ".pageloader_end()." ".$text["seconds"]."]&nbsp;</span></td>\n";
 	echo "<td align=\"right\" class=\"tiny\"><span class=\"footer\">&nbsp;&copy; 2005-$now&nbsp;</span><a href=\"http://www.xlr8or.com/\" target=\"_blank\" class=\"footer\">www.xlr8or.com</a> </td>\n";

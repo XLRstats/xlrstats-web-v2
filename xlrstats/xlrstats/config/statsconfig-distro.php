@@ -108,8 +108,10 @@ $use_localtime = 1;
 $useppllist = 1;
 $pll_noteams = 0;
 
-//// Show the stylepicker (0 disables, options are: "left", "right", "footer")
+// Show the stylepicker (0 disables, options are: "left", "right", "footer")
 $stylepicker = "0";
+// Disable the config selector, even though we have set up multi configs (ie if we want to deeplink to each config/server from our homepage)
+$disable_configpicker = 0;
 
 // Use GeoIP information in playerpages?
 $use_geoip = 1;

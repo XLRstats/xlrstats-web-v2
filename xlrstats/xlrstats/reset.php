@@ -22,7 +22,49 @@
  *
  *  http://www.gnu.org/copyleft/gpl.html
  ***************************************************************************/
-include ("inc_activitygraph.php");
+
+include("lib/ctracker.php");
+include("func-globallogic.php");
+
+// If statsconfig.php exists, we won't enable multiconfig functionality
+if (file_exists("config/statsconfig.php"))
+{
+  $currentconfig = "config/statsconfig.php";
+  $currentconfignumber = 0;
+}
+elseif (file_exists("config/statsconfig1.php"))
+{
+  $currentconfig = "config/statsconfig1.php";
+  $currentconfignumber = 1;
+
+  if (isset($_POST['config'])) 
+  {
+    $currentconfignumber = escape_string($_POST['config']);
+    $currentconfig = "config/statsconfig".$currentconfignumber.".php";
+    $_SESSION['currentconfignumber'] = $currentconfignumber;
+  }
+  // Was a config set in the url?
+  elseif (isset($_GET['config'])) 
+  {
+    $currentconfignumber = escape_string($_GET['config']);
+    $currentconfig = "config/statsconfig".$currentconfignumber.".php";
+    $_SESSION['currentconfignumber'] = $currentconfignumber;
+  }
+  elseif (isset($_SESSION['currentconfignumber']))
+  {
+    $currentconfignumber = $_SESSION['currentconfignumber'];
+    $currentconfig = "config/statsconfig".$currentconfignumber.".php";
+  }
+  // double check config number found point to an existing config file or fallback to config 1
+  if (!file_exists($currentconfig)) 
+  {
+    $currentconfig = "config/statsconfig1.php";
+    $currentconfignumber = 1;
+  }
+}
+include($currentconfig);
+include("languages/languages.php");
+
 // reset session
 session_start();
 session_unset();
@@ -96,7 +138,7 @@ a {
     <td>&nbsp;</td>
   </tr>
   <tr align=\"center\"> 
-    <td><a href=\"reset.php\">".$text["reloadpage"]."</a></td>
+    <!-- <td><a href=\"reset.php\">".$text["reloadpage"]."</a></td> -->
     <td><a href=\"index.php\">".$text["gotohome"]."</a> </td>
   </tr>
 </table>

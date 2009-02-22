@@ -238,7 +238,7 @@ function addClients($clients, $backgroundColor)
     if($client -> levelInt == 0)
       echo '<td style="background: '.$backgroundColor.' none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; color: black;" align="center"><font class="fontNormal" size="2">'.htmlspecialchars(utf2iso($client -> name)).'</font></td>';
     else 
-      echo '<td style="background: '.$backgroundColor.' none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; color: black;" align="center"><font class="fontNormal" size="2"><a href='.$link.'?func=player&playerdbid='.($client -> dbid).'&config=${currentconfignumber}><strong>'.htmlspecialchars(utf2iso($client -> name)).'</strong></a></font></td>';
+      echo '<td style="background: '.$backgroundColor.' none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; color: black;" align="center"><font class="fontNormal" size="2"><a href='.$link.'?func=player&playerdbid='.($client -> dbid).'&config=' .$currentconfignumber .'><strong>'.htmlspecialchars(utf2iso($client -> name)).'</strong></a></font></td>';
     echo '<td style="background: '.$backgroundColor.' none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; color: black;" align="center"><font class="fontNormal" size="2">'.$client -> score.'</font></td>';
 
     if (file_exists($geoip_path."GeoIP.dat"))

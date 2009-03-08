@@ -79,25 +79,25 @@ function pro_medal_punchy_killer()
 
   $current_time = gmdate("U");
 
-  $query = " SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, ${t['weaponusage']}.kills
-          FROM ${t['weaponusage']}
-          JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
-          JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
-          WHERE (${t['weaponusage']}.weapon_id IN $wp_punchy)
-          AND ((${t['players']}.kills > $minkills)
-          OR (${t['players']}.rounds > $minrounds))
-          AND (${t['players']}.hide = 0)
-          AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-          ORDER BY ${t['weaponusage']}.kills DESC
-          LIMIT 1 ";
-
+  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds) AS total_kills
+      FROM ${t['weaponusage']}
+      JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
+      JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
+      WHERE (${t['weaponusage']}.weapon_id IN $wp_punchy)
+      AND ((${t['players']}.kills > $minkills)
+      OR (${t['players']}.rounds > $minrounds))
+      AND (${t['players']}.hide = 0)
+      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
+      GROUP BY ${t['players']}.id
+      ORDER BY total_kills DESC
+      LIMIT 1 ";
 
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
   
-  ShowMedal($text["punchy"], $text["punchykill"], $row['kills'], $row['id'], $name  , "xlr_pro_default.gif", $text["mostpunchy"]);  
+  ShowMedal($text["punchy"], $text["punchykill"], sprintf("%.1f",$row['total_kills']), $row['id'], $name  , "xlr_pro_default.gif", $text["mostpunchy"]);  
 }
 
 function pro_medal_ballooney_killer()
@@ -117,24 +117,24 @@ function pro_medal_ballooney_killer()
 
   $current_time = gmdate("U");
 
-  $query = " SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, ${t['weaponusage']}.kills
-          FROM ${t['weaponusage']}
-          JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
-          JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
-          WHERE (${t['weaponusage']}.weapon_id IN $wp_ballooney)
-          AND ((${t['players']}.kills > $minkills)
-          OR (${t['players']}.rounds > $minrounds))
-          AND (${t['players']}.hide = 0)
-          AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-          ORDER BY ${t['weaponusage']}.kills DESC
-          LIMIT 1 ";
-
+  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds) AS total_kills
+      FROM ${t['weaponusage']}
+      JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
+      JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
+      WHERE (${t['weaponusage']}.weapon_id IN $wp_ballooney)
+      AND ((${t['players']}.kills > $minkills)
+      OR (${t['players']}.rounds > $minrounds))
+      AND (${t['players']}.hide = 0)
+      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
+      GROUP BY ${t['players']}.id
+      ORDER BY total_kills DESC
+      LIMIT 1 ";
 
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal($text["balooney"], $text["balooneykill"], $row['kills'], $row['id'], $name  , "xlr_pro_default.gif", $text["mostbalooney"]);  
+  ShowMedal($text["balooney"], $text["balooneykill"], sprintf("%.1f",$row['total_kills']), $row['id'], $name  , "xlr_pro_default.gif", $text["mostbalooney"]);  
 }
 
 function pro_medal_betty_killer()
@@ -154,24 +154,24 @@ function pro_medal_betty_killer()
 
   $current_time = gmdate("U");
 
-  $query = " SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, ${t['weaponusage']}.kills
-          FROM ${t['weaponusage']}
-          JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
-          JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
-          WHERE (${t['weaponusage']}.weapon_id IN $wp_betty)
-          AND ((${t['players']}.kills > $minkills)
-          OR (${t['players']}.rounds > $minrounds))
-          AND (${t['players']}.hide = 0)
-          AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-          ORDER BY ${t['weaponusage']}.kills DESC
-          LIMIT 1 ";
-
+  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds) AS total_kills
+      FROM ${t['weaponusage']}
+      JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
+      JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
+      WHERE (${t['weaponusage']}.weapon_id IN $wp_betty)
+      AND ((${t['players']}.kills > $minkills)
+      OR (${t['players']}.rounds > $minrounds))
+      AND (${t['players']}.hide = 0)
+      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
+      GROUP BY ${t['players']}.id
+      ORDER BY total_kills DESC
+      LIMIT 1 ";
 
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal($text["betty"], $text["bettykill"], $row['kills'], $row['id'], $name  , "xlr_pro_sniper.gif", $text["mostbetty"]);  
+  ShowMedal($text["betty"], $text["bettykill"], sprintf("%.1f",$row['total_kills']), $row['id'], $name  , "xlr_pro_sniper.gif", $text["mostbetty"]);  
 }
 
 function pro_medal_killerducks_killer()
@@ -191,24 +191,24 @@ function pro_medal_killerducks_killer()
 
   $current_time = gmdate("U");
 
-  $query = " SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, ${t['weaponusage']}.kills
-          FROM ${t['weaponusage']}
-          JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
-          JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
-          WHERE (${t['weaponusage']}.weapon_id IN $wp_killerducks)
-          AND ((${t['players']}.kills > $minkills)
-          OR (${t['players']}.rounds > $minrounds))
-          AND (${t['players']}.hide = 0)
-          AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-          ORDER BY ${t['weaponusage']}.kills DESC
-          LIMIT 1 ";
-
+  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds) AS total_kills
+      FROM ${t['weaponusage']}
+      JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
+      JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
+      WHERE (${t['weaponusage']}.weapon_id IN $wp_killerducks)
+      AND ((${t['players']}.kills > $minkills)
+      OR (${t['players']}.rounds > $minrounds))
+      AND (${t['players']}.hide = 0)
+      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
+      GROUP BY ${t['players']}.id
+      ORDER BY total_kills DESC
+      LIMIT 1 ";
 
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal($text["lazy"], $text["duckkill"], $row['kills'], $row['id'], $name  , "xlr_pro_default.gif", $text["mostlazy"]);  
+  ShowMedal($text["lazy"], $text["duckkill"], sprintf("%.1f",$row['total_kills']), $row['id'], $name  , "xlr_pro_default.gif", $text["mostlazy"]);  
 }
 
 function pro_medal_cold_weapon_killer()
@@ -228,24 +228,24 @@ function pro_medal_cold_weapon_killer()
 
   $current_time = gmdate("U");
 
-  $query = " SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, ${t['weaponusage']}.kills
-          FROM ${t['weaponusage']}
-          JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
-          JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
-          WHERE (${t['weaponusage']}.weapon_id IN $wp_knives)
-          AND ((${t['players']}.kills > $minkills)
-          OR (${t['players']}.rounds > $minrounds))
-          AND (${t['players']}.hide = 0)
-          AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-          ORDER BY ${t['weaponusage']}.kills DESC
-          LIMIT 1 ";
-
+  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds) AS total_kills
+      FROM ${t['weaponusage']}
+      JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
+      JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
+      WHERE (${t['weaponusage']}.weapon_id IN $wp_knives)
+      AND ((${t['players']}.kills > $minkills)
+      OR (${t['players']}.rounds > $minrounds))
+      AND (${t['players']}.hide = 0)
+      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
+      GROUP BY ${t['players']}.id
+      ORDER BY total_kills DESC
+      LIMIT 1 ";
 
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal($text["cldweapon"], $text["knifekill"], $row['kills'], $row['id'], $name  , "xlr_pro_knives.gif", $text["mostknife"]);  
+  ShowMedal($text["cldweapon"], $text["knifekill"], sprintf("%.1f",$row['total_kills']), $row['id'], $name  , "xlr_pro_knives.gif", $text["mostknife"]);  
 }
 
 function pro_medal_bash_killer()
@@ -265,24 +265,24 @@ function pro_medal_bash_killer()
 
   $current_time = gmdate("U");
 
-  $query = " SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, ${t['weaponusage']}.kills
-          FROM ${t['weaponusage']}
-          JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
-          JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
-          WHERE (${t['weaponusage']}.weapon_id IN $wp_bashes)
-          AND ((${t['players']}.kills > $minkills)
-          OR (${t['players']}.rounds > $minrounds))
-          AND (${t['players']}.hide = 0)
-          AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-          ORDER BY ${t['weaponusage']}.kills DESC
-          LIMIT 1 ";
-
+  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds) AS total_kills
+      FROM ${t['weaponusage']}
+      JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
+      JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
+      WHERE (${t['weaponusage']}.weapon_id IN $wp_bashes)
+      AND ((${t['players']}.kills > $minkills)
+      OR (${t['players']}.rounds > $minrounds))
+      AND (${t['players']}.hide = 0)
+      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
+      GROUP BY ${t['players']}.id
+      ORDER BY total_kills DESC
+      LIMIT 1 ";
 
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal($text["bashking"], $text["bashes"], $row['kills'], $row['id'], $name  , "xlr_pro_bash.gif", $text["mostbash"]);  
+  ShowMedal($text["bashking"], $text["bashes"], sprintf("%.1f",$row['total_kills']), $row['id'], $name  , "xlr_pro_bash.gif", $text["mostbash"]);  
 }
 
 function pro_medal_sniper_killer()
@@ -302,24 +302,25 @@ function pro_medal_sniper_killer()
 
   $current_time = gmdate("U");
 
-  $query = " SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, ${t['weaponusage']}.kills
-          FROM ${t['weaponusage']}
-          JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
-          JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
-          WHERE (${t['weaponusage']}.weapon_id IN $wp_snipers)
-          AND ((${t['players']}.kills > $minkills)
-          OR (${t['players']}.rounds > $minrounds))
-          AND (${t['players']}.hide = 0)
-          AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-          ORDER BY ${t['weaponusage']}.kills DESC
-          LIMIT 1 ";
+  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds) AS total_kills
+      FROM ${t['weaponusage']}
+      JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
+      JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
+      WHERE (${t['weaponusage']}.weapon_id IN $wp_snipers)
+      AND ((${t['players']}.kills > $minkills)
+      OR (${t['players']}.rounds > $minrounds))
+      AND (${t['players']}.hide = 0)
+      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
+      GROUP BY ${t['players']}.id
+      ORDER BY total_kills DESC
+      LIMIT 1 ";
 
 
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal($text["supersniper"], $text["kills"], $row['kills'], $row['id'], $name  , "xlr_pro_sniper.gif", $text["mostsniper"]);  
+  ShowMedal($text["supersniper"], $text["skills"], sprintf("%.1f",$row['total_kills']), $row['id'], $name  , "xlr_pro_sniper.gif", $text["mostsniper"]);  
 }
 
 function pro_medal_pistol_killer()
@@ -339,24 +340,25 @@ function pro_medal_pistol_killer()
 
   $current_time = gmdate("U");
 
-  $query = " SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, ${t['weaponusage']}.kills
-          FROM ${t['weaponusage']}
-          JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
-          JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
-          WHERE (${t['weaponusage']}.weapon_id IN $wp_pistols)
-          AND ((${t['players']}.kills > $minkills)
-          OR (${t['players']}.rounds > $minrounds))
-          AND (${t['players']}.hide = 0)
-          AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-          ORDER BY ${t['weaponusage']}.kills DESC
-          LIMIT 1 ";
+  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds) AS total_kills
+      FROM ${t['weaponusage']}
+      JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
+      JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
+      WHERE (${t['weaponusage']}.weapon_id IN $wp_pistols)
+      AND ((${t['players']}.kills > $minkills)
+      OR (${t['players']}.rounds > $minrounds))
+      AND (${t['players']}.hide = 0)
+      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
+      GROUP BY ${t['players']}.id
+      ORDER BY total_kills DESC
+      LIMIT 1 ";
 
 
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal($text["clscombat"], $text["kills"], $row['kills'], $row['id'], $name  , "xlr_pro_pistol.gif", $text["mostpistol"]);  
+  ShowMedal($text["clscombat"], $text["skills"], sprintf("%.1f",$row['total_kills']), $row['id'], $name  , "xlr_pro_pistol.gif", $text["mostpistol"]);  
 }
 
 function pro_medal_nade_killer()
@@ -376,7 +378,7 @@ function pro_medal_nade_killer()
 
   $current_time = gmdate("U");
 
-  $query = " SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, SUM(${t['weaponusage']}.kills) AS total_kills
+  $query = " SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds ) AS total_kills
       FROM ${t['weaponusage']}
       JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
       JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
@@ -394,7 +396,7 @@ function pro_medal_nade_killer()
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal($text["nadekiller"], $text["nadekill"], $row['total_kills'], $row['id'], $name  , "xlr_pro_nade.gif", $text["mostnade"]);  
+  ShowMedal($text["nadekiller"], $text["nadekill"], sprintf("%.1f",$row['total_kills']), $row['id'], $name  , "xlr_pro_nade.gif", $text["mostnade"]);  
 }
 
 function pro_medal_remote_bomb_fan()
@@ -414,7 +416,7 @@ function pro_medal_remote_bomb_fan()
 
   $current_time = gmdate("U");
 
-  $query = " SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, SUM(${t['weaponusage']}.kills) AS total_kills
+  $query = " SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds ) AS total_kills
       FROM ${t['weaponusage']}
       JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
       JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
@@ -427,11 +429,10 @@ function pro_medal_remote_bomb_fan()
       ORDER BY total_kills DESC
       LIMIT 1 ";
 
-
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
-  ShowMedal($text["remotebomb"], $text["c4kill"], $row['total_kills'], $row['id'], $name  , "xlr_pro_c4.gif", $text["mostc4"]);  
+  ShowMedal($text["remotebomb"], $text["c4kill"], sprintf("%.1f",$row['total_kills']), $row['id'], $name  , "xlr_pro_c4.gif", $text["mostc4"]);  
 }   
 
 function pro_medal_surprise_lover()
@@ -451,7 +452,7 @@ function pro_medal_surprise_lover()
 
   $current_time = gmdate("U");
 
-  $query = " SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, SUM(${t['weaponusage']}.kills) AS total_kills
+  $query = " SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds ) AS total_kills
           FROM ${t['weaponusage']}
           JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
           JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
@@ -464,12 +465,11 @@ function pro_medal_surprise_lover()
           ORDER BY total_kills DESC
           LIMIT 1 ";
 
-
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal($text["surpriselover"], $text["claymorekill"], $row['total_kills'], $row['id'], $name  , "xlr_pro_claymore.gif", $text["mostclaymore"]);  
+  ShowMedal($text["surpriselover"], $text["claymorekill"], sprintf("%.1f",$row['total_kills']), $row['id'], $name  , "xlr_pro_claymore.gif", $text["mostclaymore"]);  
 }
 
 function pro_medal_nothing_better_to_do()
@@ -560,7 +560,7 @@ function pro_medal_head_hunter()
 
   $current_time = gmdate("U");
 
-  $query =   "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, SUM(${t['playerbody']}.kills) AS total_kills
+  $query =   "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, (SUM(${t['playerbody']}.kills) / ${t['players']}.kills ) AS total_kills
       FROM ${t['playerbody']}
       JOIN ${t['players']} ON ${t['playerbody']}.player_id = ${t['players']}.id
       JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
@@ -579,7 +579,7 @@ function pro_medal_head_hunter()
 
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal($text["headhunter"], $text["headshots"], $row['total_kills'], $row['id'],$name  , "xlr_pro_headshots.gif", $text["mosthdsht"]);
+  ShowMedal($text["headhunter"], $text["pheadshots"], (int)($row['total_kills']*100)."%", $row['id'],$name  , "xlr_pro_headshots.gif", $text["mosthdsht"]);
 }
 
 function ShowMedal($MedalName, $ArchieveName, $ArchValue, $PlayerId, $Nick, $MedalPicture, $Description)
@@ -593,6 +593,9 @@ function ShowMedal($MedalName, $ArchieveName, $ArchValue, $PlayerId, $Nick, $Med
     $MedalSrc = "./images/medals/$game/$MedalPicture";
   else
     $MedalSrc = "./images/medals/$MedalPicture";
+
+  // Clean the Nick from html code (translate)
+  $Nick = htmlspecialchars(utf2iso($Nick));
 
   if ($ArchValue == 0 || $ArchValue == "" || $ArchValue == false)
   {
@@ -659,14 +662,14 @@ function shame_medal_target_no_one()
   global $text;
   $current_time = gmdate("U");
 
-  $query = "SELECT ${t['b3_clients']}.name, ${t['b3_clients']}.time_edit, ${t['players']}.id, kills,  deaths, fixed_name
+  $query = "SELECT ${t['b3_clients']}.name, ${t['b3_clients']}.time_edit, ${t['players']}.id, kills,  (deaths / ${t['players']}.rounds) AS pdeaths, fixed_name
       FROM ${t['b3_clients']}, ${t['players']}
       WHERE (${t['b3_clients']}.id = ${t['players']}.client_id)
       AND ((${t['players']}.kills > $minkills)
       OR (${t['players']}.rounds > $minrounds))
       AND (${t['players']}.hide = 0)
       AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-      ORDER BY deaths DESC  
+      ORDER BY pdeaths DESC  
       LIMIT 1";
 
   $result = $coddb->sql_query($query);
@@ -675,7 +678,7 @@ function shame_medal_target_no_one()
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
   //ShowMedal($MedalName, $ArchieveName, $ArchValue, $PlayerId, $Nick, $MedalPicture, $Description)
-  ShowMedal($text["pwned"], $text["deaths"], $row['deaths'],  $row['id'] , $name  , "xlr_shame_deaths.gif", $text["target1"]);  
+  ShowMedal($text["pwned"], $text["pdeaths"], (int)($row['pdeaths']),  $row['id'] , $name  , "xlr_shame_deaths.gif", $text["target1"]);  
 }
 
 function shame_medal_most_teamkills()
@@ -693,14 +696,14 @@ function shame_medal_most_teamkills()
   global $text;
   $current_time = gmdate("U");
 
-  $query = "SELECT ${t['b3_clients']}.name, ${t['b3_clients']}.time_edit, ${t['players']}.id, kills,  teamkills, fixed_name
+  $query = "SELECT ${t['b3_clients']}.name, ${t['b3_clients']}.time_edit, ${t['players']}.id, kills,  (teamkills / ${t['players']}.rounds) AS pteamkills , fixed_name
       FROM ${t['b3_clients']}, ${t['players']}
       WHERE (${t['b3_clients']}.id = ${t['players']}.client_id)
       AND ((${t['players']}.kills > $minkills)
       OR (${t['players']}.rounds > $minrounds))
       AND (${t['players']}.hide = 0)
       AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-      ORDER BY teamkills DESC  
+      ORDER BY pteamkills DESC  
       LIMIT 1";
 
   $result = $coddb->sql_query($query);
@@ -709,7 +712,7 @@ function shame_medal_most_teamkills()
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
   //ShowMedal($MedalName, $ArchieveName, $ArchValue, $PlayerId, $Nick, $MedalPicture, $Description)
-  ShowMedal($text["eyeshot"], $text["teamkil"], $row['teamkills'],  $row['id'] , $name  , "xlr_shame_teamkills.gif", $text["mostteamkill"]);  
+  ShowMedal($text["eyeshot"], $text["pteamkil"], sprintf("%.1f",$row['pteamkills']),  $row['id'] , $name  , "xlr_shame_teamkills.gif", $text["mostteamkill"]);  
 }
 
 function shame_medal_most_teamdeaths()
@@ -727,7 +730,7 @@ function shame_medal_most_teamdeaths()
   global $text;
   $current_time = gmdate("U");
 
-  $query = "SELECT ${t['b3_clients']}.name, ${t['b3_clients']}.time_edit, ${t['players']}.id, kills,  teamdeaths, fixed_name
+  $query = "SELECT ${t['b3_clients']}.name, ${t['b3_clients']}.time_edit, ${t['players']}.id, kills, (teamdeaths / ${t['players']}.rounds) AS pteamdeaths, fixed_name
       FROM ${t['b3_clients']}, ${t['players']}
       WHERE (${t['b3_clients']}.id = ${t['players']}.client_id)
       AND ((${t['players']}.kills > $minkills)
@@ -743,7 +746,7 @@ function shame_medal_most_teamdeaths()
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
   //ShowMedal($MedalName, $ArchieveName, $ArchValue, $PlayerId, $Nick, $MedalPicture, $Description)
-  ShowMedal($text["sendjoey"], $text["teamdeth"], $row['teamdeaths'],  $row['id'] , $name  , "xlr_shame_teamdeaths.gif", $text["mosteamdeth"]);  
+  ShowMedal($text["sendjoey"], $text["pteamdeth"], sprintf("%.1f",$row['pteamdeaths']),  $row['id'] , $name  , "xlr_shame_teamdeaths.gif", $text["mosteamdeth"]);  
 }
 
 function shame_medal_nade_magneto()
@@ -763,7 +766,7 @@ function shame_medal_nade_magneto()
 
   $current_time = gmdate("U");
 
-  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id,${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, SUM(${t['weaponusage']}.deaths) AS total_deaths
+  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id,${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.deaths) / ${t['players']}.rounds) AS total_deaths
       FROM ${t['weaponusage']}
       JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
       JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
@@ -780,7 +783,7 @@ function shame_medal_nade_magneto()
   $row = $coddb->sql_fetchrow($result);
   $name = $row['name'];
 
-  ShowMedal($text["mmnades"], $text["nadedeth"], $row['total_deaths'], $row['id'], $name  , "xlr_shame_nade.gif", $text["mostnadeth"]);  
+  ShowMedal($text["mmnades"], $text["nadedeth"], sprintf("%.1f",$row['total_deaths']), $row['id'], $name  , "xlr_shame_nade.gif", $text["mostnadeth"]);  
 }
 
 function shame_medal_need_some_practice()
@@ -836,7 +839,7 @@ function shame_medal_def_punchy()
   $current_time = gmdate("U");
 
 
-  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, SUM(${t['weaponusage']}.deaths) AS total_deaths
+  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.deaths) / ${t['players']}.rounds) AS total_deaths
       FROM ${t['weaponusage']}
       JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
       JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
@@ -855,7 +858,7 @@ function shame_medal_def_punchy()
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal($text["punchme"], $text["punchdeath"], $row['total_deaths'], $row['id'], $name  , "xlr_shame_knives.gif", $text["mostpunchy"]);  
+  ShowMedal($text["punchme"], $text["punchdeath"], sprintf("%.1f",$row['total_deaths']), $row['id'], $name  , "xlr_shame_knives.gif", $text["mostpunchy"]);  
 }
 
 function shame_medal_def_ballooney()
@@ -875,7 +878,7 @@ function shame_medal_def_ballooney()
   $current_time = gmdate("U");
 
 
-  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, SUM(${t['weaponusage']}.deaths) AS total_deaths
+  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.deaths) / ${t['players']}.rounds) AS total_deaths
       FROM ${t['weaponusage']}
       JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
       JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
@@ -894,7 +897,7 @@ function shame_medal_def_ballooney()
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal($text["needbaloon"], $text["balonydeath"], $row['total_deaths'], $row['id'], $name  , "xlr_shame_knives.gif", $text["mostbalondeth"]);  
+  ShowMedal($text["needbaloon"], $text["balonydeath"], sprintf("%.1f",$row['total_deaths']), $row['id'], $name  , "xlr_shame_knives.gif", $text["mostbalondeth"]);  
 }
 
 function shame_medal_def_betty()
@@ -914,7 +917,7 @@ function shame_medal_def_betty()
   $current_time = gmdate("U");
 
 
-  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, SUM(${t['weaponusage']}.deaths) AS total_deaths
+  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.deaths) / ${t['players']}.rounds) AS total_deaths
       FROM ${t['weaponusage']}
       JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
       JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
@@ -933,7 +936,7 @@ function shame_medal_def_betty()
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal($text["bettytarget"], $text["bettydeath"], $row['total_deaths'], $row['id'], $name  , "xlr_shame_knives.gif", $text["mostbetydeth"]);  
+  ShowMedal($text["bettytarget"], $text["bettydeath"], sprintf("%.1f",$row['total_deaths']), $row['id'], $name  , "xlr_shame_knives.gif", $text["mostbetydeth"]);  
 }
 
 function shame_medal_killerducks()
@@ -953,7 +956,7 @@ function shame_medal_killerducks()
   $current_time = gmdate("U");
 
 
-  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, SUM(${t['weaponusage']}.deaths) AS total_deaths
+  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.deaths) / ${t['players']}.rounds) AS total_deaths
       FROM ${t['weaponusage']}
       JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
       JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
@@ -972,7 +975,7 @@ function shame_medal_killerducks()
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal($text["ihateducks"], $text["duckdeath"], $row['total_deaths'], $row['id'], $name  , "xlr_shame_knives.gif", $text["mostduckdeth"]);  
+  ShowMedal($text["ihateducks"], $text["duckdeath"], sprintf("%.1f",$row['total_deaths']), $row['id'], $name  , "xlr_shame_knives.gif", $text["mostduckdeth"]);  
 }
 
 function shame_medal_fireman()
@@ -991,7 +994,7 @@ function shame_medal_fireman()
   global $text;
   $current_time = gmdate("U");
 
-  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, SUM(${t['weaponusage']}.deaths) AS total_deaths
+  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.deaths) / ${t['players']}.rounds) AS total_deaths
       FROM ${t['weaponusage']}
       JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
       JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
@@ -1011,7 +1014,7 @@ function shame_medal_fireman()
   if ($row['total_deaths'] > 0)
     ShowMedal($text["mechanic"], $text["vehicledeth"], $row['total_deaths'], $row['id'], $name  , "xlr_shame_vehicle_deaths.gif", $text["mostcardeath"]);  
   else
-    ShowMedal($text["mechanic"], $text["vehicledeth"], $row['total_deaths'], $row['id'], $name  , "xlr_shame_vehicle_deaths.gif", $text["mostcardeath"]);  
+    ShowMedal($text["mechanic"], $text["vehicledeth"], sprintf("%.1f",$row['total_deaths']), $row['id'], $name  , "xlr_shame_vehicle_deaths.gif", $text["mostcardeath"]);  
 }
 
 function shame_medal_def_knifes()
@@ -1031,7 +1034,7 @@ function shame_medal_def_knifes()
   $current_time = gmdate("U");
 
 
-  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, SUM(${t['weaponusage']}.deaths) AS total_deaths
+  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.deaths) / ${t['players']}.rounds) AS total_deaths
       FROM ${t['weaponusage']}
       JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
       JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
@@ -1050,7 +1053,7 @@ function shame_medal_def_knifes()
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal($text["shaveme"], $text["knifedeath"], $row['total_deaths'], $row['id'], $name  , "xlr_shame_knives.gif", $text["mostknifedeth"]);  
+  ShowMedal($text["shaveme"], $text["knifedeath"], sprintf("%.1f",$row['total_deaths']), $row['id'], $name  , "xlr_shame_knives.gif", $text["mostknifedeth"]);  
 }
 
 function shame_medal_def_bashes()
@@ -1070,7 +1073,7 @@ function shame_medal_def_bashes()
   $current_time = gmdate("U");
 
 
-  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, SUM(${t['weaponusage']}.deaths) AS total_deaths
+  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.deaths) / ${t['players']}.rounds) AS total_deaths
       FROM ${t['weaponusage']}
       JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
       JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
@@ -1087,7 +1090,7 @@ function shame_medal_def_bashes()
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal($text["hitme"], $text["bashdeath"], $row['total_deaths'], $row['id'], $name  , "xlr_shame_bash.gif", $text["mostbashdeth"]);  
+  ShowMedal($text["hitme"], $text["bashdeath"], sprintf("%.1f",$row['total_deaths']), $row['id'], $name  , "xlr_shame_bash.gif", $text["mostbashdeth"]);  
 }
 
 function shame_medal_sniped()
@@ -1107,7 +1110,7 @@ function shame_medal_sniped()
   $current_time = gmdate("U");
 
 
-  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, SUM(${t['weaponusage']}.deaths) AS total_deaths
+  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.deaths) / ${t['players']}.rounds) AS total_deaths
       FROM ${t['weaponusage']}
       JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
       JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
@@ -1124,7 +1127,7 @@ function shame_medal_sniped()
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal($text["targtpract"], $text["sniperdeath"], $row['total_deaths'], $row['id'], $name  , "xlr_shame_sniper.gif", $text["mostsniped"]);  
+  ShowMedal($text["targtpract"], $text["sniperdeath"], sprintf("%.1f",$row['total_deaths']), $row['id'], $name  , "xlr_shame_sniper.gif", $text["mostsniped"]);  
 }
 
 function shame_medal_careless()
@@ -1144,7 +1147,7 @@ function shame_medal_careless()
 
   $current_time = gmdate("U");
 
-  $query = " SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, SUM(${t['weaponusage']}.suicides) AS total_suicides
+  $query = " SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.suicides) / ${t['players']}.rounds) AS total_suicides
       FROM ${t['weaponusage']}
       JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
       JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
@@ -1163,6 +1166,6 @@ function shame_medal_careless()
 
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal($text["accidenthero"], $text["blindasbat"], $row['total_suicides'], $row['id'], $name  , "xlr_shame_blind.gif", $text["mostaccdeath"]);  
+  ShowMedal($text["accidenthero"], $text["blindasbat"], sprintf("%.1f",$row['total_suicides']), $row['id'], $name  , "xlr_shame_blind.gif", $text["mostaccdeath"]);  
 }
 ?>

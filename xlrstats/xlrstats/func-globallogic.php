@@ -558,7 +558,8 @@ function closetablecell()
 // This function emits a description for the specified weapon/map
 function get_desc($name)
 {
-  global $module_name;   
+  global $module_name;
+  global $text;   
   $path = "desc/$name.txt";
 
   if ( file_exists("$path") )

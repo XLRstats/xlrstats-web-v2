@@ -45,9 +45,6 @@ $mysiteurl = "www.xlr8or.com";        // URL (without the http:// part!) -> "" i
 $mysitelinkname = "Home";      // Short name that appears in navigation to describe the link back to your site
 $template = "xlrstats";
 
-//Select Language
-$lang = "en";	// "en" = English, "tr" = Turkish
-
 // Use signature module? --> You must have php version 4.3.2 or newer with php4-gd extension installed!
 $sig = 0;
 

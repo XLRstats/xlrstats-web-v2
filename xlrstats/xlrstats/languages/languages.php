@@ -23,29 +23,37 @@
  *  http://www.gnu.org/copyleft/gpl.html
  ***************************************************************************/
 
-if (!isset($lang))
-  $lang = "en";
-
 if (!isset($pop))
   $pop = 0;
 
 $lang_path = abs_pathlink($pop)."languages";
-include ("$lang_path/en.php");
+$default_lang = "en.php";
 
-switch ($lang) 
+include ($lang_path."/".$default_lang);
+
+//if GeoIP is installed the language file is set according to client's IP location
+if(file_exists($geoip_path."GeoIP.dat")) 
 {
-  case "en":
-  break;
-  
-  case "tr":
-  include ("$lang_path/tr.php");
-  break;
-  
-  case "nl":
-  include ("$lang_path/nl.php");
-  break;
-  
-  default:
-}  
+  $client_ip = getvisitorip();
+  $gi = geoip_open($geoip_path."GeoIP.dat", GEOIP_STANDARD);
+  $lang_file = geoip_country_code_by_addr($gi, $client_ip).".php"; 
+  $lang_file = strtolower($lang_file);
+    
+  geoip_close($gi);
+
+  if(file_exists($lang_path."/".$lang_file)) {
+    include ($lang_path."/".$lang_file);
+    }
+}
+
+//if GeoIP is not installed the language file is set according to client's browser language
+else
+{
+  $lang_file = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2).".php"; 
+
+    if(file_exists($lang_path."/".$lang_file)) {
+      include ($lang_path."/".$lang_file);
+      }
+}
 
 ?>

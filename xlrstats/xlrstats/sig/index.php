@@ -3,6 +3,7 @@ error_reporting( E_ERROR ^ E_WARNING );
 
 include("../func-globallogic.php");
 include("../func-siglogic.php");
+require_once("../lib/geoip.inc");
 
 session_start();
 cleanglobals();

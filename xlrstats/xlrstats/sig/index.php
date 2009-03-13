@@ -38,6 +38,10 @@ elseif (file_exists("../config/statsconfig1.php"))
 }
 require_once($currentconfig);
 
+// pop should hold the subdir depth of this file in relation to the xlrstats root.
+$pop = 1;
+include("../languages/languages.php");
+
 include( "settings.php" );
 include( "sanity.php" );
 include("../inc_mysql.php");

@@ -23,24 +23,29 @@
  *  http://www.gnu.org/copyleft/gpl.html
  ***************************************************************************/
 
+if (!isset($lang))
+  $lang = "en";
+
+if (!isset($pop))
+  $pop = 0;
+
+$lang_path = abs_pathlink($pop)."languages";
+include ("$lang_path/en.php");
+
 switch ($lang) 
 {
   case "en":
-  include ("languages/en.php");
   break;
   
   case "tr":
-  include ("languages/en.php");
-  include ("languages/tr.php");
+  include ("$lang_path/tr.php");
   break;
   
   case "nl":
-  include ("languages/en.php");
-  include ("languages/nl.php");
+  include ("$lang_path/nl.php");
   break;
   
   default:
-  include ("languages/en.php");
 }  
 
 ?>

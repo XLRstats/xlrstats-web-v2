@@ -217,12 +217,12 @@ function topplayers($sortby = "skill", $direction = "DESC", $offset = 0, $clan_n
     if ( $temp >= 1 )
     {
       $KillRatioWidthMinus = 100;
-      $KillRatioWidthMinusText = "Ratio " . $temp;
+      $KillRatioWidthMinusText = $text["ratio"] . " " . $temp;
     }
     else
     {
       $KillRatioWidthMinus = intval($temp * 100);
-      $KillRatioWidthMinusText = "Ratio " . $temp . " - " . $KillRatioWidthMinus . "% of 1:0 Ratio";
+      $KillRatioWidthMinusText = $text["ratio"] . " " . $temp . " - " . $KillRatioWidthMinus . $text["ofratio"];
     }
     
     if ( $temp < 1 )
@@ -236,7 +236,7 @@ function topplayers($sortby = "skill", $direction = "DESC", $offset = 0, $clan_n
       if ( $KillRatioWidthPlus > 100 ) 
         $KillRatioWidthPlus = 100;
     
-      $KillRatioWidthPlusText = "Ratio " . $temp . " - " . $KillRatioWidthPlus . "% of best Ratio (Which is " . $MaxKillRatio . ")";
+      $KillRatioWidthPlusText = $text["ratio"] . " " . $temp . " - " . $KillRatioWidthPlus . $text["ofbestratio"] . $MaxKillRatio . ")";
     }
 
     if($ShowRatioGraph == 3) // Basic ratiobar

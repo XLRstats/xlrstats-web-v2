@@ -43,6 +43,7 @@ $text["errmsg"] = "Oops, cookies are disabled, cannot save you :(";
 $text["googleisbest"] = "Google is your best friend!";
 $text["okmsg"] = "PlayerID saved! You should now be able access this page by clicking the 'MyStats' link at the top.<br /> Cookies should however be enabled for this feature to work!";
 $text["goingback"] = "Going back where we came from.";
+$text["currentplnames"] = "Search results (current playernames)";
 $text["searchterm"] = "Search terms should be at least 3 characters long.";
 $text["searchresult"] = "Your search yielded no results.";
 $text["poweredby"] = "Powered by:";
@@ -165,7 +166,7 @@ $text["needpractice"] = "Needs some practice";
 $text["highlosstrk"] = "Highest losestreak";
 $text["punchme"] = "Punch me Now!";
 $text["punchdeath"] = "Punchy deaths p/r";
-$text["mostpunchy"] = "Most Punchy deaths per round";
+$text["mostpunchyd"] = "Most Punchy deaths per round";
 $text["needbaloon"] = "Need Balloons!";
 $text["balonydeath"] = "Ballooney deaths p/r";
 $text["mostbalondeth"] = "Most Ballooney deaths per round";
@@ -366,5 +367,7 @@ $text["b3automated"] = "BigBrotherBot Automated Gameadministration";
 $text["cracktrack"] = "CrackerTracker Anti Injection and Worm Protection Software";
 $text["gettingerros"] = "Getting errors? Click here to reset all cookies.";
 $text["nodescavail"] = "No description available.";
+$text["ofbestratio"] = "% of best Ratio (Which is ";
+$text["ofratio"] = "% of 1:0 Ratio";
 
 ?>

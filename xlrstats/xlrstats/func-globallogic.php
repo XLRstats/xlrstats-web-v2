@@ -1418,6 +1418,7 @@ function do_search($name, $search_aliases=false)
   global $currentconfignumber;
   global $coddb;
   global $t;
+  global $text;
   $count = 0;
   $link = baselink();
 
@@ -1435,7 +1436,7 @@ function do_search($name, $search_aliases=false)
   $result = $coddb->sql_query($query);
 
   opentablerow('100');
-  echo "<td>Search results (current playernames)<td></tr><tr>";
+  echo "<td>".$text["currentplnames"]."<td></tr><tr>";
   while ($row = $coddb->sql_fetchrow($result))
   {
     opentablecell('100');

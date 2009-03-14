@@ -858,7 +858,7 @@ function shame_medal_def_punchy()
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
 
-  ShowMedal($text["punchme"], $text["punchdeath"], sprintf("%.1f",$row['total_deaths']), $row['id'], $name  , "xlr_shame_knives.gif", $text["mostpunchy"]);  
+  ShowMedal($text["punchme"], $text["punchdeath"], sprintf("%.1f",$row['total_deaths']), $row['id'], $name  , "xlr_shame_knives.gif", $text["mostpunchyd"]);  
 }
 
 function shame_medal_def_ballooney()

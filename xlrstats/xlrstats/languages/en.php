@@ -165,13 +165,8 @@ $text["mostnadeth"] = "Most nade deaths per round";
 $text["needpractice"] = "Needs some practice";
 $text["highlosstrk"] = "Highest losestreak";
 $text["punchme"] = "Punch me Now!";
-<<<<<<< HEAD:xlrstats/xlrstats/languages/en.php
-$text["punchdeath"] = "Punchy deaths p/m";
-$text["mostpunchyd"] = "Most Punchy deaths per map";
-=======
 $text["punchdeath"] = "Punchy deaths p/r";
 $text["mostpunchyd"] = "Most Punchy deaths per round";
->>>>>>> xlrstats/master:xlrstats/xlrstats/languages/en.php
 $text["needbaloon"] = "Need Balloons!";
 $text["balonydeath"] = "Ballooney deaths p/r";
 $text["mostbalondeth"] = "Most Ballooney deaths per round";

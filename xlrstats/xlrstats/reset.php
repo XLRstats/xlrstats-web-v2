@@ -25,6 +25,7 @@
 
 include("lib/ctracker.php");
 include("func-globallogic.php");
+include("lib/geoip.inc");
 
 // If statsconfig.php exists, we won't enable multiconfig functionality
 if (file_exists("config/statsconfig.php"))

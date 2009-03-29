@@ -31,8 +31,16 @@ $default_lang = "en.php";
 
 include ($lang_path."/".$default_lang);
 
+if (isset($_COOKIE['XLR_langfile']))
+{
+  $lang_file = $_COOKIE['XLR_langfile'];
+  if(file_exists($lang_path."/".$lang_file)) {
+    include ($lang_path."/".$lang_file);
+  }
+}
+
 //if GeoIP is installed the language file is set according to client's IP location
-if(file_exists($geoip_path."GeoIP.dat")) 
+elseif (file_exists($geoip_path."GeoIP.dat")) 
 {
   $client_ip = getvisitorip();
   $gi = geoip_open($geoip_path."GeoIP.dat", GEOIP_STANDARD);

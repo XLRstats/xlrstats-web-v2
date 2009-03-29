@@ -87,6 +87,14 @@ function getvisitorip()
   return $_SERVER['REMOTE_ADDR']; 
 }
 
+function checklang($pop=0)
+{
+  global $lang_file;
+  //var_dump($lang_file);
+  if ($lang_file != 'en.php')
+    return "<a href=index.php?func=savelang><img src=\"".pathlink($pop)."images/flags/gb.gif\" border=\"0\" align=\"absmiddle\" title=\"Switch to English\"></a>&nbsp;";
+}
+
 function cleanglobals()
 {
   if (ini_get('register_globals') == 1)
@@ -439,7 +447,7 @@ function welcometext($pop=0)
     $currentmap = $m[$currentmap];
 
   $today = date('l jS \of F Y h:i:s A');
-  echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$text["welcome"]."&nbsp;&nbsp;&nbsp;<span class=\"tiny\">($today)</span></td><td width=\"20px\"><a href=\"http://xlrstatshelp.xlr8or.com\" target=\"_blank\"><img src=\"".pathlink($pop)."images/ico/help.png\" border=\"0\" align=\"absbottom\" title=\"Need help on XLRstats?\"></a></td></tr>
+  echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$text["welcome"]."&nbsp;&nbsp;&nbsp;<span class=\"tiny\">($today)</span></td><td width=\"40px\">".checklang($pop)."<a href=\"http://xlrstatshelp.xlr8or.com\" target=\"_blank\"><img src=\"".pathlink($pop)."images/ico/help.png\" border=\"0\" align=\"absmiddle\" title=\"Need help on XLRstats?\"></a></td></tr>
       <tr>
       <td colspan=\"2\">
         <table align=\"center\" bgcolor=\"#99aaaa\" border=\"0\" cellpadding=\"2\" cellspacing=\"1\" width=\"100%\">
@@ -676,6 +684,16 @@ function saveme()
   //setcookie("XLR_template", $template, time()+60*60*24*365*10); // expires in 10 years
   $cookiename = "XLR_playerid[".$currentconfignumber."]";
   setcookie($cookiename, $myplayerid, time()+60*60*24*365*10); // expires in 10 years
+}
+
+function savelanguage()
+{
+  global $lang_file;
+
+  $cookiename = "XLR_origlangfile";
+  setcookie($cookiename, $lang_file, time()+60*60*24*365*10); // expires in 10 years
+  $cookiename = "XLR_langfile";
+  setcookie($cookiename, "en.php", time()+60*60*24*365*10); // expires in 10 years
 }
 
 function displaysimpleheader($pop=0)

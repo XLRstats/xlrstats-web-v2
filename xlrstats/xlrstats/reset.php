@@ -74,6 +74,11 @@ unset($currentconfignumber);
 unset($_SESSION['template']);
 unset($template);
 // cookie[]
+$cookiename = "XLR_langfile";
+setcookie($cookiename, "", time()-3600);
+$cookiename = "XLR_origlangfile";
+setcookie($cookiename, "", time()-3600);
+
 $cookiename = "XLR_playerid";
 setcookie($cookiename, "", time()-3600);
 

@@ -26,6 +26,7 @@
 include("lib/rss/FeedWriter.php");
 include("inc_mysql.php");
 include("func-globallogic.php");
+include("lib/geoip.inc");
 
 session_start();
 cleanglobals();

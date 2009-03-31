@@ -123,6 +123,20 @@ if(isset($_GET['func']))
 if ($func == "")
   $func = "index";
 
+if ($func == "savelang")
+{
+  savelanguage();
+
+  if(!empty($_SERVER['HTTP_REFERER']))
+  {
+    header('Refresh: 0,URL="'.$_SERVER['HTTP_REFERER'].'"');
+  }
+  else
+  {
+    echo '<script type="text/javascript">setTimeout("history.go(-1);",0);</script>';
+  }
+  exit;
+}
 
 // Save cookies if requested
 if ($func == "saveme")

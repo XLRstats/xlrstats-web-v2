@@ -25,6 +25,7 @@
 
 include("lib/ctracker.php");
 include("func-globallogic.php");
+include("lib/geoip.inc");
 
 // If statsconfig.php exists, we won't enable multiconfig functionality
 if (file_exists("config/statsconfig.php"))
@@ -73,6 +74,11 @@ unset($currentconfignumber);
 unset($_SESSION['template']);
 unset($template);
 // cookie[]
+$cookiename = "XLR_langfile";
+setcookie($cookiename, "", time()-3600);
+$cookiename = "XLR_origlangfile";
+setcookie($cookiename, "", time()-3600);
+
 $cookiename = "XLR_playerid";
 setcookie($cookiename, "", time()-3600);
 

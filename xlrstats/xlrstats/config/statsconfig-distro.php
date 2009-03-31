@@ -38,6 +38,7 @@ $db_db = "";
 $game = "none";
 $public_ip = "0.0.0.0:27960";
 // This is the path where B3 stores the status.xml file. May be an absolute path or an URL. (Use forward slashes / only!)
+// ie.: /var/www/status/status.xml or http://www.yourwebsite.com/status/urt1.xml
 $b3_status_url = "http://";
 
 // URL to my website, make empty if XLRstats is standalone.

@@ -36,7 +36,7 @@ function pro_medals_begin($Title = "Our award winners", $AwardName = "pr0 Medals
 function pro_medals_end($EndingText = "Top these players to win an award!")
 {
   echo "
-      
+
     </tr>
     </table>
     <br>
@@ -62,6 +62,26 @@ function global_awards()
   pro_medals_end($text["topthisplayers"]);
 }
 
+function country_flag($ip) 
+{
+  global $geoip_path;
+  
+  if (file_exists($geoip_path."GeoIP.dat"))
+  {
+    $geocountry = $geoip_path."GeoIP.dat";
+    $gi = geoip_open($geocountry,GEOIP_STANDARD);
+    $countryid = strtolower (geoip_country_code_by_addr($gi, $ip));
+    $country = geoip_country_name_by_addr($gi, $ip);
+    if ( !is_null($countryid) and $countryid != "") 
+      $flag = "<img src=\"images/flags/".$countryid.".gif\" title=\"".$country."\" alt=\"".$country."\">";
+    else 
+      $flag = "<img width=\"16\" height=\"11\" src=\"images/spacer.gif\" title=\"".$country."\" alt=\"".$country."\">"; 
+
+    geoip_close($gi);
+    return $flag;
+  }
+}
+
 function pro_medal_punchy_killer()
 {
   $link = baselink();
@@ -79,7 +99,7 @@ function pro_medal_punchy_killer()
 
   $current_time = gmdate("U");
 
-  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds) AS total_kills
+  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds) AS total_kills
       FROM ${t['weaponusage']}
       JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
       JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
@@ -95,9 +115,29 @@ function pro_medal_punchy_killer()
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
-
+  $score = sprintf("%.1f",$row['total_kills']);
+  $playerid = $row['id'];
   
-  ShowMedal($text["punchy"], $text["punchykill"], sprintf("%.1f",$row['total_kills']), $row['id'], $name  , "xlr_pro_default.gif", $text["mostpunchy"]);  
+  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $result = $coddb->sql_query($query);
+  while ($row = $coddb->sql_fetchrow($result)) 
+  {
+    $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+    $players[] = $names;
+    $scores[] = sprintf("%.1f",$row['total_kills']);
+    $playerids[] = $row['id'];
+    $flags[] = country_flag($row['ip']);
+  }
+
+  if(!isset($playerids, $flags)) {
+    $playerids = "";
+    $flags = "";
+    }
+  
+  @$player_list = array_combine($players, $scores);
+  $fname = __FUNCTION__;
+  
+  ShowMedal($text["punchy"], $text["punchykill"], $score, $playerid, $name, "xlr_pro_default.gif", $text["mostpunchy"], $player_list, $fname, $playerids, $flags);  
 }
 
 function pro_medal_ballooney_killer()
@@ -117,7 +157,7 @@ function pro_medal_ballooney_killer()
 
   $current_time = gmdate("U");
 
-  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds) AS total_kills
+  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds) AS total_kills
       FROM ${t['weaponusage']}
       JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
       JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
@@ -133,8 +173,29 @@ function pro_medal_ballooney_killer()
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+  $score = sprintf("%.1f",$row['total_kills']);
+  $playerid = $row['id'];
+  
+  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $result = $coddb->sql_query($query);
+  while ($row = $coddb->sql_fetchrow($result)) 
+  {
+    $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+    $players[] = $names;
+    $scores[] = sprintf("%.1f",$row['total_kills']);
+    $playerids[] = $row['id'];
+    $flags[] = country_flag($row['ip']);
+  }
 
-  ShowMedal($text["balooney"], $text["balooneykill"], sprintf("%.1f",$row['total_kills']), $row['id'], $name  , "xlr_pro_default.gif", $text["mostbalooney"]);  
+  if(!isset($playerids, $flags)) {
+    $playerids = "";
+    $flags = "";
+    }
+
+  @$player_list = array_combine($players, $scores);
+  $fname = __FUNCTION__;
+
+  ShowMedal($text["balooney"], $text["balooneykill"], $score, $playerid, $name, "xlr_pro_default.gif", $text["mostbalooney"], $player_list, $fname, $playerids, $flags);  
 }
 
 function pro_medal_betty_killer()
@@ -154,7 +215,7 @@ function pro_medal_betty_killer()
 
   $current_time = gmdate("U");
 
-  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds) AS total_kills
+  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds) AS total_kills
       FROM ${t['weaponusage']}
       JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
       JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
@@ -170,8 +231,29 @@ function pro_medal_betty_killer()
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+  $score = sprintf("%.1f",$row['total_kills']);
+  $playerid = $row['id'];
+  
+  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $result = $coddb->sql_query($query);
+  while ($row = $coddb->sql_fetchrow($result)) 
+  {
+    $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+    $players[] = $names;
+    $scores[] = sprintf("%.1f",$row['total_kills']);
+    $playerids[] = $row['id'];
+    $flags[] = country_flag($row['ip']);
+  }
 
-  ShowMedal($text["betty"], $text["bettykill"], sprintf("%.1f",$row['total_kills']), $row['id'], $name  , "xlr_pro_sniper.gif", $text["mostbetty"]);  
+  if(!isset($playerids, $flags)) {
+    $playerids = "";
+    $flags = "";
+    }
+
+  @$player_list = array_combine($players, $scores);
+  $fname = __FUNCTION__;
+
+  ShowMedal($text["betty"], $text["bettykill"], $score, $playerid, $name, "xlr_pro_sniper.gif", $text["mostbetty"], $player_list, $fname, $playerids, $flags);  
 }
 
 function pro_medal_killerducks_killer()
@@ -191,7 +273,7 @@ function pro_medal_killerducks_killer()
 
   $current_time = gmdate("U");
 
-  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds) AS total_kills
+  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds) AS total_kills
       FROM ${t['weaponusage']}
       JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
       JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
@@ -207,8 +289,29 @@ function pro_medal_killerducks_killer()
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+  $score = sprintf("%.1f",$row['total_kills']);
+  $playerid = $row['id'];
+  
+  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $result = $coddb->sql_query($query);
+  while ($row = $coddb->sql_fetchrow($result)) 
+  {
+    $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+    $players[] = $names;
+    $scores[] = sprintf("%.1f",$row['total_kills']);
+    $playerids[] = $row['id'];
+    $flags[] = country_flag($row['ip']);
+  }
+  
+  if(!isset($playerids, $flags)) {
+    $playerids = "";
+    $flags = "";
+    }
 
-  ShowMedal($text["lazy"], $text["duckkill"], sprintf("%.1f",$row['total_kills']), $row['id'], $name  , "xlr_pro_default.gif", $text["mostlazy"]);  
+  @$player_list = array_combine($players, $scores);
+  $fname = __FUNCTION__;
+
+  ShowMedal($text["lazy"], $text["duckkill"], $score, $playerid, $name, "xlr_pro_default.gif", $text["mostlazy"], $player_list, $fname, $playerids, $flags);  
 }
 
 function pro_medal_cold_weapon_killer()
@@ -228,7 +331,7 @@ function pro_medal_cold_weapon_killer()
 
   $current_time = gmdate("U");
 
-  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds) AS total_kills
+  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds) AS total_kills
       FROM ${t['weaponusage']}
       JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
       JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
@@ -244,8 +347,29 @@ function pro_medal_cold_weapon_killer()
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+  $score = sprintf("%.1f",$row['total_kills']);
+  $playerid = $row['id'];
+  
+  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $result = $coddb->sql_query($query);
+  while ($row = $coddb->sql_fetchrow($result)) 
+  {
+    $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+    $players[] = $names;
+    $scores[] = sprintf("%.1f",$row['total_kills']);
+    $playerids[] = $row['id'];
+    $flags[] = country_flag($row['ip']);
+  }
 
-  ShowMedal($text["cldweapon"], $text["knifekill"], sprintf("%.1f",$row['total_kills']), $row['id'], $name  , "xlr_pro_knives.gif", $text["mostknife"]);  
+  if(!isset($playerids, $flags)) {
+    $playerids = "";
+    $flags = "";
+    }
+
+  @$player_list = array_combine($players, $scores);
+  $fname = __FUNCTION__;
+
+  ShowMedal($text["cldweapon"], $text["knifekill"], $score, $playerid, $name, "xlr_pro_knives.gif", $text["mostknife"], $player_list, $fname, $playerids, $flags);  
 }
 
 function pro_medal_bash_killer()
@@ -265,7 +389,7 @@ function pro_medal_bash_killer()
 
   $current_time = gmdate("U");
 
-  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds) AS total_kills
+  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds) AS total_kills
       FROM ${t['weaponusage']}
       JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
       JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
@@ -281,8 +405,29 @@ function pro_medal_bash_killer()
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+  $score = sprintf("%.1f",$row['total_kills']);
+  $playerid = $row['id'];
+  
+  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $result = $coddb->sql_query($query);
+  while ($row = $coddb->sql_fetchrow($result)) 
+  {
+    $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+    $players[] = $names;
+    $scores[] = sprintf("%.1f",$row['total_kills']);
+    $playerids[] = $row['id'];
+    $flags[] = country_flag($row['ip']);
+  }
 
-  ShowMedal($text["bashking"], $text["bashes"], sprintf("%.1f",$row['total_kills']), $row['id'], $name  , "xlr_pro_bash.gif", $text["mostbash"]);  
+  if(!isset($playerids, $flags)) {
+    $playerids = "";
+    $flags = "";
+    }
+
+  @$player_list = array_combine($players, $scores);
+  $fname = __FUNCTION__;
+
+  ShowMedal($text["bashking"], $text["bashes"], $score, $playerid, $name, "xlr_pro_bash.gif", $text["mostbash"], $player_list, $fname, $playerids, $flags);  
 }
 
 function pro_medal_sniper_killer()
@@ -302,7 +447,7 @@ function pro_medal_sniper_killer()
 
   $current_time = gmdate("U");
 
-  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds) AS total_kills
+  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds) AS total_kills
       FROM ${t['weaponusage']}
       JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
       JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
@@ -319,8 +464,29 @@ function pro_medal_sniper_killer()
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+  $score = sprintf("%.1f",$row['total_kills']);
+  $playerid = $row['id'];
+  
+  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $result = $coddb->sql_query($query);
+  while ($row = $coddb->sql_fetchrow($result)) 
+  {
+    $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+    $players[] = $names;
+    $scores[] = sprintf("%.1f",$row['total_kills']);
+    $playerids[] = $row['id'];
+    $flags[] = country_flag($row['ip']);
+  }
+  
+  if(!isset($playerids, $flags)) {
+    $playerids = "";
+    $flags = "";
+    }
 
-  ShowMedal($text["supersniper"], $text["skills"], sprintf("%.1f",$row['total_kills']), $row['id'], $name  , "xlr_pro_sniper.gif", $text["mostsniper"]);  
+  @$player_list = array_combine($players, $scores);
+  $fname = __FUNCTION__;
+
+  ShowMedal($text["supersniper"], $text["skills"], $score, $playerid, $name, "xlr_pro_sniper.gif", $text["mostsniper"], $player_list, $fname, $playerids, $flags);  
 }
 
 function pro_medal_pistol_killer()
@@ -340,7 +506,7 @@ function pro_medal_pistol_killer()
 
   $current_time = gmdate("U");
 
-  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds) AS total_kills
+  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds) AS total_kills
       FROM ${t['weaponusage']}
       JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
       JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
@@ -357,8 +523,29 @@ function pro_medal_pistol_killer()
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+  $score = sprintf("%.1f",$row['total_kills']);
+  $playerid = $row['id'];
 
-  ShowMedal($text["clscombat"], $text["skills"], sprintf("%.1f",$row['total_kills']), $row['id'], $name  , "xlr_pro_pistol.gif", $text["mostpistol"]);  
+  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $result = $coddb->sql_query($query);
+  while ($row = $coddb->sql_fetchrow($result)) 
+  {
+    $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+    $players[] = $names;
+    $scores[] = sprintf("%.1f",$row['total_kills']);
+    $playerids[] = $row['id'];
+    $flags[] = country_flag($row['ip']);
+  }
+
+  if(!isset($playerids, $flags)) {
+    $playerids = "";
+    $flags = "";
+    }
+
+  @$player_list = array_combine($players, $scores);
+  $fname = __FUNCTION__;
+
+  ShowMedal($text["clscombat"], $text["skills"], $score, $playerid, $name, "xlr_pro_pistol.gif", $text["mostpistol"], $player_list, $fname, $playerids, $flags);  
 }
 
 function pro_medal_nade_killer()
@@ -378,7 +565,7 @@ function pro_medal_nade_killer()
 
   $current_time = gmdate("U");
 
-  $query = " SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds ) AS total_kills
+  $query = " SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds ) AS total_kills
       FROM ${t['weaponusage']}
       JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
       JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
@@ -391,12 +578,32 @@ function pro_medal_nade_killer()
       ORDER BY total_kills DESC
       LIMIT 1 ";
 
-
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+  $score = sprintf("%.1f",$row['total_kills']);
+  $playerid = $row['id'];
+  
+  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $result = $coddb->sql_query($query);
+  while ($row = $coddb->sql_fetchrow($result)) 
+  {
+    $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+    $players[] = $names;
+    $scores[] = sprintf("%.1f",$row['total_kills']);
+    $playerids[] = $row['id'];
+    $flags[] = country_flag($row['ip']);
+  }
+  
+  if(!isset($playerids, $flags)) {
+    $playerids = "";
+    $flags = "";
+    }
 
-  ShowMedal($text["nadekiller"], $text["nadekill"], sprintf("%.1f",$row['total_kills']), $row['id'], $name  , "xlr_pro_nade.gif", $text["mostnade"]);  
+  @$player_list = array_combine($players, $scores);
+  $fname = __FUNCTION__;
+
+  ShowMedal($text["nadekiller"], $text["nadekill"], $score, $playerid, $name  , "xlr_pro_nade.gif", $text["mostnade"], $player_list, $fname, $playerids, $flags);  
 }
 
 function pro_medal_remote_bomb_fan()
@@ -416,7 +623,7 @@ function pro_medal_remote_bomb_fan()
 
   $current_time = gmdate("U");
 
-  $query = " SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds ) AS total_kills
+  $query = " SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds ) AS total_kills
       FROM ${t['weaponusage']}
       JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
       JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
@@ -432,7 +639,29 @@ function pro_medal_remote_bomb_fan()
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
-  ShowMedal($text["remotebomb"], $text["c4kill"], sprintf("%.1f",$row['total_kills']), $row['id'], $name  , "xlr_pro_c4.gif", $text["mostc4"]);  
+  $score = sprintf("%.1f",$row['total_kills']);
+  $playerid = $row['id'];
+  
+  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $result = $coddb->sql_query($query);
+  while ($row = $coddb->sql_fetchrow($result)) 
+  {
+    $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+    $players[] = $names;
+    $scores[] = sprintf("%.1f",$row['total_kills']);
+    $playerids[] = $row['id'];
+    $flags[] = country_flag($row['ip']);
+  }
+  
+  if(!isset($playerids, $flags)) {
+    $playerids = "";
+    $flags = "";
+    }
+
+  @$player_list = array_combine($players, $scores);
+  $fname = __FUNCTION__;
+  
+  ShowMedal($text["remotebomb"], $text["c4kill"], $score, $playerid, $name, "xlr_pro_c4.gif", $text["mostc4"], $player_list, $fname, $playerids, $flags);  
 }   
 
 function pro_medal_surprise_lover()
@@ -452,7 +681,7 @@ function pro_medal_surprise_lover()
 
   $current_time = gmdate("U");
 
-  $query = " SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds ) AS total_kills
+  $query = " SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds ) AS total_kills
           FROM ${t['weaponusage']}
           JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
           JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
@@ -468,8 +697,29 @@ function pro_medal_surprise_lover()
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+  $score = sprintf("%.1f",$row['total_kills']);
+  $playerid = $row['id'];
+  
+  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $result = $coddb->sql_query($query);
+  while ($row = $coddb->sql_fetchrow($result)) 
+  {
+    $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+    $players[] = $names;
+    $scores[] = sprintf("%.1f",$row['total_kills']);
+    $playerids[] = $row['id'];
+    $flags[] = country_flag($row['ip']);
+  }
 
-  ShowMedal($text["surpriselover"], $text["claymorekill"], sprintf("%.1f",$row['total_kills']), $row['id'], $name  , "xlr_pro_claymore.gif", $text["mostclaymore"]);  
+  if(!isset($playerids, $flags)) {
+    $playerids = "";
+    $flags = "";
+    }
+
+  @$player_list = array_combine($players, $scores);
+  $fname = __FUNCTION__;
+
+  ShowMedal($text["surpriselover"], $text["claymorekill"], $score, $playerid, $name, "xlr_pro_claymore.gif", $text["mostclaymore"], $player_list, $fname, $playerids, $flags);  
 }
 
 function pro_medal_nothing_better_to_do()
@@ -488,7 +738,7 @@ function pro_medal_nothing_better_to_do()
 
   $current_time = gmdate("U");
 
-  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, rounds, fixed_name
+  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, rounds, fixed_name
       FROM ${t['b3_clients']}, ${t['players']}
       WHERE (${t['b3_clients']}.id = ${t['players']}.client_id)
       AND ((${t['players']}.kills > $minkills)
@@ -499,10 +749,30 @@ function pro_medal_nothing_better_to_do()
       LIMIT 1";
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);     
-
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+  $score = $row['rounds'];
+  $playerid = $row['id'];
+  
+  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $result = $coddb->sql_query($query);
+  while ($row = $coddb->sql_fetchrow($result)) 
+  {
+    $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+    $players[] = $names;
+    $scores[] = $row['rounds'];
+    $playerids[] = $row['id'];
+    $flags[] = country_flag($row['ip']);
+  }
 
-  ShowMedal($text["notingbetr"], $text["rounds"], $row['rounds'], $row['id'], $name  , "xlr_pro_rounds.gif", $text["mostround"]);  
+  if(!isset($playerids, $flags)) {
+    $playerids = "";
+    $flags = "";
+    }
+
+  @$player_list = array_combine($players, $scores);
+  $fname = __FUNCTION__;
+
+  ShowMedal($text["notingbetr"], $text["rounds"], $score, $playerid, $name  , "xlr_pro_rounds.gif", $text["mostround"], $player_list, $fname, $playerids, $flags);  
     
 }
 
@@ -522,7 +792,7 @@ function pro_medal_serial_killer()
 
   $current_time = gmdate("U");
 
-  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, winstreak, kills, rounds, fixed_name
+  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, winstreak, kills, rounds, fixed_name
       FROM ${t['b3_clients']}, ${t['players']}
       WHERE (${t['b3_clients']}.id = ${t['players']}.client_id)
       AND ((${t['players']}.kills > $minkills)
@@ -535,11 +805,30 @@ function pro_medal_serial_killer()
 
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
-
-
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+  $score = $row['winstreak'];
+  $playerid = $row['id'];
+  
+  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $result = $coddb->sql_query($query);
+  while ($row = $coddb->sql_fetchrow($result)) 
+  {
+    $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+    $players[] = $names;
+    $scores[] = $row['winstreak'];
+    $playerids[] = $row['id'];
+    $flags[] = country_flag($row['ip']);
+  }
 
-  ShowMedal($text["serialkiller"], $text["winstrk"], $row['winstreak'], $row['id'], $name  , "xlr_pro_killstreak.gif", $text["bestwinstrk"]);
+  if(!isset($playerids, $flags)) {
+    $playerids = "";
+    $flags = "";
+    }
+
+  @$player_list = array_combine($players, $scores);
+  $fname = __FUNCTION__;
+
+  ShowMedal($text["serialkiller"], $text["winstrk"], $score, $playerid, $name, "xlr_pro_killstreak.gif", $text["bestwinstrk"], $player_list, $fname, $playerids, $flags);
 
 }
 
@@ -560,7 +849,7 @@ function pro_medal_head_hunter()
 
   $current_time = gmdate("U");
 
-  $query =   "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, (SUM(${t['playerbody']}.kills) / ${t['players']}.kills ) AS total_kills
+  $query =   "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, (SUM(${t['playerbody']}.kills) / ${t['players']}.kills ) AS total_kills
       FROM ${t['playerbody']}
       JOIN ${t['players']} ON ${t['playerbody']}.player_id = ${t['players']}.id
       JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
@@ -576,18 +865,39 @@ function pro_medal_head_hunter()
 
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
-
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+  $score = (int)($row['total_kills']*100)."%";
+  $playerid = $row['id'];
+  
+  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $result = $coddb->sql_query($query);
+  while ($row = $coddb->sql_fetchrow($result)) 
+  {
+    $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+    $players[] = $names;
+    $scores[] = (int)($row['total_kills']*100)."%";
+    $playerids[] = $row['id'];
+    $flags[] = country_flag($row['ip']);
+  }
+  
+  if(!isset($playerids, $flags)) {
+    $playerids = "";
+    $flags = "";
+    }
 
-  ShowMedal($text["headhunter"], $text["pheadshots"], (int)($row['total_kills']*100)."%", $row['id'],$name  , "xlr_pro_headshots.gif", $text["mosthdsht"]);
+  @$player_list = array_combine($players, $scores);
+  $fname = __FUNCTION__;
+
+  ShowMedal($text["headhunter"], $text["pheadshots"], $score, $playerid, $name, "xlr_pro_headshots.gif", $text["mosthdsht"], $player_list, $fname, $playerids, $flags);
 }
 
-function ShowMedal($MedalName, $ArchieveName, $ArchValue, $PlayerId, $Nick, $MedalPicture, $Description)
+function ShowMedal($MedalName, $ArchieveName, $ArchValue, $PlayerId, $Nick, $MedalPicture, $Description, $PlayerList, $FunctionName, $PlayerListIds, $Country)
 {
   $link = baselink();
   global $game;
   global $currentconfignumber;
   global $text;
+  global $geoip_path;
   // do we have game specific medals?
   if (file_exists("./images/medals/$game/"))
     $MedalSrc = "./images/medals/$game/$MedalPicture";
@@ -603,18 +913,23 @@ function ShowMedal($MedalName, $ArchieveName, $ArchValue, $PlayerId, $Nick, $Med
     $ArchValue = $text["awardavailable"];
     $ArchieveName = ":";
     $Nick = "";
+    $PlayerList = array();
+    $text["owner"] = "";
+    $text["score"] = ":";
   }
-
-  echo "
-
-      <td align=\"center\" width=\"150\">
+  
+  if (!isset($_GET['fname'])) 
+  {
+  echo "<td align=\"center\" width=\"150\">
       <table width=\"150\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" align=\"center\" class=\"with_border_alternate\">
-      <tr><td align=\"center\" class=\"cellmenu1\"><a name=\"$Description\"><strong>$MedalName</strong></a></td></tr>
+      <tr><td align=\"center\" class=\"cellmenu1\"><a name=\"$Description\"><strong><a href='$link?func=medal&fname=$FunctionName' title=\"".$text["seemedaldetails"]."\">$MedalName</a></strong></a></td></tr>
       <tr> 
         <td width=\"150\" class=\"line1\" nowrap valign=\"top\" align=\"center\">
         <B>$ArchieveName: &nbsp;$ArchValue&nbsp;</B>
-        <br/><a href=\"$link?func=player&playerid=$PlayerId&config=${currentconfignumber}\" title=\"See player details\">$Nick<br/></a>
-        <img src=\"$MedalSrc\" style=\"filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='$MedalSrc', sizingMethod='scale')\" width=\"128\" height=\"256\" name=\"$Description\">
+        <br/><a href=\"$link?func=player&playerid=$PlayerId&config=${currentconfignumber}\" title=\"".$text["seeplayerdetails"]."\">$Nick<br/></a>
+        <a href='$link?func=medal&fname=$FunctionName' title=\"".$text["seemedaldetails"]."\">
+        <img src=\"$MedalSrc\" border=\"0\" style=\"filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='$MedalSrc', sizingMethod='scale')\" width=\"128\" height=\"256\" name=\"$Description\">
+        </a>
         </td>
       </tr>
       <tr> 
@@ -624,9 +939,62 @@ function ShowMedal($MedalName, $ArchieveName, $ArchValue, $PlayerId, $Nick, $Med
         </td>
       </tr>
       </table>
-
       </td>
   ";
+  }
+
+  else 
+  {
+  echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\">
+        <tr><td colspan=\"2\" align=\"center\">".$text["medaldetails"]."</td></tr>
+        <tr><td>
+          <table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"innertable\">
+            <tr class=\"outertable\"><td width=\"50%\"align=\"center\">$MedalName</td><td align=\"center\">".$text["topplayers"]."</td></tr>
+            <tr><td>
+              <table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"5\" class=\"outertable\">
+                <tr class=\"innertable\"><td width=\"150\" rowspan=\"3\" align=\"center\"><img src=\"$MedalSrc\" style=\"filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='$MedalSrc', sizingMethod='scale')\" width=\"128\" height=\"256\" title=\"$MedalName\"></img></td>
+                <td valign=\"top\">
+                  <table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"innertable\">
+                    <tr><td height=\"10px\"><b><br>".$text["owner"]."<a href=\"$link?func=player&playerid=$PlayerId&config=${currentconfignumber}\" title=\"".$text["seeplayerdetails"]."\">$Nick</a></b></td></tr>
+                    <tr class=\"innertable\"><td><b>".$text["score"].": $ArchValue<br><br></b></td></tr>
+                    <tr><td colspan=\"1\" class=\"outertable\"><img src=\"images/spacer.gif\" width=\"1\" height=\"1\" alt=\"\"></td></tr>
+                    <tr class=\"innertable\"><td valign=\"top\"><b><br>".$text["medaldescription"]."<br></b>$Description</td></tr>
+                  </table></td>
+              </table></td>
+                <td valign=\"top\">
+                  <table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"innertable\">
+                    <tr><td>
+                      <table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"innertable\">
+                        <tr class=\"outertable\">
+                        <td align=\"center\">".$text["place"]."</td>
+                        ".(file_exists($geoip_path."GeoIP.dat") ? "<td align=\"center\">".$text["cntry"]."</td>" : "")."
+                        <td align=\"center\">".$text["player"]."</td>
+                        <td align=\"center\">".$text["mdscore"]."</td></tr>
+      ";
+
+  $a = 0;
+  $b = 0;
+
+  foreach($PlayerList as $Players => $Scores)
+  {
+    if($Scores > 0) 
+    {
+      echo "<tr class=\"innertable\">
+            <td width=\"50\" align=\"center\">".($a+1)."</td>
+            ".(file_exists($geoip_path."GeoIP.dat") ? "<td width=\"50\" align=\"center\">".$Country[$b++]."</td>" : "")."
+            <td align=\"left\"><a href=\"$link?func=player&playerid=".$PlayerListIds[$a++]."&config=${currentconfignumber}\" title=\"".$text["seeplayerdetails"]."\">$Players</td></a>
+            <td align=\"center\">$Scores</td></tr>
+            <tr><td colspan=".(file_exists($geoip_path."GeoIP.dat") ? '4' : '3')." class=\"outertable\"><img src=\"images/spacer.gif\" width=\"1\" height=\"1\" alt=\"\"></td></tr>
+           ";
+    }
+  }
+
+  echo "</table></tr></td>
+        </table></td></tr>
+    </table></td></tr>
+    </table>
+    ";
+  }
 }
  
 function global_lame_awards()
@@ -662,7 +1030,7 @@ function shame_medal_target_no_one()
   global $text;
   $current_time = gmdate("U");
 
-  $query = "SELECT ${t['b3_clients']}.name, ${t['b3_clients']}.time_edit, ${t['players']}.id, kills,  (deaths / ${t['players']}.rounds) AS pdeaths, fixed_name
+  $query = "SELECT ${t['b3_clients']}.name, ${t['b3_clients']}.time_edit, ${t['players']}.id, ip, kills,  (deaths / ${t['players']}.rounds) AS pdeaths, fixed_name
       FROM ${t['b3_clients']}, ${t['players']}
       WHERE (${t['b3_clients']}.id = ${t['players']}.client_id)
       AND ((${t['players']}.kills > $minkills)
@@ -674,11 +1042,30 @@ function shame_medal_target_no_one()
 
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
-
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+  $score = (int)($row['pdeaths']);
+  $playerid = $row['id'];
+  
+  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $result = $coddb->sql_query($query);
+  while ($row = $coddb->sql_fetchrow($result)) 
+  {
+    $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+    $players[] = $names;
+    $scores[] = (int)($row['pdeaths']);
+    $playerids[] = $row['id'];
+    $flags[] = country_flag($row['ip']);
+  }
+  
+  if(!isset($playerids, $flags)) {
+    $playerids = "";
+    $flags = "";
+    }
 
-  //ShowMedal($MedalName, $ArchieveName, $ArchValue, $PlayerId, $Nick, $MedalPicture, $Description)
-  ShowMedal($text["pwned"], $text["pdeaths"], (int)($row['pdeaths']),  $row['id'] , $name  , "xlr_shame_deaths.gif", $text["target1"]);  
+  @$player_list = array_combine($players, $scores);
+  $fname = __FUNCTION__;
+
+  ShowMedal($text["pwned"], $text["pdeaths"], $score, $playerid, $name, "xlr_shame_deaths.gif", $text["target1"], $player_list, $fname, $playerids, $flags);  
 }
 
 function shame_medal_most_teamkills()
@@ -696,7 +1083,7 @@ function shame_medal_most_teamkills()
   global $text;
   $current_time = gmdate("U");
 
-  $query = "SELECT ${t['b3_clients']}.name, ${t['b3_clients']}.time_edit, ${t['players']}.id, kills,  (teamkills / ${t['players']}.rounds) AS pteamkills , fixed_name
+  $query = "SELECT ${t['b3_clients']}.name, ${t['b3_clients']}.time_edit, ${t['players']}.id, ip, kills,  (teamkills / ${t['players']}.rounds) AS pteamkills , fixed_name
       FROM ${t['b3_clients']}, ${t['players']}
       WHERE (${t['b3_clients']}.id = ${t['players']}.client_id)
       AND ((${t['players']}.kills > $minkills)
@@ -708,11 +1095,30 @@ function shame_medal_most_teamkills()
 
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
-
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+  $score = sprintf("%.1f",$row['pteamkills']);
+  $playerid = $row['id'];
+  
+  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $result = $coddb->sql_query($query);
+  while ($row = $coddb->sql_fetchrow($result)) 
+  {
+    $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+    $players[] = $names;
+    $scores[] = sprintf("%.1f",$row['pteamkills']);
+    $playerids[] = $row['id'];
+    $flags[] = country_flag($row['ip']);
+  }
 
-  //ShowMedal($MedalName, $ArchieveName, $ArchValue, $PlayerId, $Nick, $MedalPicture, $Description)
-  ShowMedal($text["eyeshot"], $text["pteamkil"], sprintf("%.1f",$row['pteamkills']),  $row['id'] , $name  , "xlr_shame_teamkills.gif", $text["mostteamkill"]);  
+  if(!isset($playerids, $flags)) {
+    $playerids = "";
+    $flags = "";
+    }
+
+  @$player_list = array_combine($players, $scores);
+  $fname = __FUNCTION__;
+
+  ShowMedal($text["eyeshot"], $text["pteamkil"], $score, $playerid, $name, "xlr_shame_teamkills.gif", $text["mostteamkill"], $player_list, $fname, $playerids, $flags);  
 }
 
 function shame_medal_most_teamdeaths()
@@ -730,7 +1136,7 @@ function shame_medal_most_teamdeaths()
   global $text;
   $current_time = gmdate("U");
 
-  $query = "SELECT ${t['b3_clients']}.name, ${t['b3_clients']}.time_edit, ${t['players']}.id, kills, (teamdeaths / ${t['players']}.rounds) AS pteamdeaths, fixed_name
+  $query = "SELECT ${t['b3_clients']}.name, ${t['b3_clients']}.time_edit, ${t['players']}.id, ip, kills, (teamdeaths / ${t['players']}.rounds) AS pteamdeaths, fixed_name
       FROM ${t['b3_clients']}, ${t['players']}
       WHERE (${t['b3_clients']}.id = ${t['players']}.client_id)
       AND ((${t['players']}.kills > $minkills)
@@ -742,11 +1148,31 @@ function shame_medal_most_teamdeaths()
 
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
-
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+  $score = sprintf("%.1f",$row['pteamdeaths']);
+  $playerid = $row['id'];
+  
+  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $result = $coddb->sql_query($query);
+  while ($row = $coddb->sql_fetchrow($result)) 
+  {
+    $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+    $players[] = $names;
+    $scores[] = sprintf("%.1f",$row['pteamdeaths']);
+    $playerids[] = $row['id'];
+    $flags[] = country_flag($row['ip']);
+  }
+
+  if(!isset($playerids, $flags)) {
+    $playerids = "";
+    $flags = "";
+    }
+
+  @$player_list = array_combine($players, $scores);
+  $fname = __FUNCTION__;
 
   //ShowMedal($MedalName, $ArchieveName, $ArchValue, $PlayerId, $Nick, $MedalPicture, $Description)
-  ShowMedal($text["sendjoey"], $text["pteamdeth"], sprintf("%.1f",$row['pteamdeaths']),  $row['id'] , $name  , "xlr_shame_teamdeaths.gif", $text["mosteamdeth"]);  
+  ShowMedal($text["sendjoey"], $text["pteamdeth"], $score, $playerid, $name, "xlr_shame_teamdeaths.gif", $text["mosteamdeth"], $player_list, $fname, $playerids, $flags);  
 }
 
 function shame_medal_nade_magneto()
@@ -766,7 +1192,7 @@ function shame_medal_nade_magneto()
 
   $current_time = gmdate("U");
 
-  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id,${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.deaths) / ${t['players']}.rounds) AS total_deaths
+  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.deaths) / ${t['players']}.rounds) AS total_deaths
       FROM ${t['weaponusage']}
       JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
       JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
@@ -782,8 +1208,29 @@ function shame_medal_nade_magneto()
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['name'];
+  $score = sprintf("%.1f",$row['total_deaths']);
+  $playerid = $row['id'];
+  
+  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $result = $coddb->sql_query($query);
+  while ($row = $coddb->sql_fetchrow($result)) 
+  {
+    $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+    $players[] = $names;
+    $scores[] = sprintf("%.1f",$row['total_deaths']);
+    $playerids[] = $row['id'];
+    $flags[] = country_flag($row['ip']);
+  }
 
-  ShowMedal($text["mmnades"], $text["nadedeth"], sprintf("%.1f",$row['total_deaths']), $row['id'], $name  , "xlr_shame_nade.gif", $text["mostnadeth"]);  
+  if(!isset($playerids, $flags)) {
+    $playerids = "";
+    $flags = "";
+    }
+
+  @$player_list = array_combine($players, $scores);
+  $fname = __FUNCTION__;
+
+  ShowMedal($text["mmnades"], $text["nadedeth"], $score, $playerid, $name, "xlr_shame_nade.gif", $text["mostnadeth"], $player_list, $fname, $playerids, $flags);  
 }
 
 function shame_medal_need_some_practice()
@@ -802,7 +1249,7 @@ function shame_medal_need_some_practice()
   $current_time = gmdate("U");
 
 
-  $query = "SELECT ${t['b3_clients']}.name, ${t['b3_clients']}.time_edit, ${t['players']}.id, losestreak, kills, deaths, rounds, fixed_name
+  $query = "SELECT ${t['b3_clients']}.name, ${t['b3_clients']}.time_edit, ${t['players']}.id, ip, losestreak, kills, deaths, rounds, fixed_name
       FROM ${t['b3_clients']}, ${t['players']}
       WHERE (${t['b3_clients']}.id = ${t['players']}.client_id)
       AND ((${t['players']}.kills > $minkills)
@@ -815,11 +1262,30 @@ function shame_medal_need_some_practice()
 
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
-
-
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+  $score = abs($row['losestreak']);
+  $playerid = $row['id'];
+  
+  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $result = $coddb->sql_query($query);
+  while ($row = $coddb->sql_fetchrow($result)) 
+  {
+    $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+    $players[] = $names;
+    $scores[] = abs($row['losestreak']);
+    $playerids[] = $row['id'];
+    $flags[] = country_flag($row['ip']);
+  }
 
-  ShowMedal($text["needpractice"], $text["losstrk"], abs($row['losestreak']), $row['id'], $name  , "xlr_shame_loosestreak.gif", $text["highlosstrk"]);
+  if(!isset($playerids, $flags)) {
+    $playerids = "";
+    $flags = "";
+    }
+
+  @$player_list = array_combine($players, $scores);
+  $fname = __FUNCTION__;
+
+  ShowMedal($text["needpractice"], $text["losstrk"], $score, $playerid, $name , "xlr_shame_loosestreak.gif", $text["highlosstrk"], $player_list, $fname, $playerids, $flags);
 }
 
 function shame_medal_def_punchy()
@@ -839,7 +1305,7 @@ function shame_medal_def_punchy()
   $current_time = gmdate("U");
 
 
-  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.deaths) / ${t['players']}.rounds) AS total_deaths
+  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.deaths) / ${t['players']}.rounds) AS total_deaths
       FROM ${t['weaponusage']}
       JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
       JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
@@ -852,13 +1318,32 @@ function shame_medal_def_punchy()
       ORDER BY total_deaths DESC
       LIMIT 1 ";
 
-
-  //
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+  $score = sprintf("%.1f",$row['total_deaths']);
+  $playerid = $row['id'];
 
-  ShowMedal($text["punchme"], $text["punchdeath"], sprintf("%.1f",$row['total_deaths']), $row['id'], $name  , "xlr_shame_knives.gif", $text["mostpunchyd"]);  
+  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $result = $coddb->sql_query($query);
+  while ($row = $coddb->sql_fetchrow($result)) 
+  {
+    $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+    $players[] = $names;
+    $scores[] = sprintf("%.1f",$row['total_deaths']);
+    $playerids[] = $row['id'];
+    $flags[] = country_flag($row['ip']);
+  }
+
+  if(!isset($playerids, $flags)) {
+    $playerids = "";
+    $flags = "";
+    }
+
+  @$player_list = array_combine($players, $scores);
+  $fname = __FUNCTION__;
+
+  ShowMedal($text["punchme"], $text["punchdeath"], $score, $playerid, $name, "xlr_shame_knives.gif", $text["mostpunchyd"], $player_list, $fname, $playerids, $flags);  
 }
 
 function shame_medal_def_ballooney()
@@ -877,8 +1362,7 @@ function shame_medal_def_ballooney()
   global $text;
   $current_time = gmdate("U");
 
-
-  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.deaths) / ${t['players']}.rounds) AS total_deaths
+  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.deaths) / ${t['players']}.rounds) AS total_deaths
       FROM ${t['weaponusage']}
       JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
       JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
@@ -891,13 +1375,32 @@ function shame_medal_def_ballooney()
       ORDER BY total_deaths DESC
       LIMIT 1 ";
 
-
-  //
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+  $score = sprintf("%.1f",$row['total_deaths']);
+  $playerid = $row['id'];
+  
+  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $result = $coddb->sql_query($query);
+  while ($row = $coddb->sql_fetchrow($result)) 
+  {
+    $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+    $players[] = $names;
+    $scores[] = sprintf("%.1f",$row['total_deaths']);
+    $playerids[] = $row['id'];
+    $flags[] = country_flag($row['ip']);
+  }
+  
+  if(!isset($playerids, $flags)) {
+    $playerids = "";
+    $flags = "";
+    }
 
-  ShowMedal($text["needbaloon"], $text["balonydeath"], sprintf("%.1f",$row['total_deaths']), $row['id'], $name  , "xlr_shame_knives.gif", $text["mostbalondeth"]);  
+  @$player_list = array_combine($players, $scores);
+  $fname = __FUNCTION__;
+
+  ShowMedal($text["needbaloon"], $text["balonydeath"], $score, $playerid, $name, "xlr_shame_knives.gif", $text["mostbalondeth"], $player_list, $fname, $playerids, $flags);  
 }
 
 function shame_medal_def_betty()
@@ -917,7 +1420,7 @@ function shame_medal_def_betty()
   $current_time = gmdate("U");
 
 
-  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.deaths) / ${t['players']}.rounds) AS total_deaths
+  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.deaths) / ${t['players']}.rounds) AS total_deaths
       FROM ${t['weaponusage']}
       JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
       JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
@@ -930,13 +1433,32 @@ function shame_medal_def_betty()
       ORDER BY total_deaths DESC
       LIMIT 1 ";
 
-
-  //
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+  $score = sprintf("%.1f",$row['total_deaths']);
+  $playerid = $row['id'];
 
-  ShowMedal($text["bettytarget"], $text["bettydeath"], sprintf("%.1f",$row['total_deaths']), $row['id'], $name  , "xlr_shame_knives.gif", $text["mostbetydeth"]);  
+  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $result = $coddb->sql_query($query);
+  while ($row = $coddb->sql_fetchrow($result)) 
+  {
+    $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+    $players[] = $names;
+    $scores[] = sprintf("%.1f",$row['total_deaths']);
+    $playerids[] = $row['id'];
+    $flags[] = country_flag($row['ip']);
+  }
+  
+  if(!isset($playerids, $flags)) {
+    $playerids = "";
+    $flags = "";
+    }
+
+  @$player_list = array_combine($players, $scores);
+  $fname = __FUNCTION__;
+
+  ShowMedal($text["bettytarget"], $text["bettydeath"], $score, $playerid, $name, "xlr_shame_knives.gif", $text["mostbetydeth"], $player_list, $fname, $playerids, $flags);  
 }
 
 function shame_medal_killerducks()
@@ -955,8 +1477,7 @@ function shame_medal_killerducks()
   global $text;
   $current_time = gmdate("U");
 
-
-  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.deaths) / ${t['players']}.rounds) AS total_deaths
+  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.deaths) / ${t['players']}.rounds) AS total_deaths
       FROM ${t['weaponusage']}
       JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
       JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
@@ -969,13 +1490,32 @@ function shame_medal_killerducks()
       ORDER BY total_deaths DESC
       LIMIT 1 ";
 
-
-  //
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+  $score = sprintf("%.1f",$row['total_deaths']);
+  $playerid = $row['id'];
+  
+  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $result = $coddb->sql_query($query);
+  while ($row = $coddb->sql_fetchrow($result)) 
+  {
+    $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+    $players[] = $names;
+    $scores[] = sprintf("%.1f",$row['total_deaths']);
+    $playerids[] = $row['id'];
+    $flags[] = country_flag($row['ip']);
+  }
+  
+  if(!isset($playerids, $flags)) {
+    $playerids = "";
+    $flags = "";
+    }
 
-  ShowMedal($text["ihateducks"], $text["duckdeath"], sprintf("%.1f",$row['total_deaths']), $row['id'], $name  , "xlr_shame_knives.gif", $text["mostduckdeth"]);  
+  @$player_list = array_combine($players, $scores);
+  $fname = __FUNCTION__;
+
+  ShowMedal($text["ihateducks"], $text["duckdeath"], $score, $playerid, $name, "xlr_shame_knives.gif", $text["mostduckdeth"], $player_list, $fname, $playerids, $flags);  
 }
 
 function shame_medal_fireman()
@@ -994,7 +1534,7 @@ function shame_medal_fireman()
   global $text;
   $current_time = gmdate("U");
 
-  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.deaths) / ${t['players']}.rounds) AS total_deaths
+  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.deaths) / ${t['players']}.rounds) AS total_deaths
       FROM ${t['weaponusage']}
       JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
       JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
@@ -1010,11 +1550,35 @@ function shame_medal_fireman()
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
-
   if ($row['total_deaths'] > 0)
-    ShowMedal($text["mechanic"], $text["vehicledeth"], $row['total_deaths'], $row['id'], $name  , "xlr_shame_vehicle_deaths.gif", $text["mostcardeath"]);  
+    $score = $row['total_deaths'];
   else
-    ShowMedal($text["mechanic"], $text["vehicledeth"], sprintf("%.1f",$row['total_deaths']), $row['id'], $name  , "xlr_shame_vehicle_deaths.gif", $text["mostcardeath"]);  
+    $score = sprintf("%.1f",$row['total_deaths']);
+  $playerid = $row['id'];
+  
+  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $result = $coddb->sql_query($query);
+  while ($row = $coddb->sql_fetchrow($result)) 
+  {
+    $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+    $players[] = $names;
+    $playerids[] = $row['id'];
+    $flags[] = country_flag($row['ip']);
+    if ($row['total_deaths'] > 0)
+      $scores[] = $row['total_deaths'];
+    else
+      $scores[] = sprintf("%.1f",$row['total_deaths']);
+  }
+  
+  if(!isset($playerids, $flags)) {
+    $playerids = "";
+    $flags = "";
+    }
+
+  @$player_list = array_combine($players, $scores);
+  $fname = __FUNCTION__;
+
+  ShowMedal($text["mechanic"], $text["vehicledeth"], $score, $playerid, $name, "xlr_shame_vehicle_deaths.gif", $text["mostcardeath"], $player_list, $fname, $playerids, $flags);    
 }
 
 function shame_medal_def_knifes()
@@ -1033,8 +1597,7 @@ function shame_medal_def_knifes()
   global $text;
   $current_time = gmdate("U");
 
-
-  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.deaths) / ${t['players']}.rounds) AS total_deaths
+  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.deaths) / ${t['players']}.rounds) AS total_deaths
       FROM ${t['weaponusage']}
       JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
       JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
@@ -1047,13 +1610,32 @@ function shame_medal_def_knifes()
       ORDER BY total_deaths DESC
       LIMIT 1 ";
 
-
-  //
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+  $score = sprintf("%.1f",$row['total_deaths']);
+  $playerid = $row['id'];
+  
+  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $result = $coddb->sql_query($query);
+  while ($row = $coddb->sql_fetchrow($result)) 
+  {
+    $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+    $players[] = $names;
+    $scores[] = sprintf("%.1f",$row['total_deaths']);
+    $playerids[] = $row['id'];
+    $flags[] = country_flag($row['ip']);
+  }
 
-  ShowMedal($text["shaveme"], $text["knifedeath"], sprintf("%.1f",$row['total_deaths']), $row['id'], $name  , "xlr_shame_knives.gif", $text["mostknifedeth"]);  
+  if(!isset($playerids, $flags)) {
+    $playerids = "";
+    $flags = "";
+    }
+
+  @$player_list = array_combine($players, $scores);
+  $fname = __FUNCTION__;
+
+  ShowMedal($text["shaveme"], $text["knifedeath"], $score, $playerid, $name, "xlr_shame_knives.gif", $text["mostknifedeth"], $player_list, $fname, $playerids, $flags);  
 }
 
 function shame_medal_def_bashes()
@@ -1072,8 +1654,7 @@ function shame_medal_def_bashes()
   global $text;
   $current_time = gmdate("U");
 
-
-  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.deaths) / ${t['players']}.rounds) AS total_deaths
+  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.deaths) / ${t['players']}.rounds) AS total_deaths
       FROM ${t['weaponusage']}
       JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
       JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
@@ -1085,12 +1666,33 @@ function shame_medal_def_bashes()
       GROUP BY ${t['players']}.id
       ORDER BY total_deaths DESC
       LIMIT 1 ";
-  //
+
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+  $score = sprintf("%.1f",$row['total_deaths']);
+  $playerid = $row['id'];
+  
+  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $result = $coddb->sql_query($query);
+  while ($row = $coddb->sql_fetchrow($result)) 
+  {
+    $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+    $players[] = $names;
+    $scores[] = sprintf("%.1f",$row['total_deaths']);
+    $playerids[] = $row['id'];
+    $flags[] = country_flag($row['ip']);
+  }
+  
+  if(!isset($playerids, $flags)) {
+    $playerids = "";
+    $flags = "";
+    }
 
-  ShowMedal($text["hitme"], $text["bashdeath"], sprintf("%.1f",$row['total_deaths']), $row['id'], $name  , "xlr_shame_bash.gif", $text["mostbashdeth"]);  
+  @$player_list = array_combine($players, $scores);
+  $fname = __FUNCTION__;
+
+  ShowMedal($text["hitme"], $text["bashdeath"], $score, $playerid, $name, "xlr_shame_bash.gif", $text["mostbashdeth"], $player_list, $fname, $playerids, $flags);  
 }
 
 function shame_medal_sniped()
@@ -1109,8 +1711,7 @@ function shame_medal_sniped()
   global $text;
   $current_time = gmdate("U");
 
-
-  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.deaths) / ${t['players']}.rounds) AS total_deaths
+  $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.deaths) / ${t['players']}.rounds) AS total_deaths
       FROM ${t['weaponusage']}
       JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
       JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
@@ -1122,12 +1723,33 @@ function shame_medal_sniped()
       GROUP BY ${t['players']}.id
       ORDER BY total_deaths DESC
       LIMIT 1 ";
-  //
+
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+  $score = sprintf("%.1f",$row['total_deaths']);
+  $playerid = $row['id'];
 
-  ShowMedal($text["targtpract"], $text["sniperdeath"], sprintf("%.1f",$row['total_deaths']), $row['id'], $name  , "xlr_shame_sniper.gif", $text["mostsniped"]);  
+  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $result = $coddb->sql_query($query);
+  while ($row = $coddb->sql_fetchrow($result)) 
+  {
+    $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+    $players[] = $names;
+    $scores[] = sprintf("%.1f",$row['total_deaths']);
+    $playerids[] = $row['id'];
+    $flags[] = country_flag($row['ip']);
+  }
+
+  if(!isset($playerids, $flags)) {
+    $playerids = "";
+    $flags = "";
+    }
+
+  @$player_list = array_combine($players, $scores);
+  $fname = __FUNCTION__;
+
+  ShowMedal($text["targtpract"], $text["sniperdeath"], $score, $playerid, $name, "xlr_shame_sniper.gif", $text["mostsniped"], $player_list, $fname, $playerids, $flags);  
 }
 
 function shame_medal_careless()
@@ -1147,7 +1769,7 @@ function shame_medal_careless()
 
   $current_time = gmdate("U");
 
-  $query = " SELECT ${t['b3_clients']}.name, ${t['players']}.id, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.suicides) / ${t['players']}.rounds) AS total_suicides
+  $query = " SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.suicides) / ${t['players']}.rounds) AS total_suicides
       FROM ${t['weaponusage']}
       JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
       JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
@@ -1160,12 +1782,32 @@ function shame_medal_careless()
       ORDER BY total_suicides DESC
       LIMIT 1 ";
 
-
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
-
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+  $score = sprintf("%.1f",$row['total_suicides']);
+  $playerid = $row['id'];
+  
+  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $result = $coddb->sql_query($query);
+  while ($row = $coddb->sql_fetchrow($result)) 
+  {
+    $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+    $players[] = $names;
+    $scores[] = sprintf("%.1f",$row['total_suicides']);
+    $playerids[] = $row['id'];
+    $flags[] = country_flag($row['ip']);
+  }
 
-  ShowMedal($text["accidenthero"], $text["blindasbat"], sprintf("%.1f",$row['total_suicides']), $row['id'], $name  , "xlr_shame_blind.gif", $text["mostaccdeath"]);  
+  if(!isset($playerids, $flags)) {
+    $playerids = "";
+    $flags = "";
+    }
+
+  @$player_list = array_combine($players, $scores);
+  $fname = __FUNCTION__;
+
+  ShowMedal($text["accidenthero"], $text["blindasbat"], $score, $playerid, $name, "xlr_shame_blind.gif", $text["mostaccdeath"], $player_list, $fname, $playerids, $flags);  
 }
+
 ?>

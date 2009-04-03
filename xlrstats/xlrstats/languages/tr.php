@@ -27,8 +27,7 @@
  * LANGUAGE TRANSLATION FILE
  * Language: Turkish - "tr"
  * Translated by: Freelander[*]
- * Created: 12-Feb-2009
- * Last Update: 12-Mar-2009
+ * Created: 12-Feb-2009 Last Update: 03-Apr-2009
  ***************************************************************************/
 
 //HTML charset
@@ -193,6 +192,15 @@ $text["accidenthero"] = "Kazara Kahraman";
 $text["blindasbat"] = "Yarasa Kadar Kör";
 $text["mostaccdeath"] = "Kaza Kurþunuyla En Çok Öldürülme/Raund";
 $text["dontbetophere"] = "Bu bölümde ödül kazanmaya çalýþmayýn ;)";
+
+//MEDAL DETAILS
+$text["medaldetails"] = "Madalya Detaylarý";
+$text["topplayers"] = "En Ýyi 10 Oyuncu";
+$text["medaldescription"] = "Madalya Tanýmý:";
+$text["owner"] = "Sahibi: ";
+$text["mdscore"] = "Skor";
+$text["seeplayerdetails"] = "Oyuncu detaylarýna bak";
+$text["seemedaldetails"] = "Madalya detaylarýna bak";
 
 //PLAYER SPESIFIC STATS (UPPER SECTION)
 $text["topskillrank"] = "Üstün Yetenek Sýralamasý";

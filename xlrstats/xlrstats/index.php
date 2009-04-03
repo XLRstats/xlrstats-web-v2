@@ -482,15 +482,7 @@ if($func == "medal")
 {
   if(isset($_GET['fname'])) {
     $fname = $_GET['fname'];
-	eval($fname."();");
-  
-    unset($_GET['fname']);
-  
-    echo "<br/>";
-    global_awards();   
-
-    echo "<br/>";
-    global_lame_awards();
+    eval($fname."();");
     }
 }
 

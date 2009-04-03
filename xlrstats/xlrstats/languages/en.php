@@ -193,6 +193,15 @@ $text["blindasbat"] = "Blind as a Bat";
 $text["mostaccdeath"] = "Most accidental deaths per round";
 $text["dontbetophere"] = "Do not try to be on top in here ;)";
 
+//MEDAL DETAILS
+$text["medaldetails"] = "Medal Details";
+$text["topplayers"] = "Top 10 Players";
+$text["medaldescription"] = "Medal Description:";
+$text["owner"] = "Owner: ";
+$text["mdscore"] = "Score";
+$text["seeplayerdetails"] = "See player details";
+$text["seemedaldetails"] = "See medal details";
+
 //PLAYER SPESIFIC STATS (UPPER SECTION)
 $text["topskillrank"] = "Topskill Ranking";
 $text["playerrankdefinactive"] = "Topskill Ranking is not (yet) available, so you're currently not competing. Reason(s) are:";

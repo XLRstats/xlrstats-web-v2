@@ -122,7 +122,7 @@ if(isset($_GET['func']))
 
 if ($func == "")
   $func = "index";
-
+  
 if ($func == "savelang")
 {
   savelanguage();
@@ -476,6 +476,22 @@ if ($func == "index")
   global_awards();   
   echo "<br/>";
   global_lame_awards();
+}
+
+if($func == "medal")
+{
+  if(isset($_GET['fname'])) {
+    $fname = $_GET['fname'];
+	eval($fname."();");
+  
+    unset($_GET['fname']);
+  
+    echo "<br/>";
+    global_awards();   
+
+    echo "<br/>";
+    global_lame_awards();
+    }
 }
 
 // Close the page properly (footer)

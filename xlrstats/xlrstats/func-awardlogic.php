@@ -118,7 +118,7 @@ function pro_medal_punchy_killer()
   $score = sprintf("%.1f",$row['total_kills']);
   $playerid = $row['id'];
   
-  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
   $result = $coddb->sql_query($query);
   while ($row = $coddb->sql_fetchrow($result)) 
   {
@@ -176,7 +176,7 @@ function pro_medal_ballooney_killer()
   $score = sprintf("%.1f",$row['total_kills']);
   $playerid = $row['id'];
   
-  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
   $result = $coddb->sql_query($query);
   while ($row = $coddb->sql_fetchrow($result)) 
   {
@@ -234,7 +234,7 @@ function pro_medal_betty_killer()
   $score = sprintf("%.1f",$row['total_kills']);
   $playerid = $row['id'];
   
-  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
   $result = $coddb->sql_query($query);
   while ($row = $coddb->sql_fetchrow($result)) 
   {
@@ -292,7 +292,7 @@ function pro_medal_killerducks_killer()
   $score = sprintf("%.1f",$row['total_kills']);
   $playerid = $row['id'];
   
-  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
   $result = $coddb->sql_query($query);
   while ($row = $coddb->sql_fetchrow($result)) 
   {
@@ -350,7 +350,7 @@ function pro_medal_cold_weapon_killer()
   $score = sprintf("%.1f",$row['total_kills']);
   $playerid = $row['id'];
   
-  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
   $result = $coddb->sql_query($query);
   while ($row = $coddb->sql_fetchrow($result)) 
   {
@@ -408,7 +408,7 @@ function pro_medal_bash_killer()
   $score = sprintf("%.1f",$row['total_kills']);
   $playerid = $row['id'];
   
-  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
   $result = $coddb->sql_query($query);
   while ($row = $coddb->sql_fetchrow($result)) 
   {
@@ -467,7 +467,7 @@ function pro_medal_sniper_killer()
   $score = sprintf("%.1f",$row['total_kills']);
   $playerid = $row['id'];
   
-  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
   $result = $coddb->sql_query($query);
   while ($row = $coddb->sql_fetchrow($result)) 
   {
@@ -526,7 +526,7 @@ function pro_medal_pistol_killer()
   $score = sprintf("%.1f",$row['total_kills']);
   $playerid = $row['id'];
 
-  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
   $result = $coddb->sql_query($query);
   while ($row = $coddb->sql_fetchrow($result)) 
   {
@@ -584,7 +584,7 @@ function pro_medal_nade_killer()
   $score = sprintf("%.1f",$row['total_kills']);
   $playerid = $row['id'];
   
-  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
   $result = $coddb->sql_query($query);
   while ($row = $coddb->sql_fetchrow($result)) 
   {
@@ -642,7 +642,7 @@ function pro_medal_remote_bomb_fan()
   $score = sprintf("%.1f",$row['total_kills']);
   $playerid = $row['id'];
   
-  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
   $result = $coddb->sql_query($query);
   while ($row = $coddb->sql_fetchrow($result)) 
   {
@@ -700,7 +700,7 @@ function pro_medal_surprise_lover()
   $score = sprintf("%.1f",$row['total_kills']);
   $playerid = $row['id'];
   
-  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
   $result = $coddb->sql_query($query);
   while ($row = $coddb->sql_fetchrow($result)) 
   {
@@ -753,7 +753,7 @@ function pro_medal_nothing_better_to_do()
   $score = $row['rounds'];
   $playerid = $row['id'];
   
-  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
   $result = $coddb->sql_query($query);
   while ($row = $coddb->sql_fetchrow($result)) 
   {
@@ -809,7 +809,7 @@ function pro_medal_serial_killer()
   $score = $row['winstreak'];
   $playerid = $row['id'];
   
-  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
   $result = $coddb->sql_query($query);
   while ($row = $coddb->sql_fetchrow($result)) 
   {
@@ -869,7 +869,7 @@ function pro_medal_head_hunter()
   $score = (int)($row['total_kills']*100)."%";
   $playerid = $row['id'];
   
-  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
   $result = $coddb->sql_query($query);
   while ($row = $coddb->sql_fetchrow($result)) 
   {
@@ -952,7 +952,7 @@ function ShowMedal($MedalName, $ArchieveName, $ArchValue, $PlayerId, $Nick, $Med
             <tr class=\"outertable\"><td width=\"50%\"align=\"center\">$MedalName</td><td align=\"center\">".$text["topplayers"]."</td></tr>
             <tr><td>
               <table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"5\" class=\"outertable\">
-                <tr class=\"innertable\"><td width=\"150\" rowspan=\"3\" align=\"center\"><img src=\"$MedalSrc\" style=\"filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='$MedalSrc', sizingMethod='scale')\" width=\"128\" height=\"256\" title=\"$MedalName\"></img></td>
+                <tr class=\"innertable\"><td width=\"150\" bgcolor=\"#EFEFEF\" rowspan=\"3\" align=\"center\"><img src=\"$MedalSrc\" style=\"filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='$MedalSrc', sizingMethod='scale')\" width=\"128\" height=\"256\" title=\"$MedalName\"></img></td>
                 <td valign=\"top\">
                   <table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"innertable\">
                     <tr><td height=\"10px\"><b><br>".$text["owner"]."<a href=\"$link?func=player&playerid=$PlayerId&config=${currentconfignumber}\" title=\"".$text["seeplayerdetails"]."\">$Nick</a></b></td></tr>
@@ -1046,7 +1046,7 @@ function shame_medal_target_no_one()
   $score = (int)($row['pdeaths']);
   $playerid = $row['id'];
   
-  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
   $result = $coddb->sql_query($query);
   while ($row = $coddb->sql_fetchrow($result)) 
   {
@@ -1099,7 +1099,7 @@ function shame_medal_most_teamkills()
   $score = sprintf("%.1f",$row['pteamkills']);
   $playerid = $row['id'];
   
-  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
   $result = $coddb->sql_query($query);
   while ($row = $coddb->sql_fetchrow($result)) 
   {
@@ -1152,7 +1152,7 @@ function shame_medal_most_teamdeaths()
   $score = sprintf("%.1f",$row['pteamdeaths']);
   $playerid = $row['id'];
   
-  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
   $result = $coddb->sql_query($query);
   while ($row = $coddb->sql_fetchrow($result)) 
   {
@@ -1211,7 +1211,7 @@ function shame_medal_nade_magneto()
   $score = sprintf("%.1f",$row['total_deaths']);
   $playerid = $row['id'];
   
-  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
   $result = $coddb->sql_query($query);
   while ($row = $coddb->sql_fetchrow($result)) 
   {
@@ -1266,7 +1266,7 @@ function shame_medal_need_some_practice()
   $score = abs($row['losestreak']);
   $playerid = $row['id'];
   
-  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
   $result = $coddb->sql_query($query);
   while ($row = $coddb->sql_fetchrow($result)) 
   {
@@ -1324,7 +1324,7 @@ function shame_medal_def_punchy()
   $score = sprintf("%.1f",$row['total_deaths']);
   $playerid = $row['id'];
 
-  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
   $result = $coddb->sql_query($query);
   while ($row = $coddb->sql_fetchrow($result)) 
   {
@@ -1381,7 +1381,7 @@ function shame_medal_def_ballooney()
   $score = sprintf("%.1f",$row['total_deaths']);
   $playerid = $row['id'];
   
-  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
   $result = $coddb->sql_query($query);
   while ($row = $coddb->sql_fetchrow($result)) 
   {
@@ -1439,7 +1439,7 @@ function shame_medal_def_betty()
   $score = sprintf("%.1f",$row['total_deaths']);
   $playerid = $row['id'];
 
-  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
   $result = $coddb->sql_query($query);
   while ($row = $coddb->sql_fetchrow($result)) 
   {
@@ -1496,7 +1496,7 @@ function shame_medal_killerducks()
   $score = sprintf("%.1f",$row['total_deaths']);
   $playerid = $row['id'];
   
-  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
   $result = $coddb->sql_query($query);
   while ($row = $coddb->sql_fetchrow($result)) 
   {
@@ -1556,7 +1556,7 @@ function shame_medal_fireman()
     $score = sprintf("%.1f",$row['total_deaths']);
   $playerid = $row['id'];
   
-  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
   $result = $coddb->sql_query($query);
   while ($row = $coddb->sql_fetchrow($result)) 
   {
@@ -1616,7 +1616,7 @@ function shame_medal_def_knifes()
   $score = sprintf("%.1f",$row['total_deaths']);
   $playerid = $row['id'];
   
-  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
   $result = $coddb->sql_query($query);
   while ($row = $coddb->sql_fetchrow($result)) 
   {
@@ -1673,7 +1673,7 @@ function shame_medal_def_bashes()
   $score = sprintf("%.1f",$row['total_deaths']);
   $playerid = $row['id'];
   
-  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
   $result = $coddb->sql_query($query);
   while ($row = $coddb->sql_fetchrow($result)) 
   {
@@ -1730,7 +1730,7 @@ function shame_medal_sniped()
   $score = sprintf("%.1f",$row['total_deaths']);
   $playerid = $row['id'];
 
-  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
   $result = $coddb->sql_query($query);
   while ($row = $coddb->sql_fetchrow($result)) 
   {
@@ -1788,7 +1788,7 @@ function shame_medal_careless()
   $score = sprintf("%.1f",$row['total_suicides']);
   $playerid = $row['id'];
   
-  $query = str_replace("LIMIT 1", "LIMIT 0, 9", $query);
+  $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
   $result = $coddb->sql_query($query);
   while ($row = $coddb->sql_fetchrow($result)) 
   {

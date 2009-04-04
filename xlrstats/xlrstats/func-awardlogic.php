@@ -129,16 +129,15 @@ function pro_medal_punchy_killer()
     $flags[] = country_flag($row['ip']);
   }
 
-  if(!isset($playerids, $flags, $players, $scores)) {
+  if(!isset($playerids, $flags)) {
     $playerids = "";
     $flags = "";
-    $players = "";
-    $scores = "";
     }
   
+  @$player_list = array_combine($players, $scores);
   $fname = __FUNCTION__;
   
-  ShowMedal($text["punchy"], $text["punchykill"], $score, $playerid, $name, "xlr_pro_default.gif", $text["mostpunchy"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["punchy"], $text["punchykill"], $score, $playerid, $name, "xlr_pro_default.gif", $text["mostpunchy"], $player_list, $fname, $playerids, $flags);  
 }
 
 function pro_medal_ballooney_killer()
@@ -188,16 +187,15 @@ function pro_medal_ballooney_killer()
     $flags[] = country_flag($row['ip']);
   }
 
-  if(!isset($playerids, $flags, $players, $scores)) {
+  if(!isset($playerids, $flags)) {
     $playerids = "";
     $flags = "";
-    $players = "";
-    $scores = "";
     }
 
+  @$player_list = array_combine($players, $scores);
   $fname = __FUNCTION__;
 
-  ShowMedal($text["balooney"], $text["balooneykill"], $score, $playerid, $name, "xlr_pro_default.gif", $text["mostbalooney"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["balooney"], $text["balooneykill"], $score, $playerid, $name, "xlr_pro_default.gif", $text["mostbalooney"], $player_list, $fname, $playerids, $flags);  
 }
 
 function pro_medal_betty_killer()
@@ -247,16 +245,15 @@ function pro_medal_betty_killer()
     $flags[] = country_flag($row['ip']);
   }
 
-  if(!isset($playerids, $flags, $players, $scores)) {
+  if(!isset($playerids, $flags)) {
     $playerids = "";
     $flags = "";
-    $players = "";
-    $scores = "";
     }
 
+  @$player_list = array_combine($players, $scores);
   $fname = __FUNCTION__;
 
-  ShowMedal($text["betty"], $text["bettykill"], $score, $playerid, $name, "xlr_pro_sniper.gif", $text["mostbetty"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["betty"], $text["bettykill"], $score, $playerid, $name, "xlr_pro_sniper.gif", $text["mostbetty"], $player_list, $fname, $playerids, $flags);  
 }
 
 function pro_medal_killerducks_killer()
@@ -306,16 +303,15 @@ function pro_medal_killerducks_killer()
     $flags[] = country_flag($row['ip']);
   }
   
-  if(!isset($playerids, $flags, $players, $scores)) {
+  if(!isset($playerids, $flags)) {
     $playerids = "";
     $flags = "";
-    $players = "";
-    $scores = "";
     }
 
+  @$player_list = array_combine($players, $scores);
   $fname = __FUNCTION__;
 
-  ShowMedal($text["lazy"], $text["duckkill"], $score, $playerid, $name, "xlr_pro_default.gif", $text["mostlazy"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["lazy"], $text["duckkill"], $score, $playerid, $name, "xlr_pro_default.gif", $text["mostlazy"], $player_list, $fname, $playerids, $flags);  
 }
 
 function pro_medal_cold_weapon_killer()
@@ -365,16 +361,15 @@ function pro_medal_cold_weapon_killer()
     $flags[] = country_flag($row['ip']);
   }
 
-  if(!isset($playerids, $flags, $players, $scores)) {
+  if(!isset($playerids, $flags)) {
     $playerids = "";
     $flags = "";
-    $players = "";
-    $scores = "";
     }
 
+  @$player_list = array_combine($players, $scores);
   $fname = __FUNCTION__;
 
-  ShowMedal($text["cldweapon"], $text["knifekill"], $score, $playerid, $name, "xlr_pro_knives.gif", $text["mostknife"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["cldweapon"], $text["knifekill"], $score, $playerid, $name, "xlr_pro_knives.gif", $text["mostknife"], $player_list, $fname, $playerids, $flags);  
 }
 
 function pro_medal_bash_killer()
@@ -424,16 +419,15 @@ function pro_medal_bash_killer()
     $flags[] = country_flag($row['ip']);
   }
 
-  if(!isset($playerids, $flags, $players, $scores)) {
+  if(!isset($playerids, $flags)) {
     $playerids = "";
     $flags = "";
-    $players = "";
-    $scores = "";
     }
- 
+
+  @$player_list = array_combine($players, $scores);
   $fname = __FUNCTION__;
 
-  ShowMedal($text["bashking"], $text["bashes"], $score, $playerid, $name, "xlr_pro_bash.gif", $text["mostbash"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["bashking"], $text["bashes"], $score, $playerid, $name, "xlr_pro_bash.gif", $text["mostbash"], $player_list, $fname, $playerids, $flags);  
 }
 
 function pro_medal_sniper_killer()
@@ -466,6 +460,7 @@ function pro_medal_sniper_killer()
       ORDER BY total_kills DESC
       LIMIT 1 ";
 
+
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
@@ -483,16 +478,15 @@ function pro_medal_sniper_killer()
     $flags[] = country_flag($row['ip']);
   }
   
-  if(!isset($playerids, $flags, $players, $scores)) {
+  if(!isset($playerids, $flags)) {
     $playerids = "";
     $flags = "";
-    $players = "";
-    $scores = "";
     }
-  
+
+  @$player_list = array_combine($players, $scores);
   $fname = __FUNCTION__;
 
-  ShowMedal($text["supersniper"], $text["skills"], $score, $playerid, $name, "xlr_pro_sniper.gif", $text["mostsniper"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["supersniper"], $text["skills"], $score, $playerid, $name, "xlr_pro_sniper.gif", $text["mostsniper"], $player_list, $fname, $playerids, $flags);  
 }
 
 function pro_medal_pistol_killer()
@@ -543,16 +537,15 @@ function pro_medal_pistol_killer()
     $flags[] = country_flag($row['ip']);
   }
 
-  if(!isset($playerids, $flags, $players, $scores)) {
+  if(!isset($playerids, $flags)) {
     $playerids = "";
     $flags = "";
-    $players = "";
-    $scores = "";
     }
-  
+
+  @$player_list = array_combine($players, $scores);
   $fname = __FUNCTION__;
 
-  ShowMedal($text["clscombat"], $text["skills"], $score, $playerid, $name, "xlr_pro_pistol.gif", $text["mostpistol"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["clscombat"], $text["skills"], $score, $playerid, $name, "xlr_pro_pistol.gif", $text["mostpistol"], $player_list, $fname, $playerids, $flags);  
 }
 
 function pro_medal_nade_killer()
@@ -602,16 +595,15 @@ function pro_medal_nade_killer()
     $flags[] = country_flag($row['ip']);
   }
   
-  if(!isset($playerids, $flags, $players, $scores)) {
+  if(!isset($playerids, $flags)) {
     $playerids = "";
     $flags = "";
-    $players = "";
-    $scores = "";
     }
-  
+
+  @$player_list = array_combine($players, $scores);
   $fname = __FUNCTION__;
 
-  ShowMedal($text["nadekiller"], $text["nadekill"], $score, $playerid, $name  , "xlr_pro_nade.gif", $text["mostnade"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["nadekiller"], $text["nadekill"], $score, $playerid, $name  , "xlr_pro_nade.gif", $text["mostnade"], $player_list, $fname, $playerids, $flags);  
 }
 
 function pro_medal_remote_bomb_fan()
@@ -661,16 +653,15 @@ function pro_medal_remote_bomb_fan()
     $flags[] = country_flag($row['ip']);
   }
   
-  if(!isset($playerids, $flags, $players, $scores)) {
+  if(!isset($playerids, $flags)) {
     $playerids = "";
     $flags = "";
-    $players = "";
-    $scores = "";
     }
-  
+
+  @$player_list = array_combine($players, $scores);
   $fname = __FUNCTION__;
   
-  ShowMedal($text["remotebomb"], $text["c4kill"], $score, $playerid, $name, "xlr_pro_c4.gif", $text["mostc4"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["remotebomb"], $text["c4kill"], $score, $playerid, $name, "xlr_pro_c4.gif", $text["mostc4"], $player_list, $fname, $playerids, $flags);  
 }   
 
 function pro_medal_surprise_lover()
@@ -720,16 +711,15 @@ function pro_medal_surprise_lover()
     $flags[] = country_flag($row['ip']);
   }
 
-  if(!isset($playerids, $flags, $players, $scores)) {
+  if(!isset($playerids, $flags)) {
     $playerids = "";
     $flags = "";
-    $players = "";
-    $scores = "";
     }
 
+  @$player_list = array_combine($players, $scores);
   $fname = __FUNCTION__;
 
-  ShowMedal($text["surpriselover"], $text["claymorekill"], $score, $playerid, $name, "xlr_pro_claymore.gif", $text["mostclaymore"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["surpriselover"], $text["claymorekill"], $score, $playerid, $name, "xlr_pro_claymore.gif", $text["mostclaymore"], $player_list, $fname, $playerids, $flags);  
 }
 
 function pro_medal_nothing_better_to_do()
@@ -774,16 +764,15 @@ function pro_medal_nothing_better_to_do()
     $flags[] = country_flag($row['ip']);
   }
 
-  if(!isset($playerids, $flags, $players, $scores)) {
+  if(!isset($playerids, $flags)) {
     $playerids = "";
     $flags = "";
-    $players = "";
-    $scores = "";
     }
-  
+
+  @$player_list = array_combine($players, $scores);
   $fname = __FUNCTION__;
 
-  ShowMedal($text["notingbetr"], $text["rounds"], $score, $playerid, $name  , "xlr_pro_rounds.gif", $text["mostround"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["notingbetr"], $text["rounds"], $score, $playerid, $name  , "xlr_pro_rounds.gif", $text["mostround"], $player_list, $fname, $playerids, $flags);  
     
 }
 
@@ -831,16 +820,15 @@ function pro_medal_serial_killer()
     $flags[] = country_flag($row['ip']);
   }
 
-  if(!isset($playerids, $flags, $players, $scores)) {
+  if(!isset($playerids, $flags)) {
     $playerids = "";
     $flags = "";
-    $players = "";
-    $scores = "";
     }
- 
+
+  @$player_list = array_combine($players, $scores);
   $fname = __FUNCTION__;
 
-  ShowMedal($text["serialkiller"], $text["winstrk"], $score, $playerid, $name, "xlr_pro_killstreak.gif", $text["bestwinstrk"], $players, $scores, $fname, $playerids, $flags);
+  ShowMedal($text["serialkiller"], $text["winstrk"], $score, $playerid, $name, "xlr_pro_killstreak.gif", $text["bestwinstrk"], $player_list, $fname, $playerids, $flags);
 
 }
 
@@ -892,19 +880,18 @@ function pro_medal_head_hunter()
     $flags[] = country_flag($row['ip']);
   }
   
-  if(!isset($playerids, $flags, $players, $scores)) {
+  if(!isset($playerids, $flags)) {
     $playerids = "";
     $flags = "";
-    $players = "";
-    $scores = "";
     }
 
+  @$player_list = array_combine($players, $scores);
   $fname = __FUNCTION__;
 
-  ShowMedal($text["headhunter"], $text["pheadshots"], $score, $playerid, $name, "xlr_pro_headshots.gif", $text["mosthdsht"], $players, $scores, $fname, $playerids, $flags);
+  ShowMedal($text["headhunter"], $text["pheadshots"], $score, $playerid, $name, "xlr_pro_headshots.gif", $text["mosthdsht"], $player_list, $fname, $playerids, $flags);
 }
 
-function ShowMedal($MedalName, $ArchieveName, $ArchValue, $PlayerId, $Nick, $MedalPicture, $Description, $PlayerNames, $Scores, $FunctionName, $PlayerListIds, $Country)
+function ShowMedal($MedalName, $ArchieveName, $ArchValue, $PlayerId, $Nick, $MedalPicture, $Description, $PlayerList, $FunctionName, $PlayerListIds, $Country)
 {
   $link = baselink();
   global $game;
@@ -926,7 +913,7 @@ function ShowMedal($MedalName, $ArchieveName, $ArchValue, $PlayerId, $Nick, $Med
     $ArchValue = $text["awardavailable"];
     $ArchieveName = ":";
     $Nick = "";
-    $Scores[] = "";
+    $PlayerList = array();
     $text["owner"] = "";
     $text["score"] = ":";
   }
@@ -985,15 +972,18 @@ function ShowMedal($MedalName, $ArchieveName, $ArchValue, $PlayerId, $Nick, $Med
                         <td align=\"center\">".$text["mdscore"]."</td></tr>
       ";
 
-  for ($i = 0; $i<10; $i++)
+  $a = 0;
+  $b = 0;
+
+  foreach($PlayerList as $Players => $Scores)
   {
-    if(@$Scores[$i] > 0) 
+    if($Scores > 0) 
     {
       echo "<tr class=\"innertable\">
-            <td width=\"50\" align=\"center\">".($i+1)."</td>
-            ".(file_exists($geoip_path."GeoIP.dat") ? "<td width=\"50\" align=\"center\">".$Country[$i]."</td>" : "")."
-            <td align=\"left\"><a href=\"$link?func=player&playerid=".$PlayerListIds[$i]."&config=${currentconfignumber}\" title=\"".$text["seeplayerdetails"]."\">".$PlayerNames[$i]."</td></a>
-            <td align=\"center\">".$Scores[$i]."</td></tr>
+            <td width=\"50\" align=\"center\">".($a+1)."</td>
+            ".(file_exists($geoip_path."GeoIP.dat") ? "<td width=\"50\" align=\"center\">".$Country[$b++]."</td>" : "")."
+            <td align=\"left\"><a href=\"$link?func=player&playerid=".$PlayerListIds[$a++]."&config=${currentconfignumber}\" title=\"".$text["seeplayerdetails"]."\">$Players</td></a>
+            <td align=\"center\">$Scores</td></tr>
             <tr><td colspan=".(file_exists($geoip_path."GeoIP.dat") ? '4' : '3')." class=\"outertable\"><img src=\"images/spacer.gif\" width=\"1\" height=\"1\" alt=\"\"></td></tr>
            ";
     }
@@ -1067,16 +1057,15 @@ function shame_medal_target_no_one()
     $flags[] = country_flag($row['ip']);
   }
   
-  if(!isset($playerids, $flags, $players, $scores)) {
+  if(!isset($playerids, $flags)) {
     $playerids = "";
     $flags = "";
-    $players = "";
-    $scores = "";
     }
- 
+
+  @$player_list = array_combine($players, $scores);
   $fname = __FUNCTION__;
 
-  ShowMedal($text["pwned"], $text["pdeaths"], $score, $playerid, $name, "xlr_shame_deaths.gif", $text["target1"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["pwned"], $text["pdeaths"], $score, $playerid, $name, "xlr_shame_deaths.gif", $text["target1"], $player_list, $fname, $playerids, $flags);  
 }
 
 function shame_medal_most_teamkills()
@@ -1121,16 +1110,15 @@ function shame_medal_most_teamkills()
     $flags[] = country_flag($row['ip']);
   }
 
-  if(!isset($playerids, $flags, $players, $scores)) {
+  if(!isset($playerids, $flags)) {
     $playerids = "";
     $flags = "";
-    $players = "";
-    $scores = "";
     }
 
+  @$player_list = array_combine($players, $scores);
   $fname = __FUNCTION__;
 
-  ShowMedal($text["eyeshot"], $text["pteamkil"], $score, $playerid, $name, "xlr_shame_teamkills.gif", $text["mostteamkill"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["eyeshot"], $text["pteamkil"], $score, $playerid, $name, "xlr_shame_teamkills.gif", $text["mostteamkill"], $player_list, $fname, $playerids, $flags);  
 }
 
 function shame_medal_most_teamdeaths()
@@ -1175,17 +1163,16 @@ function shame_medal_most_teamdeaths()
     $flags[] = country_flag($row['ip']);
   }
 
-  if(!isset($playerids, $flags, $players, $scores)) {
+  if(!isset($playerids, $flags)) {
     $playerids = "";
     $flags = "";
-    $players = "";
-    $scores = "";
     }
- 
+
+  @$player_list = array_combine($players, $scores);
   $fname = __FUNCTION__;
 
   //ShowMedal($MedalName, $ArchieveName, $ArchValue, $PlayerId, $Nick, $MedalPicture, $Description)
-  ShowMedal($text["sendjoey"], $text["pteamdeth"], $score, $playerid, $name, "xlr_shame_teamdeaths.gif", $text["mosteamdeth"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["sendjoey"], $text["pteamdeth"], $score, $playerid, $name, "xlr_shame_teamdeaths.gif", $text["mosteamdeth"], $player_list, $fname, $playerids, $flags);  
 }
 
 function shame_medal_nade_magneto()
@@ -1235,16 +1222,15 @@ function shame_medal_nade_magneto()
     $flags[] = country_flag($row['ip']);
   }
 
-  if(!isset($playerids, $flags, $players, $scores)) {
+  if(!isset($playerids, $flags)) {
     $playerids = "";
     $flags = "";
-    $players = "";
-    $scores = "";
     }
- 
+
+  @$player_list = array_combine($players, $scores);
   $fname = __FUNCTION__;
 
-  ShowMedal($text["mmnades"], $text["nadedeth"], $score, $playerid, $name, "xlr_shame_nade.gif", $text["mostnadeth"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["mmnades"], $text["nadedeth"], $score, $playerid, $name, "xlr_shame_nade.gif", $text["mostnadeth"], $player_list, $fname, $playerids, $flags);  
 }
 
 function shame_medal_need_some_practice()
@@ -1291,16 +1277,15 @@ function shame_medal_need_some_practice()
     $flags[] = country_flag($row['ip']);
   }
 
-  if(!isset($playerids, $flags, $players, $scores)) {
+  if(!isset($playerids, $flags)) {
     $playerids = "";
     $flags = "";
-    $players = "";
-    $scores = "";
     }
- 
+
+  @$player_list = array_combine($players, $scores);
   $fname = __FUNCTION__;
 
-  ShowMedal($text["needpractice"], $text["losstrk"], $score, $playerid, $name , "xlr_shame_loosestreak.gif", $text["highlosstrk"], $players, $scores, $fname, $playerids, $flags);
+  ShowMedal($text["needpractice"], $text["losstrk"], $score, $playerid, $name , "xlr_shame_loosestreak.gif", $text["highlosstrk"], $player_list, $fname, $playerids, $flags);
 }
 
 function shame_medal_def_punchy()
@@ -1350,16 +1335,15 @@ function shame_medal_def_punchy()
     $flags[] = country_flag($row['ip']);
   }
 
-  if(!isset($playerids, $flags, $players, $scores)) {
+  if(!isset($playerids, $flags)) {
     $playerids = "";
     $flags = "";
-    $players = "";
-    $scores = "";
     }
 
+  @$player_list = array_combine($players, $scores);
   $fname = __FUNCTION__;
 
-  ShowMedal($text["punchme"], $text["punchdeath"], $score, $playerid, $name, "xlr_shame_knives.gif", $text["mostpunchyd"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["punchme"], $text["punchdeath"], $score, $playerid, $name, "xlr_shame_knives.gif", $text["mostpunchyd"], $player_list, $fname, $playerids, $flags);  
 }
 
 function shame_medal_def_ballooney()
@@ -1408,16 +1392,15 @@ function shame_medal_def_ballooney()
     $flags[] = country_flag($row['ip']);
   }
   
-  if(!isset($playerids, $flags, $players, $scores)) {
+  if(!isset($playerids, $flags)) {
     $playerids = "";
     $flags = "";
-    $players = "";
-    $scores = "";
     }
- 
+
+  @$player_list = array_combine($players, $scores);
   $fname = __FUNCTION__;
 
-  ShowMedal($text["needbaloon"], $text["balonydeath"], $score, $playerid, $name, "xlr_shame_knives.gif", $text["mostbalondeth"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["needbaloon"], $text["balonydeath"], $score, $playerid, $name, "xlr_shame_knives.gif", $text["mostbalondeth"], $player_list, $fname, $playerids, $flags);  
 }
 
 function shame_medal_def_betty()
@@ -1467,16 +1450,15 @@ function shame_medal_def_betty()
     $flags[] = country_flag($row['ip']);
   }
   
-  if(!isset($playerids, $flags, $players, $scores)) {
+  if(!isset($playerids, $flags)) {
     $playerids = "";
     $flags = "";
-    $players = "";
-    $scores = "";
     }
 
+  @$player_list = array_combine($players, $scores);
   $fname = __FUNCTION__;
 
-  ShowMedal($text["bettytarget"], $text["bettydeath"], $score, $playerid, $name, "xlr_shame_knives.gif", $text["mostbetydeth"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["bettytarget"], $text["bettydeath"], $score, $playerid, $name, "xlr_shame_knives.gif", $text["mostbetydeth"], $player_list, $fname, $playerids, $flags);  
 }
 
 function shame_medal_killerducks()
@@ -1525,16 +1507,15 @@ function shame_medal_killerducks()
     $flags[] = country_flag($row['ip']);
   }
   
-  if(!isset($playerids, $flags, $players, $scores)) {
+  if(!isset($playerids, $flags)) {
     $playerids = "";
     $flags = "";
-    $players = "";
-    $scores = "";
     }
 
+  @$player_list = array_combine($players, $scores);
   $fname = __FUNCTION__;
 
-  ShowMedal($text["ihateducks"], $text["duckdeath"], $score, $playerid, $name, "xlr_shame_knives.gif", $text["mostduckdeth"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["ihateducks"], $text["duckdeath"], $score, $playerid, $name, "xlr_shame_knives.gif", $text["mostduckdeth"], $player_list, $fname, $playerids, $flags);  
 }
 
 function shame_medal_fireman()
@@ -1589,16 +1570,15 @@ function shame_medal_fireman()
       $scores[] = sprintf("%.1f",$row['total_deaths']);
   }
   
-  if(!isset($playerids, $flags, $players, $scores)) {
+  if(!isset($playerids, $flags)) {
     $playerids = "";
     $flags = "";
-    $players = "";
-    $scores = "";
     }
 
+  @$player_list = array_combine($players, $scores);
   $fname = __FUNCTION__;
 
-  ShowMedal($text["mechanic"], $text["vehicledeth"], $score, $playerid, $name, "xlr_shame_vehicle_deaths.gif", $text["mostcardeath"], $players, $scores, $fname, $playerids, $flags);    
+  ShowMedal($text["mechanic"], $text["vehicledeth"], $score, $playerid, $name, "xlr_shame_vehicle_deaths.gif", $text["mostcardeath"], $player_list, $fname, $playerids, $flags);    
 }
 
 function shame_medal_def_knifes()
@@ -1647,16 +1627,15 @@ function shame_medal_def_knifes()
     $flags[] = country_flag($row['ip']);
   }
 
-  if(!isset($playerids, $flags, $players, $scores)) {
+  if(!isset($playerids, $flags)) {
     $playerids = "";
     $flags = "";
-    $players = "";
-    $scores = "";
     }
 
+  @$player_list = array_combine($players, $scores);
   $fname = __FUNCTION__;
 
-  ShowMedal($text["shaveme"], $text["knifedeath"], $score, $playerid, $name, "xlr_shame_knives.gif", $text["mostknifedeth"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["shaveme"], $text["knifedeath"], $score, $playerid, $name, "xlr_shame_knives.gif", $text["mostknifedeth"], $player_list, $fname, $playerids, $flags);  
 }
 
 function shame_medal_def_bashes()
@@ -1705,16 +1684,15 @@ function shame_medal_def_bashes()
     $flags[] = country_flag($row['ip']);
   }
   
-  if(!isset($playerids, $flags, $players, $scores)) {
+  if(!isset($playerids, $flags)) {
     $playerids = "";
     $flags = "";
-    $players = "";
-    $scores = "";
     }
 
+  @$player_list = array_combine($players, $scores);
   $fname = __FUNCTION__;
 
-  ShowMedal($text["hitme"], $text["bashdeath"], $score, $playerid, $name, "xlr_shame_bash.gif", $text["mostbashdeth"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["hitme"], $text["bashdeath"], $score, $playerid, $name, "xlr_shame_bash.gif", $text["mostbashdeth"], $player_list, $fname, $playerids, $flags);  
 }
 
 function shame_medal_sniped()
@@ -1763,16 +1741,15 @@ function shame_medal_sniped()
     $flags[] = country_flag($row['ip']);
   }
 
-  if(!isset($playerids, $flags, $players, $scores)) {
+  if(!isset($playerids, $flags)) {
     $playerids = "";
     $flags = "";
-    $players = "";
-    $scores = "";
     }
 
+  @$player_list = array_combine($players, $scores);
   $fname = __FUNCTION__;
 
-  ShowMedal($text["targtpract"], $text["sniperdeath"], $score, $playerid, $name, "xlr_shame_sniper.gif", $text["mostsniped"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["targtpract"], $text["sniperdeath"], $score, $playerid, $name, "xlr_shame_sniper.gif", $text["mostsniped"], $player_list, $fname, $playerids, $flags);  
 }
 
 function shame_medal_careless()
@@ -1822,16 +1799,15 @@ function shame_medal_careless()
     $flags[] = country_flag($row['ip']);
   }
 
-  if(!isset($playerids, $flags, $players, $scores)) {
+  if(!isset($playerids, $flags)) {
     $playerids = "";
     $flags = "";
-    $players = "";
-    $scores = "";
     }
 
+  @$player_list = array_combine($players, $scores);
   $fname = __FUNCTION__;
 
-  ShowMedal($text["accidenthero"], $text["blindasbat"], $score, $playerid, $name, "xlr_shame_blind.gif", $text["mostaccdeath"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["accidenthero"], $text["blindasbat"], $score, $playerid, $name, "xlr_shame_blind.gif", $text["mostaccdeath"], $player_list, $fname, $playerids, $flags);  
 }
 
 ?>

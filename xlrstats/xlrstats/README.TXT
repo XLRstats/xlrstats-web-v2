@@ -113,6 +113,11 @@ confignumber/server you want to link to)
 Things you need to know:
 ################################################################################
 
+- In the sql directory there are 2 files for creation of the databasetables for
+XLRstats (the plugin). The plugin needs them installed to store the statistics.
+If you don't have them installed yet, run the sql files on the B3 database (or 
+use a program like phpMyAdmin to run the sql queries)
+
 - In the XLRstats database table 'xlr_playerstats' there is a field called
 'hide'. This field set to one prevents a user being displayed on the website.
 Especially usefull for 'WORLD' and BOTS :)
@@ -169,9 +174,10 @@ Contributors
 ################################################################################
 
 * Many code for the website was contributed by Anubis from www.g4g.pl. Also some
-of the medals originate from their communitymember 'Hellwi'. Thanks guys!
+  of the medals originate from their communitymember 'Hellwi'. Thanks guys!
 * Web2 popups and mySQL voodoo provided by Courgette
-* The ratio-bar variations and some templates where made by Freelander[*] 
+* The ratio-bar variations, medal top players pages and some templates where 
+  made by Freelander[*] 
   of the xlr8or community (cod2, cod4a cod5, pardus, urt1, urt2, urt3, urt4)  
 ################################################################################
-xlr8or - 9 january 2009 - www.bigbrotherbot.com // www.xlr8or.com
+xlr8or - 4 april 2009 - www.bigbrotherbot.com // www.xlr8or.com

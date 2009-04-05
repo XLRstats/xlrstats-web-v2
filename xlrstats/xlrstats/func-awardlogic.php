@@ -115,7 +115,7 @@ function pro_medal_punchy_killer()
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
-  $score = sprintf("%.1f",$row['total_kills']);
+  $score = sprintf("%.2f",$row['total_kills']);
   $playerid = $row['id'];
   
   $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
@@ -124,7 +124,7 @@ function pro_medal_punchy_killer()
   {
     $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
     $players[] = $names;
-    $scores[] = sprintf("%.1f",$row['total_kills']);
+    $scores[] = sprintf("%.2f",$row['total_kills']);
     $playerids[] = $row['id'];
     $flags[] = country_flag($row['ip']);
   }
@@ -138,7 +138,7 @@ function pro_medal_punchy_killer()
   
   $fname = __FUNCTION__;
   
-  ShowMedal($text["punchy"], $text["punchykill"], $score, $playerid, $name, "xlr_pro_default.gif", $text["mostpunchy"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["punchy"], $text["punchykill"], $score, $playerid, $name, "xlr_pro_default.png", $text["mostpunchy"], $players, $scores, $fname, $playerids, $flags);  
 }
 
 function pro_medal_ballooney_killer()
@@ -174,7 +174,7 @@ function pro_medal_ballooney_killer()
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
-  $score = sprintf("%.1f",$row['total_kills']);
+  $score = sprintf("%.2f",$row['total_kills']);
   $playerid = $row['id'];
   
   $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
@@ -183,7 +183,7 @@ function pro_medal_ballooney_killer()
   {
     $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
     $players[] = $names;
-    $scores[] = sprintf("%.1f",$row['total_kills']);
+    $scores[] = sprintf("%.2f",$row['total_kills']);
     $playerids[] = $row['id'];
     $flags[] = country_flag($row['ip']);
   }
@@ -197,7 +197,7 @@ function pro_medal_ballooney_killer()
 
   $fname = __FUNCTION__;
 
-  ShowMedal($text["balooney"], $text["balooneykill"], $score, $playerid, $name, "xlr_pro_default.gif", $text["mostbalooney"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["balooney"], $text["balooneykill"], $score, $playerid, $name, "xlr_pro_default.png", $text["mostbalooney"], $players, $scores, $fname, $playerids, $flags);  
 }
 
 function pro_medal_betty_killer()
@@ -233,7 +233,7 @@ function pro_medal_betty_killer()
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
-  $score = sprintf("%.1f",$row['total_kills']);
+  $score = sprintf("%.2f",$row['total_kills']);
   $playerid = $row['id'];
   
   $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
@@ -242,7 +242,7 @@ function pro_medal_betty_killer()
   {
     $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
     $players[] = $names;
-    $scores[] = sprintf("%.1f",$row['total_kills']);
+    $scores[] = sprintf("%.2f",$row['total_kills']);
     $playerids[] = $row['id'];
     $flags[] = country_flag($row['ip']);
   }
@@ -256,7 +256,7 @@ function pro_medal_betty_killer()
 
   $fname = __FUNCTION__;
 
-  ShowMedal($text["betty"], $text["bettykill"], $score, $playerid, $name, "xlr_pro_sniper.gif", $text["mostbetty"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["betty"], $text["bettykill"], $score, $playerid, $name, "xlr_pro_sniper.png", $text["mostbetty"], $players, $scores, $fname, $playerids, $flags);  
 }
 
 function pro_medal_killerducks_killer()
@@ -292,7 +292,7 @@ function pro_medal_killerducks_killer()
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
-  $score = sprintf("%.1f",$row['total_kills']);
+  $score = sprintf("%.2f",$row['total_kills']);
   $playerid = $row['id'];
   
   $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
@@ -301,7 +301,7 @@ function pro_medal_killerducks_killer()
   {
     $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
     $players[] = $names;
-    $scores[] = sprintf("%.1f",$row['total_kills']);
+    $scores[] = sprintf("%.2f",$row['total_kills']);
     $playerids[] = $row['id'];
     $flags[] = country_flag($row['ip']);
   }
@@ -315,7 +315,7 @@ function pro_medal_killerducks_killer()
 
   $fname = __FUNCTION__;
 
-  ShowMedal($text["lazy"], $text["duckkill"], $score, $playerid, $name, "xlr_pro_default.gif", $text["mostlazy"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["lazy"], $text["duckkill"], $score, $playerid, $name, "xlr_pro_default.png", $text["mostlazy"], $players, $scores, $fname, $playerids, $flags);  
 }
 
 function pro_medal_cold_weapon_killer()
@@ -351,7 +351,7 @@ function pro_medal_cold_weapon_killer()
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
-  $score = sprintf("%.1f",$row['total_kills']);
+  $score = sprintf("%.2f",$row['total_kills']);
   $playerid = $row['id'];
   
   $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
@@ -360,7 +360,7 @@ function pro_medal_cold_weapon_killer()
   {
     $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
     $players[] = $names;
-    $scores[] = sprintf("%.1f",$row['total_kills']);
+    $scores[] = sprintf("%.2f",$row['total_kills']);
     $playerids[] = $row['id'];
     $flags[] = country_flag($row['ip']);
   }
@@ -374,7 +374,7 @@ function pro_medal_cold_weapon_killer()
 
   $fname = __FUNCTION__;
 
-  ShowMedal($text["cldweapon"], $text["knifekill"], $score, $playerid, $name, "xlr_pro_knives.gif", $text["mostknife"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["cldweapon"], $text["knifekill"], $score, $playerid, $name, "xlr_pro_knives.png", $text["mostknife"], $players, $scores, $fname, $playerids, $flags);  
 }
 
 function pro_medal_bash_killer()
@@ -410,7 +410,7 @@ function pro_medal_bash_killer()
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
-  $score = sprintf("%.1f",$row['total_kills']);
+  $score = sprintf("%.2f",$row['total_kills']);
   $playerid = $row['id'];
   
   $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
@@ -419,7 +419,7 @@ function pro_medal_bash_killer()
   {
     $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
     $players[] = $names;
-    $scores[] = sprintf("%.1f",$row['total_kills']);
+    $scores[] = sprintf("%.2f",$row['total_kills']);
     $playerids[] = $row['id'];
     $flags[] = country_flag($row['ip']);
   }
@@ -433,7 +433,7 @@ function pro_medal_bash_killer()
  
   $fname = __FUNCTION__;
 
-  ShowMedal($text["bashking"], $text["bashes"], $score, $playerid, $name, "xlr_pro_bash.gif", $text["mostbash"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["bashking"], $text["bashes"], $score, $playerid, $name, "xlr_pro_bash.png", $text["mostbash"], $players, $scores, $fname, $playerids, $flags);  
 }
 
 function pro_medal_sniper_killer()
@@ -469,7 +469,7 @@ function pro_medal_sniper_killer()
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
-  $score = sprintf("%.1f",$row['total_kills']);
+  $score = sprintf("%.2f",$row['total_kills']);
   $playerid = $row['id'];
   
   $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
@@ -478,7 +478,7 @@ function pro_medal_sniper_killer()
   {
     $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
     $players[] = $names;
-    $scores[] = sprintf("%.1f",$row['total_kills']);
+    $scores[] = sprintf("%.2f",$row['total_kills']);
     $playerids[] = $row['id'];
     $flags[] = country_flag($row['ip']);
   }
@@ -492,7 +492,7 @@ function pro_medal_sniper_killer()
   
   $fname = __FUNCTION__;
 
-  ShowMedal($text["supersniper"], $text["skills"], $score, $playerid, $name, "xlr_pro_sniper.gif", $text["mostsniper"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["supersniper"], $text["skills"], $score, $playerid, $name, "xlr_pro_sniper.png", $text["mostsniper"], $players, $scores, $fname, $playerids, $flags);  
 }
 
 function pro_medal_pistol_killer()
@@ -529,7 +529,7 @@ function pro_medal_pistol_killer()
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
-  $score = sprintf("%.1f",$row['total_kills']);
+  $score = sprintf("%.2f",$row['total_kills']);
   $playerid = $row['id'];
 
   $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
@@ -538,7 +538,7 @@ function pro_medal_pistol_killer()
   {
     $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
     $players[] = $names;
-    $scores[] = sprintf("%.1f",$row['total_kills']);
+    $scores[] = sprintf("%.2f",$row['total_kills']);
     $playerids[] = $row['id'];
     $flags[] = country_flag($row['ip']);
   }
@@ -552,7 +552,7 @@ function pro_medal_pistol_killer()
   
   $fname = __FUNCTION__;
 
-  ShowMedal($text["clscombat"], $text["skills"], $score, $playerid, $name, "xlr_pro_pistol.gif", $text["mostpistol"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["clscombat"], $text["skills"], $score, $playerid, $name, "xlr_pro_pistol.png", $text["mostpistol"], $players, $scores, $fname, $playerids, $flags);  
 }
 
 function pro_medal_nade_killer()
@@ -588,7 +588,7 @@ function pro_medal_nade_killer()
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
-  $score = sprintf("%.1f",$row['total_kills']);
+  $score = sprintf("%.2f",$row['total_kills']);
   $playerid = $row['id'];
   
   $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
@@ -597,7 +597,7 @@ function pro_medal_nade_killer()
   {
     $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
     $players[] = $names;
-    $scores[] = sprintf("%.1f",$row['total_kills']);
+    $scores[] = sprintf("%.2f",$row['total_kills']);
     $playerids[] = $row['id'];
     $flags[] = country_flag($row['ip']);
   }
@@ -611,7 +611,7 @@ function pro_medal_nade_killer()
   
   $fname = __FUNCTION__;
 
-  ShowMedal($text["nadekiller"], $text["nadekill"], $score, $playerid, $name  , "xlr_pro_nade.gif", $text["mostnade"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["nadekiller"], $text["nadekill"], $score, $playerid, $name  , "xlr_pro_nade.png", $text["mostnade"], $players, $scores, $fname, $playerids, $flags);  
 }
 
 function pro_medal_remote_bomb_fan()
@@ -647,7 +647,7 @@ function pro_medal_remote_bomb_fan()
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
-  $score = sprintf("%.1f",$row['total_kills']);
+  $score = sprintf("%.2f",$row['total_kills']);
   $playerid = $row['id'];
   
   $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
@@ -656,7 +656,7 @@ function pro_medal_remote_bomb_fan()
   {
     $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
     $players[] = $names;
-    $scores[] = sprintf("%.1f",$row['total_kills']);
+    $scores[] = sprintf("%.2f",$row['total_kills']);
     $playerids[] = $row['id'];
     $flags[] = country_flag($row['ip']);
   }
@@ -670,7 +670,7 @@ function pro_medal_remote_bomb_fan()
   
   $fname = __FUNCTION__;
   
-  ShowMedal($text["remotebomb"], $text["c4kill"], $score, $playerid, $name, "xlr_pro_c4.gif", $text["mostc4"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["remotebomb"], $text["c4kill"], $score, $playerid, $name, "xlr_pro_c4.png", $text["mostc4"], $players, $scores, $fname, $playerids, $flags);  
 }   
 
 function pro_medal_surprise_lover()
@@ -706,7 +706,7 @@ function pro_medal_surprise_lover()
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
-  $score = sprintf("%.1f",$row['total_kills']);
+  $score = sprintf("%.2f",$row['total_kills']);
   $playerid = $row['id'];
   
   $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
@@ -715,7 +715,7 @@ function pro_medal_surprise_lover()
   {
     $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
     $players[] = $names;
-    $scores[] = sprintf("%.1f",$row['total_kills']);
+    $scores[] = sprintf("%.2f",$row['total_kills']);
     $playerids[] = $row['id'];
     $flags[] = country_flag($row['ip']);
   }
@@ -729,7 +729,7 @@ function pro_medal_surprise_lover()
 
   $fname = __FUNCTION__;
 
-  ShowMedal($text["surpriselover"], $text["claymorekill"], $score, $playerid, $name, "xlr_pro_claymore.gif", $text["mostclaymore"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["surpriselover"], $text["claymorekill"], $score, $playerid, $name, "xlr_pro_claymore.png", $text["mostclaymore"], $players, $scores, $fname, $playerids, $flags);  
 }
 
 function pro_medal_nothing_better_to_do()
@@ -783,7 +783,7 @@ function pro_medal_nothing_better_to_do()
   
   $fname = __FUNCTION__;
 
-  ShowMedal($text["notingbetr"], $text["rounds"], $score, $playerid, $name  , "xlr_pro_rounds.gif", $text["mostround"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["notingbetr"], $text["rounds"], $score, $playerid, $name  , "xlr_pro_rounds.png", $text["mostround"], $players, $scores, $fname, $playerids, $flags);  
     
 }
 
@@ -840,7 +840,7 @@ function pro_medal_serial_killer()
  
   $fname = __FUNCTION__;
 
-  ShowMedal($text["serialkiller"], $text["winstrk"], $score, $playerid, $name, "xlr_pro_killstreak.gif", $text["bestwinstrk"], $players, $scores, $fname, $playerids, $flags);
+  ShowMedal($text["serialkiller"], $text["winstrk"], $score, $playerid, $name, "xlr_pro_killstreak.png", $text["bestwinstrk"], $players, $scores, $fname, $playerids, $flags);
 
 }
 
@@ -901,7 +901,7 @@ function pro_medal_head_hunter()
 
   $fname = __FUNCTION__;
 
-  ShowMedal($text["headhunter"], $text["pheadshots"], $score, $playerid, $name, "xlr_pro_headshots.gif", $text["mosthdsht"], $players, $scores, $fname, $playerids, $flags);
+  ShowMedal($text["headhunter"], $text["pheadshots"], $score, $playerid, $name, "xlr_pro_headshots.png", $text["mosthdsht"], $players, $scores, $fname, $playerids, $flags);
 }
 
 function ShowMedal($MedalName, $ArchieveName, $ArchValue, $PlayerId, $Nick, $MedalPicture, $Description, $PlayerNames, $Scores, $FunctionName, $PlayerListIds, $Country)
@@ -965,7 +965,7 @@ function ShowMedal($MedalName, $ArchieveName, $ArchValue, $PlayerId, $Nick, $Med
             <tr class=\"outertable\"><td width=\"50%\"align=\"center\">$MedalName</td><td align=\"center\">".$text["topplayers"]."</td></tr>
             <tr><td>
               <table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"5\" class=\"outertable\">
-                <tr class=\"innertable\"><td width=\"150\" bgcolor=\"#EFEFEF\" rowspan=\"3\" align=\"center\"><img src=\"$MedalSrc\" style=\"filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='$MedalSrc', sizingMethod='scale')\" width=\"128\" height=\"256\" title=\"$MedalName\"></img></td>
+                <tr class=\"innertable\"><td width=\"150\" rowspan=\"3\" align=\"center\"><img src=\"$MedalSrc\" style=\"filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='$MedalSrc', sizingMethod='scale')\" width=\"128\" height=\"256\" title=\"$MedalName\"></img></td>
                 <td valign=\"top\">
                   <table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"innertable\">
                     <tr><td height=\"10px\"><b><br>".$text["owner"]."<a href=\"$link?func=player&playerid=$PlayerId&config=${currentconfignumber}\" title=\"".$text["seeplayerdetails"]."\">$Nick</a></b></td></tr>
@@ -985,7 +985,7 @@ function ShowMedal($MedalName, $ArchieveName, $ArchValue, $PlayerId, $Nick, $Med
                         <td align=\"center\">".$text["mdscore"]."</td></tr>
       ";
 
-  for ($i = 0; $i<10; $i++)
+  for ($i=0; $i<10; $i++)
   {
     if(@$Scores[$i] > 0) 
     {
@@ -1076,7 +1076,7 @@ function shame_medal_target_no_one()
  
   $fname = __FUNCTION__;
 
-  ShowMedal($text["pwned"], $text["pdeaths"], $score, $playerid, $name, "xlr_shame_deaths.gif", $text["target1"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["pwned"], $text["pdeaths"], $score, $playerid, $name, "xlr_shame_deaths.png", $text["target1"], $players, $scores, $fname, $playerids, $flags);  
 }
 
 function shame_medal_most_teamkills()
@@ -1107,7 +1107,7 @@ function shame_medal_most_teamkills()
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
-  $score = sprintf("%.1f",$row['pteamkills']);
+  $score = sprintf("%.2f",$row['pteamkills']);
   $playerid = $row['id'];
   
   $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
@@ -1116,7 +1116,7 @@ function shame_medal_most_teamkills()
   {
     $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
     $players[] = $names;
-    $scores[] = sprintf("%.1f",$row['pteamkills']);
+    $scores[] = sprintf("%.2f",$row['pteamkills']);
     $playerids[] = $row['id'];
     $flags[] = country_flag($row['ip']);
   }
@@ -1130,7 +1130,7 @@ function shame_medal_most_teamkills()
 
   $fname = __FUNCTION__;
 
-  ShowMedal($text["eyeshot"], $text["pteamkil"], $score, $playerid, $name, "xlr_shame_teamkills.gif", $text["mostteamkill"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["eyeshot"], $text["pteamkil"], $score, $playerid, $name, "xlr_shame_teamkills.png", $text["mostteamkill"], $players, $scores, $fname, $playerids, $flags);  
 }
 
 function shame_medal_most_teamdeaths()
@@ -1155,13 +1155,13 @@ function shame_medal_most_teamdeaths()
       OR (${t['players']}.rounds > $minrounds))
       AND (${t['players']}.hide = 0)
       AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-      ORDER BY teamdeaths DESC  
+      ORDER BY pteamdeaths DESC  
       LIMIT 1";
 
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
-  $score = sprintf("%.1f",$row['pteamdeaths']);
+  $score = sprintf("%.2f",$row['pteamdeaths']);
   $playerid = $row['id'];
   
   $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
@@ -1170,7 +1170,7 @@ function shame_medal_most_teamdeaths()
   {
     $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
     $players[] = $names;
-    $scores[] = sprintf("%.1f",$row['pteamdeaths']);
+    $scores[] = sprintf("%.2f",$row['pteamdeaths']);
     $playerids[] = $row['id'];
     $flags[] = country_flag($row['ip']);
   }
@@ -1185,7 +1185,7 @@ function shame_medal_most_teamdeaths()
   $fname = __FUNCTION__;
 
   //ShowMedal($MedalName, $ArchieveName, $ArchValue, $PlayerId, $Nick, $MedalPicture, $Description)
-  ShowMedal($text["sendjoey"], $text["pteamdeth"], $score, $playerid, $name, "xlr_shame_teamdeaths.gif", $text["mosteamdeth"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["sendjoey"], $text["pteamdeth"], $score, $playerid, $name, "xlr_shame_teamdeaths.png", $text["mosteamdeth"], $players, $scores, $fname, $playerids, $flags);  
 }
 
 function shame_medal_nade_magneto()
@@ -1221,7 +1221,7 @@ function shame_medal_nade_magneto()
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['name'];
-  $score = sprintf("%.1f",$row['total_deaths']);
+  $score = sprintf("%.2f",$row['total_deaths']);
   $playerid = $row['id'];
   
   $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
@@ -1230,7 +1230,7 @@ function shame_medal_nade_magneto()
   {
     $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
     $players[] = $names;
-    $scores[] = sprintf("%.1f",$row['total_deaths']);
+    $scores[] = sprintf("%.2f",$row['total_deaths']);
     $playerids[] = $row['id'];
     $flags[] = country_flag($row['ip']);
   }
@@ -1244,7 +1244,7 @@ function shame_medal_nade_magneto()
  
   $fname = __FUNCTION__;
 
-  ShowMedal($text["mmnades"], $text["nadedeth"], $score, $playerid, $name, "xlr_shame_nade.gif", $text["mostnadeth"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["mmnades"], $text["nadedeth"], $score, $playerid, $name, "xlr_shame_nade.png", $text["mostnadeth"], $players, $scores, $fname, $playerids, $flags);  
 }
 
 function shame_medal_need_some_practice()
@@ -1300,7 +1300,7 @@ function shame_medal_need_some_practice()
  
   $fname = __FUNCTION__;
 
-  ShowMedal($text["needpractice"], $text["losstrk"], $score, $playerid, $name , "xlr_shame_loosestreak.gif", $text["highlosstrk"], $players, $scores, $fname, $playerids, $flags);
+  ShowMedal($text["needpractice"], $text["losstrk"], $score, $playerid, $name , "xlr_shame_loosestreak.png", $text["highlosstrk"], $players, $scores, $fname, $playerids, $flags);
 }
 
 function shame_medal_def_punchy()
@@ -1336,7 +1336,7 @@ function shame_medal_def_punchy()
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
-  $score = sprintf("%.1f",$row['total_deaths']);
+  $score = sprintf("%.2f",$row['total_deaths']);
   $playerid = $row['id'];
 
   $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
@@ -1345,7 +1345,7 @@ function shame_medal_def_punchy()
   {
     $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
     $players[] = $names;
-    $scores[] = sprintf("%.1f",$row['total_deaths']);
+    $scores[] = sprintf("%.2f",$row['total_deaths']);
     $playerids[] = $row['id'];
     $flags[] = country_flag($row['ip']);
   }
@@ -1359,7 +1359,7 @@ function shame_medal_def_punchy()
 
   $fname = __FUNCTION__;
 
-  ShowMedal($text["punchme"], $text["punchdeath"], $score, $playerid, $name, "xlr_shame_knives.gif", $text["mostpunchyd"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["punchme"], $text["punchdeath"], $score, $playerid, $name, "xlr_shame_knives.png", $text["mostpunchyd"], $players, $scores, $fname, $playerids, $flags);  
 }
 
 function shame_medal_def_ballooney()
@@ -1394,7 +1394,7 @@ function shame_medal_def_ballooney()
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
-  $score = sprintf("%.1f",$row['total_deaths']);
+  $score = sprintf("%.2f",$row['total_deaths']);
   $playerid = $row['id'];
   
   $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
@@ -1403,7 +1403,7 @@ function shame_medal_def_ballooney()
   {
     $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
     $players[] = $names;
-    $scores[] = sprintf("%.1f",$row['total_deaths']);
+    $scores[] = sprintf("%.2f",$row['total_deaths']);
     $playerids[] = $row['id'];
     $flags[] = country_flag($row['ip']);
   }
@@ -1417,7 +1417,7 @@ function shame_medal_def_ballooney()
  
   $fname = __FUNCTION__;
 
-  ShowMedal($text["needbaloon"], $text["balonydeath"], $score, $playerid, $name, "xlr_shame_knives.gif", $text["mostbalondeth"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["needbaloon"], $text["balonydeath"], $score, $playerid, $name, "xlr_shame_knives.png", $text["mostbalondeth"], $players, $scores, $fname, $playerids, $flags);  
 }
 
 function shame_medal_def_betty()
@@ -1453,7 +1453,7 @@ function shame_medal_def_betty()
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
-  $score = sprintf("%.1f",$row['total_deaths']);
+  $score = sprintf("%.2f",$row['total_deaths']);
   $playerid = $row['id'];
 
   $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
@@ -1462,7 +1462,7 @@ function shame_medal_def_betty()
   {
     $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
     $players[] = $names;
-    $scores[] = sprintf("%.1f",$row['total_deaths']);
+    $scores[] = sprintf("%.2f",$row['total_deaths']);
     $playerids[] = $row['id'];
     $flags[] = country_flag($row['ip']);
   }
@@ -1476,7 +1476,7 @@ function shame_medal_def_betty()
 
   $fname = __FUNCTION__;
 
-  ShowMedal($text["bettytarget"], $text["bettydeath"], $score, $playerid, $name, "xlr_shame_knives.gif", $text["mostbetydeth"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["bettytarget"], $text["bettydeath"], $score, $playerid, $name, "xlr_shame_knives.png", $text["mostbetydeth"], $players, $scores, $fname, $playerids, $flags);  
 }
 
 function shame_medal_killerducks()
@@ -1511,7 +1511,7 @@ function shame_medal_killerducks()
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
-  $score = sprintf("%.1f",$row['total_deaths']);
+  $score = sprintf("%.2f",$row['total_deaths']);
   $playerid = $row['id'];
   
   $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
@@ -1520,7 +1520,7 @@ function shame_medal_killerducks()
   {
     $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
     $players[] = $names;
-    $scores[] = sprintf("%.1f",$row['total_deaths']);
+    $scores[] = sprintf("%.2f",$row['total_deaths']);
     $playerids[] = $row['id'];
     $flags[] = country_flag($row['ip']);
   }
@@ -1534,7 +1534,7 @@ function shame_medal_killerducks()
 
   $fname = __FUNCTION__;
 
-  ShowMedal($text["ihateducks"], $text["duckdeath"], $score, $playerid, $name, "xlr_shame_knives.gif", $text["mostduckdeth"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["ihateducks"], $text["duckdeath"], $score, $playerid, $name, "xlr_shame_knives.png", $text["mostduckdeth"], $players, $scores, $fname, $playerids, $flags);  
 }
 
 function shame_medal_fireman()
@@ -1572,7 +1572,7 @@ function shame_medal_fireman()
   if ($row['total_deaths'] > 0)
     $score = $row['total_deaths'];
   else
-    $score = sprintf("%.1f",$row['total_deaths']);
+    $score = sprintf("%.2f",$row['total_deaths']);
   $playerid = $row['id'];
   
   $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
@@ -1586,7 +1586,7 @@ function shame_medal_fireman()
     if ($row['total_deaths'] > 0)
       $scores[] = $row['total_deaths'];
     else
-      $scores[] = sprintf("%.1f",$row['total_deaths']);
+      $scores[] = sprintf("%.2f",$row['total_deaths']);
   }
   
   if(!isset($playerids, $flags, $players, $scores)) {
@@ -1598,7 +1598,7 @@ function shame_medal_fireman()
 
   $fname = __FUNCTION__;
 
-  ShowMedal($text["mechanic"], $text["vehicledeth"], $score, $playerid, $name, "xlr_shame_vehicle_deaths.gif", $text["mostcardeath"], $players, $scores, $fname, $playerids, $flags);    
+  ShowMedal($text["mechanic"], $text["vehicledeth"], $score, $playerid, $name, "xlr_shame_vehicle_deaths.png", $text["mostcardeath"], $players, $scores, $fname, $playerids, $flags);    
 }
 
 function shame_medal_def_knifes()
@@ -1633,7 +1633,7 @@ function shame_medal_def_knifes()
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
-  $score = sprintf("%.1f",$row['total_deaths']);
+  $score = sprintf("%.2f",$row['total_deaths']);
   $playerid = $row['id'];
   
   $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
@@ -1642,7 +1642,7 @@ function shame_medal_def_knifes()
   {
     $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
     $players[] = $names;
-    $scores[] = sprintf("%.1f",$row['total_deaths']);
+    $scores[] = sprintf("%.2f",$row['total_deaths']);
     $playerids[] = $row['id'];
     $flags[] = country_flag($row['ip']);
   }
@@ -1656,7 +1656,7 @@ function shame_medal_def_knifes()
 
   $fname = __FUNCTION__;
 
-  ShowMedal($text["shaveme"], $text["knifedeath"], $score, $playerid, $name, "xlr_shame_knives.gif", $text["mostknifedeth"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["shaveme"], $text["knifedeath"], $score, $playerid, $name, "xlr_shame_knives.png", $text["mostknifedeth"], $players, $scores, $fname, $playerids, $flags);  
 }
 
 function shame_medal_def_bashes()
@@ -1691,7 +1691,7 @@ function shame_medal_def_bashes()
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
-  $score = sprintf("%.1f",$row['total_deaths']);
+  $score = sprintf("%.2f",$row['total_deaths']);
   $playerid = $row['id'];
   
   $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
@@ -1700,7 +1700,7 @@ function shame_medal_def_bashes()
   {
     $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
     $players[] = $names;
-    $scores[] = sprintf("%.1f",$row['total_deaths']);
+    $scores[] = sprintf("%.2f",$row['total_deaths']);
     $playerids[] = $row['id'];
     $flags[] = country_flag($row['ip']);
   }
@@ -1714,7 +1714,7 @@ function shame_medal_def_bashes()
 
   $fname = __FUNCTION__;
 
-  ShowMedal($text["hitme"], $text["bashdeath"], $score, $playerid, $name, "xlr_shame_bash.gif", $text["mostbashdeth"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["hitme"], $text["bashdeath"], $score, $playerid, $name, "xlr_shame_bash.png", $text["mostbashdeth"], $players, $scores, $fname, $playerids, $flags);  
 }
 
 function shame_medal_sniped()
@@ -1749,7 +1749,7 @@ function shame_medal_sniped()
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
-  $score = sprintf("%.1f",$row['total_deaths']);
+  $score = sprintf("%.2f",$row['total_deaths']);
   $playerid = $row['id'];
 
   $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
@@ -1758,7 +1758,7 @@ function shame_medal_sniped()
   {
     $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
     $players[] = $names;
-    $scores[] = sprintf("%.1f",$row['total_deaths']);
+    $scores[] = sprintf("%.2f",$row['total_deaths']);
     $playerids[] = $row['id'];
     $flags[] = country_flag($row['ip']);
   }
@@ -1772,7 +1772,7 @@ function shame_medal_sniped()
 
   $fname = __FUNCTION__;
 
-  ShowMedal($text["targtpract"], $text["sniperdeath"], $score, $playerid, $name, "xlr_shame_sniper.gif", $text["mostsniped"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["targtpract"], $text["sniperdeath"], $score, $playerid, $name, "xlr_shame_sniper.png", $text["mostsniped"], $players, $scores, $fname, $playerids, $flags);  
 }
 
 function shame_medal_careless()
@@ -1808,7 +1808,7 @@ function shame_medal_careless()
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
-  $score = sprintf("%.1f",$row['total_suicides']);
+  $score = sprintf("%.2f",$row['total_suicides']);
   $playerid = $row['id'];
   
   $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
@@ -1817,7 +1817,7 @@ function shame_medal_careless()
   {
     $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
     $players[] = $names;
-    $scores[] = sprintf("%.1f",$row['total_suicides']);
+    $scores[] = sprintf("%.2f",$row['total_suicides']);
     $playerids[] = $row['id'];
     $flags[] = country_flag($row['ip']);
   }
@@ -1831,7 +1831,7 @@ function shame_medal_careless()
 
   $fname = __FUNCTION__;
 
-  ShowMedal($text["accidenthero"], $text["blindasbat"], $score, $playerid, $name, "xlr_shame_blind.gif", $text["mostaccdeath"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["accidenthero"], $text["blindasbat"], $score, $playerid, $name, "xlr_shame_blind.png", $text["mostaccdeath"], $players, $scores, $fname, $playerids, $flags);  
 }
 
 ?>

@@ -992,7 +992,7 @@ function ShowMedal($MedalName, $ArchieveName, $ArchValue, $PlayerId, $Nick, $Med
       echo "<tr class=\"innertable\">
             <td width=\"50\" align=\"center\">".($i+1)."</td>
             ".(file_exists($geoip_path."GeoIP.dat") ? "<td width=\"50\" align=\"center\">".$Country[$i]."</td>" : "")."
-            <td align=\"left\"><a href=\"$link?func=player&playerid=".$PlayerListIds[$i]."&config=${currentconfignumber}\" title=\"".$text["seeplayerdetails"]."\">".$PlayerNames[$i]."</td></a>
+            <td align=\"left\"><a href=\"$link?func=player&playerid=".$PlayerListIds[$i]."&config=${currentconfignumber}\" title=\"".$text["seeplayerdetails"]."\">".htmlspecialchars(utf2iso($PlayerNames[$i]))."</td></a>
             <td align=\"center\">".$Scores[$i]."</td></tr>
             <tr><td colspan=".(file_exists($geoip_path."GeoIP.dat") ? '4' : '3')." class=\"outertable\"><img src=\"images/spacer.gif\" width=\"1\" height=\"1\" alt=\"\"></td></tr>
            ";

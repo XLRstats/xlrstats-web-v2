@@ -26,73 +26,36 @@
 include("../inc_mysql.php");
 include("../func-globallogic.php");
 
-pageheaders();
+echo "<td width=\"100%\" valign=\"top\"><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"10\">";
+echo "<tr><td align=\"left\" valign=\"top\">";
+
+if (!isset($pop))
+  $pop = 1;
+
+$cpath = abs_pathlink($pop);
+
+error_reporting(0);
+
 //scan available configs and save the appropriate awardfiles
-configscanner($cpath=".");
+configscanner();
 end_process();
 
 //********************************************************************************
 //  FUNCTIONS
 //********************************************************************************
-function pageheaders()
-{
-  // Send the page headers first
-  echo "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">";
-  echo "<html xmlns=\"http://www.w3.org/1999/xhtml\">";
-  echo "<head>";
-  echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\" />";
-  echo "<title>XLRstats installation</title>";
-  echo "<style type=\"text/css\">";
-  echo "<!--";
-  echo "body,td,th {";
-  echo "	font-family: Calibri, Arial, Helvetica, sans-serif;";
-  echo "	color: #FFFFFF;";
-  echo "}";
-  echo "body {";
-  echo "	background-color: #000000;";
-  echo "	margin-left: 15px;";
-  echo "	margin-top: 15px;";
-  echo "}";
-  echo "a:link {";
-  echo "	color: #CCCCCC;";
-  echo "}";
-  echo "a:visited {";
-  echo "	color: #CCCCCC;";
-  echo "}";
-  echo "a:hover {";
-  echo "	color: #FF9900;";
-  echo "}";
-  echo "a:active {";
-  echo "	color: #CCCCCC;";
-  echo "}";
-  echo ".green {";
-  echo "	color: #00FF00;";
-  echo "}";
-  echo ".red {";
-  echo "	color: #FF4F4F;";
-  echo "}";
-  echo "-->";
-  echo "</style>";
-  
-  echo "</head>";
-  echo "\n";
-  echo "<body>";
-  echo "<h1>XLRstats Installation  Stage 3 (of 3)</h1>";
-  echo "<i>(awards identification)</i>";
-  echo "<p>&nbsp;</p>";
-}
 
 function identify_config()
 {
   global $currentconfignumber;
   global $currentconfig;
+  global $cpath;
   // If statsconfig.php exists, we won't enable multiconfig functionality
-  if (file_exists("statsconfig.php"))
+  if (file_exists($cpath."config/statsconfig.php"))
   {
     $currentconfig = "statsconfig.php";
     $currentconfignumber = 0;
   }
-  elseif (file_exists("statsconfig1.php"))
+  elseif (file_exists($cpath."config/statsconfig1.php"))
   {
     $currentconfig = "statsconfig1.php";
     $currentconfignumber = 1;
@@ -119,7 +82,7 @@ function identify_function()
     $func = escape_string($_GET['func']);
 }
 
-function configscanner($cpath=".")
+function configscanner()
 {
   global $currentconfig;
   global $currentconfignumber;
@@ -131,6 +94,7 @@ function configscanner($cpath=".")
   global $filename;
   global $buffer;
   global $t;
+  global $cpath;
 
   $c = true;
   $cnt = 0;
@@ -138,7 +102,7 @@ function configscanner($cpath=".")
   while ($c == true)
   {
     $cnt++;
-    $filename = $cpath."/statsconfig".$cnt.".php";
+    $filename = $cpath."config/statsconfig".$cnt.".php";
     if (file_exists($filename)) $configlist[] = $cnt;
     else $c = false;
   }
@@ -147,9 +111,9 @@ function configscanner($cpath=".")
     foreach  ($configlist as $value)
     {
       $currentconfignumber = $value;
-      $config = $cpath."/statsconfig".$value.".php";
+      $config = $cpath."config/statsconfig".$value.".php";
       include($config);
-      echo "Reading configfile nr. ".$value." (for game: ".$game.")<br />";
+      echo "<p class=\"fontTitle\">Reading configfile nr. ".$value." (for game: ".$game.")</p><br />";
       startbuffer();
       $tfunc = $game."_awards();";
       eval($tfunc);
@@ -160,9 +124,9 @@ function configscanner($cpath=".")
   else
   {
     $currentconfignumber = 0;
-    $config = $cpath."/statsconfig.php";
+    $config = $cpath."config/statsconfig.php";
     include($config);
-    echo "Reading configfile (for game: ".$game.")<br />";
+    echo "<p class=\"fontTitle\">Reading configfile (for game: ".$game.")</p><br />";
     startbuffer();
     $tfunc = $game."_awards();";
     eval($tfunc);
@@ -182,6 +146,7 @@ function startbuffer()
   global $coddb;
   global $filename;
   global $buffer;
+  global $cpath;
   // Open the file
   $buffer = "<?php\n";
   
@@ -193,24 +158,24 @@ function startbuffer()
   $coddb = new sql_db($db_host, $db_user, $db_pass, $db_db, false);
   if(!$coddb->db_connect_id) 
   {
-      die('<p class="red">Could not connect to the database!<br />Did you setup this statsconfig file ('.$currentconfig.') correctly?</p></body></html>');
+      die('<p class="attention">Could not connect to the database!<br />Did you setup this statsconfig file ('.$currentconfig.') correctly?</p></body></html>');
   }
   
   if ($currentconfignumber == 0)
-    $filename = "../dynamic/award_idents.php";
+    $filename = $cpath."dynamic/award_idents.php";
   else
-    $filename = "../dynamic/award_idents_$currentconfignumber.php";
+    $filename = $cpath."dynamic/award_idents_$currentconfignumber.php";
   
   if (!file_exists($filename))
   {
     touch($filename);
     if (!file_exists($filename))
-      die('<p class="red">Could not create the configfile. Make sure your config directory is writable!</p></body></html>');
+      die('<p class="attention">Could not create the configfile. Make sure your config directory is writable!</p></body></html>');
   }
   
   if (!is_writable($filename))
-    die('<p class="red">The file is not writable</p></body></html>');
-  echo "<span class=\"green\">...writing ".$filename."</span><br /><br />";
+    die('<p class="attention">The file is not writable</p></body></html>');
+  echo "<span class=\"precheckOK\">...writing ".$filename."</span><br /><br />";
 }
 
 function closebuffer_write()
@@ -226,12 +191,23 @@ function closebuffer_write()
 
 function end_process()
 {
-  echo "<p class=\"green\"><strong>You're awards have been identified using the current database content.</strong></p>";
-  echo "<p>1.) You may run this file at any time if you feel that certain awards are not good or certain weapons have only recently been used for the first time.<br />"; 
-  echo "Bookmark current URL to rerun this file later.</i></p>";
-  echo "<p>2.) When you're sure all awards are correct and all weapons have been used, delete/move the install directory so it can no longer be called directly.)</p>";
-  echo "<p><a href=\"../\">Click here to return to the frontpage</a></p>";
-  echo "<p><a href=\"http://www.xlr8or.com/\">(made at www.xlr8or.com)</a></p>";
+  echo "<p class=\"precheckOK\"><strong>Your awards have been identified using the current database content.</strong></p>";
+  echo "<p class=\"fontNormal\">1.) You may run \"install_award_idents.php\" file located in \"config\" directory at any time if you feel that certain awards are not good or certain weapons have only recently been used for the first time.<br />"; 
+  //echo "Bookmark current URL to rerun this file later.</i></p>";
+  echo "<p class=\"attention\">2.) When you're sure all awards are correct and all weapons have been used, delete/move the install directory so it can no longer be called directly.)</p>";
+  echo "<p class=\"fontNormal\">Click \"Index\" button to return to the frontpage</p>";
+  echo "<p class=\"fontNormal\"><a href=\"http://www.xlr8or.com/\">(made at www.xlr8or.com)</a></p>";
+  echo "<tr>";
+  echo "<td valign=\"top\"><table width=\"100%\" border=\"0\" cellspacing=\"5\" cellpadding=\"5\">";
+  echo "<tr>";
+  echo "<td>&nbsp;</td>";
+  echo "<td width=\"80\" align=\"center\" valign=\"middle\"><a href=\"../index.php\">";
+  echo "<label>";
+  echo "<input name=\"Next\" type=\"button\" class=\"line1\" id=\"Next\" value=\"Index\" />";
+  echo "</label>";
+  echo "</a></td>";
+  echo "</tr>";
+  echo "</table>";
 }
 
 //********************************************************************************

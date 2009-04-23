@@ -1,0 +1,130 @@
+body {
+	margin: 0;
+	padding: 0;
+  font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: small;
+	color: #000000;
+	background-color:#181818;
+	background-attachment: fixed  ;
+  background-image: url('background.jpg');
+  background-repeat: no-repeat;
+}
+
+
+.attention {
+  background-color: #FBEFEF;
+	font-weight: bold;
+	font-size:12px;
+	color: #FF0000;
+}
+.highlight{
+	background-color: #999999;
+	color: #444444;
+}
+
+
+a.outertable {
+	color: #000000;
+	background-color: #999999;
+	font-weight: normal;
+	text-decoration: underline;
+}
+.outertable {
+	color: #000000;
+	background-color: #999999;
+	font-weight: bold;
+}
+.innertable {
+
+	color: #000000;
+	background-color: #FFFFFF/*#DDDDDD*/;
+	font-weight: normal;
+	font-size:12px;
+}
+
+.main {
+  margin-top: 10;
+  margin-bottom: 10;
+  background-image: url('headerbg.png');
+  color: #FFFFFF;
+	width: 800px;
+	align: center;
+	border: 1px solid #000000;
+}
+
+.header {
+	font-weight: bold;
+	font-size:13px;
+	background-color: darkred;
+	color: #FFFFCC;
+}
+.menuhighlighted {
+	font-size:12px;
+	font-weight: bold;
+	background-color: midnightblue;
+	color: #FFCC33;
+}
+.top {
+	font-weight: bold;
+	background-color: black;
+	color: #DDDDDD;
+}
+
+.version {
+	font-size:12px;
+	color:#FFF;
+	background-color:#000
+}
+
+.fontNormal {font-family: Verdana, Arial, sans-serif;font-size: 11px;}
+
+.fontSmall {font-family: Verdana, Arial, sans-serif;font-size: 9px;}
+.fontTitle {font-family: Arial, sans-serif;font-size: 18px;}
+
+.prechecktable {
+	background-color: #CCCCCC;
+	font: 1.1em Tahoma, Verdana, sans-serif;
+	font-size: 12px;
+	color: #000000;
+}
+
+.precheckOK {
+	background-color: #00FF00;
+	font: 1.1em Tahoma, Verdana, sans-serif;
+	font-size: 12px;
+	color: #333333;
+}
+
+.precheckERROR {
+	background-color: #990000;
+	font: 1.1em Tahoma, Verdana, sans-serif;
+	font-size: 12px;
+	color: #FFFFFF;
+}
+
+.line0
+{
+	height: 45px;
+	font-size: 8pt;
+	color: #000000;
+	background-color: #DDDDDD;
+}
+.line0:hover 
+{ 
+	background-color:#F9F9F9; 
+}
+
+.line1
+{
+	border:1px ridge;
+	width:80px;
+	height:30px;
+	border-color: #CCCCCC #CCCCCC #CCCCCC #CCCCCC;
+	font-size: 8pt;
+	color: #000000;
+	background-color: #EEEEEE;
+}
+.line1:hover 
+{ 
+	background-color:#F9F9F9; 
+}

@@ -23,6 +23,15 @@
  *  http://www.gnu.org/copyleft/gpl.html
  ***************************************************************************/
 
+// Debug mode?
+$debuginstaller = 0;
+if ($debuginstaller == 1)
+  error_reporting(E_ALL);
+else
+  error_reporting(0);
+// End debugger
+
+
 require ('func-installer.php');
 include('../inc_mysql.php');
 
@@ -255,7 +264,7 @@ elseif (isset($step2))
   $coddb = new sql_db($db_host, $db_user, $db_pass, $db_db, false);
   if(!$coddb->db_connect_id || empty($db_host))
     {
-    echo "<td width=\100%\" height=\"200px\"class=\"attention\" valign=\"middle\"><center><font size=\"+1\">Cannot Connect to Database! <br />Plese check your login information and try again!</font><br /><br />";
+    echo "<td width=\100%\" height=\"200px\"class=\"attention\" valign=\"middle\"><center><font size=\"+1\">Cannot Connect to Database! <br />Please check your login information and try again!</font><br /><br />";
     echo "<input name=\"back\" type=\"button\" class=\"line1\" id=\"back\" onClick=\"history.go(-1)\" value=\"Go Back\" /></center></td></tr>";
     }
 
@@ -411,11 +420,11 @@ elseif (isset($step2))
 elseif (isset($step3))
 {
   //Check if status.xml exists. If we'll use GeoIP, check if GeoIP path is correct
-  if(!file_exists($b3_status_url) || $use_geoip == 1 && !file_exists($geoip_path."GeoIP.dat"))
+  if((!($fp = fopen($b3_status_url, "r"))) || ($use_geoip == 1 && !file_exists($geoip_path."GeoIP.dat")))
   {
     echo "<td width=\100%\" height=\"200px\"class=\"attention\" valign=\"middle\"><center><font size=\"+1\">";
 
-    if(!file_exists($b3_status_url))
+    if(!($fp = fopen($b3_status_url, "r")))
       echo "- Can't open status.xml!<br />";
     
     if($use_geoip == 1 && !file_exists($geoip_path."GeoIP.dat"))

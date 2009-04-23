@@ -75,7 +75,6 @@ function install_steps()
   global $step3;
   global $step4;
   global $step5;
-  global $error;
 
   echo "<td class=\"outertable\" width=\"150px\" valign=\"top\"><table width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\">";
   echo "<tr>";
@@ -133,7 +132,7 @@ function install_steps()
   if($step5)
     echo "<td align=\"center\" class=\"menuhighlighted\">Identify Awards</td>";
   else
-    echo "<td align=\"center\" class=\"innertable\">Go to Index Page</td>";
+    echo "<td align=\"center\" class=\"innertable\">Identify Awards</td>";
 
   echo "</tr>";
   echo "</table></td>";

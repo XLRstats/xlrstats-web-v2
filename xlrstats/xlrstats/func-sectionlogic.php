@@ -933,10 +933,19 @@ function player_short_comparison($playerid)
   $cplayer['teamkills'] = $row['teamkills'];
   $cplayer['teamdeaths'] = $row['teamdeaths'];
   $cplayer['suicides'] = $row['suicides'];
-  $cplayer['ip'] = $ip;
-  $cplayer['country'] = $country;
-  $cplayer['flag'] = $flag;
   $cplayer['connections'] = $row['connections'];
+  if (file_exists($geoip_path."GeoIP.dat"))
+  {
+    $cplayer['ip'] = $ip;
+    $cplayer['country'] = $country;
+    $cplayer['flag'] = $flag;
+  }
+  else
+  {
+    $cplayer['ip'] = '';
+    $cplayer['country'] = '';
+    $cplayer['flag'] = '';
+  }
 
 
   if ($use_localtime == 1)

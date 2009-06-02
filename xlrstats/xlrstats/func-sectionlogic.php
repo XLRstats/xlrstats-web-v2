@@ -518,6 +518,39 @@ echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" cla
 //
 //********************************************************************************
 
+function player_rank($playerid, $dbID)
+{
+  $link = baselink();
+  global $coddb;
+  global $separatorline;
+  global $t; // table names from config
+  global $map_minkills;
+  global $map_minrounds;
+
+  if($dbID == false)
+  {
+    $query = "SELECT id, kills, deaths 
+              FROM ${t['players']}
+              WHERE id = $playerid AND hide = 0
+              LIMIT 1";
+  }
+  else 
+  {
+    $query = "SELECT id, kills, deaths 
+              FROM ${t['players']}
+              WHERE client_id = $playerid AND hide = 0
+              LIMIT 1";        
+  }
+  
+  $result = $coddb->sql_query($query);
+  $row = $coddb->sql_fetchrow($result);
+  if ($row == false) return;  // no result given: does not exist or is hidden. Anyway, return whence thou camest!
+    $playerid =  $row['id'];
+
+  $kills = $row['kills'];
+  $deaths = $row['deaths'];
+}
+
 function player_badges($playerid, $dbID = false)
 {
   global $coddb;
@@ -2941,36 +2974,16 @@ echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" cla
     echo "</td></tr></table>";    // Closing extra border-table
 }
 
-function player_rank($playerid, $dbID)
-{
-  $link = baselink();
-  global $coddb;
-  global $separatorline;
-  global $t; // table names from config
-  global $map_minkills;
-  global $map_minrounds;
+//******************************************************************************
+//
+//  Following are all penalty specific functions
+//
+//******************************************************************************
 
-  if($dbID == false)
-  {
-    $query = "SELECT id, kills, deaths 
-              FROM ${t['players']}
-              WHERE id = $playerid AND hide = 0
-              LIMIT 1";
-  }
-  else 
-  {
-    $query = "SELECT id, kills, deaths 
-              FROM ${t['players']}
-              WHERE client_id = $playerid AND hide = 0
-              LIMIT 1";        
-  }
-  
-  $result = $coddb->sql_query($query);
-  $row = $coddb->sql_fetchrow($result);
-  if ($row == false) return;  // no result given: does not exist or is hidden. Anyway, return whence thou camest!
-    $playerid =  $row['id'];
+function toppenalties()
+{}
 
-  $kills = $row['kills'];
-  $deaths = $row['deaths'];
-}
+function player_penalties()
+{}
+
 ?>

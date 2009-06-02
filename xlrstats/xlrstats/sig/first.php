@@ -84,7 +84,8 @@ while ($count <= $player_rank)
   $count += 1;  
 }
 
-$player['rank'] = $count-1;
+$c = $count-1;
+$player['rank'] = "#".$c." - ";
 
 // TEMPLATE
 include( "render.php" );

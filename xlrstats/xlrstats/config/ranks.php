@@ -26,7 +26,6 @@
 //*********************
 // Ranks based on kills
 //*********************
-include ("languages/languages.php");
 
 $rankname[0] = $text["private"];
 $killsneeded[0] = 0;

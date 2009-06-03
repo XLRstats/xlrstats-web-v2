@@ -124,36 +124,56 @@ $icon = imagecreatefromjpeg( GAME_ICON );
 imagecopy( $image, $icon, ($image_width - ($box[2]+5)) - 21, 2, 0, 0, 17, 17 );
 imagedestroy( $icon );
 
+if ($advertising != 0)
+{
 // Stats Box 1
-imagefilledrectangle( $image, 5, 24, 130, 95, $color_stats_shade );
-imagerectangle( $image, 			5, 24, 130, 95, $color_stats_border );
-
-$font = "./fonts/lucon.ttf";
-$font_size = 7;
-$font_spacing = 3;
-$x = 10; $y = 36;
-
-if (is_numeric($player['skill']))
-  $player['skill'] = number_format($player['skill']);
-if (is_numeric($player['kills']))
-  $player['kills'] = number_format($player['kills']);
-if (is_numeric($player['deaths']))
-  $player['deaths'] = number_format($player['deaths']);
-if (is_numeric($player['ratio']))
-  $player['ratio'] = number_format($player['ratio'], 2);
-if (is_numeric($player['winstreak']))
-  $player['winstreak'] = number_format($player['winstreak']);
-if (is_numeric($player['losestreak']))
-  $player['losestreak'] = number_format($player['losestreak']);
-
-write_line( $image, $font_size, 0, $x, $y, $color_stats_text, $font, "Skill: " . $player['skill'], $font_spacing  );
-write_line( $image, $font_size, 0, $x, $y, $color_stats_text, $font, "Kills: " . $player['kills'], $font_spacing  );
-write_line( $image, $font_size, 0, $x, $y, $color_stats_text, $font, "Deaths: " . $player['deaths'], $font_spacing  );
-write_line( $image, $font_size, 0, $x, $y, $color_stats_text, $font, "Ratio: " . $player['ratio'], $font_spacing  );
-write_line( $image, $font_size, 0, $x, $y, $color_stats_text, $font, "Kill Streak: " . $player['winstreak'], $font_spacing  );
-write_line( $image, $font_size, 0, $x, $y, $color_stats_text, $font, "Death Streak: " . $player['losestreak'], $font_spacing  );
-//write_line( $image, $font_size, 0, $x, $y, $color_stats_text, $font, "Connections: " . number_format($player['connections']), $font_spacing  );
-
+  imagefilledrectangle( $image, 5, 24, 190, 95, $color_stats_shade );
+  imagerectangle( $image, 			5, 24, 190, 95, $color_stats_border );
+  
+  $font = "./fonts/lucon.ttf";
+  $font_size = 7;
+  $font_spacing = 3;
+  $x = 10; $y = 36;
+  
+  write_line( $image, $font_size, 0, $x, $y, $color_stats_text, $font, " the REALTIME Stats Generator!", $font_spacing  );
+  write_line( $image, $font_size, 0, $x, $y, $color_stats_text, $font, " ", $font_spacing  );
+  write_line( $image, $font_size, 0, $x, $y, $color_stats_text, $font, "    When you make the Kill", $font_spacing  );
+  write_line( $image, $font_size, 0, $x, $y, $color_stats_text, $font, "   We calculate your Skill!", $font_spacing  );
+  write_line( $image, $font_size, 0, $x, $y, $color_stats_text, $font, " ", $font_spacing  );
+  write_line( $image, 10, 0, $x, $y, $color_stats_text, $font, "  www.xlrstats.com ", $font_spacing  );
+}
+else
+{
+// Stats Box 1
+  imagefilledrectangle( $image, 5, 24, 130, 95, $color_stats_shade );
+  imagerectangle( $image, 			5, 24, 130, 95, $color_stats_border );
+  
+  $font = "./fonts/lucon.ttf";
+  $font_size = 7;
+  $font_spacing = 3;
+  $x = 10; $y = 36;
+  
+  if (is_numeric($player['skill']))
+    $player['skill'] = number_format($player['skill']);
+  if (is_numeric($player['kills']))
+    $player['kills'] = number_format($player['kills']);
+  if (is_numeric($player['deaths']))
+    $player['deaths'] = number_format($player['deaths']);
+  if (is_numeric($player['ratio']))
+    $player['ratio'] = number_format($player['ratio'], 2);
+  if (is_numeric($player['winstreak']))
+    $player['winstreak'] = number_format($player['winstreak']);
+  if (is_numeric($player['losestreak']))
+    $player['losestreak'] = number_format($player['losestreak']);
+  
+  write_line( $image, $font_size, 0, $x, $y, $color_stats_text, $font, "Skill: " . $player['skill'], $font_spacing  );
+  write_line( $image, $font_size, 0, $x, $y, $color_stats_text, $font, "Kills: " . $player['kills'], $font_spacing  );
+  write_line( $image, $font_size, 0, $x, $y, $color_stats_text, $font, "Deaths: " . $player['deaths'], $font_spacing  );
+  write_line( $image, $font_size, 0, $x, $y, $color_stats_text, $font, "Ratio: " . $player['ratio'], $font_spacing  );
+  write_line( $image, $font_size, 0, $x, $y, $color_stats_text, $font, "Kill Streak: " . $player['winstreak'], $font_spacing  );
+  write_line( $image, $font_size, 0, $x, $y, $color_stats_text, $font, "Death Streak: " . $player['losestreak'], $font_spacing  );
+  //write_line( $image, $font_size, 0, $x, $y, $color_stats_text, $font, "Connections: " . number_format($player['connections']), $font_spacing  );
+}
 
 // Hosted by box.
 define( "HOSTED_BY", "XLRstats" );

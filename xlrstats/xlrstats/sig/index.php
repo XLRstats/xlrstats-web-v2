@@ -52,12 +52,14 @@ $player_id = 0;
 $width = 0;
 $height = 0;
 $backdrop_url = "";
+$advertising = 0;
 $color_scheme_id = 0;
 $current_time = time();
 $timelimit = $maxdays*60*60*24;
 
+$advertising = $_GET['adv'];
 // REQUIRED INPUT
-if( !isset($_GET['id']) )	die( "ID not specified." );
+if( !isset($_GET['id']) )	$advertising = 1;
 $player_id  = $_GET['id'];
 
 // OPTIONAL INPUT
@@ -124,22 +126,14 @@ $result2 = $coddb->sql_query($query2);
 $row2 = $coddb->sql_fetchrow($result2);
 $coddb->sql_query("ROLLBACK");
 
-$player['name'] = $player['fixed_name'] ? $player['fixed_name'] : $player['name'];
+if ($player['hide'] == 1 ) $advertising = 1;
+if ($advertising != 0) $player['name'] = "        XLRstats";
+else $player['name'] = $player['fixed_name'] ? $player['fixed_name'] : $player['name'];
 
 if ($player['kills'] <= $minkills)
   $player['skill'] = "Need more kills";
 elseif ($player['rounds'] <= $minrounds )
   $player['skill'] = "Need more rounds";
-elseif ($player['hide'] == 1 )
-  {
-  $player['name'] = "Signature not available";
-  $player['skill'] = "n.a.";
-  $player['kills'] = "n.a."; 
-  $player['deaths'] = "n.a."; 
-  $player['ratio'] = "n.a."; 
-  $player['winstreak'] = "n.a.";
-  $player['losestreak'] = "n.a.";
-  }
 elseif ($current_time - $player['time_edit'] >= $timelimit )
   {
   $player['name'] .= " stats expired";
@@ -152,7 +146,7 @@ elseif ($current_time - $player['time_edit'] >= $timelimit )
   }
 
 
-if ($row2['place'] != "")
+if ($row2['place'] != "" && $advertising == 0)
   $player['rank'] = "#".$row2['place']." - ";
 else
   $player['rank'] = "";

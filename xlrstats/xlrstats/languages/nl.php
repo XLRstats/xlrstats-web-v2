@@ -25,9 +25,9 @@
  
  /**************************************************************************
  * LANGUAGE FILE
- * Language: English - "en"
+ * Language: Dutch - "nl"
  * Created: 12-Feb-2009
- * Last Update: 12-Feb-2009
+ * Last Update: 04-Jun-2009
  ***************************************************************************/
 
 //HTML charset
@@ -199,7 +199,7 @@ $text["playerrankdef"] = "Topskill Ranking is not (yet) available:";
 $text["playerrankdefa"] = " - You have not enough kills yet. You need more than $minkills.";
 $text["playerrankdefb"] = " - You have not played enough rounds yet. You need more than $minrounds.";
 $text["playerrankdefc"] = " - You have not played in the last $maxdays days. You ranking expired.";
-$text["congrats"] = "Congratulations, First place in the topskill ranking! Try to maintain this position!";
+$text["congrats"] = "Congratulations, Eerste place in the topskill ranking! Try to maintain this position!";
 $text["trytobetop"] = "Try to be number one in this ranking!";
 $text["descskill"] = "Skill is based on who you kill with what weapon. Kill higher ranked players for extra skillpoints!";
 $text["descratio"] = "Ratio = Kills / Deaths. Try to get your Ratio above 1!";
@@ -242,7 +242,7 @@ $text["last31days"] = "Connection to the gameserver in the last 31 days";
 $text["favweapused"] = "Favorit weapons used";
 $text["favhitzones"] = "Your favorit hitzones - Body Parts";
 $text["yourmapachiev"] = "Your map achievements";
-$text["currank"] = "Current rank";
+$text["currank"] = "Huidige rang";
 $text["previous"] = "Previous";
 $text["next"] = "Next";
 $text["none"] = "None";
@@ -291,21 +291,21 @@ $text["yourkdratio"] = "Your K/D Ratio";
 $text["whosyourenemy"] = "Who's your worst enemy?";
 
 //RANKS
-$text["private"] = "Private";
-$text["privatefc1"] = "Private First Class I";
-$text["privatefc2"] = "Private First Class II";
-$text["lancecorporal"] = "Lance Corporal";
-$text["lancecorporal1"] = "Lance Corporal I";
-$text["lancecorporal2"] = "Lance Corporal II";
-$text["corporal"] = "Corporal";
-$text["corporal1"] = "Corporal I";
-$text["corporal2"] = "Corporal II";
+$text["private"] = "Soldaat";
+$text["privatefc1"] = "Soldaat Eerste Klasse I";
+$text["privatefc2"] = "Soldaat Eerste Klasse II";
+$text["lancecorporal"] = "Lance Korporaal";
+$text["lancecorporal1"] = "Lance Korporaal I";
+$text["lancecorporal2"] = "Lance Korporaal II";
+$text["corporal"] = "Korporaal";
+$text["corporal1"] = "Korporaal I";
+$text["corporal2"] = "Korporaal II";
 $text["sergeant"] = "Sergeant";
 $text["sergeant1"] = "Sergeant I";
 $text["sergeant2"] = "Sergeant II";
 $text["staffsergeant"] = "Staff Sergeant";
 $text["staffsergeant1"] = "Staff Sergeant I";
-$text["staffsergeant2"] = "Staff Sergeant II";
+$text["staffsergeant2"] = "Staf Sergeant II";
 $text["gunnerysergeant"] = "Gunnery Sergeant";
 $text["gunnerysergeant1"] = "Gunnery Sergeant I";
 $text["gunnerysergeant2"] = "Gunnery Sergeant II";
@@ -315,36 +315,36 @@ $text["mastersergeant2"] = "Master Sergeant II";
 $text["mastergunsgt"] = "Master Gunnery Sergeant";
 $text["mastergunsgt1"] = "Master Gunnery Sergeant I";
 $text["mastergunsgt2"] = "Master Gunnery Sergeant II";
-$text["2ndlieutenant"] = "2nd Lieutenant";
-$text["2ndlieutenant1"] = "2nd Lieutenant I";
-$text["2ndlieutenant2"] = "2nd Lieutenant II";
-$text["1stlieutenant"] = "1st Lieutenant";
-$text["1stlieutenant1"] = "1st Lieutenant I";
-$text["1stlieutenant2"] = "1st Lieutenant II";
+$text["2ndlieutenant"] = "2e Luitenant";
+$text["2ndlieutenant1"] = "2e Luitenant I";
+$text["2ndlieutenant2"] = "2e Luitenant II";
+$text["1stlieutenant"] = "1e Luitenant";
+$text["1stlieutenant1"] = "1e Luitenant I";
+$text["1stlieutenant2"] = "1e Luitenant II";
 $text["captain"] = "Captain";
 $text["captain1"] = "Captain I";
 $text["captain2"] = "Captain II";
-$text["major"] = "Major";
-$text["major1"] = "Major I";
-$text["major2"] = "Major II";
+$text["major"] = "Majoor";
+$text["major1"] = "Majoor I";
+$text["major2"] = "Majoor II";
 $text["ltcolonel"] = "Lt. Colonel";
 $text["ltcolonel1"] = "Lt. Colonel I";
 $text["ltcolonel2"] = "Lt. Colonel II";
 $text["colonel"] = "Colonel";
 $text["colonel1"] = "Colonel I";
 $text["colonel2"] = "Colonel II";
-$text["brigadiergeneral"] = "Brigadier General";
-$text["brigadiergeneral1"] = "Brigadier General I";
-$text["brigadiergeneral2"] = "Brigadier General II";
-$text["majorgeneral"] = "Major General";
-$text["majorgeneral1"] = "Major General I";
-$text["majorgeneral2"] = "Major General II";
-$text["lieutenantgeneral"] = "Lieutenant General";
-$text["lieutenantgeneral1"] = "Lieutenant General I";
-$text["lieutenantgeneral2"] = "Lieutenant General II";
-$text["general"] = "General";
-$text["general1"] = "General I";
-$text["general2"] = "General II";
+$text["brigadiergeneral"] = "Brigadier Generaal";
+$text["brigadiergeneral1"] = "Brigadier Generaal I";
+$text["brigadiergeneral2"] = "Brigadier Generaal II";
+$text["majorgeneral"] = "Majoor Generaal";
+$text["majorgeneral1"] = "Majoor Generaal I";
+$text["majorgeneral2"] = "Majoor Generaal II";
+$text["lieutenantgeneral"] = "Luitenant Generaal";
+$text["lieutenantgeneral1"] = "Luitenant Generaal I";
+$text["lieutenantgeneral2"] = "Luitenant Generaal II";
+$text["general"] = "Generaal";
+$text["general1"] = "Generaal I";
+$text["general2"] = "Generaal II";
 $text["commander"] = "Commander";
 
 //RESET

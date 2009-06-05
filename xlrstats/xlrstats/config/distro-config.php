@@ -145,6 +145,5 @@ $t['playermaps'] = "xlr_playermaps";
 //********************
 include('ranks.php');
 include('awards.php');
-include('./languages/languages.php');
 include($game.'.php');
 ?>

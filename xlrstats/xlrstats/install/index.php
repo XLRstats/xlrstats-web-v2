@@ -733,7 +733,7 @@ elseif (isset($step4))
                         <td>&nbsp;</td>
                         <td width=\"80\" align=\"center\" valign=\"middle\">
                           <label>
-                            <input name=\"newserver\" type=\"button\" class=\"line1\" id=\"newserver\" onClick=\"history.go(-2)\" value=\"New Server\" />
+                            <input name=\"newserver\" type=\"button\" class=\"line1\" id=\"newserver\" onClick=\"history.go(-3)\" value=\"New Server\" />
                           </label>
                         </a></td>
                         <td width=\"80\" align=\"center\" valign=\"middle\">

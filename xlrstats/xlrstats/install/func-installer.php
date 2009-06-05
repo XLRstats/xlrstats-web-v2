@@ -384,8 +384,7 @@ fwrite($fp,
 //********************
 include('ranks.php');
 include('awards.php');
-include('./languages/languages.php');
-include('$game'.'.php');
+include(\$game.'.php');
 ?>
 ");
 

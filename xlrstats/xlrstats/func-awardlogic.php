@@ -96,6 +96,7 @@ function pro_medal_punchy_killer()
   global $maxdays;
   global $wp_punchy;
   global $text;
+  global $exclude_ban;
 
   $current_time = gmdate("U");
 
@@ -107,8 +108,20 @@ function pro_medal_punchy_killer()
       AND ((${t['players']}.kills > $minkills)
       OR (${t['players']}.rounds > $minrounds))
       AND (${t['players']}.hide = 0)
-      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-      GROUP BY ${t['players']}.id
+      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)";
+
+  if ($exclude_ban) {
+    $query .= " AND ${t['b3_clients']}.id NOT IN (
+      SELECT distinct(target.id)
+      FROM ${t['b3_penalties']} as penalties, ${t['b3_clients']} as target
+      WHERE (penalties.type = 'Ban' OR penalties.type = 'TempBan')
+      AND inactive = 0
+      AND penalties.client_id = target.id
+      AND ( penalties.time_expire = -1 OR penalties.time_expire > UNIX_TIMESTAMP(NOW()) )
+    )";
+  }
+
+    $query .= " GROUP BY ${t['players']}.id
       ORDER BY total_kills DESC
       LIMIT 1 ";
 
@@ -155,6 +168,7 @@ function pro_medal_ballooney_killer()
   global $maxdays;
   global $wp_ballooney;
   global $text;
+  global $exclude_ban;
 
   $current_time = gmdate("U");
 
@@ -166,8 +180,20 @@ function pro_medal_ballooney_killer()
       AND ((${t['players']}.kills > $minkills)
       OR (${t['players']}.rounds > $minrounds))
       AND (${t['players']}.hide = 0)
-      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-      GROUP BY ${t['players']}.id
+      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)";
+
+  if ($exclude_ban) {
+    $query .= " AND ${t['b3_clients']}.id NOT IN (
+      SELECT distinct(target.id)
+      FROM ${t['b3_penalties']} as penalties, ${t['b3_clients']} as target
+      WHERE (penalties.type = 'Ban' OR penalties.type = 'TempBan')
+      AND inactive = 0
+      AND penalties.client_id = target.id
+      AND ( penalties.time_expire = -1 OR penalties.time_expire > UNIX_TIMESTAMP(NOW()) )
+    )";
+  }
+
+  $query .= " GROUP BY ${t['players']}.id
       ORDER BY total_kills DESC
       LIMIT 1 ";
 
@@ -214,6 +240,7 @@ function pro_medal_betty_killer()
   global $maxdays;
   global $wp_betty;
   global $text;
+  global $exclude_ban;
 
   $current_time = gmdate("U");
 
@@ -225,8 +252,20 @@ function pro_medal_betty_killer()
       AND ((${t['players']}.kills > $minkills)
       OR (${t['players']}.rounds > $minrounds))
       AND (${t['players']}.hide = 0)
-      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-      GROUP BY ${t['players']}.id
+      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)";
+
+  if ($exclude_ban) {
+    $query .= " AND ${t['b3_clients']}.id NOT IN (
+      SELECT distinct(target.id)
+      FROM ${t['b3_penalties']} as penalties, ${t['b3_clients']} as target
+      WHERE (penalties.type = 'Ban' OR penalties.type = 'TempBan')
+      AND inactive = 0
+      AND penalties.client_id = target.id
+      AND ( penalties.time_expire = -1 OR penalties.time_expire > UNIX_TIMESTAMP(NOW()) )
+    )";
+  }
+
+  $query .= " GROUP BY ${t['players']}.id
       ORDER BY total_kills DESC
       LIMIT 1 ";
 
@@ -273,6 +312,7 @@ function pro_medal_killerducks_killer()
   global $maxdays;
   global $wp_killerducks;
   global $text;
+  global $exclude_ban;
 
   $current_time = gmdate("U");
 
@@ -284,8 +324,20 @@ function pro_medal_killerducks_killer()
       AND ((${t['players']}.kills > $minkills)
       OR (${t['players']}.rounds > $minrounds))
       AND (${t['players']}.hide = 0)
-      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-      GROUP BY ${t['players']}.id
+      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)";
+
+  if ($exclude_ban) {
+    $query .= " AND ${t['b3_clients']}.id NOT IN (
+      SELECT distinct(target.id)
+      FROM ${t['b3_penalties']} as penalties, ${t['b3_clients']} as target
+      WHERE (penalties.type = 'Ban' OR penalties.type = 'TempBan')
+      AND inactive = 0
+      AND penalties.client_id = target.id
+      AND ( penalties.time_expire = -1 OR penalties.time_expire > UNIX_TIMESTAMP(NOW()) )
+    )";
+  }
+
+  $query .= " GROUP BY ${t['players']}.id
       ORDER BY total_kills DESC
       LIMIT 1 ";
 
@@ -332,6 +384,7 @@ function pro_medal_cold_weapon_killer()
   global $maxdays;
   global $wp_knives;
   global $text;
+  global $exclude_ban;
 
   $current_time = gmdate("U");
 
@@ -343,8 +396,20 @@ function pro_medal_cold_weapon_killer()
       AND ((${t['players']}.kills > $minkills)
       OR (${t['players']}.rounds > $minrounds))
       AND (${t['players']}.hide = 0)
-      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-      GROUP BY ${t['players']}.id
+      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)";
+
+  if ($exclude_ban) {
+    $query .= " AND ${t['b3_clients']}.id NOT IN (
+      SELECT distinct(target.id)
+      FROM ${t['b3_penalties']} as penalties, ${t['b3_clients']} as target
+      WHERE (penalties.type = 'Ban' OR penalties.type = 'TempBan')
+      AND inactive = 0
+      AND penalties.client_id = target.id
+      AND ( penalties.time_expire = -1 OR penalties.time_expire > UNIX_TIMESTAMP(NOW()) )
+    )";
+  }
+
+  $query .= " GROUP BY ${t['players']}.id
       ORDER BY total_kills DESC
       LIMIT 1 ";
 
@@ -391,6 +456,7 @@ function pro_medal_bash_killer()
   global $maxdays;
   global $wp_bashes;
   global $text;
+  global $exclude_ban;
 
   $current_time = gmdate("U");
 
@@ -402,8 +468,20 @@ function pro_medal_bash_killer()
       AND ((${t['players']}.kills > $minkills)
       OR (${t['players']}.rounds > $minrounds))
       AND (${t['players']}.hide = 0)
-      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-      GROUP BY ${t['players']}.id
+      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)";
+
+  if ($exclude_ban) {
+    $query .= " AND ${t['b3_clients']}.id NOT IN (
+      SELECT distinct(target.id)
+      FROM ${t['b3_penalties']} as penalties, ${t['b3_clients']} as target
+      WHERE (penalties.type = 'Ban' OR penalties.type = 'TempBan')
+      AND inactive = 0
+      AND penalties.client_id = target.id
+      AND ( penalties.time_expire = -1 OR penalties.time_expire > UNIX_TIMESTAMP(NOW()) )
+    )";
+  }
+
+  $query .= " GROUP BY ${t['players']}.id
       ORDER BY total_kills DESC
       LIMIT 1 ";
 
@@ -450,6 +528,7 @@ function pro_medal_sniper_killer()
   global $maxdays;
   global $wp_snipers;
   global $text;
+  global $exclude_ban;
 
   $current_time = gmdate("U");
 
@@ -461,8 +540,20 @@ function pro_medal_sniper_killer()
       AND ((${t['players']}.kills > $minkills)
       OR (${t['players']}.rounds > $minrounds))
       AND (${t['players']}.hide = 0)
-      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-      GROUP BY ${t['players']}.id
+      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)";
+
+  if ($exclude_ban) {
+    $query .= " AND ${t['b3_clients']}.id NOT IN (
+      SELECT distinct(target.id)
+      FROM ${t['b3_penalties']} as penalties, ${t['b3_clients']} as target
+      WHERE (penalties.type = 'Ban' OR penalties.type = 'TempBan')
+      AND inactive = 0
+      AND penalties.client_id = target.id
+      AND ( penalties.time_expire = -1 OR penalties.time_expire > UNIX_TIMESTAMP(NOW()) )
+    )";
+  }
+
+  $query .= " GROUP BY ${t['players']}.id
       ORDER BY total_kills DESC
       LIMIT 1 ";
 
@@ -509,6 +600,7 @@ function pro_medal_pistol_killer()
   global $maxdays;
   global $wp_pistols;
   global $text;
+  global $exclude_ban;
 
   $current_time = gmdate("U");
 
@@ -520,8 +612,20 @@ function pro_medal_pistol_killer()
       AND ((${t['players']}.kills > $minkills)
       OR (${t['players']}.rounds > $minrounds))
       AND (${t['players']}.hide = 0)
-      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-      GROUP BY ${t['players']}.id
+      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)";
+
+  if ($exclude_ban) {
+    $query .= " AND ${t['b3_clients']}.id NOT IN (
+      SELECT distinct(target.id)
+      FROM ${t['b3_penalties']} as penalties, ${t['b3_clients']} as target
+      WHERE (penalties.type = 'Ban' OR penalties.type = 'TempBan')
+      AND inactive = 0
+      AND penalties.client_id = target.id
+      AND ( penalties.time_expire = -1 OR penalties.time_expire > UNIX_TIMESTAMP(NOW()) )
+    )";
+  }
+
+  $query .= " GROUP BY ${t['players']}.id
       ORDER BY total_kills DESC
       LIMIT 1 ";
 
@@ -569,6 +673,7 @@ function pro_medal_nade_killer()
   global $maxdays;
   global $wp_nades;
   global $text;
+  global $exclude_ban;
 
   $current_time = gmdate("U");
 
@@ -580,8 +685,20 @@ function pro_medal_nade_killer()
       AND ((${t['players']}.kills > $minkills)
       OR (${t['players']}.rounds > $minrounds))
       AND (${t['players']}.hide = 0)
-      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-      GROUP BY ${t['players']}.id
+      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)";
+
+  if ($exclude_ban) {
+    $query .= " AND ${t['b3_clients']}.id NOT IN (
+      SELECT distinct(target.id)
+      FROM ${t['b3_penalties']} as penalties, ${t['b3_clients']} as target
+      WHERE (penalties.type = 'Ban' OR penalties.type = 'TempBan')
+      AND inactive = 0
+      AND penalties.client_id = target.id
+      AND ( penalties.time_expire = -1 OR penalties.time_expire > UNIX_TIMESTAMP(NOW()) )
+    )";
+  }
+
+  $query .= " GROUP BY ${t['players']}.id
       ORDER BY total_kills DESC
       LIMIT 1 ";
 
@@ -628,6 +745,7 @@ function pro_medal_remote_bomb_fan()
   global $maxdays;
   global $wp_bomb;
   global $text;
+  global $exclude_ban;
 
   $current_time = gmdate("U");
 
@@ -639,8 +757,20 @@ function pro_medal_remote_bomb_fan()
       AND ((${t['players']}.kills > $minkills)
       OR (${t['players']}.rounds > $minrounds))
       AND (${t['players']}.hide = 0)
-      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-      GROUP BY ${t['players']}.id
+      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)";
+
+  if ($exclude_ban) {
+    $query .= " AND ${t['b3_clients']}.id NOT IN (
+      SELECT distinct(target.id)
+      FROM ${t['b3_penalties']} as penalties, ${t['b3_clients']} as target
+      WHERE (penalties.type = 'Ban' OR penalties.type = 'TempBan')
+      AND inactive = 0
+      AND penalties.client_id = target.id
+      AND ( penalties.time_expire = -1 OR penalties.time_expire > UNIX_TIMESTAMP(NOW()) )
+    )";
+  }
+
+  $query .= " GROUP BY ${t['players']}.id
       ORDER BY total_kills DESC
       LIMIT 1 ";
 
@@ -687,6 +817,7 @@ function pro_medal_surprise_lover()
   global $maxdays;
   global $wp_claymore;
   global $text;
+  global $exclude_ban;
 
   $current_time = gmdate("U");
 
@@ -698,8 +829,20 @@ function pro_medal_surprise_lover()
           AND ((${t['players']}.kills > $minkills)
           OR (${t['players']}.rounds > $minrounds))
           AND (${t['players']}.hide = 0)
-          AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-          GROUP BY ${t['players']}.id
+          AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)";
+
+    if ($exclude_ban) {
+      $query .= " AND ${t['b3_clients']}.id NOT IN (
+          SELECT distinct(target.id)
+          FROM ${t['b3_penalties']} as penalties, ${t['b3_clients']} as target
+          WHERE (penalties.type = 'Ban' OR penalties.type = 'TempBan')
+          AND inactive = 0
+          AND penalties.client_id = target.id
+          AND ( penalties.time_expire = -1 OR penalties.time_expire > UNIX_TIMESTAMP(NOW()) )
+        )";
+      }
+
+  $query .= " GROUP BY ${t['players']}.id
           ORDER BY total_kills DESC
           LIMIT 1 ";
 
@@ -745,6 +888,7 @@ function pro_medal_nothing_better_to_do()
   global $maxdays;
   global $minrounds;
   global $text;
+  global $exclude_ban;
 
   $current_time = gmdate("U");
 
@@ -754,8 +898,20 @@ function pro_medal_nothing_better_to_do()
       AND ((${t['players']}.kills > $minkills)
       OR (${t['players']}.rounds > $minrounds))
       AND (${t['players']}.hide = 0)
-      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-      ORDER BY rounds DESC
+      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)";
+
+  if ($exclude_ban) {
+    $query .= " AND ${t['b3_clients']}.id NOT IN (
+      SELECT distinct(target.id)
+      FROM ${t['b3_penalties']} as penalties, ${t['b3_clients']} as target
+      WHERE (penalties.type = 'Ban' OR penalties.type = 'TempBan')
+      AND inactive = 0
+      AND penalties.client_id = target.id
+      AND ( penalties.time_expire = -1 OR penalties.time_expire > UNIX_TIMESTAMP(NOW()) )
+    )";
+  }
+
+  $query .= " ORDER BY rounds DESC
       LIMIT 1";
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);     
@@ -800,6 +956,7 @@ function pro_medal_serial_killer()
   global $maxdays;
   global $minrounds;
   global $text;
+  global $exclude_ban;
 
   $current_time = gmdate("U");
 
@@ -809,8 +966,20 @@ function pro_medal_serial_killer()
       AND ((${t['players']}.kills > $minkills)
       OR (${t['players']}.rounds > $minrounds))
       AND (${t['players']}.hide = 0)
-      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-      ORDER BY winstreak DESC, rounds ASC
+      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)";
+
+  if ($exclude_ban) {
+    $query .= " AND ${t['b3_clients']}.id NOT IN (
+      SELECT distinct(target.id)
+      FROM ${t['b3_penalties']} as penalties, ${t['b3_clients']} as target
+      WHERE (penalties.type = 'Ban' OR penalties.type = 'TempBan')
+      AND inactive = 0
+      AND penalties.client_id = target.id
+      AND ( penalties.time_expire = -1 OR penalties.time_expire > UNIX_TIMESTAMP(NOW()) )
+    )";
+  }
+
+  $query .= " ORDER BY winstreak DESC, rounds ASC
       LIMIT 1";
 
 
@@ -858,6 +1027,7 @@ function pro_medal_head_hunter()
   global $maxdays;
   global $bp_head;
   global $text;
+  global $exclude_ban;
 
   $current_time = gmdate("U");
 
@@ -869,11 +1039,22 @@ function pro_medal_head_hunter()
       AND ((${t['players']}.kills > $minkills)
       OR (${t['players']}.rounds > $minrounds))
       AND (${t['players']}.hide = 0)
-      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-      GROUP BY ${t['players']}.id
+      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)";
+
+  if ($exclude_ban) {
+    $query .= " AND ${t['b3_clients']}.id NOT IN (
+      SELECT distinct(target.id)
+      FROM ${t['b3_penalties']} as penalties, ${t['b3_clients']} as target
+      WHERE (penalties.type = 'Ban' OR penalties.type = 'TempBan')
+      AND inactive = 0
+      AND penalties.client_id = target.id
+      AND ( penalties.time_expire = -1 OR penalties.time_expire > UNIX_TIMESTAMP(NOW()) )
+    )";
+  }
+
+  $query .= "GROUP BY ${t['players']}.id
       ORDER BY total_kills DESC
       LIMIT 1 ";
-
 
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
@@ -1038,6 +1219,7 @@ function shame_medal_target_no_one()
   global $minkills;
   global $minrounds;
   global $text;
+  global $exclude_ban;
   $current_time = gmdate("U");
 
   $query = "SELECT ${t['b3_clients']}.name, ${t['b3_clients']}.time_edit, ${t['players']}.id, ip, kills,  (deaths / ${t['players']}.rounds) AS pdeaths, fixed_name
@@ -1046,8 +1228,20 @@ function shame_medal_target_no_one()
       AND ((${t['players']}.kills > $minkills)
       OR (${t['players']}.rounds > $minrounds))
       AND (${t['players']}.hide = 0)
-      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-      ORDER BY pdeaths DESC  
+      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)";
+
+  if ($exclude_ban) {
+    $query .= " AND ${t['b3_clients']}.id NOT IN (
+      SELECT distinct(target.id)
+      FROM ${t['b3_penalties']} as penalties, ${t['b3_clients']} as target
+      WHERE (penalties.type = 'Ban' OR penalties.type = 'TempBan')
+      AND inactive = 0
+      AND penalties.client_id = target.id
+      AND ( penalties.time_expire = -1 OR penalties.time_expire > UNIX_TIMESTAMP(NOW()) )
+    )";
+  }
+
+    $query .= " ORDER BY pdeaths DESC
       LIMIT 1";
 
   $result = $coddb->sql_query($query);
@@ -1092,6 +1286,7 @@ function shame_medal_most_teamkills()
   global $minkills;
   global $minrounds;
   global $text;
+  global $exclude_ban;
   $current_time = gmdate("U");
 
   $query = "SELECT ${t['b3_clients']}.name, ${t['b3_clients']}.time_edit, ${t['players']}.id, ip, kills,  (teamkills / ${t['players']}.rounds) AS pteamkills , fixed_name
@@ -1100,8 +1295,20 @@ function shame_medal_most_teamkills()
       AND ((${t['players']}.kills > $minkills)
       OR (${t['players']}.rounds > $minrounds))
       AND (${t['players']}.hide = 0)
-      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-      ORDER BY pteamkills DESC  
+      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)";
+
+  if ($exclude_ban) {
+    $query .= " AND ${t['b3_clients']}.id NOT IN (
+      SELECT distinct(target.id)
+      FROM ${t['b3_penalties']} as penalties, ${t['b3_clients']} as target
+      WHERE (penalties.type = 'Ban' OR penalties.type = 'TempBan')
+      AND inactive = 0
+      AND penalties.client_id = target.id
+      AND ( penalties.time_expire = -1 OR penalties.time_expire > UNIX_TIMESTAMP(NOW()) )
+    )";
+  }
+
+    $query .= " ORDER BY pteamkills DESC
       LIMIT 1";
 
   $result = $coddb->sql_query($query);
@@ -1146,6 +1353,7 @@ function shame_medal_most_teamdeaths()
   global $minkills;
   global $minrounds;
   global $text;
+  global $exclude_ban;
   $current_time = gmdate("U");
 
   $query = "SELECT ${t['b3_clients']}.name, ${t['b3_clients']}.time_edit, ${t['players']}.id, ip, kills, (teamdeaths / ${t['players']}.rounds) AS pteamdeaths, fixed_name
@@ -1154,8 +1362,20 @@ function shame_medal_most_teamdeaths()
       AND ((${t['players']}.kills > $minkills)
       OR (${t['players']}.rounds > $minrounds))
       AND (${t['players']}.hide = 0)
-      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-      ORDER BY pteamdeaths DESC  
+      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)";
+
+  if ($exclude_ban) {
+    $query .= " AND ${t['b3_clients']}.id NOT IN (
+      SELECT distinct(target.id)
+      FROM ${t['b3_penalties']} as penalties, ${t['b3_clients']} as target
+      WHERE (penalties.type = 'Ban' OR penalties.type = 'TempBan')
+      AND inactive = 0
+      AND penalties.client_id = target.id
+      AND ( penalties.time_expire = -1 OR penalties.time_expire > UNIX_TIMESTAMP(NOW()) )
+    )";
+  }
+
+    $query .= " ORDER BY pteamdeaths DESC
       LIMIT 1";
 
   $result = $coddb->sql_query($query);
@@ -1202,6 +1422,7 @@ function shame_medal_nade_magneto()
   global $minrounds;
   global $wp_nades;
   global $text;
+  global $exclude_ban;
 
   $current_time = gmdate("U");
 
@@ -1213,8 +1434,20 @@ function shame_medal_nade_magneto()
       AND ((${t['players']}.kills > $minkills)
       OR (${t['players']}.rounds > $minrounds))
       AND (${t['players']}.hide = 0)
-      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-      GROUP BY ${t['players']}.id
+      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)";
+
+  if ($exclude_ban) {
+    $query .= " AND ${t['b3_clients']}.id NOT IN (
+      SELECT distinct(target.id)
+      FROM ${t['b3_penalties']} as penalties, ${t['b3_clients']} as target
+      WHERE (penalties.type = 'Ban' OR penalties.type = 'TempBan')
+      AND inactive = 0
+      AND penalties.client_id = target.id
+      AND ( penalties.time_expire = -1 OR penalties.time_expire > UNIX_TIMESTAMP(NOW()) )
+    )";
+  }
+
+  $query .= " GROUP BY ${t['players']}.id
       ORDER BY total_deaths DESC
       LIMIT 1 ";  
 
@@ -1260,6 +1493,7 @@ function shame_medal_need_some_practice()
   global $minrounds;
   global $maxdays;
   global $text;
+  global $exclude_ban;
   $current_time = gmdate("U");
 
 
@@ -1269,8 +1503,20 @@ function shame_medal_need_some_practice()
       AND ((${t['players']}.kills > $minkills)
       OR (${t['players']}.rounds > $minrounds))
       AND (${t['players']}.hide = 0)
-      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-      ORDER BY losestreak ASC, rounds ASC
+      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)";
+
+  if ($exclude_ban) {
+    $query .= " AND ${t['b3_clients']}.id NOT IN (
+      SELECT distinct(target.id)
+      FROM ${t['b3_penalties']} as penalties, ${t['b3_clients']} as target
+      WHERE (penalties.type = 'Ban' OR penalties.type = 'TempBan')
+      AND inactive = 0
+      AND penalties.client_id = target.id
+      AND ( penalties.time_expire = -1 OR penalties.time_expire > UNIX_TIMESTAMP(NOW()) )
+    )";
+  }
+
+  $query .= " ORDER BY losestreak ASC, rounds ASC
       LIMIT 1";
 
 
@@ -1317,6 +1563,7 @@ function shame_medal_def_punchy()
   global $minrounds;
   global $wp_punchy;
   global $text;
+  global $exclude_ban;
   $current_time = gmdate("U");
 
 
@@ -1328,8 +1575,20 @@ function shame_medal_def_punchy()
       AND ((${t['players']}.kills > $minkills)
       OR (${t['players']}.rounds > $minrounds))
       AND (${t['players']}.hide = 0)
-      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-      GROUP BY ${t['players']}.id
+      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)";
+
+  if ($exclude_ban) {
+    $query .= " AND ${t['b3_clients']}.id NOT IN (
+      SELECT distinct(target.id)
+      FROM ${t['b3_penalties']} as penalties, ${t['b3_clients']} as target
+      WHERE (penalties.type = 'Ban' OR penalties.type = 'TempBan')
+      AND inactive = 0
+      AND penalties.client_id = target.id
+      AND ( penalties.time_expire = -1 OR penalties.time_expire > UNIX_TIMESTAMP(NOW()) )
+    )";
+  }
+
+  $query .= " GROUP BY ${t['players']}.id
       ORDER BY total_deaths DESC
       LIMIT 1 ";
 
@@ -1376,6 +1635,7 @@ function shame_medal_def_ballooney()
   global $minrounds;
   global $wp_ballooney;
   global $text;
+  global $exclude_ban;
   $current_time = gmdate("U");
 
   $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.deaths) / ${t['players']}.rounds) AS total_deaths
@@ -1386,8 +1646,20 @@ function shame_medal_def_ballooney()
       AND ((${t['players']}.kills > $minkills)
       OR (${t['players']}.rounds > $minrounds))
       AND (${t['players']}.hide = 0)
-      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-      GROUP BY ${t['players']}.id
+      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)";
+
+  if ($exclude_ban) {
+    $query .= " AND ${t['b3_clients']}.id NOT IN (
+      SELECT distinct(target.id)
+      FROM ${t['b3_penalties']} as penalties, ${t['b3_clients']} as target
+      WHERE (penalties.type = 'Ban' OR penalties.type = 'TempBan')
+      AND inactive = 0
+      AND penalties.client_id = target.id
+      AND ( penalties.time_expire = -1 OR penalties.time_expire > UNIX_TIMESTAMP(NOW()) )
+    )";
+  }
+
+  $query .= " GROUP BY ${t['players']}.id
       ORDER BY total_deaths DESC
       LIMIT 1 ";
 
@@ -1434,6 +1706,7 @@ function shame_medal_def_betty()
   global $minrounds;
   global $wp_betty;
   global $text;
+  global $exclude_ban;
   $current_time = gmdate("U");
 
 
@@ -1445,8 +1718,20 @@ function shame_medal_def_betty()
       AND ((${t['players']}.kills > $minkills)
       OR (${t['players']}.rounds > $minrounds))
       AND (${t['players']}.hide = 0)
-      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-      GROUP BY ${t['players']}.id
+      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)";
+
+  if ($exclude_ban) {
+    $query .= " AND ${t['b3_clients']}.id NOT IN (
+      SELECT distinct(target.id)
+      FROM ${t['b3_penalties']} as penalties, ${t['b3_clients']} as target
+      WHERE (penalties.type = 'Ban' OR penalties.type = 'TempBan')
+      AND inactive = 0
+      AND penalties.client_id = target.id
+      AND ( penalties.time_expire = -1 OR penalties.time_expire > UNIX_TIMESTAMP(NOW()) )
+    )";
+  }
+
+  $query .= " GROUP BY ${t['players']}.id
       ORDER BY total_deaths DESC
       LIMIT 1 ";
 
@@ -1493,6 +1778,7 @@ function shame_medal_killerducks()
   global $minrounds;
   global $wp_killerducks;
   global $text;
+  global $exclude_ban;
   $current_time = gmdate("U");
 
   $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.deaths) / ${t['players']}.rounds) AS total_deaths
@@ -1503,8 +1789,20 @@ function shame_medal_killerducks()
       AND ((${t['players']}.kills > $minkills)
       OR (${t['players']}.rounds > $minrounds))
       AND (${t['players']}.hide = 0)
-      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-      GROUP BY ${t['players']}.id
+      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)";
+
+  if ($exclude_ban) {
+    $query .= " AND ${t['b3_clients']}.id NOT IN (
+      SELECT distinct(target.id)
+      FROM ${t['b3_penalties']} as penalties, ${t['b3_clients']} as target
+      WHERE (penalties.type = 'Ban' OR penalties.type = 'TempBan')
+      AND inactive = 0
+      AND penalties.client_id = target.id
+      AND ( penalties.time_expire = -1 OR penalties.time_expire > UNIX_TIMESTAMP(NOW()) )
+    )";
+  }
+
+  $query .= " GROUP BY ${t['players']}.id
       ORDER BY total_deaths DESC
       LIMIT 1 ";
 
@@ -1551,6 +1849,7 @@ function shame_medal_fireman()
   global $maxdays;
   global $wp_fireman;
   global $text;
+  global $exclude_ban;
   $current_time = gmdate("U");
 
   $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.deaths) / ${t['players']}.rounds) AS total_deaths
@@ -1561,8 +1860,20 @@ function shame_medal_fireman()
       AND (${t['players']}.rounds > $minrounds)
       AND (${t['players']}.hide = 0)
       AND ((${t['players']}.kills > $minkills)
-      OR (${t['players']}.rounds > $minrounds))
-      GROUP BY ${t['players']}.id
+      OR (${t['players']}.rounds > $minrounds))";
+
+  if ($exclude_ban) {
+    $query .= " AND ${t['b3_clients']}.id NOT IN (
+      SELECT distinct(target.id)
+      FROM ${t['b3_penalties']} as penalties, ${t['b3_clients']} as target
+      WHERE (penalties.type = 'Ban' OR penalties.type = 'TempBan')
+      AND inactive = 0
+      AND penalties.client_id = target.id
+      AND ( penalties.time_expire = -1 OR penalties.time_expire > UNIX_TIMESTAMP(NOW()) )
+    )";
+  }
+
+  $query .= " GROUP BY ${t['players']}.id
       ORDER BY total_deaths DESC
       LIMIT 1";
 
@@ -1615,6 +1926,7 @@ function shame_medal_def_knifes()
   global $minrounds;
   global $wp_knives;
   global $text;
+  global $exclude_ban;
   $current_time = gmdate("U");
 
   $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.deaths) / ${t['players']}.rounds) AS total_deaths
@@ -1625,8 +1937,20 @@ function shame_medal_def_knifes()
       AND ((${t['players']}.kills > $minkills)
       OR (${t['players']}.rounds > $minrounds))
       AND (${t['players']}.hide = 0)
-      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-      GROUP BY ${t['players']}.id
+      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)";
+
+  if ($exclude_ban) {
+    $query .= " AND ${t['b3_clients']}.id NOT IN (
+      SELECT distinct(target.id)
+      FROM ${t['b3_penalties']} as penalties, ${t['b3_clients']} as target
+      WHERE (penalties.type = 'Ban' OR penalties.type = 'TempBan')
+      AND inactive = 0
+      AND penalties.client_id = target.id
+      AND ( penalties.time_expire = -1 OR penalties.time_expire > UNIX_TIMESTAMP(NOW()) )
+    )";
+  }
+
+  $query .= " GROUP BY ${t['players']}.id
       ORDER BY total_deaths DESC
       LIMIT 1 ";
 
@@ -1673,6 +1997,7 @@ function shame_medal_def_bashes()
   global $minrounds;
   global $wp_bashes;
   global $text;
+  global $exclude_ban;
   $current_time = gmdate("U");
 
   $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.deaths) / ${t['players']}.rounds) AS total_deaths
@@ -1683,8 +2008,20 @@ function shame_medal_def_bashes()
       AND ((${t['players']}.kills > $minkills)
       OR (${t['players']}.rounds > $minrounds))
       AND (${t['players']}.hide = 0)
-      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-      GROUP BY ${t['players']}.id
+      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)";
+
+  if ($exclude_ban) {
+    $query .= " AND ${t['b3_clients']}.id NOT IN (
+      SELECT distinct(target.id)
+      FROM ${t['b3_penalties']} as penalties, ${t['b3_clients']} as target
+      WHERE (penalties.type = 'Ban' OR penalties.type = 'TempBan')
+      AND inactive = 0
+      AND penalties.client_id = target.id
+      AND ( penalties.time_expire = -1 OR penalties.time_expire > UNIX_TIMESTAMP(NOW()) )
+    )";
+  }
+
+  $query .= " GROUP BY ${t['players']}.id
       ORDER BY total_deaths DESC
       LIMIT 1 ";
 
@@ -1731,6 +2068,7 @@ function shame_medal_sniped()
   global $minrounds;
   global $wp_snipers;
   global $text;
+  global $exclude_ban;
   $current_time = gmdate("U");
 
   $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.deaths) / ${t['players']}.rounds) AS total_deaths
@@ -1741,8 +2079,20 @@ function shame_medal_sniped()
       AND ((${t['players']}.kills > $minkills)
       OR (${t['players']}.rounds > $minrounds))
       AND (${t['players']}.hide = 0)
-      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-      GROUP BY ${t['players']}.id
+      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)";
+
+  if ($exclude_ban) {
+    $query .= " AND ${t['b3_clients']}.id NOT IN (
+      SELECT distinct(target.id)
+      FROM ${t['b3_penalties']} as penalties, ${t['b3_clients']} as target
+      WHERE (penalties.type = 'Ban' OR penalties.type = 'TempBan')
+      AND inactive = 0
+      AND penalties.client_id = target.id
+      AND ( penalties.time_expire = -1 OR penalties.time_expire > UNIX_TIMESTAMP(NOW()) )
+    )";
+  }
+
+   $query .= " GROUP BY ${t['players']}.id
       ORDER BY total_deaths DESC
       LIMIT 1 ";
 
@@ -1789,6 +2139,7 @@ function shame_medal_careless()
   global $maxdays;
   global $wp_accidents;
   global $text;
+  global $exclude_ban;
 
   $current_time = gmdate("U");
 
@@ -1800,8 +2151,20 @@ function shame_medal_careless()
       AND ((${t['players']}.kills > $minkills)
       OR (${t['players']}.rounds > $minrounds))
       AND (${t['players']}.hide = 0)
-      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)
-      GROUP BY ${t['players']}.id
+      AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)";
+
+  if ($exclude_ban) {
+    $query .= " AND ${t['b3_clients']}.id NOT IN (
+      SELECT distinct(target.id)
+      FROM ${t['b3_penalties']} as penalties, ${t['b3_clients']} as target
+      WHERE (penalties.type = 'Ban' OR penalties.type = 'TempBan')
+      AND inactive = 0
+      AND penalties.client_id = target.id
+      AND ( penalties.time_expire = -1 OR penalties.time_expire > UNIX_TIMESTAMP(NOW()) )
+    )";
+  }
+
+  $query .= " GROUP BY ${t['players']}.id
       ORDER BY total_suicides DESC
       LIMIT 1 ";
 

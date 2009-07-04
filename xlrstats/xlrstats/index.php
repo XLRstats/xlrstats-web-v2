@@ -31,7 +31,6 @@ include("func-sectionlogic.php");
 include("func-awardlogic.php");
 include("func-clan.php");
 include("lib/geoip.inc");
-include("languages/languages.php");
 
 session_start();
 cleanglobals();
@@ -78,6 +77,8 @@ if ($currentconfignumber == 0)
   include("dynamic/award_idents.php");
 else
   include("dynamic/award_idents_".$currentconfignumber.".php");
+
+include("languages/languages.php");
 
 // Debug mode?
 if (!isset($debug))

@@ -916,7 +916,7 @@ function codwaw_awards()
   // Snipers
   $query = "SELECT id 
             FROM ${t["weapons"]}
-            WHERE name IN ('springfield_mp', 'kar98k_sniper_mp', 'mosin_nagant_sniper_mp', 'enfield_scope_mp')
+            WHERE name IN ('springfield_scoped_mp', 'kar98k_scoped_mp', 'm1garand_scoped_mp', 'mosinrifle_scoped_mp', 'type99rifle_scoped_mp')
             LIMIT 0 , 30";
   
   $result = $coddb->sql_query($query);

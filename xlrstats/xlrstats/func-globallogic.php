@@ -1029,7 +1029,7 @@ $(document).ready(function(){
   	<td colspan=3>
   		<table width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\">
   		<tr>
-  			<td width=500 align=\"left\">
+  			<td width=550 align=\"left\">
     				<form action=\"$link?func=search\" method=\"post\" class=\"aliassearch\">
   	  			<input type=\"text\" name=\"input_name\" size=\"30\" />&nbsp; <input type=\"submit\" value=\"".$text["search"]."\"></input>
     				<input type=\"checkbox\" name=\"aliases\" value=\"true\">".$text["incalias"]."</input>

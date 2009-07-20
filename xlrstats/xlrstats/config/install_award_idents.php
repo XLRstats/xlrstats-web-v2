@@ -880,7 +880,7 @@ function codwaw_awards()
   $result = $coddb->sql_query($query);
   $numrows = $coddb->sql_numrows($result);
   
-  $buffer .= "\$wp_bashes = \"(";
+  $buffer .= "\$wp_knives = \"(";
   $c = 0;
   while ($row = $coddb->sql_fetchrow($result))
   {

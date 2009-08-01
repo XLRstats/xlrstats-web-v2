@@ -394,16 +394,28 @@ if ($func == "show")
   menubox($pageid);
   //echo "<br/>";
 
+  $pagenumber = 1;
+  if(isset($_GET['pagenumber']))
+    $pagenumber = escape_string($_GET['pagenumber']);
+
+  $offset = ($pagenumber-1)*$toplist_max;
+
   if($pageid == 1)
-    topplayers("skill", "DESC", 0, $clan_name);
+    topplayers("skill", "DESC", $offset, $clan_name);
   elseif($pageid == 2)
-    topplayers("kills", "DESC", 0, $clan_name);
+    topplayers("kills", "DESC", $offset, $clan_name);
   elseif($pageid == 3)
-    topplayers("ratio", "DESC", 0, $clan_name);
+    topplayers("ratio", "DESC", $offset, $clan_name);
   elseif($pageid == 4)
-    topweapons(); 
+  {
+    $offset = ($pagenumber-1)*$weaplist_max;
+    topweapons(false, "kills", "DESC", $offset);
+  }
   elseif($pageid == 5)
-    topmaps();
+  {
+    $offset = ($pagenumber-1)*$maplist_max;
+    topmaps(false, "kills", "DESC", $offset);
+  }
   else 
     topplayers("skill");
 
@@ -436,17 +448,28 @@ if ($func == "clan")
 
   menubox($pageid, $clan_name);
 
+  $pagenumber = 1;
+  if(isset($_GET['pagenumber']))
+    $pagenumber = escape_string($_GET['pagenumber']);
+
+  $offset = ($pagenumber-1)*$toplist_max;
 
   if($pageid == 1)
-    topplayers("skill", "DESC", 0, $clan_name);
+    topplayers("skill", "DESC", $offset, $clan_name);
   elseif($pageid == 2)
-    topplayers("kills", "DESC", 0, $clan_name);
+    topplayers("kills", "DESC", $offset, $clan_name);
   elseif($pageid == 3)
-    topplayers("ratio", "DESC", 0, $clan_name);
+    topplayers("ratio", "DESC", $offset, $clan_name);
   elseif($pageid == 4)
-    topweapons(); 
+  {
+    $offset = ($pagenumber-1)*$weaplist_max;
+    topweapons(false, "kills", "DESC", $offset);
+  }
   elseif($pageid == 5)
-    topmaps();
+  {
+    $offset = ($pagenumber-1)*$maplist_max;
+    topmaps(false, "kills", "DESC", $offset);
+  }
   else 
     topplayers("skill");
 }

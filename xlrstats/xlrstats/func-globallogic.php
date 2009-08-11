@@ -909,6 +909,9 @@ function displayheader($pop=0)
   
   echo "<script type=\"text/JavaScript\" src=\"".$xlrpath."lib/jquery-1.2.6.min.js\"></script>\n";
   echo "<script type=\"text/JavaScript\" src=\"".$xlrpath."lib/jquery-boxy/jquery.boxy.js\"></script>\n";
+  echo "<script type=\"text/javascript\" src=\"".$xlrpath."lib/autocomplete/jquery.autocomplete.js\"></script>\n";
+  echo "<script type=\"text/javascript\" src=\"".$xlrpath."lib/autocomplete/localdata.php\"></script>\n";
+  echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"".$xlrpath."lib/autocomplete/jquery.autocomplete.css\" />\n";
   echo "<link rel=\"stylesheet\" href=\"".$xlrpath."lib/jquery-boxy/boxy.css\" type=\"text/css\" media=\"screen\">";
   echo "<style type=\"text/css\">\n";
   echo "<!--\n";
@@ -921,6 +924,24 @@ function displayheader($pop=0)
   echo "-->\n";
   echo "</style>\n";
 
+?>
+<script type="text/javascript">
+$().ready(function() {	
+	$("#searchplayer").autocomplete(players, {
+		minChars: 3,
+		width: 195,
+		scrollHeight: 200,
+		selectFirst: false,
+		matchContains: true,
+		autoFill: false,
+		formatItem: function(row, i, max) {
+			return row.name;
+		},
+	});
+});
+</script>
+<?php
+  
   echo  "<script type=\"text/JavaScript\">\n";
   echo  "<!--\n";
 ?>
@@ -1031,7 +1052,7 @@ $(document).ready(function(){
   		<tr>
   			<td width=550 align=\"left\">
     				<form action=\"$link?func=search\" method=\"post\" class=\"aliassearch\">
-  	  			<input type=\"text\" name=\"input_name\" size=\"30\" />&nbsp; <input type=\"submit\" value=\"".$text["search"]."\"></input>
+  	  			<input type=\"text\" id=\"searchplayer\" name=\"input_name\" size=\"30\" />&nbsp; <input type=\"submit\" value=\"".$text["search"]."\"></input>
     				<input type=\"checkbox\" name=\"aliases\" value=\"true\">".$text["incalias"]."</input>
       ";
 

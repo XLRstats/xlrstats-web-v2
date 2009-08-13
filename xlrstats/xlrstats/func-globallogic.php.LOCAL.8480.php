@@ -826,8 +826,6 @@ function displayheader($pop=0)
   global $template;
   global $stylepicker;
   global $currentconfignumber;
-  global $coddb;
-  global $t;
 
   global $hide_menu_header;
   global $main_width;
@@ -912,7 +910,7 @@ function displayheader($pop=0)
   echo "<script type=\"text/JavaScript\" src=\"".$xlrpath."lib/jquery-1.2.6.min.js\"></script>\n";
   echo "<script type=\"text/JavaScript\" src=\"".$xlrpath."lib/jquery-boxy/jquery.boxy.js\"></script>\n";
   echo "<script type=\"text/javascript\" src=\"".$xlrpath."lib/autocomplete/jquery.autocomplete.js\"></script>\n";
-  //echo "<script type=\"text/javascript\" src=\"".$xlrpath."lib/autocomplete/localdata.php\"></script>\n";
+  echo "<script type=\"text/javascript\" src=\"".$xlrpath."lib/autocomplete/localdata.php\"></script>\n";
   echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"".$xlrpath."lib/autocomplete/jquery.autocomplete.css\" />\n";
   echo "<link rel=\"stylesheet\" href=\"".$xlrpath."lib/jquery-boxy/boxy.css\" type=\"text/css\" media=\"screen\">";
   echo "<style type=\"text/css\">\n";
@@ -927,44 +925,37 @@ function displayheader($pop=0)
   echo "</style>\n";
 
 ?>
-<?php
-  // Freelanders Autocomplete script insertion
-  echo  "<script type=\"text/JavaScript\">\n";
-  echo  "<!--\n";
-  include("lib/autocomplete/localdata.php");
-?>
-
-$().ready(function() {  
-  $("#searchplayer").autocomplete(players, {
-    minChars: 3,
-    width: 195,
-    scrollHeight: 200,
-    selectFirst: false,
-    matchContains: true,
-    autoFill: false,
-    formatItem: function(row, i, max) {
-      return row.name;
-    },
-  });
+<script type="text/javascript">
+$().ready(function() {	
+	$("#searchplayer").autocomplete(players, {
+		minChars: 3,
+		width: 195,
+		scrollHeight: 200,
+		selectFirst: false,
+		matchContains: true,
+		autoFill: false,
+		formatItem: function(row, i, max) {
+			return row.name;
+		},
+	});
 });
+</script>
 <?php
-
-  echo  "//-->\n";
-  echo  "</script>\n";
   
-  // Courgette's web2 worldmap script insertion
   echo  "<script type=\"text/JavaScript\">\n";
   echo  "<!--\n";
 ?>
 $(document).ready(function(){
-  $("<div id=\"web2worldmap\">"
-  +"<iframe src=\"lib/worldmap/?config=<?php echo $currentconfignumber; ?>\"  scrolling=\"no\" frameborder=\"0\" width=\"550\" height=\"300\"></iframe></div>").appendTo('body').hide();
-  
+	$("<div id=\"web2worldmap\">"
+	+"<iframe src=\"lib/worldmap/?config=<?php echo $currentconfignumber; ?>\"  scrolling=\"no\" frameborder=\"0\" width=\"550\" height=\"300\"></iframe></div>").appendTo('body').hide();
+	
    $("a[@href='worldmap/']")
     .attr('href','#web2worldmap')
     .removeAttr('onclick')
-    .boxy({title: 'World map'});});
+    .boxy({title: 'World map'});
+});
 <?php
+  global $text;
 
   echo  "//-->\n";
   echo  "</script>\n";

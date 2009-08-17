@@ -62,7 +62,7 @@ $rankimage[7] = "1_star/1-copral.gif";
 
 $rankname[8] = $text["corporal2"];
 $killsneeded[8] = 600;
-$rankimage[8] = "2_stars/2-Lance-Corporal.gif";   
+$rankimage[8] = "2_stars/2-copral.gif";   
 
 $rankname[9] = $text["sergeant"];
 $killsneeded[9] = 900;

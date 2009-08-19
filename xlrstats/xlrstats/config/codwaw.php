@@ -192,6 +192,11 @@ $m['mp_roundhouse'] = "Roundhouse";
 $m['mp_seelow'] = "Seelow";
 $m['mp_shrine'] = "Cliffside";
 $m['mp_suburban'] = "Upheaval";
+$m['mp_makin_day'] = "Makin Day";
+$m['mp_subway'] = "Station";
+$m['mp_nachtfeuer'] = "Nightfire";
+$m['mp_kneedeep'] = "Knee Deep";
+
 
 // Custom Maps CoDWaW
 

@@ -1,6 +1,0 @@
-php_flag register_globals off
-
-Options -Indexes 
-
-Order allow,deny
-Allow from all

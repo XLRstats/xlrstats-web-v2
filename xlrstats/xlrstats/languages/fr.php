@@ -26,7 +26,8 @@
  /**************************************************************************
  * LANGUAGE FILE
  * Language: French - "fr"
- * Created: 18-Juil-2009 - Last Update: 18-Juil-2009
+ * Created: 18-Juil-2009
+ * Last Update: 18-Juil-2009
  * File fr.php created by [MMk]ZTk / Team MixoMatik (http://mixomatik.fr)
  ***************************************************************************/
 
@@ -47,7 +48,6 @@ $text["currentplnames"] = "Résultats de recherche (Pseudos actuels)";
 $text["searchterm"] = "Les termes de recherche doivent être d'au moins 3 caractères.";
 $text["searchresult"] = "Votre recherche n'a donné aucun résultat.";
 $text["poweredby"] = "Propulsé par:";
-$text["needhelp"] = "Need help on XLRstats?";
 
 //SERVER INFORMATION
 $text["server"] = "Serveur";
@@ -59,11 +59,6 @@ $text["players"] = "Joueurs";
 $text["killed"] = "Tués";
 $text["headshots"] = "Headshots";
 $text["hpk"] = "HpK";
-$text["serverversion"] = "Server version: ";
-$text["conwxfire"] = "Connect with xfire";
-$text["conwqtracker"] = "Connect with qtracker";
-$text["conwhlsw"] = "Connect with hlsw";
-$text["conwgsc"] = "Connect with gsc";
 
 //CURRENT PLAYERS
 $text["curplay"] = "Joueurs In-Game";
@@ -76,7 +71,6 @@ $text["team"] = "Team";
 $text["connections"] = "Connexions";
 $text["youneedweap"] = "Vous devez avoir joué $minrounds manches ou $minkills kills pour apparaître dans cette liste!";
 $text["youneedmap"] = "Vous devez avoir joué $map_minrounds manches ou $map_minkills kills sur cette map pour apparaître dans cette liste!";
-$text["showmap"] = "Show a Worldmap with current players";
 
 //MENU
 $text["menu"] = "Menu";
@@ -89,8 +83,6 @@ $text["weapons"] = "Armes";
 $text["maps"] = "Maps";
 $text["weapmost"] = "Armes avec le plus de";
 $text["mapsmost"] = "Maps avec le plus de";
-$text["rssfiltered"] = "RSS Feed for this filtered list of Top Players.";
-$text["rssfeed"] = "RSS Feed for this list of Top Players.";
 $text["place"] = "Place";
 $text["rank"] = "Rang";
 $text["name"] = "Pseudo";
@@ -147,7 +139,7 @@ $text["mostclaymore"] = "Meilleur tueur avec Claymore par manches";
 $text["notingbetr"] = "Nolife";
 $text["mostround"] = "Celui qui a jouer le plus de manches";
 $text["serialkiller"] = "Serial Killer";
-$text["bestwinstrk"] = "Meilleur serie de tues a la suite";
+$text["bestwinstrk"] = "Rhhaa! il m'énerve avec ses Clay!";
 $text["headhunter"] = "Chasseur de têtes";
 $text["pheadshots"] = "Headshots";
 $text["mosthdsht"] = "Pourcentage Headshots le plus élevé";

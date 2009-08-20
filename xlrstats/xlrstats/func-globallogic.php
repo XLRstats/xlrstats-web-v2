@@ -26,7 +26,7 @@
 $clientsRed  = array();
 $clientsBlue  = array();
 $clientsSpec  = array();
-$supportedgames = array('cod', 'coduo', 'cod2', 'cod4', 'iourt41', 'wop'); // B3 parsernames
+$supportedgames = array('cod', 'coduo', 'cod2', 'cod4', 'cod5', 'etpro', 'iourt41', 'smg', 'wop'); // B3 parsernames
 $ffa_modes = array('dm', 'ffa', 'syc-ffa');
 
 $sv_privateClients = 0;
@@ -1119,6 +1119,13 @@ function displayfooter($pop=0)
   global $rss_sortby;
   global $text;
   
+  $versionfile = abs_pathlink($pop) . "version.txt";
+  if ( file_exists($versionfile) )
+    $version = file_get_contents($versionfile);
+  else
+    $version = "Unknown Version";
+
+  
   echo "  	<br/>
     <table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"footer\">
   	<tr class=\"footer\">
@@ -1135,7 +1142,7 @@ function displayfooter($pop=0)
 	echo "<td class=\"tiny\" width=\"20px\"><span class=\"footer\"><a href=\"".pathlink($pop)."reset.php?config=".$currentconfignumber."\" class=\"footer\" target=\"_blank\"><img src=\"".pathlink($pop)."images/ico/error_delete.png\" border=\"0\" align=\"absbottom\" title=\"".$text["gettingerros"]."\"></a></span></td>\n";
 	echo "<td align=\"center\" class=\"tiny\"><span class=\"footer\">&nbsp;[".$text["visitors"]." $total_uniques, ".$text["pageview"]." $pageviews]&nbsp;</span></td>\n";
 	echo "<td align=\"center\" class=\"tiny\"><span class=\"footer\">&nbsp;[".$text["pageloaded"]." ".pageloader_end()." ".$text["seconds"]."]&nbsp;</span></td>\n";
-	echo "<td align=\"right\" class=\"tiny\"><span class=\"footer\">&nbsp;&copy; 2005-$now&nbsp;</span><a href=\"http://www.xlr8or.com/\" target=\"_blank\" class=\"footer\">www.xlr8or.com</a> </td>\n";
+	echo "<td align=\"right\" class=\"tiny\" title=\"".$version."\"><span class=\"footer\">&nbsp;&copy; 2005-$now&nbsp;</span><a href=\"http://www.xlr8or.com/\" target=\"_blank\" class=\"footer\">www.xlr8or.com</a> </td>\n";
 	echo "</tr></table>\n";
 	// Close the MAIN table
   echo "</td>\n";

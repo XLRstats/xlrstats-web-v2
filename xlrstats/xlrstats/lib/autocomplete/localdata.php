@@ -7,7 +7,7 @@ $query = "SELECT
           FROM 
 		    ${t['b3_clients']}, ${t['players']}
           WHERE 
-		    (${t['players']}.client_id = ${t['b3_clients']}.id) AND (${t['players']}.client_id <> 1)
+		    (${t['players']}.client_id = ${t['b3_clients']}.id) AND (${t['players']}.hide <> 1)
           ORDER BY name ASC
           ";
 

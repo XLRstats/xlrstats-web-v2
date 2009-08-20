@@ -47,6 +47,7 @@ $text["currentplnames"] = "Search results (current playernames)";
 $text["searchterm"] = "Search terms should be at least 3 characters long.";
 $text["searchresult"] = "Your search yielded no results.";
 $text["poweredby"] = "Powered by:";
+$text["needhelp"] = "Need help on XLRstats?";
 
 //SERVER INFORMATION
 $text["server"] = "Server";
@@ -58,6 +59,11 @@ $text["players"] = "Players";
 $text["killed"] = "Killed";
 $text["headshots"] = "Headshots";
 $text["hpk"] = "HpK";
+$text["serverversion"] = "Server version: ";
+$text["conwxfire"] = "Connect with xfire";
+$text["conwqtracker"] = "Connect with qtracker";
+$text["conwhlsw"] = "Connect with hlsw";
+$text["conwgsc"] = "Connect with gsc";
 
 //CURRENT PLAYERS
 $text["curplay"] = "Currently playing";
@@ -70,6 +76,7 @@ $text["team"] = "Team";
 $text["connections"] = "Connections";
 $text["youneedweap"] = "You need at least $minrounds rounds or $minkills kills to appear on this list!";
 $text["youneedmap"] = "You need at least $map_minrounds rounds or $map_minkills kills on this map to appear on this list!";
+$text["showmap"] = "Show a Worldmap with current players";
 
 //MENU
 $text["menu"] = "Menu";
@@ -82,6 +89,8 @@ $text["weapons"] = "Weapons";
 $text["maps"] = "Maps";
 $text["weapmost"] = "Weapons with most";
 $text["mapsmost"] = "Maps with most";
+$text["rssfiltered"] = "RSS Feed for this filtered list of Top Players.";
+$text["rssfeed"] = "RSS Feed for this list of Top Players.";
 $text["place"] = "Place";
 $text["rank"] = "Rank";
 $text["name"] = "Name";

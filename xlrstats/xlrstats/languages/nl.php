@@ -43,9 +43,11 @@ $text["errmsg"] = "Oei, Cookies zijn uitgezet, kan je niet onthouden :(";
 $text["googleisbest"] = "Google is je beste vriend";
 $text["okmsg"] = "PlayerID opgeslagen! Het is nu mogelijk je eigen stats te bekijken met de 'MyStats' link in de menubalk.<br /> Cookies moeten echter wel aangezet zijn!";
 $text["goingback"] = "Terug naar waar we vandaan kwamen.";
+$text["currentplnames"] = "Search results (current playernames)";
 $text["searchterm"] = "De zoekterm moet tenminste 3 karakters lang zijn.";
 $text["searchresult"] = "Je zoekopdracht gaf geen resultaat.";
 $text["poweredby"] = "Powered by:";
+$text["needhelp"] = "Need help on XLRstats?";
 
 //SERVER INFORMATION
 $text["server"] = "Server";
@@ -57,6 +59,11 @@ $text["players"] = "Spelers";
 $text["killed"] = "Kills";
 $text["headshots"] = "Headshots";
 $text["hpk"] = "HpD";
+$text["serverversion"] = "Server version: ";
+$text["conwxfire"] = "Connect with xfire";
+$text["conwqtracker"] = "Connect with qtracker";
+$text["conwhlsw"] = "Connect with hlsw";
+$text["conwgsc"] = "Connect with gsc";
 
 //CURRENT PLAYERS
 $text["curplay"] = "Nu aan het spelen";
@@ -69,6 +76,7 @@ $text["team"] = "Team";
 $text["connections"] = "Connecties";
 $text["youneedweap"] = "Je moet tenminste $minrounds rondes gespeeld hebben of $minkills kills hebben gemaakt om op deze lijst te komen!";
 $text["youneedmap"] = "Je moet tenminste $map_minrounds rondes gespeeld hebben of $map_minkills kills hebben gemaakt om op deze lijst te komen!";
+$text["showmap"] = "Show a Worldmap with current players";
 
 //MENU
 $text["menu"] = "Menu";
@@ -81,6 +89,8 @@ $text["weapons"] = "Wapens";
 $text["maps"] = "Mappen";
 $text["weapmost"] = "Wapens met meeste";
 $text["mapsmost"] = "Mappen met meeste";
+$text["rssfiltered"] = "RSS Feed for this filtered list of Top Players.";
+$text["rssfeed"] = "RSS Feed for this list of Top Players.";
 $text["place"] = "Plaats";
 $text["rank"] = "Rang";
 $text["name"] = "Naam";
@@ -165,7 +175,7 @@ $text["needpractice"] = "Blijf oefenen!";
 $text["highlosstrk"] = "Hoogste verlies reeks";
 $text["punchme"] = "Bijt me!";
 $text["punchdeath"] = "Punchy deaths p/r";
-$text["mostpunchy"] = "Meeste Punchy deaths per ronde";
+$text["mostpunchyd"] = "Meeste Punchy deaths per ronde";
 $text["needbaloon"] = "Water Ballerina!";
 $text["balonydeath"] = "Ballooney deaths p/r";
 $text["mostbalondeth"] = "Meeste Ballooney deaths per ronde";
@@ -191,6 +201,15 @@ $text["accidenthero"] = "Murphy's wet?";
 $text["blindasbat"] = "Blinde vink";
 $text["mostaccdeath"] = "Meeste ongelukken per ronde";
 $text["dontbetophere"] = "Beter niet in deze lijst terecht komen ;)";
+
+//MEDAL DETAILS
+$text["medaldetails"] = "Medal Details";
+$text["topplayers"] = "Top 10 Players";
+$text["medaldescription"] = "Medal Description:";
+$text["owner"] = "Owner: ";
+$text["mdscore"] = "Score";
+$text["seeplayerdetails"] = "See player details";
+$text["seemedaldetails"] = "See medal details";
 
 //PLAYER SPESIFIC STATS (UPPER SECTION)
 $text["topskillrank"] = "Topskill Ranking";
@@ -366,5 +385,7 @@ $text["b3automated"] = "BigBrotherBot Automated Gameadministration";
 $text["cracktrack"] = "CrackerTracker Anti Injection and Worm Protection Software";
 $text["gettingerros"] = "Getting errors? Click here to reset all cookies.";
 $text["nodescavail"] = "No description available.";
+$text["ofbestratio"] = "% of best Ratio (Which is ";
+$text["ofratio"] = "% of 1:0 Ratio";
 
 ?>

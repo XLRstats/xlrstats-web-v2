@@ -111,6 +111,7 @@ function feedlink($pop=0)
   global $currentconfignumber;
   global $clan_name;
   global $rss_sortby;
+  global $text;
 
   $url_clan_name = escape_hash($clan_name);
 
@@ -118,9 +119,9 @@ function feedlink($pop=0)
     $rss_sortby = "skill";
 
 	if ($clan_name != "")
-    $temp = "<a href=\"".pathlink($pop)."rss.php?config=".$currentconfignumber."&sortby=".$rss_sortby."&filter=".$url_clan_name."\" target=\"_blank\"><img src=\"".pathlink($pop)."images/ico/feed.png\" border=\"0\" align=\"absbottom\" title=\"RSS Feed for this filtered list of Top Players.\"></a>\n";
+    $temp = "<a href=\"".pathlink($pop)."rss.php?config=".$currentconfignumber."&sortby=".$rss_sortby."&filter=".$url_clan_name."\" target=\"_blank\"><img src=\"".pathlink($pop)."images/ico/feed.png\" border=\"0\" align=\"absbottom\" title=\"".$text["rssfiltered"]."\"></a>\n";
 	else
-    $temp = "<a href=\"".pathlink($pop)."rss.php?config=".$currentconfignumber."&sortby=".$rss_sortby."\" target=\"_blank\"><img src=\"".pathlink($pop)."images/ico/feed.png\" border=\"0\" align=\"absbottom\" title=\"RSS Feed for this list of Top Players.\"></a>\n";
+    $temp = "<a href=\"".pathlink($pop)."rss.php?config=".$currentconfignumber."&sortby=".$rss_sortby."\" target=\"_blank\"><img src=\"".pathlink($pop)."images/ico/feed.png\" border=\"0\" align=\"absbottom\" title=\"".$text["rssfeed"]."\"></a>\n";
 
   return $temp;
 }
@@ -447,7 +448,7 @@ function welcometext($pop=0)
     $currentmap = $m[$currentmap];
 
   $today = date('l jS \of F Y h:i:s A');
-  echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$text["welcome"]."&nbsp;&nbsp;&nbsp;<span class=\"tiny\">($today)</span></td><td width=\"40px\">".checklang($pop)."<a href=\"http://xlrstatshelp.xlr8or.com\" target=\"_blank\"><img src=\"".pathlink($pop)."images/ico/help.png\" border=\"0\" align=\"absmiddle\" title=\"Need help on XLRstats?\"></a></td></tr>
+  echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$text["welcome"]."&nbsp;&nbsp;&nbsp;<span class=\"tiny\">($today)</span></td><td width=\"40px\">".checklang($pop)."<a href=\"http://xlrstatshelp.xlr8or.com\" target=\"_blank\"><img src=\"".pathlink($pop)."images/ico/help.png\" border=\"0\" align=\"absmiddle\" title=\"".$text["needhelp"]."\"></a></td></tr>
       <tr>
       <td colspan=\"2\">
         <table align=\"center\" bgcolor=\"#99aaaa\" border=\"0\" cellpadding=\"2\" cellspacing=\"1\" width=\"100%\">
@@ -475,7 +476,7 @@ function welcometext($pop=0)
   		<td style=\"padding: 4px;\" align=\"center\" width=\"6%\"><font class=\"fontSmall\" size=\"1\"><font color=\"#000000\">&nbsp;".$text["hpk"]."</font></font></td>
   	</tr>
   	<tr bgcolor=\"#cccccf\" valign=\"middle\">
-  		<td style=\"background: white none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; color: black;\" align=\"left\"><font class=\"fontNormal\" size=\"2\"><img style=\"vertical-align: middle;\" src=\"images/ico/icon_$game.gif\">&nbsp;<b><a class=info  href=\"#\">$sv_hostname<span>Server version: $shortversion</span></a></b></font></td>
+  		<td style=\"background: white none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; color: black;\" align=\"left\"><font class=\"fontNormal\" size=\"2\"><img style=\"vertical-align: middle;\" src=\"images/ico/icon_$game.gif\">&nbsp;<b><a class=info  href=\"#\">$sv_hostname<span>".$text["serverversion"]."$shortversion</span></a></b></font></td>
     	<td style=\"background: white none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; color: black;\" align=\"left\"><font class=\"fontNormal\" size=\"2\">$public_ip</font></td>
     	<td style=\"background: white none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; color: black;\" align=\"center\"><font class=\"fontNormal\" size=\"2\">$currentmap ($gameType)</font></td>
     	<td style=\"background: white none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; color: black;\" align=\"center\"><font class=\"fontNormal\" size=\"2\">$curnumplayers/$maxPlayers ($sv_maxclients)</font></td>
@@ -507,7 +508,7 @@ function gamelauncher($type)
     if ($game == 'urt') $tgame = 'utq3';
     if ($game == 'q3a') $tgame = 'q3';    
     if ($game == 'wop') $tgame = 'wopad';    
-    $link = ' <a href="xfire:join?game='.$tgame.'&amp;server='.$public_ip.'"><img src="images/ico/icon_xfire.jpg" title="Connect with xfire" alt="xfire" width="16" height="16" border="0" align="absmiddle" id="xfire" /></a>'; 
+    $link = ' <a href="xfire:join?game='.$tgame.'&amp;server='.$public_ip.'"><img src="images/ico/icon_xfire.jpg" title="'.$text["conwxfire"].'" alt="xfire" width="16" height="16" border="0" align="absmiddle" id="xfire" /></a>'; 
   }
   elseif ($type == 'qtracker')
   {
@@ -519,11 +520,11 @@ function gamelauncher($type)
     if ($game == 'urt') $tgame = 'UrbanTerror';
     if ($game == 'q3a') $tgame = 'Quake3';    
     if ($game == 'wop') $tgame = 'WorldOfPadman';    
-    $link = ' <a href="qtracker://'.$public_ip.'/?game='.$tgame.'&action=join"><img src="images/ico/icon_qtracker.jpg" title="Connect with qtracker" alt="qtracker" width="16" height="16" border="0" align="absmiddle" id="qtracker" /></a>';
+    $link = ' <a href="qtracker://'.$public_ip.'/?game='.$tgame.'&action=join"><img src="images/ico/icon_qtracker.jpg" title="'.$text["conwqtracker"].'" alt="qtracker" width="16" height="16" border="0" align="absmiddle" id="qtracker" /></a>';
   }
   elseif ($type == 'hlsw')
   {
-    $link = ' <a href="hlsw://'.$public_ip.'"><img src="images/ico/icon_hlsw.jpg" title="hlsw" alt="hlsw" width="16" height="16" border="0" align="absmiddle" id="hlsw" /></a>';
+    $link = ' <a href="hlsw://'.$public_ip.'"><img src="images/ico/icon_hlsw.jpg" title="'.$text["conwhlsw"].'" alt="hlsw" width="16" height="16" border="0" align="absmiddle" id="hlsw" /></a>';
   }
   elseif ($type == 'gsc')
   {
@@ -536,7 +537,7 @@ function gamelauncher($type)
     if ($game == 'q3a') $tgame = 'q3';    
     if ($game == 'wop') $tgame = 'wop';    
     $temp = split(":", $public_ip);
-    $link = ' <a href="gsc://joinGame:game='.$tgame.'&ip='.$temp[0].'&port='.$temp[1].'"><img src="images/ico/icon_gsc.jpg" title="Connect with gsc" alt="gsc" width="16" height="16" border="0" align="absmiddle" id="gsc" /></a>';
+    $link = ' <a href="gsc://joinGame:game='.$tgame.'&ip='.$temp[0].'&port='.$temp[1].'"><img src="images/ico/icon_gsc.jpg" title="'.$text["conwgsc"].'" alt="gsc" width="16" height="16" border="0" align="absmiddle" id="gsc" /></a>';
   }
   return $link;
 }

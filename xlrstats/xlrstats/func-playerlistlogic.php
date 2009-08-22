@@ -184,7 +184,7 @@ function currentplayers()
 
   echo " (".(count($clientsBlue) + count($clientsRed) + count($clientsSpec))." ".$text["players"].")";
   if (file_exists("lib/worldmap/") && file_exists($geoip_path."GeoLiteCity.dat"))
-    echo "&nbsp;&nbsp;&nbsp;<a href=\"worldmap/\" onclick=\"window.open('lib/worldmap/?config=$currentconfignumber', 'worldmap', 'width=550,height=300,scrollbars=no,toolbar=no,location=no'); return false\"><img src=\"images/ico/world_go.png\" border=\"0\" align=\"absbottom\" title=\"Show a Worldmap with current players\"></a>";
+    echo "&nbsp;&nbsp;&nbsp;<a href=\"worldmap/\" onclick=\"window.open('lib/worldmap/?config=$currentconfignumber', 'worldmap', 'width=550,height=300,scrollbars=no,toolbar=no,location=no'); return false\"><img src=\"images/ico/world_go.png\" border=\"0\" align=\"absbottom\" title=\"".$text["showmap"]."\"></a>";
   echo "
     </td></tr><tr><td>
     <table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"innertable\">

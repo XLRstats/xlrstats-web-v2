@@ -27,7 +27,7 @@
  * LANGUAGE TRANSLATION FILE
  * Language: Turkish - "tr"
  * Translated by: Freelander[*]
- * Created: 12-Feb-2009 Last Update: 03-Apr-2009
+ * Created: 12-Feb-2009 Last Update: 20-Aug-2009
  ***************************************************************************/
 
 //HTML charset
@@ -47,6 +47,7 @@ $text["currentplnames"] = "Arama Sonuçlarý (Mevcut Oyuncu Adlarý)";
 $text["searchterm"] = "Arama kelimesi en az 3 karakter uzunluðunda olmalýdýr!";
 $text["searchresult"] = "Aradýðýnýz kelimeyle ilgili sonuç bulunamadý!";
 $text["poweredby"] = "Powered by:";
+$text["needhelp"] = "XLRstats Yardým";
 
 //SERVER INFORMATION
 $text["server"] = "Sunucu";
@@ -58,6 +59,11 @@ $text["players"] = "Oyuncu";
 $text["killed"] = "Öldürülen";
 $text["headshots"] = "Kafadan Vurma";
 $text["hpk"] = "HpK";
+$text["serverversion"] = "Sunucu Sürümü: ";
+$text["conwxfire"] = "Xfire ile baðlan";
+$text["conwqtracker"] = "Qtracker ile baðlan";
+$text["conwhlsw"] = "Hlsw ile baðlan";
+$text["conwgsc"] = "Gsc ile baðlan";
 
 //CURRENT PLAYERS
 $text["curplay"] = "Þu Andaki Oyuncular";
@@ -70,6 +76,7 @@ $text["team"] = "Takým";
 $text["connections"] = "Baðlantý";
 $text["youneedweap"] = "Bu listede yer almak için en az $minrounds raund oynamalýsýnýz veya $minkills oyuncu öldürmelisiniz!";
 $text["youneedmap"] = "Bu listede yer almak için en az $map_minrounds raund oynamalýsýnýz veya $map_minkills oyuncu öldürmelisiniz!";
+$text["showmap"] = "Baðlý oyuncularý gösteren haritayý aç";
 
 //MENU
 $text["menu"] = "Menü";
@@ -82,6 +89,8 @@ $text["weapons"] = "Silah";
 $text["maps"] = "Harita";
 $text["weapmost"] = "Silah - Sýralama Ölçütü:";
 $text["mapsmost"] = "Harita - Sýralama Ölçütü:";
+$text["rssfiltered"] = "En iyi oyuncular için RSS beslemesi - Filtrelenmiþ Liste";
+$text["rssfeed"] = "En iyi oyuncular için RSS beslemesi";
 $text["place"] = "Sýra";
 $text["rank"] = "Rütbe";
 $text["name"] = "Ýsim";
@@ -125,7 +134,7 @@ $text["supersniper"] = "Süper Keskin Niþancý";
 $text["skills"] = "Öldürme/Raund";
 $text["mostsniper"] = "Keskin Niþancý Silahýyla En Çok Öldürme/Raund" ;
 $text["clscombat"] = "En Hýzlý Silahþör";
-$text["mostpistol"] = "Tabacayla En Çok Öldürme/Raund";
+$text["mostpistol"] = "Tabancayla En Çok Öldürme/Raund";
 $text["nadekiller"] = "El Bombasý Uzmaný";
 $text["nadekill"] = "Öldürme/Raund";
 $text["mostnade"] = "El Bombasýyla En Çok Öldürme/Raund";

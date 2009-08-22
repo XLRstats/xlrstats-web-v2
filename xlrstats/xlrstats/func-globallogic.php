@@ -496,6 +496,7 @@ function welcometext($pop=0)
 function gamelauncher($type)
 {
   global $currentconfig;
+  global $text;
   include($currentconfig);
 
   if ($type == 'xfire')

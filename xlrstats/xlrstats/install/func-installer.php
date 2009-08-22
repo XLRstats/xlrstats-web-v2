@@ -379,12 +379,6 @@ fwrite($fp,
 \$t['playerbody'] = \"xlr_playerbody\";
 \$t['playermaps'] = \"xlr_playermaps\";
 
-//********************
-// leave the next lines alone please
-//********************
-include('ranks.php');
-include('awards.php');
-include(\$game.'.php');
 ?>
 ");
 

@@ -173,6 +173,9 @@ function currentplayers()
   global $ffa_modes;
   global $gameType;
   global $text;
+  global $team1;
+  global $team2;
+  global $spectators;
   
   if (!isset($pll_noteams))
     $pll_noteams = 0;

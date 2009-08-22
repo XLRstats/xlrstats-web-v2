@@ -79,6 +79,9 @@ else
   include("dynamic/award_idents_".$currentconfignumber.".php");
 
 include("languages/languages.php");
+include("config/ranks.php");
+include("config/awards.php");
+include("config/".$game.".php");
 
 // Debug mode?
 if (!isset($debug))

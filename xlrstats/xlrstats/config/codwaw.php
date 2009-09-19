@@ -196,7 +196,12 @@ $m['mp_makin_day'] = "Makin Day";
 $m['mp_subway'] = "Station";
 $m['mp_nachtfeuer'] = "Nightfire";
 $m['mp_kneedeep'] = "Knee Deep";
-
+$m['mp_kwai'] = "Banzai";
+$m['mp_stalingrad'] = "Corrosion";
+$m['mp_docks'] = "Sub Pens";
+$m['mp_drum'] = "Battery";
+$m['mp_bgate'] = "Breach";
+$m['mp_vodka'] = "Revolution";
 
 // Custom Maps CoDWaW
 

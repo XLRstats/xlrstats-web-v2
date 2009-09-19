@@ -362,6 +362,7 @@ function welcometext($pop=0)
   global $a_name;  //award names 
   global $a_desc;  //award descriptions
   global $w;
+  global $m;
   global $minkills;
   global $minrounds;
   global $bp_head;

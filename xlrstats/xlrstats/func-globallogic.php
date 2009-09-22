@@ -352,6 +352,7 @@ function cmp($a, $b)
 // Welcometext acting as an introduction on the Main index of xlrstats
 function welcometext($pop=0)
 {
+  global $func;
   global $currentconfig;
   include($currentconfig);
 
@@ -449,8 +450,9 @@ function welcometext($pop=0)
     $currentmap = $m[$currentmap];
 
   $today = date('l jS \of F Y h:i:s A');
-  echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$text["welcome"]."&nbsp;&nbsp;&nbsp;<span class=\"tiny\">($today)</span></td><td width=\"40px\">".checklang($pop)."<a href=\"http://xlrstatshelp.xlr8or.com\" target=\"_blank\"><img src=\"".pathlink($pop)."images/ico/help.png\" border=\"0\" align=\"absmiddle\" title=\"".$text["needhelp"]."\"></a></td></tr>
-      <tr>
+  echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\">";
+  if ($func != "server") echo "<tr><td align=\"center\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$text["welcome"]."&nbsp;&nbsp;&nbsp;<span class=\"tiny\">($today)</span></td><td width=\"40px\">".checklang($pop)."<a href=\"http://xlrstatshelp.xlr8or.com\" target=\"_blank\"><img src=\"".pathlink($pop)."images/ico/help.png\" border=\"0\" align=\"absmiddle\" title=\"Need help on XLRstats?\"></a></td></tr>";
+  echo "<tr>
       <td colspan=\"2\">
         <table align=\"center\" bgcolor=\"#99aaaa\" border=\"0\" cellpadding=\"2\" cellspacing=\"1\" width=\"100%\">
       	<tr bgcolor=\"#cccccc\" valign=\"bottom\">

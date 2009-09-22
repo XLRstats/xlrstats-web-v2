@@ -178,6 +178,13 @@ if ($func == "info")
     $func = "index";
 }
 
+if ($func == "server")
+{
+  welcometext();
+  //currentplayers();
+  exit;
+}
+
 // Display header --------------------------------------------------------------
 displayheader();
         

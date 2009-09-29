@@ -3,9 +3,11 @@
 $query = "SELECT DISTINCT
             ${t['b3_clients']}.name
           FROM 
-		    ${t['b3_clients']}, ${t['players']}
+		        ${t['b3_clients']}, ${t['players']}
           WHERE 
-		    (${t['players']}.client_id = ${t['b3_clients']}.id) AND (${t['b3_clients']}.name <> 'world')
+		        (${t['players']}.client_id = ${t['b3_clients']}.id) 
+            AND (${t['b3_clients']}.name <> 'world'
+            AND ${t['players']}.hide = 0)
           ORDER BY name ASC
           ";
 

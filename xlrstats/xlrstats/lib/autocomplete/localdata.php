@@ -1,29 +1,28 @@
-var players = [
 <?php
-
-//list players
-$query = "SELECT 
-            ${t['b3_clients']}.name, ${t['players']}.client_id
+//list playernames, but only once!
+$query = "SELECT DISTINCT
+            ${t['b3_clients']}.name
           FROM 
-		    ${t['b3_clients']}, ${t['players']}
+		        ${t['b3_clients']}, ${t['players']}
           WHERE 
-		    (${t['players']}.client_id = ${t['b3_clients']}.id) AND (${t['players']}.hide <> 1)
+		        (${t['players']}.client_id = ${t['b3_clients']}.id) 
+            AND (${t['b3_clients']}.name <> 'world'
+            AND ${t['players']}.hide = 0)
           ORDER BY name ASC
           ";
 
 $result = $coddb->sql_query($query);
 while($row = $coddb->sql_fetchrow($result))
-{
   $players[] = htmlspecialchars($row['name']);
-}
 
 $last_element = end($players);
 
+echo "var players = [";
 foreach ($players as $player)
 {
   echo "{ name: \"$player\" }";
   if($player != $last_element)
     echo ",";
 }
+echo "];";
 ?>
-];

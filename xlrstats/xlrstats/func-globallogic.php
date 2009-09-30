@@ -352,6 +352,7 @@ function cmp($a, $b)
 // Welcometext acting as an introduction on the Main index of xlrstats
 function welcometext($pop=0)
 {
+  global $func;
   global $currentconfig;
   include($currentconfig);
 
@@ -449,8 +450,9 @@ function welcometext($pop=0)
     $currentmap = $m[$currentmap];
 
   $today = date('l jS \of F Y h:i:s A');
-  echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$text["welcome"]."&nbsp;&nbsp;&nbsp;<span class=\"tiny\">($today)</span></td><td width=\"40px\">".checklang($pop)."<a href=\"http://xlrstatshelp.xlr8or.com\" target=\"_blank\"><img src=\"".pathlink($pop)."images/ico/help.png\" border=\"0\" align=\"absmiddle\" title=\"".$text["needhelp"]."\"></a></td></tr>
-      <tr>
+  echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\">";
+  if ($func != "server") echo "<tr><td align=\"center\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$text["welcome"]."&nbsp;&nbsp;&nbsp;<span class=\"tiny\">($today)</span></td><td width=\"40px\">".checklang($pop)."<a href=\"http://xlrstatshelp.xlr8or.com\" target=\"_blank\"><img src=\"".pathlink($pop)."images/ico/help.png\" border=\"0\" align=\"absmiddle\" title=\"Need help on XLRstats?\"></a></td></tr>";
+  echo "<tr>
       <td colspan=\"2\">
         <table align=\"center\" bgcolor=\"#99aaaa\" border=\"0\" cellpadding=\"2\" cellspacing=\"1\" width=\"100%\">
       	<tr bgcolor=\"#cccccc\" valign=\"bottom\">
@@ -905,19 +907,15 @@ function displayheader($pop=0)
   echo "<title>XLRstats for B3 (www.xlr8or.com)</title>\n";
   echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=".$text["charset"]."\">\n";
   echo "<link rel=\"shortcut icon\" href=\"".$xlrpath."favicon.ico\">\n";
-  echo "<style type=\"text/css\">\n";
-  echo "<!--\n";
-  echo "@import url(\"$csspath\");\n";
-  echo "-->\n";
-  echo "</style>\n";
-
+  echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"".$xlrpath."lib/autocomplete/jquery.autocomplete.css\" />\n";
+  echo "<link rel=\"stylesheet\" href=\"".$xlrpath."lib/jquery-boxy/boxy.css\" type=\"text/css\" media=\"screen\">";
+  echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"".$csspath."\" />\n";
   
+//  echo "<script type=\"text/JavaScript\" src=\"".$xlrpath."lib/sorttable/sorttable.js\"></script>\n";
   echo "<script type=\"text/JavaScript\" src=\"".$xlrpath."lib/jquery-1.2.6.min.js\"></script>\n";
   echo "<script type=\"text/JavaScript\" src=\"".$xlrpath."lib/jquery-boxy/jquery.boxy.js\"></script>\n";
   echo "<script type=\"text/javascript\" src=\"".$xlrpath."lib/autocomplete/jquery.autocomplete.js\"></script>\n";
-  //echo "<script type=\"text/javascript\" src=\"".$xlrpath."lib/autocomplete/localdata.php\"></script>\n";
-  echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"".$xlrpath."lib/autocomplete/jquery.autocomplete.css\" />\n";
-  echo "<link rel=\"stylesheet\" href=\"".$xlrpath."lib/jquery-boxy/boxy.css\" type=\"text/css\" media=\"screen\">";
+
   echo "<style type=\"text/css\">\n";
   echo "<!--\n";
 	/* IE6+7 hacks for the border. IE7 should support this natively but fails in conjuction with modal blackout bg. */

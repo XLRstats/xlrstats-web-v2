@@ -53,11 +53,11 @@ if ($game == 'coduo' || $game == 'cod4')
 
 if ($game == 'cod4')
 {
-    $pro_medals[] = 'pro_medal_surprise_lover()';           // claymore kills       cod4 codwaw
+    $pro_medals[] = 'pro_medal_surprise_lover()';           // claymore kills       cod4
 }
 if ($game == 'codwaw' )
 {
-    $pro_medals[] = 'pro_medal_bouncing_betty()';           // claymore kills       cod4 codwaw
+    $pro_medals[] = 'pro_medal_bouncing_betty()';           // bouncing betty kills codwaw
 }
 if ($game == 'cod4' || $game == 'urt'  || $game == 'codwaw' )
 {

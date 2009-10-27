@@ -875,6 +875,78 @@ function pro_medal_surprise_lover()
   ShowMedal($text["surpriselover"], $text["claymorekill"], $score, $playerid, $name, "xlr_pro_claymore.png", $text["mostclaymore"], $players, $scores, $fname, $playerids, $flags);  
 }
 
+function pro_medal_bouncing_betty()
+{
+  $link = baselink();
+  global $coddb;
+  global $separatorline;
+  global $t;  //table names
+  global $a_name;  //award names 
+  global $a_desc;  //award descriptions
+  global $w;
+  global $minkills;
+  global $minrounds;
+  global $maxdays;
+  global $wp_bouncingbetty;
+  global $text;
+  global $exclude_ban;
+
+  $current_time = gmdate("U");
+
+  $query = " SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds ) AS total_kills
+          FROM ${t['weaponusage']}
+          JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
+          JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
+          WHERE (${t['weaponusage']}.weapon_id = $wp_bouncingbetty)
+          AND ((${t['players']}.kills > $minkills)
+          OR (${t['players']}.rounds > $minrounds))
+          AND (${t['players']}.hide = 0)
+          AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)";
+
+    if ($exclude_ban) {
+      $query .= " AND ${t['b3_clients']}.id NOT IN (
+          SELECT distinct(target.id)
+          FROM ${t['b3_penalties']} as penalties, ${t['b3_clients']} as target
+          WHERE (penalties.type = 'Ban' OR penalties.type = 'TempBan')
+          AND inactive = 0
+          AND penalties.client_id = target.id
+          AND ( penalties.time_expire = -1 OR penalties.time_expire > UNIX_TIMESTAMP(NOW()) )
+        )";
+      }
+
+  $query .= " GROUP BY ${t['players']}.id
+          ORDER BY total_kills DESC
+          LIMIT 1 ";
+
+  $result = $coddb->sql_query($query);
+  $row = $coddb->sql_fetchrow($result);
+  $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+  $score = sprintf("%.2f",$row['total_kills']);
+  $playerid = $row['id'];
+  
+  $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
+  $result = $coddb->sql_query($query);
+  while ($row = $coddb->sql_fetchrow($result)) 
+  {
+    $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+    $players[] = $names;
+    $scores[] = sprintf("%.2f",$row['total_kills']);
+    $playerids[] = $row['id'];
+    $flags[] = country_flag($row['ip']);
+  }
+
+  if(!isset($playerids, $flags, $players, $scores)) {
+    $playerids = "";
+    $flags = "";
+    $players = "";
+    $scores = "";
+    }
+
+  $fname = __FUNCTION__;
+
+  ShowMedal($text["surpriselover"], $text["claymorekill"], $score, $playerid, $name, "xlr_pro_bouncing_betty.png", $text["mostclaymore"], $players, $scores, $fname, $playerids, $flags);  
+}
+
 function pro_medal_nothing_better_to_do()
 {
   $link = baselink();

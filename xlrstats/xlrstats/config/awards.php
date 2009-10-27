@@ -51,9 +51,13 @@ if ($game == 'coduo' || $game == 'cod4')
     $pro_medals[] = 'pro_medal_remote_bomb_fan()';          // Satchell/C4 kills    coduo cod4
 }
 
-if ($game == 'cod4' ||  $game == 'codwaw' )
+if ($game == 'cod4')
 {
     $pro_medals[] = 'pro_medal_surprise_lover()';           // claymore kills       cod4 codwaw
+}
+if ($game == 'codwaw' )
+{
+    $pro_medals[] = 'pro_medal_bouncing_betty()';           // claymore kills       cod4 codwaw
 }
 if ($game == 'cod4' || $game == 'urt'  || $game == 'codwaw' )
 {

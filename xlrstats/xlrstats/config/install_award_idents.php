@@ -871,6 +871,27 @@ function codwaw_awards()
   //-- Weapons -------------------------------------------------------------------
   $buffer .= "\n// Weapons / Means of Death --------\n";
   
+  // Bouncing Betty
+  $query = "SELECT id 
+            FROM ${t["weapons"]}
+            WHERE name = 'mine_bouncing_betty_mp'
+            LIMIT 0 , 30";
+  
+  $result = $coddb->sql_query($query);
+  $numrows = $coddb->sql_numrows($result);
+  
+  $buffer .= "\$wp_bouncingbetty = \"(";
+  $c = 0;
+  while ($row = $coddb->sql_fetchrow($result))
+  {
+    $c += 1;
+    $buffer .= $row["id"];
+    if($c < $numrows)
+      $buffer .=  ", ";
+  }
+  $buffer .= ")\";\n";
+  $coddb->sql_freeresult($result);
+  
   // Bashes
   $query = "SELECT id 
             FROM ${t["weapons"]}

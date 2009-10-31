@@ -718,6 +718,8 @@ function displaysimpleheader($pop=0)
 
   $xlrpath = pathlink($pop);
   $csspath = $xlrpath . "templates/" . $template . "/style.css";
+  // Include existing php dynamic css?
+  $template_dyn_css = $xlrpath . "templates/" . $template . "/style-css.php?config=" . $currentconfignumber;
 
   // Lets get the holiday templates
   if (file_exists("templates/holidaypack/"))
@@ -726,16 +728,19 @@ function displaysimpleheader($pop=0)
     if (date("d.m") == "25.12" || date("d.m") == "26.12")
     {
       $csspath = $xlrpath . "templates/holidaypack/xmas.css";
+      $template_dyn_css = "";
       $template = "holidaypack";
     }
     elseif (date("d.m") == "31.12" || date("d.m") == "01.01")
     {
       $csspath = $xlrpath . "templates/holidaypack/ny.css";
+      $template_dyn_css = "";
       $template = "holidaypack";
     }
     elseif (date("d.m") == "31.10")
     {
       $csspath = $xlrpath . "templates/holidaypack/halloween.css";
+      $template_dyn_css = "";
       $template = "holidaypack";
     }
   }
@@ -743,9 +748,7 @@ function displaysimpleheader($pop=0)
   // Do we have template specific settings?
   $templateconfig = "templates/" . $template . "/config.php";
   if (file_exists($templateconfig))
-  {
     include($templateconfig);
-  }
   $main_width = $main_width ? $main_width : 800; 
 
   // Generate required pagecode (header)
@@ -865,16 +868,19 @@ function displayheader($pop=0)
     if (date("d.m") == "25.12" || date("d.m") == "26.12")
     {
       $csspath = $xlrpath . "templates/holidaypack/xmas.css";
+      $template_dyn_css = "";
       $template = "holidaypack";
     }
     elseif (date("d.m") == "31.12" || date("d.m") == "01.01")
     {
       $csspath = $xlrpath . "templates/holidaypack/ny.css";
+      $template_dyn_css = "";
       $template = "holidaypack";
     }
     elseif (date("d.m") == "31.10")
     {
       $csspath = $xlrpath . "templates/holidaypack/halloween.css";
+      $template_dyn_css = "";
       $template = "holidaypack";
     }
   }
@@ -883,9 +889,8 @@ function displayheader($pop=0)
   $templateconfig = "templates/" . $template . "/config.php";
   if (file_exists($templateconfig))
     include($templateconfig);
-
-
   $main_width = $main_width ? $main_width : 800; 
+
   // Tabcontrol variables for playerstats tabs
   $ptab_Color = $ptab_Color ? $ptab_Color : "#000000";
   $ptab_backgroundColor = $ptab_backgroundColor ? $ptab_backgroundColor : "#999999";

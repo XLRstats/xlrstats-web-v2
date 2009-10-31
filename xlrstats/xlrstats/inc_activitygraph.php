@@ -63,13 +63,42 @@ require_once($currentconfig);
 // Do we have template specific settings?
 if (isset($_SESSION['template']))
   $template = $_SESSION['template'];
+
+$xlrpath = pathlink($pop);
+$csspath = $xlrpath . "templates/" . $template . "/style.css";
+// Include existing php dynamic css?
+$template_dyn_css = $xlrpath . "templates/" . $template . "/style-css.php?config=" . $currentconfignumber;
+
+// Lets get the holiday templates
+if (file_exists("templates/holidaypack/"))
+{
+  $xlrpath = GetFileDir($_SERVER['PHP_SELF']);
+  if (date("d.m") == "25.12" || date("d.m") == "26.12")
+  {
+    $csspath = $xlrpath . "templates/holidaypack/xmas.css";
+    $template_dyn_css = "";
+    $template = "holidaypack";
+  }
+  elseif (date("d.m") == "31.12" || date("d.m") == "01.01")
+  {
+    $csspath = $xlrpath . "templates/holidaypack/ny.css";
+    $template_dyn_css = "";
+    $template = "holidaypack";
+  }
+  elseif (date("d.m") == "31.10")
+  {
+    $csspath = $xlrpath . "templates/holidaypack/halloween.css";
+    $template_dyn_css = "";
+    $template = "holidaypack";
+  }
+}
+  
+
 $templateconfig = "templates/" . $template . "/config.php";
 if (file_exists($templateconfig))
-{
   include($templateconfig);
-}
-if (!isset($main_width))
-  $main_width = 800;
+$main_width = $main_width ? $main_width : 800; 
+
 
 global $coddb;
 if($coddb == null)

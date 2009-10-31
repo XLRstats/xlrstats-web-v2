@@ -976,6 +976,27 @@ function codwaw_awards()
   $buffer .= ")\";\n";
   $coddb->sql_freeresult($result);
   
+  // Fireman (Car)
+  $query = "SELECT id 
+            FROM ${t["weapons"]}
+            WHERE name = 'destructible_car'
+            LIMIT 0 , 30";
+  
+  $result = $coddb->sql_query($query);
+  $numrows = $coddb->sql_numrows($result);
+  
+  $buffer .= "\$wp_fireman = \"(";
+  $c = 0;
+  while ($row = $coddb->sql_fetchrow($result))
+  {
+    $c += 1;
+    $buffer .= $row["id"];
+    if($c < $numrows)
+      $buffer .=  ", ";
+  }
+  $buffer .= ")\";\n";
+  $coddb->sql_freeresult($result);
+
   // Accidents
   $query = "SELECT id 
             FROM ${t["weapons"]}

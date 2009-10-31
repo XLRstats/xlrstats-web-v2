@@ -944,7 +944,7 @@ function pro_medal_bouncing_betty()
 
   $fname = __FUNCTION__;
 
-  ShowMedal($text["surpriselover"], $text["claymorekill"], $score, $playerid, $name, "xlr_pro_bouncing_betty.png", $text["mostclaymore"], $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["minekiller"], $text["bouncingbettykill"], $score, $playerid, $name, "xlr_pro_bouncing_betty.png", $text["mostbouncingbetty"], $players, $scores, $fname, $playerids, $flags);  
 }
 
 function pro_medal_nothing_better_to_do()

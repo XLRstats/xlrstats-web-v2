@@ -110,6 +110,10 @@ global $t;
 $count = 0;
 $link = baselink();
 $result = $coddb->sql_query($query);
+
+// Do not show the graph on an empty result
+if (mysql_num_rows($result) == 0) return;
+
 $d = array();
 $max = 31;
 $idx = 1;

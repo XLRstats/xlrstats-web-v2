@@ -71,15 +71,10 @@ if(!$coddb->db_connect_id) {
 //------------------------------------------------------------------------------
 // fetch the func variable, which tells us what we need to do
 $func = escape_string($_GET['func']);
-$func = $_GET['func'];
 
 if ($func == "")
   $func = "skill";
 
+topplayersblock($sortby=$func);
 
-// Show the block
-if ($func == "skill")
-{
-  topplayersblock();
-}
 ?>

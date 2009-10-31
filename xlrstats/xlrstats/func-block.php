@@ -45,7 +45,7 @@ function topplayersblock($sortby = "skill", $direction = "DESC", $offset = 0)
   global $currentconfignumber;
   $current_time = time();
 
-  $sortfields = array("skill");
+  $sortfields = array("skill", "kills", "ratio");
   $sortby = strtolower($sortby);
   if (! in_array($sortby, $sortfields))
     $sortby = $sortfields[0];
@@ -85,7 +85,9 @@ function topplayersblock($sortby = "skill", $direction = "DESC", $offset = 0)
     if (strlen($name) > $user_length)
       $name = (substr($name, 0, $user_length) . '...');
     
-    echo "<td><a href=\"".httplink()."index.php?func=player&playerid=${row['id']}&config=${currentconfignumber}\" target=\"_blank\">", $name , "</a></td>";
+    if ($sortby == "skill") echo "<td><a href=\"".httplink()."index.php?func=player&playerid=${row['id']}&config=${currentconfignumber}\" target=\"_blank\" title=\"$sortby - ${row['skill']}\">", $name , "</a></td>";
+    elseif ($sortby == "kills") echo "<td><a href=\"".httplink()."index.php?func=player&playerid=${row['id']}&config=${currentconfignumber}\" target=\"_blank\" title=\"$sortby - ${row['kills']}\">", $name , "</a></td>";
+    elseif ($sortby == "ratio") echo "<td><a href=\"".httplink()."index.php?func=player&playerid=${row['id']}&config=${currentconfignumber}\" target=\"_blank\" title=\"$sortby - ${row['ratio']}\">", $name , "</a></td>";
     echo "</tr>";
     $rank += $rank_step;
   }

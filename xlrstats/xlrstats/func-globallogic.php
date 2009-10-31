@@ -855,6 +855,8 @@ function displayheader($pop=0)
 
   $xlrpath = pathlink($pop);
   $csspath = $xlrpath . "templates/" . $template . "/style.css";
+  // Include existing php dynamic css?
+  $template_dyn_css = $xlrpath . "templates/" . $template . "/style-css.php?config=" . $currentconfignumber;
 
   // Lets get the holiday templates
   if (file_exists("templates/holidaypack/"))
@@ -880,9 +882,9 @@ function displayheader($pop=0)
   // Do we have template specific settings?
   $templateconfig = "templates/" . $template . "/config.php";
   if (file_exists($templateconfig))
-  {
     include($templateconfig);
-  }
+
+
   $main_width = $main_width ? $main_width : 800; 
   // Tabcontrol variables for playerstats tabs
   $ptab_Color = $ptab_Color ? $ptab_Color : "#000000";
@@ -908,9 +910,11 @@ function displayheader($pop=0)
   echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=".$text["charset"]."\">\n";
   echo "<link rel=\"shortcut icon\" href=\"".$xlrpath."favicon.ico\">\n";
   echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"".$xlrpath."lib/autocomplete/jquery.autocomplete.css\" />\n";
-  echo "<link rel=\"stylesheet\" href=\"".$xlrpath."lib/jquery-boxy/boxy.css\" type=\"text/css\" media=\"screen\">";
-  echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"".$csspath."\" />\n";
-  
+  echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"".$xlrpath."lib/jquery-boxy/boxy.css\" media=\"screen\" />\n";
+  echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"".$csspath."\" media=\"screen\" />\n";
+  // include the php dynamic css
+  echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"".$template_dyn_css."\" media=\"screen\" />\n";
+
 //  echo "<script type=\"text/JavaScript\" src=\"".$xlrpath."lib/sorttable/sorttable.js\"></script>\n";
   echo "<script type=\"text/JavaScript\" src=\"".$xlrpath."lib/jquery-1.2.6.min.js\"></script>\n";
   echo "<script type=\"text/JavaScript\" src=\"".$xlrpath."lib/jquery-boxy/jquery.boxy.js\"></script>\n";

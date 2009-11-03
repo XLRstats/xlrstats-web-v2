@@ -55,6 +55,9 @@ $statstitle = "XLRstats, real time gamestats!";
 // Does this server run teambased games? (For teamkill and teamdeath awards)
 $teambased = 1;
 
+//Does this server run action based games like Search and Destroy, Capture the Flag etc? (For Action Stats)
+$actionbased = 0;
+
 // Number of players/maps/weapons in mainpage top lists
 $toplist_max = 25;
 $maplist_max = 13;

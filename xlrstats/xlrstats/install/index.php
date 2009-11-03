@@ -58,6 +58,7 @@ $template = $_POST['template'];
 $sig = $_POST['sigmodule'];
 $statstitle = $_POST['pagetitle'];
 $teambased = $_POST['teambased'];
+$actionbased = $_POST['actionbased'];
 $use_geoip = $_POST['use_geoip'];
 $geoip_path = $_POST['geoip_path'];
 
@@ -367,6 +368,19 @@ elseif (isset($step2))
     echo "<br />";
     echo "</p></td>";
     echo "<td class=\"fontSmall\">Does this server run teambased games? (For teamkill and teamdeath awards)</td>";
+    echo "</tr>";
+    echo "<tr>";
+    echo "<td class=\"fontNormal\"><strong>Action based games?</strong></td>";
+    echo "<td><p>";
+    echo "<label>";
+    echo "<input name=\"actionbased\" type=\"radio\" id=\"actionbased_0\" value=\"1\" />";
+    echo "Yes</label>";
+    echo "<label>";
+    echo "<input type=\"radio\" name=\"actionbased\" value=\"0\" id=\"actionbased_1\" checked=\"checked\" />";
+    echo "No</label>";
+    echo "<br />";
+    echo "</p></td>";
+    echo "<td class=\"fontSmall\">Does this server run action based games like Search and Destroy, Capture the Flag etc? (For Action Stats)</td>";
     echo "</tr>";
     echo "<tr>";
     echo "<td class=\"fontNormal\"><strong>Use GeoIP?</strong></td>";
@@ -692,6 +706,7 @@ elseif (isset($step3))
 						<input type=\"hidden\" name=\"sigmodule\" value=\"$sig\"></input>
 						<input type=\"hidden\" name=\"pagetitle\" value=\"$statstitle\"></input>
 						<input type=\"hidden\" name=\"teambased\" value=\"$teambased\"></input>
+						<input type=\"hidden\" name=\"actionbased\" value=\"$actionbased\"></input>
 						<input type=\"hidden\" name=\"use_geoip\" value=\"$use_geoip\"></input>
 						<input type=\"hidden\" name=\"geoip_path\" value=\"$geoip_path\"></input>
                       </table></td>

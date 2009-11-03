@@ -2499,6 +2499,106 @@ echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" cla
   echo "</td></tr></table>";                                                                // Closing extra border-table
 }
 
+// This function shows a player's action stats in action based game types like S&D, HQ etc.
+function player_actions_s($playerid, $dbID = false)
+{
+  global $separatorline;
+  global $coddb;
+  global $t; //table names from config
+  global $e; //action (event) names from config
+  
+  $Output = "
+  <table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td>
+    <table width=\"100%\" border=\"0\" cellspacing=\"2\" cellpadding=\"0\" class=\"innertable\">
+        <tr class=\"outertable\">
+            <td align=\"left\">Action Name</td>
+            <td align=\"center\">Count</td>
+            <td align=\"left\">Percentage of Your Total Actions</td>
+        </tr>
+        ";
+
+  if($dbID == false)
+  {
+    $query = "SELECT id 
+              FROM ${t['players']}
+              WHERE id = $playerid AND hide = 0
+              LIMIT 1";
+  }
+  else 
+  {
+    $query = "SELECT id 
+              FROM ${t['players']}
+              WHERE client_id = $playerid AND hide = 0
+              LIMIT 1";        
+  }
+
+  $result = $coddb->sql_query($query);
+  $row = $coddb->sql_fetchrow($result);
+
+  if ($row == false) 
+    return;  // no result given: does not exist or is hidden. Anyway, return whence thou camest!
+        
+  $playerid =  $row['id'];
+
+  //query sum of actions of the player - to be used in percentage calculation
+  $query = "SELECT SUM( ${t['playeractions']}.count )
+            FROM ${t['playeractions']}, ${t['actions']}, ${t['b3_clients']}
+            WHERE ${t['playeractions']}.player_id = ${t['b3_clients']}.id
+            AND ${t['playeractions']}.action_id = ${t['actions']}.id
+            AND ${t['playeractions']}.player_id = $playerid";
+
+  $result = $coddb->sql_query($query);
+  $row = $coddb->sql_fetchrow($result);
+  $total_actions = $row[0];
+
+  //query all actions of the player
+  $query = "SELECT ${t['actions']}.name, ${t['playeractions']}.count
+            FROM ${t['playeractions']}, ${t['actions']}, ${t['b3_clients']}
+            WHERE ${t['playeractions']}.player_id = ${t['b3_clients']}.id
+            AND ${t['playeractions']}.action_id = ${t['actions']}.id
+            AND ${t['playeractions']}.player_id = $playerid
+            ORDER BY ${t['playeractions']}.count DESC";
+
+  $result = $coddb->sql_query($query);
+  
+  while ($row = $coddb->sql_fetchrow($result))
+  {
+    if ($separatorline == 1)
+      $Output .= "<tr><td colspan=\"6\" class=\"outertable\"><img src=\"images/spacer.gif\" width=\"1\" height=\"1\" alt=\"\"></td></tr>";
+
+    $Output .= "<tr>";
+
+    if (isset($e[$row['name']]))
+      $Output .= "<td align=\"left\">".$e[$row['name']]."</td>";
+    else
+      $Output .= "<td align=\"left\">${row['name']}</td>";
+
+    $Output .= "
+          <td align=\"center\">${row['count']}</td>";
+
+    $ratio_actions = 0;
+
+    if ( ($total_actions > 0) && ($row['count'] > 0) )
+    {
+      $ratio_actions = $temp = sprintf("%.2f", $row['count']/($total_actions/100));
+      if(intval($ratio_actions) >= 99)
+        $temp = "97.50";
+    }
+    else
+      $Output .= "<td></td>";                                                                 
+     
+        if($ratio_actions > 0.00 )
+            $Output .= "<td align=\"left\"><img align=\"middle\" src=\"images/bars/bar-small/green_left_9.gif\" width=\"4\" height=\"9\" title=\"$ratio_actions % of your total actions which is $total_actions\"><img align=\"middle\" src=\"images/bars/bar-small/green_middle_9.gif\" width=".$temp."%\" height=\"9\" alt=".$ratio_actions." title=\"$ratio_actions % of your total actions which is $total_actions\"><img align=\"middle\" src=\"images/bars/bar-small/green_right_9.gif\" width=\"4\" height=\"9\"  title=\"$ratio_actions % of your total actions which is $total_actions\" ></td>
+            ";
+  }
+
+    $Output .= "
+       </tr> 
+     </table>
+   </table>";
+  return $Output;
+}
+
 // This functions shows who a player has hit, and whom he was hit by
 function player_opponents_s($playerid, $dbID = false)
 {

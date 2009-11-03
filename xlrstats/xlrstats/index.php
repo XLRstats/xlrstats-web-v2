@@ -237,6 +237,7 @@ if ($func == "player")
   global $game;
   global $groupbits;
   global $limitplayerstats;
+  global $actionbased;
 
   global $main_width;
   // variables for tabcontrol (playerstats tabs)
@@ -273,28 +274,41 @@ if ($func == "player")
     $content3 = player_maps_s($playerid);          
     $content4 = player_opponents_s($playerid);
     $content5 = player_activity_s($playerid);
+    $content6 = player_actions_s($playerid);
 
-    if ($groupbits > 0 || $limitplayerstats == 0)
-    {
-      $tabControl->defineSettings(1,$main_width,100,5,2,"center","middle",
-        array($text["activity"],$text["actweapons"],$text["hitzones"],$text["mapachieve"], $text["worstenemies"]),
-        array($content5, $content1, $content2, $content3, $content4),
-        array($text["last31days"],$text["favweapused"],$text["favhitzones"],$text["yourmapachiev"],$text["worstenemies"]));
-    }
-    else
-    {
-      $tabControl->defineSettings(1,$main_width,100,2,2,"center","middle",
-        array($text["activity"], $text["hitzones"]),
-        array($content5, $content2),
-        array($text["last31days"],$text["favhitzones"]));
-    }
+
+      if ($groupbits > 0 || $limitplayerstats == 0)
+      {
+        if ($actionbased == 0)
+        {
+          $tabControl->defineSettings(1,$main_width,100,5,2,"center","middle",
+          array($text["activity"],$text["actweapons"],$text["hitzones"],$text["mapachieve"], $text["worstenemies"]),
+          array($content5, $content1, $content2, $content3, $content4),
+          array($text["last31days"],$text["favweapused"],$text["favhitzones"],$text["yourmapachiev"],$text["worstenemies"]));
+        }
+        else
+        {
+          $tabControl->defineSettings(1,$main_width,100,6,2,"center","middle",
+          array($text["activity"],$text["actweapons"],$text["hitzones"],$text["mapachieve"], "Actions", $text["worstenemies"]),
+          array($content5, $content1, $content2, $content3, $content6, $content4),
+          array($text["last31days"],$text["favweapused"],$text["favhitzones"],$text["yourmapachiev"],"Your Action Based Statistics", $text["worstenemies"]));
+        }
+      }
+      else
+      {
+        $tabControl->defineSettings(1,$main_width,100,2,2,"center","middle",
+          array($text["activity"], $text["hitzones"]),
+          array($content5, $content2),
+          array($text["last31days"],$text["favhitzones"]));
+      }
     
-    $tabControl->defineStyle($ptab_backgroundColor,$ptab_selectedBgColor,$ptab_mouseOverColor,$ptab_borderColor,$ptab_borderSize,$ptab_borderStyle,$ptab_font,$ptab_textAlign,$ptab_fontSize,$ptab_fontWeight,$ptab_Color);
-    //generate control
-    $tabControl->writeControl();
-
+      $tabControl->defineStyle($ptab_backgroundColor,$ptab_selectedBgColor,$ptab_mouseOverColor,$ptab_borderColor,$ptab_borderSize,$ptab_borderStyle,$ptab_font,$ptab_textAlign,$ptab_fontSize,$ptab_fontWeight,$ptab_Color);
+      //generate control
+      $tabControl->writeControl();
+    } 
+ 
   // -------------------------------------------------------------------------------
-  }
+
   if (isset($_GET['playerdbid']))
   { 
     $playerdbid = escape_string($_GET['playerdbid']);
@@ -314,13 +328,24 @@ if ($func == "player")
     $content3 = player_maps_s($playerdbid, true);          
     $content4 = player_opponents_s($playerdbid, true);
     $content5 = player_activity_s($playerdbid, true);          
+    $content6 = player_actions_s($playerdbid, true);
 
     if ($groupbits > 0 || $limitplayerstats == 0)
     {
-      $tabControl->defineSettings(1,$main_width,100,5,2,"center","middle",
+      if ($actionbased == 0)
+      {
+        $tabControl->defineSettings(1,$main_width,100,5,2,"center","middle",
         array($text["activity"],$text["actweapons"],$text["hitzones"],$text["mapachieve"], $text["worstenemies"]),
         array($content5, $content1, $content2, $content3, $content4),
         array($text["last31days"],$text["favweapused"],$text["favhitzones"],$text["yourmapachiev"],$text["worstenemies"]));
+      }
+      else
+      {
+        $tabControl->defineSettings(1,$main_width,100,6,2,"center","middle",
+        array($text["activity"],$text["actweapons"],$text["hitzones"],$text["mapachieve"], "Actions", $text["worstenemies"]),
+        array($content5, $content1, $content2, $content3, $content6, $content4),
+        array($text["last31days"],$text["favweapused"],$text["favhitzones"],$text["yourmapachiev"],"Your Action Based Stats", $text["worstenemies"]));
+      }
     }
     else
     {

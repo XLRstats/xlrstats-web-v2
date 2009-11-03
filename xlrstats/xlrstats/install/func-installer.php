@@ -170,6 +170,7 @@ function create_statsconfig()
   global $sig;
   global $statstitle;
   global $teambased;
+  global $actionbased;
   global $use_geoip;
   global $geoip_path;
 
@@ -294,6 +295,9 @@ fwrite($fp,
 // Does this server run teambased games? (For teamkill and teamdeath awards)
 \$teambased = $teambased;
 
+//Does this server run action based games like Search and Destroy, Capture the Flag etc? (For Action Stats)
+\$actionbased = $actionbased;
+
 // Number of players/maps/weapons in mainpage top lists
 \$toplist_max = $toplist_max;
 \$maplist_max = $maplist_max;
@@ -378,6 +382,8 @@ fwrite($fp,
 \$t['weaponusage'] = \"xlr_weaponusage\";
 \$t['playerbody'] = \"xlr_playerbody\";
 \$t['playermaps'] = \"xlr_playermaps\";
+\$t['actions'] = \"xlr_actionstats\";
+\$t['playeractions'] = \"xlr_playeractions\";
 
 ?>
 ");

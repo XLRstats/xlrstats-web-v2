@@ -142,5 +142,6 @@ $t['opponents'] = "xlr_opponents";
 $t['weaponusage'] = "xlr_weaponusage";
 $t['playerbody'] = "xlr_playerbody";
 $t['playermaps'] = "xlr_playermaps";
-
+$t['actions'] = "xlr_actionstats";
+$t['playeractions'] = "xlr_playeractions";
 ?>

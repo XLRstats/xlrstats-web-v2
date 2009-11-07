@@ -2541,21 +2541,19 @@ function player_actions_s($playerid, $dbID = false)
   $playerid =  $row['id'];
 
   //query sum of actions of the player - to be used in percentage calculation
-  $query = "SELECT SUM( ${t['playeractions']}.count )
-            FROM ${t['playeractions']}, ${t['actions']}, ${t['b3_clients']}
-            WHERE ${t['playeractions']}.player_id = ${t['b3_clients']}.id
-            AND ${t['playeractions']}.action_id = ${t['actions']}.id
-            AND ${t['playeractions']}.player_id = $playerid";
+  $query = "  SELECT SUM( ${t['playeractions']}.count ) AS total_actions
+              FROM ${t['playeractions']}, ${t['actions']}
+              WHERE ${t['playeractions']}.action_id = ${t['actions']}.id
+              AND ${t['playeractions']}.player_id = $playerid";
 
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
-  $total_actions = $row[0];
+  $total_actions = $row['total_actions'];
 
   //query all actions of the player
   $query = "SELECT ${t['actions']}.name, ${t['playeractions']}.count
-            FROM ${t['playeractions']}, ${t['actions']}, ${t['b3_clients']}
-            WHERE ${t['playeractions']}.player_id = ${t['b3_clients']}.id
-            AND ${t['playeractions']}.action_id = ${t['actions']}.id
+            FROM ${t['playeractions']}, ${t['actions']}
+            WHERE ${t['playeractions']}.action_id = ${t['actions']}.id
             AND ${t['playeractions']}.player_id = $playerid
             ORDER BY ${t['playeractions']}.count DESC";
 

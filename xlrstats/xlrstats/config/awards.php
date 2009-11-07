@@ -33,6 +33,12 @@ $shame_medals = array();
 $pro_medals[] = 'pro_medal_serial_killer()';                // win streak           all
 $pro_medals[] = 'pro_medal_nothing_better_to_do()';         // rounds played        all
 
+// Action medals in actionbased games only
+if ($actionbased == 1)
+{
+    $pro_medals[] = 'pro_medal_action_hero()';             // total actions         all (only for actionbased gametypes!)
+}
+
 if ($game == 'cod1' || $game == 'coduo' || $game == 'cod2' || $game == 'cod4' || $game == 'codwaw'  || $game == 'urt')
 {
     $pro_medals[] = 'pro_medal_nade_killer()';              // nade kills           cod urt

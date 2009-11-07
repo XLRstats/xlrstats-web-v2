@@ -1157,6 +1157,74 @@ function pro_medal_head_hunter()
   ShowMedal($text["headhunter"], $text["pheadshots"], $score, $playerid, $name, "xlr_pro_headshots.png", $text["mosthdsht"], $players, $scores, $fname, $playerids, $flags);
 }
 
+function pro_medal_action_hero()
+{
+  $link = baselink();
+  global $coddb;
+  global $separatorline;
+  global $t;  //table names
+  global $a_name;  //award names 
+  global $a_desc;  //award descriptions
+  global $minkills;
+  global $minrounds;
+  global $maxdays;
+  global $text;
+  global $exclude_ban;
+
+  $current_time = gmdate("U");
+
+  $query = " SELECT ${t['b3_clients']}.name, ${t['players']}.fixed_name, ${t['players']}.id, ${t['b3_clients']}.ip, sum( ${t['playeractions']}.count ) AS total_actions
+          FROM ${t['playeractions']}, ${t['b3_clients']}, ${t['players']}
+          WHERE (${t['playeractions']}.player_id = ${t['players']}.id)
+          AND ((${t['players']}.kills > $minkills) OR (${t['players']}.rounds > $minrounds))
+          AND (${t['players']}.hide = 0)
+          AND (${t['players']}.client_id = ${t['b3_clients']}.id)
+          AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)";
+
+    if ($exclude_ban) {
+      $query .= " AND ${t['b3_clients']}.id NOT IN (
+          SELECT distinct(target.id)
+          FROM ${t['b3_penalties']} as penalties, ${t['b3_clients']} as target
+          WHERE (penalties.type = 'Ban' OR penalties.type = 'TempBan')
+          AND inactive = 0
+          AND penalties.client_id = target.id
+          AND ( penalties.time_expire = -1 OR penalties.time_expire > UNIX_TIMESTAMP(NOW()) )
+        )";
+      }
+
+  $query .= " GROUP BY ${t['b3_clients']}.id
+          ORDER BY total_actions DESC
+          LIMIT 1 ";
+
+  $result = $coddb->sql_query($query);
+  $row = $coddb->sql_fetchrow($result);
+  $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+  $score = sprintf("%.0f",$row['total_actions']);
+  $playerid = $row['id'];
+  
+  $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
+  $result = $coddb->sql_query($query);
+  while ($row = $coddb->sql_fetchrow($result)) 
+  {
+    $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+    $players[] = $names;
+    $scores[] = sprintf("%.0f",$row['total_actions']);
+    $playerids[] = $row['id'];
+    $flags[] = country_flag($row['ip']);
+  }
+
+  if(!isset($playerids, $flags, $players, $scores)) {
+    $playerids = "";
+    $flags = "";
+    $players = "";
+    $scores = "";
+    }
+
+  $fname = __FUNCTION__;
+
+  ShowMedal("Action Hero", "Total Actions", $score, $playerid, $name, "xlr_pro_actions.png", "Most Action Achievements", $players, $scores, $fname, $playerids, $flags);  
+}
+
 function ShowMedal($MedalName, $ArchieveName, $ArchValue, $PlayerId, $Nick, $MedalPicture, $Description, $PlayerNames, $Scores, $FunctionName, $PlayerListIds, $Country)
 {
   $link = baselink();

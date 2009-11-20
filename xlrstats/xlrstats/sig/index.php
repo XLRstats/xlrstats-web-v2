@@ -65,7 +65,7 @@ $player_id  = $_GET['id'];
 // OPTIONAL INPUT
 $backdrop_url = $_GET['b'];
 
-$style_options = split("-", $_GET['s'] );
+$style_options = explode("-", $_GET['s'] );
 foreach( $style_options as $opt )
 {
 	if( $opt{0} == "c" ) $color_scheme_id = substr($opt,1);

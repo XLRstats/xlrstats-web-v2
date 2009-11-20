@@ -178,8 +178,8 @@ DEFINE("_FORCE_IMGDIR",'/tmp/jpgimg/');
 
 function CheckPHPVersion($aMinVersion)
 {
-    list($majorC, $minorC, $editC) = split('[/.-]', PHP_VERSION);
-    list($majorR, $minorR, $editR) = split('[/.-]', $aMinVersion);
+    list($majorC, $minorC, $editC) = explode('[/.-]', PHP_VERSION);
+    list($majorR, $minorR, $editR) = explode('[/.-]', $aMinVersion);
   
     if ($majorC > $majorR) return true;
     if ($majorC < $majorR) return false;

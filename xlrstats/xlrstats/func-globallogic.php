@@ -540,7 +540,7 @@ function gamelauncher($type)
     if ($game == 'urt') $tgame = 'urbanterror';
     if ($game == 'q3a') $tgame = 'q3';    
     if ($game == 'wop') $tgame = 'wop';    
-    $temp = split(":", $public_ip);
+    $temp = explode(":", $public_ip);
     $link = ' <a href="gsc://joinGame:game='.$tgame.'&ip='.$temp[0].'&port='.$temp[1].'"><img src="images/ico/icon_gsc.jpg" title="'.$text["conwgsc"].'" alt="gsc" width="16" height="16" border="0" align="absmiddle" id="gsc" /></a>';
   }
   return $link;

@@ -31,7 +31,7 @@ your b3/extplugins/conf folder.
 3. Open your B3.xml file (in b3/conf) and add the next line in the
 <plugins> section of the file:
 
-<plugin name="ctime" priority="12" config="@b3/extplugins/conf/ctime.xml"/>
+<plugin name="ctime" priority="12" config="@b3/extplugins/conf/plugin_ctime.xml"/>
 
 The numer 12 in this just an example. Make sure it fits your
 plugin list.

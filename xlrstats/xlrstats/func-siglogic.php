@@ -53,7 +53,7 @@ function get_user_image( $image_url, $width, $height, $cache_life )
 			$flag_cached = true;
 			
 			// Get timestamp.		
-			list( , $cache_time ) = split( "_", $cached_file );
+			list( , $cache_time ) = explode( "_", $cached_file );
 			$cache_time = intval($cache_time);
 			
 			// Is this cached file out of date?

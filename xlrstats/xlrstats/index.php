@@ -289,9 +289,9 @@ if ($func == "player")
         else
         {
           $tabControl->defineSettings(1,$main_width,100,6,2,"center","middle",
-          array($text["activity"],$text["actweapons"],$text["hitzones"],$text["mapachieve"], "Actions", $text["worstenemies"]),
+          array($text["activity"],$text["actweapons"],$text["hitzones"],$text["mapachieve"], $text["actions"], $text["worstenemies"]),
           array($content5, $content1, $content2, $content3, $content6, $content4),
-          array($text["last31days"],$text["favweapused"],$text["favhitzones"],$text["yourmapachiev"],"Your Action Based Statistics", $text["worstenemies"]));
+          array($text["last31days"],$text["favweapused"],$text["favhitzones"],$text["yourmapachiev"],$text["actionbased"],$text["worstenemies"]));
         }
       }
       else
@@ -342,9 +342,9 @@ if ($func == "player")
       else
       {
         $tabControl->defineSettings(1,$main_width,100,6,2,"center","middle",
-        array($text["activity"],$text["actweapons"],$text["hitzones"],$text["mapachieve"], "Actions", $text["worstenemies"]),
+        array($text["activity"],$text["actweapons"],$text["hitzones"],$text["mapachieve"], $text["actions"], $text["worstenemies"]),
         array($content5, $content1, $content2, $content3, $content6, $content4),
-        array($text["last31days"],$text["favweapused"],$text["favhitzones"],$text["yourmapachiev"],"Your Action Based Stats", $text["worstenemies"]));
+        array($text["last31days"],$text["favweapused"],$text["favhitzones"],$text["yourmapachiev"],$text["actionbased"],$text["worstenemies"]));
       }
     }
     else

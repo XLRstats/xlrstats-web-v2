@@ -1222,7 +1222,7 @@ function pro_medal_action_hero()
 
   $fname = __FUNCTION__;
 
-  ShowMedal("Action Hero", "Total Actions", $score, $playerid, $name, "xlr_pro_actions.png", "Most Action Achievements", $players, $scores, $fname, $playerids, $flags);  
+  ShowMedal($text["actionhero"], $text["totalactions"], $score, $playerid, $name, "xlr_pro_actions.png", $text["mostactions"], $players, $scores, $fname, $playerids, $flags);  
 }
 
 function ShowMedal($MedalName, $ArchieveName, $ArchValue, $PlayerId, $Nick, $MedalPicture, $Description, $PlayerNames, $Scores, $FunctionName, $PlayerListIds, $Country)

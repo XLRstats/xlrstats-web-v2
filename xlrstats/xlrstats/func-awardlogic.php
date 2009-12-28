@@ -2476,7 +2476,7 @@ function shame_medal_careless()
 class cache
 {
     var $cache_dir = './dynamic/cache/';//This is the directory where the cache files will be stored;
-    var $cache_time = 1000;//How much time will keep the cache files in seconds.
+    var $cache_time = 1800;//How much time will keep the cache files in seconds.
     
     var $caching = false;
     var $file = '';
@@ -2487,7 +2487,7 @@ class cache
         //Constructor of the class
         $this->awardname = $fname . '_' . $currentconfignumber;
         $this->file = $this->cache_dir . $this->awardname . ".txt";
-        if ( file_exists ( $this->file ) && ( fileatime($this->file) + $this->cache_time ) > time() && !isset($_GET['fname']) )
+        if ( file_exists ( $this->file ) && ( filemtime($this->file) + $this->cache_time ) > time() && !isset($_GET['fname']) )
         {
             //Grab the cache:
             $handle = fopen( $this->file , "r");

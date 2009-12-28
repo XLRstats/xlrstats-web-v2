@@ -154,6 +154,9 @@ $text["bestwinstrk"] = "Beste win reeks";
 $text["headhunter"] = "HeadHunter";
 $text["pheadshots"] = "Headshots";
 $text["mosthdsht"] = "Hoogste headshot percentage";
+$text["actionhero"] = "Action Hero";
+$text["totalactions"] = "Total Actions";
+$text["mostactions"] = "Most Action Achievements";
 $text["awardavailable"] = "Medaille nog beschikbaar ::";
 $text["topthisplayers"] = "Win van deze spelers om medailles te bemachtigen!";
 
@@ -311,6 +314,12 @@ $text["clickmapname"] = "Click the mapname to see who does well on this map";
 $text["worstenemies"] = "Your worst enemies";
 $text["yourkdratio"] = "Your K/D Ratio";
 $text["whosyourenemy"] = "Who's your worst enemy?";
+$text["actions"] = "Actions";
+$text["actionbased"] = "Your Action Based Statistics";
+$text["actionname"] = "Action Name";
+$text["count"] = "Count";
+$text["perofactions"] = "Percentage of Your Total Actions";
+$text["ofyouractions"] = "of your total actions which is";
 
 //RANKS
 $text["private"] = "Soldaat";

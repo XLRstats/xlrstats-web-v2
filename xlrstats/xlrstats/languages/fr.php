@@ -154,6 +154,9 @@ $text["bestwinstrk"] = "Meilleur serie de tues a la suite";
 $text["headhunter"] = "Chasseur de têtes";
 $text["pheadshots"] = "Headshots";
 $text["mosthdsht"] = "Pourcentage Headshots le plus élevé";
+$text["actionhero"] = "Action Hero";
+$text["totalactions"] = "Total Actions";
+$text["mostactions"] = "Most Action Achievements";
 $text["awardavailable"] = "Médaille disponible ::";
 $text["topthisplayers"] = "Faites mieux que ces joueurs pour gagner une médaille!";
 
@@ -311,6 +314,12 @@ $text["clickmapname"] = "Cliquez sur le nom de la map pour voir le meilleur joue
 $text["worstenemies"] = "Vos pires ennemis";
 $text["yourkdratio"] = "Votre K/D Ratio";
 $text["whosyourenemy"] = "Qui est votre pire ennemi?";
+$text["actions"] = "Actions";
+$text["actionbased"] = "Your Action Based Statistics";
+$text["actionname"] = "Action Name";
+$text["count"] = "Count";
+$text["perofactions"] = "Percentage of Your Total Actions";
+$text["ofyouractions"] = "of your total actions which is";
 
 //RANKS
 $text["private"] = "Soldat";

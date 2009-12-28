@@ -154,6 +154,9 @@ $text["bestwinstrk"] = "En Ýyi Galibiyet Serisi";
 $text["headhunter"] = "Kafa Avcýsý";
 $text["pheadshots"] = "Kafadan Vurma";
 $text["mosthdsht"] = "En Yüksek Kafadan Vurma Oraný";
+$text["actionhero"] = "Olay Kahramaný"; //"Action Hero";
+$text["totalactions"] = "Olay Sayýsý"; //"Total Actions";
+$text["mostactions"] = "En Fazla Olay Baþarma"; //"Most Action Achievements";
 $text["awardavailable"] = "Ödül Henüz Verilmedi ::";
 $text["topthisplayers"] = "Ödül kazanmak için bu oyuncularý alt etmelisiniz!";
 
@@ -311,6 +314,12 @@ $text["clickmapname"] = "Bir haritada kimin daha baþarýlý olduðunu görmek için h
 $text["worstenemies"] = "En Azýlý Düþmanlarýnýz";
 $text["yourkdratio"] = "Öldürme/Ölüm Oraný";
 $text["whosyourenemy"] = "En azýlý düþmanýnýz kim?";
+$text["actions"] = "Olaylar"; //"Actions";
+$text["actionbased"] = "Olay bazlý istatistikleriniz"; //"Your Action Based Statistics";
+$text["actionname"] = "Olay Adý"; //"Action Name";
+$text["count"] = "Sayý";//"Count";
+$text["perofactions"] = "Toplam Olay Baþarýlarýnýz Ýçindeki Oraný"; //"Percentage of Your Total Actions";
+$text["ofyouractions"] = " -> Toplam Olay Baþarýlarýnýz Ýçindeki Oraný; Toplam Olay Baþarýnýz:"; //"% of your total actions which is";
 
 //RANKS
 $text["private"] = "Er";

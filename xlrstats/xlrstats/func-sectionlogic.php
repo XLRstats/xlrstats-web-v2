@@ -2506,14 +2506,15 @@ function player_actions_s($playerid, $dbID = false)
   global $coddb;
   global $t; //table names from config
   global $e; //action (event) names from config
+  global $text;
   
   $Output = "
   <table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td>
     <table width=\"100%\" border=\"0\" cellspacing=\"2\" cellpadding=\"0\" class=\"innertable\">
         <tr class=\"outertable\">
-            <td align=\"left\">Action Name</td>
-            <td align=\"center\">Count</td>
-            <td align=\"left\">Percentage of Your Total Actions</td>
+            <td align=\"left\">".$text["actionname"]."</td>
+            <td align=\"center\">".$text["count"]."</td>
+            <td align=\"left\">".$text["perofactions"]."</td>
         </tr>
         ";
 
@@ -2586,7 +2587,7 @@ function player_actions_s($playerid, $dbID = false)
       $Output .= "<td></td>";                                                                 
      
         if($ratio_actions > 0.00 )
-            $Output .= "<td align=\"left\"><img align=\"middle\" src=\"images/bars/bar-small/green_left_9.gif\" width=\"4\" height=\"9\" title=\"$ratio_actions % of your total actions which is $total_actions\"><img align=\"middle\" src=\"images/bars/bar-small/green_middle_9.gif\" width=".$temp."%\" height=\"9\" alt=".$ratio_actions." title=\"$ratio_actions % of your total actions which is $total_actions\"><img align=\"middle\" src=\"images/bars/bar-small/green_right_9.gif\" width=\"4\" height=\"9\"  title=\"$ratio_actions % of your total actions which is $total_actions\" ></td>
+            $Output .= "<td align=\"left\"><img align=\"middle\" src=\"images/bars/bar-small/green_left_9.gif\" width=\"4\" height=\"9\" title=\"$ratio_actions % ".$text["ofyouractions"]." $total_actions\"><img align=\"middle\" src=\"images/bars/bar-small/green_middle_9.gif\" width=".$temp."%\" height=\"9\" alt=".$ratio_actions." title=\"$ratio_actions % ".$text["ofyouractions"]." $total_actions\"><img align=\"middle\" src=\"images/bars/bar-small/green_right_9.gif\" width=\"4\" height=\"9\"  title=\"$ratio_actions % ".$text["ofyouractions"]." $total_actions\" ></td>
             ";
   }
 

@@ -154,6 +154,9 @@ $text["bestwinstrk"] = "Mejor racha de victorias";
 $text["headhunter"] = "Caza Cabezas";
 $text["pheadshots"] = "Tiros a la Cabeza";
 $text["mosthdsht"] = "Porcentaje m&acute;s alto de headshot";
+$text["actionhero"] = "Action Hero";
+$text["totalactions"] = "Total Actions";
+$text["mostactions"] = "Most Action Achievements";
 $text["awardavailable"] = "Premio A&uacute;n disponible ::";
 $text["topthisplayers"] = "&iexcl;Estos jugadores ganaron un premio!";
 
@@ -311,6 +314,12 @@ $text["clickmapname"] = "Haga clic en el nombre del Mapa para ver qui&eacute;n l
 $text["worstenemies"] = "Sus peores enemigos";
 $text["yourkdratio"] = "Su B/M Porcentaje";
 $text["whosyourenemy"] = "&iquest;Qui&eacute;n es su peor enemigo";
+$text["actions"] = "Actions";
+$text["actionbased"] = "Your Action Based Statistics";
+$text["actionname"] = "Action Name";
+$text["count"] = "Count";
+$text["perofactions"] = "Percentage of Your Total Actions";
+$text["ofyouractions"] = "of your total actions which is";
 
 //RANGOS
 $text["private"] = "Soldado";
@@ -390,6 +399,5 @@ $text["gettingerros"] = "&iquest;Teniendo errores? Haga clic aqu&iacute; para re
 $text["nodescavail"] = "No disponemos de descripci&oacute;n.";
 $text["ofbestratio"] = "% del mejor porcentaje (Cual es ";
 $text["ofratio"] = "% de 1:0 Porcentaje";
-
 
 ?>

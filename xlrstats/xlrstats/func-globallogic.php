@@ -550,6 +550,7 @@ function welcometext($pop=0)
  </tr>
  </table>
       ";
+  flush();
 }
 
 function gamelauncher($type)
@@ -914,6 +915,7 @@ function displayheader($pop=0)
 
   $xlrpath = pathlink($pop);
   $csspath = $xlrpath . "templates/" . $template . "/style.css";
+  $loadercsspath = $xlrpath . "templates/loader.css";
   // Include existing php dynamic css?
   $template_dyn_css = $xlrpath . "templates/" . $template . "/style-css.php?config=" . $currentconfignumber;
 
@@ -973,10 +975,11 @@ function displayheader($pop=0)
   echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"".$xlrpath."lib/autocomplete/jquery.autocomplete.css\" />\n";
   echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"".$xlrpath."lib/jquery-boxy/boxy.css\" media=\"screen\" />\n";
   echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"".$csspath."\" media=\"screen\" />\n";
+  echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"".$loadercsspath."\" media=\"screen\" />\n";
   // include the php dynamic css
   echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"".$template_dyn_css."\" media=\"screen\" />\n";
 
-//  echo "<script type=\"text/JavaScript\" src=\"".$xlrpath."lib/sorttable/sorttable.js\"></script>\n";
+  // echo "<script type=\"text/JavaScript\" src=\"".$xlrpath."lib/sorttable/sorttable.js\"></script>\n";
   echo "<script type=\"text/JavaScript\" src=\"".$xlrpath."lib/jquery-1.2.6.min.js\"></script>\n";
   echo "<script type=\"text/JavaScript\" src=\"".$xlrpath."lib/jquery-boxy/jquery.boxy.js\"></script>\n";
   echo "<script type=\"text/javascript\" src=\"".$xlrpath."lib/autocomplete/jquery.autocomplete.js\"></script>\n";
@@ -1067,8 +1070,22 @@ $(document).ready(function(){
 
   echo "</head>\n";
   echo "<body bgcolor=\"#333333\">\n";
-  // Start opening the MAIN table defining general look
 
+  // Here is the loader div and script
+  echo "<div id=\"loading\" class=\"loading-invisible\">\n";
+  echo "  <p><img src=\"./images/loader.gif\"></p>\n";
+  echo "</div>\n";
+?>
+<script type="text/javascript">
+  document.getElementById("loading").className = "loading-visible";
+  var hideDiv = function(){document.getElementById("loading").className = "loading-invisible";};
+  var oldLoad = window.onload;
+  var newLoad = oldLoad ? function(){hideDiv.call(this);oldLoad.call(this);} : hideDiv;
+  window.onload = newLoad;
+</script>
+<?php
+
+  // Start opening the MAIN table defining general look
   echo "<div id=\"page-body\"><div class=\"page-body-img\">";
   echo "<div id=\"page-footer\"><div class=\"page-footer-img\">";
 
@@ -1146,6 +1163,7 @@ $(document).ready(function(){
   ";
 
   echo "</table>\n";
+  flush();
 }
 
 function displaysimplefooter($pop=0)

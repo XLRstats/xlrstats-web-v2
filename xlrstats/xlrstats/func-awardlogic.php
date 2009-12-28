@@ -1319,6 +1319,7 @@ function ShowMedal($MedalName, $ArchieveName, $ArchValue, $PlayerId, $Nick, $Med
     $text["score"] = ":";
   }
   
+  flush();
   if (!isset($_GET['fname'])) 
   {
   echo "<td align=\"center\" width=\"150\">

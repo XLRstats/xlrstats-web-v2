@@ -1,0 +1,26 @@
+/*this is what we want the div to look like
+  when it is not showing*/
+div.loading-invisible{
+  /*make invisible*/
+  display:none;
+}
+
+/*this is what we want the div to look like
+  when it IS showing*/
+div.loading-visible{
+  /*make visible*/
+  display:block;
+
+  /*set the div in the center of the screen*/
+  position:absolute;
+  top:50%;
+  left:48%;
+  /*width:198px;*/
+
+  /*in supporting browsers, make it
+    a little transparent*/
+  /*background:#000;
+  opacity:.85;
+  border-top:1px solid #ddd;
+  border-bottom:1px solid #ddd;*/
+}

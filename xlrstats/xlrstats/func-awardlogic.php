@@ -2485,9 +2485,10 @@ class cache
 
     function cache($fname, $currentconfignumber)
     {
+        global $lang_file;
+        $lang = explode(".", $lang_file);
         //Constructor of the class
-        $this->awardname = $fname . '_' . $currentconfignumber;
-        $this->file = $this->cache_dir . $this->awardname . ".txt";
+        $this->file = $this->cache_dir . $fname . '_' . $currentconfignumber . '_' . $lang[0] . ".txt";
         if ( file_exists ( $this->file ) && ( filemtime($this->file) + $this->cache_time ) > time() && !isset($_GET['fname']) )
         {
             //Grab the cache:

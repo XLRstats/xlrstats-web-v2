@@ -1,5 +1,7 @@
-This directory (./dynamic) must be writable by the webserver.
-Inhere it will write the identified award files and keep track of visitors.
+This directory (./dynamic) and all its underlying directories must be writable 
+by the webserver. Inhere it will write the identified award files and keep 
+track of visitors. In the cache directory awards will be cached to improve
+performance. 
 
 The awardfiles are specific for each server since the weapons are saved in
 the database differently for each server. The installation file in the config

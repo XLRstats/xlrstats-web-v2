@@ -42,7 +42,7 @@ function baselink()
   return $_SERVER['PHP_SELF'];
 }
 
-function abs_pathlink($pop=0)
+function orig_abs_pathlink($pop=0)
 {
   $ptemp = explode("/", GetFileDir($_SERVER['SCRIPT_FILENAME']));
   //array_shift($ptemp);
@@ -55,7 +55,7 @@ function abs_pathlink($pop=0)
   return implode("/", $ptemp)."/";
 }
 
-function pathlink($pop=0)
+function bare_pathlink($pop=0)
 {
   $ptemp = explode("/", GetFileDir($_SERVER['PHP_SELF']));
   //array_shift($ptemp);
@@ -66,6 +66,62 @@ function pathlink($pop=0)
     $pop--;
   }
   return implode("/", $ptemp)."/";
+}
+
+// Improvement to function by zskull
+function abs_pathlink($pop)
+{
+	$lang = explode('\\', $_SERVER['SCRIPT_FILENAME']);
+	$h='';
+	$c2 = count(explode('\\', $_SERVER['DOCUMENT_ROOT']))+1;
+	if(!isset($lang))
+	{
+		$lang = explode('/', $_SERVER['SCRIPT_FILENAME']);
+	}
+	if(!isset($c2))
+	{
+		$c2 = count(explode('/', $_SERVER['DOCUMENT_ROOT']))+1;
+	}
+	$c = count($lang)-$c2;
+	$i=1;
+	foreach($lang as $v => $lang)
+	{
+		if($i == $c)
+		{
+			$h .= '../';
+		}
+		$i++;
+	}
+	$lang2 = explode('.ph', $_SERVER['PHP_SELF']);
+	return ''.$h.''.str_ireplace('p', '', $lang2[1]).'';
+}
+
+// Improvement to function by zskull
+function pathlink($pop)
+{
+	$lang = explode('\\', $_SERVER['SCRIPT_FILENAME']);
+	$h='';
+	$c2 = count(explode('\\', $_SERVER['DOCUMENT_ROOT']))+1;
+	if(!isset($lang))
+	{
+		$lang = explode('/', $_SERVER['SCRIPT_FILENAME']);
+	}
+	if(!isset($c2))
+	{
+		$c2 = count(explode('/', $_SERVER['DOCUMENT_ROOT']))+1;
+	}
+	$c = count($lang)-$c2;
+	$i=1;
+	foreach($lang as $v => $lang)
+	{
+		if($i == $c)
+		{
+			$h .= '../';
+		}
+		$i++;
+	}
+	$lang2 = explode('.ph', $_SERVER['PHP_SELF']);
+	return ''.$h.''.str_ireplace('p', '', $lang2[1]).'';
 }
 
 function httplink($pop=0)
@@ -1175,7 +1231,7 @@ function displayhomelink($pop=0)
   global $myplayerid;
 
   //$link = baselink();
-  $link = pathlink($pop);
+  $link = bare_pathlink($pop);
   include("inc_navigation.php");
 }
 

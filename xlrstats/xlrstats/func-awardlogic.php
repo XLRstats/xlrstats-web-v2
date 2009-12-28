@@ -1287,7 +1287,7 @@ function pro_medal_action_hero()
       $scores = "";
       }
   
-    ShowMedal($text["actionhero"], $text["totalactions"], $score, $playerid, $name, "xlr_pro_actions.png", $text["mostactions"], $players, $scores, $fname, $playerids, $flags);  
+    ShowMedal($text["actionhero"], $text["totalactions"], $score, $playerid, $name, "xlr_pro_actions.png", $text["mostactions"], $players, $scores, $fname, $playerids, $flags, $ch);  
   }
 }
 

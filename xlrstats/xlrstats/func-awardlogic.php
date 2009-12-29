@@ -2481,7 +2481,7 @@ function shame_medal_careless()
 class cache
 {
   var $cache_dir = './dynamic/cache/';//This is the directory where the cache files will be stored;
-  var $cache_time = 1800;//How much time will keep the cache files in seconds.
+  var $cache_time = 3600;//How much time will keep the cache files in seconds.
   
   var $caching = false;
   var $file = '';

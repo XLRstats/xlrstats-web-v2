@@ -26,7 +26,7 @@
 
 //------------------------------------------------------------------------------------------------------------
 
-function pro_medals_begin($Title = "Our award winners", $AwardName = "pr0 Medals")
+function medal_begin($Title = "Our award winners", $AwardName = "pr0 Medals")
 {
   echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">$Title</td></tr><tr><td>";
   echo "<table border=\"0\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" align=\"center\" class=\"innertable\">";
@@ -36,7 +36,7 @@ function pro_medals_begin($Title = "Our award winners", $AwardName = "pr0 Medals
   echo "  <tr>";
 }
 
-function pro_medals_end($EndingText = "Top these players to win an award!")
+function medal_end($EndingText = "Top these players to win an award!")
 {
   echo "
 
@@ -57,14 +57,138 @@ function global_awards()
   
   $nr_awards = intval($main_width / 160); 
 
-  pro_medals_begin($text["winner"], $text["pro"]);
+  medal_begin($text["winner"], $text["pro"]);
   shuffle($pro_medals);
   foreach(array_slice($pro_medals, 0, $nr_awards) as $m)
     eval($m.";");
   unset($m);
-  pro_medals_end($text["topthisplayers"]);
+  medal_end($text["topthisplayers"]);
 }
 
+function global_lame_awards()
+{
+  $link = baselink();
+  global $shame_medals;
+  global $main_width;
+  global $text;
+  
+  $nr_awards = intval($main_width / 160); 
+
+  medal_begin($text["shameaward"], $text["shame"]);
+  shuffle($shame_medals);
+  foreach(array_slice($shame_medals, 0, $nr_awards) as $m)
+    eval($m.";");
+  unset($m);
+
+  medal_end($text["dontbetophere"]); 
+}
+
+function ShowMedal($MedalName, $ArchieveName, $ArchValue, $PlayerId, $Nick, $MedalPicture, $Description, $PlayerNames, $Scores, $FunctionName, $PlayerListIds, $Country, $ch)
+{
+  $link = baselink();
+  global $game;
+  global $currentconfignumber;
+  global $text;
+  global $geoip_path;
+
+  // do we have game specific medals?
+  if (file_exists("./images/medals/$game/"))
+    $MedalSrc = "./images/medals/$game/$MedalPicture";
+  else
+    $MedalSrc = "./images/medals/$MedalPicture";
+
+  // Clean the Nick from html code (translate)
+  $Nick = htmlspecialchars(utf2iso($Nick));
+
+  if ($ArchValue == 0 || $ArchValue == "" || $ArchValue == false)
+  {
+    $PlayerId = "";
+    $ArchValue = $text["awardavailable"];
+    $ArchieveName = ":";
+    $Nick = "";
+    $Scores[] = "";
+    $text["owner"] = "";
+    $text["score"] = ":";
+  }
+  
+  flush();
+  if (!isset($_GET['fname'])) 
+  {
+  echo "<td align=\"center\" width=\"150\">
+      <table width=\"150\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" align=\"center\" class=\"with_border_alternate\">
+      <tr><td align=\"center\" class=\"cellmenu1\"><a name=\"$Description\"><strong><a href='$link?func=medal&fname=$FunctionName' title=\"".$text["seemedaldetails"]."\">$MedalName</a></strong></a></td></tr>
+      <tr> 
+        <td width=\"150\" class=\"line1\" nowrap valign=\"top\" align=\"center\">
+        <B>$ArchieveName: &nbsp;$ArchValue&nbsp;</B>
+        <br/><a href=\"$link?func=player&playerid=$PlayerId&config=${currentconfignumber}\" title=\"".$text["seeplayerdetails"]."\">$Nick<br/></a>
+        <a href='$link?func=medal&fname=$FunctionName' title=\"".$text["seemedaldetails"]."\">
+        <img src=\"$MedalSrc\" border=\"0\" style=\"filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='$MedalSrc', sizingMethod='scale')\" width=\"128\" height=\"256\" name=\"$Description\">
+        </a>
+        </td>
+      </tr>
+      <tr> 
+        <td class=\"line0\" valign=\"top\" align=\"center\">
+         $Description 
+        <br><br>
+        </td>
+      </tr>
+      </table>
+      </td>
+  ";
+  $ch->close();
+  }
+
+  else 
+  {
+    echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\">
+          <tr><td colspan=\"2\" align=\"center\">".$text["medaldetails"]."</td></tr>
+          <tr><td>
+            <table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"innertable\">
+              <tr class=\"outertable\"><td width=\"50%\"align=\"center\">$MedalName</td><td align=\"center\">".$text["topplayers"]."</td></tr>
+              <tr><td>
+                <table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"5\" class=\"outertable\">
+                  <tr class=\"innertable\"><td width=\"150\" rowspan=\"3\" align=\"center\"><img src=\"$MedalSrc\" style=\"filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='$MedalSrc', sizingMethod='scale')\" width=\"128\" height=\"256\" title=\"$MedalName\"></img></td>
+                  <td valign=\"top\">
+                    <table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"innertable\">
+                      <tr><td height=\"10px\"><b><br>".$text["owner"]."<a href=\"$link?func=player&playerid=$PlayerId&config=${currentconfignumber}\" title=\"".$text["seeplayerdetails"]."\">$Nick</a></b></td></tr>
+                      <tr class=\"innertable\"><td><b>".$text["score"].": $ArchValue<br><br></b></td></tr>
+                      <tr><td colspan=\"1\" class=\"outertable\"><img src=\"images/spacer.gif\" width=\"1\" height=\"1\" alt=\"\"></td></tr>
+                      <tr class=\"innertable\"><td valign=\"top\"><b><br>".$text["medaldescription"]."<br></b>$Description</td></tr>
+                    </table></td>
+                </table></td>
+                  <td valign=\"top\">
+                    <table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"innertable\">
+                      <tr><td>
+                        <table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"innertable\">
+                          <tr class=\"outertable\">
+                          <td align=\"center\">".$text["place"]."</td>
+                          ".(file_exists($geoip_path."GeoIP.dat") ? "<td align=\"center\">".$text["cntry"]."</td>" : "")."
+                          <td align=\"center\">".$text["player"]."</td>
+                          <td align=\"center\">".$text["mdscore"]."</td></tr>
+        ";
+  
+    for ($i=0; $i<10; $i++)
+    {
+      if(@$Scores[$i] > 0) 
+      {
+        echo "<tr class=\"innertable\">
+              <td width=\"50\" align=\"center\">".($i+1)."</td>
+              ".(file_exists($geoip_path."GeoIP.dat") ? "<td width=\"50\" align=\"center\">".$Country[$i]."</td>" : "")."
+              <td align=\"left\"><a href=\"$link?func=player&playerid=".$PlayerListIds[$i]."&config=${currentconfignumber}\" title=\"".$text["seeplayerdetails"]."\">".htmlspecialchars(utf2iso($PlayerNames[$i]))."</td></a>
+              <td align=\"center\">".$Scores[$i]."</td></tr>
+              <tr><td colspan=".(file_exists($geoip_path."GeoIP.dat") ? '4' : '3')." class=\"outertable\"><img src=\"images/spacer.gif\" width=\"1\" height=\"1\" alt=\"\"></td></tr>
+             ";
+      }
+    }
+  
+    echo "</table></tr></td>
+          </table></td></tr>
+      </table></td></tr>
+      </table>
+      ";
+  }
+}
+ 
 function country_flag($ip) 
 {
   global $geoip_path;
@@ -85,6 +209,7 @@ function country_flag($ip)
   }
 }
 
+//------------------------------------------------------------------------------------------------------------
 function pro_medal_punchy_killer()
 {
   $link = baselink();
@@ -1291,129 +1416,7 @@ function pro_medal_action_hero()
   }
 }
 
-function ShowMedal($MedalName, $ArchieveName, $ArchValue, $PlayerId, $Nick, $MedalPicture, $Description, $PlayerNames, $Scores, $FunctionName, $PlayerListIds, $Country, $ch)
-{
-  $link = baselink();
-  global $game;
-  global $currentconfignumber;
-  global $text;
-  global $geoip_path;
-
-  // do we have game specific medals?
-  if (file_exists("./images/medals/$game/"))
-    $MedalSrc = "./images/medals/$game/$MedalPicture";
-  else
-    $MedalSrc = "./images/medals/$MedalPicture";
-
-  // Clean the Nick from html code (translate)
-  $Nick = htmlspecialchars(utf2iso($Nick));
-
-  if ($ArchValue == 0 || $ArchValue == "" || $ArchValue == false)
-  {
-    $PlayerId = "";
-    $ArchValue = $text["awardavailable"];
-    $ArchieveName = ":";
-    $Nick = "";
-    $Scores[] = "";
-    $text["owner"] = "";
-    $text["score"] = ":";
-  }
-  
-  flush();
-  if (!isset($_GET['fname'])) 
-  {
-  echo "<td align=\"center\" width=\"150\">
-      <table width=\"150\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" align=\"center\" class=\"with_border_alternate\">
-      <tr><td align=\"center\" class=\"cellmenu1\"><a name=\"$Description\"><strong><a href='$link?func=medal&fname=$FunctionName' title=\"".$text["seemedaldetails"]."\">$MedalName</a></strong></a></td></tr>
-      <tr> 
-        <td width=\"150\" class=\"line1\" nowrap valign=\"top\" align=\"center\">
-        <B>$ArchieveName: &nbsp;$ArchValue&nbsp;</B>
-        <br/><a href=\"$link?func=player&playerid=$PlayerId&config=${currentconfignumber}\" title=\"".$text["seeplayerdetails"]."\">$Nick<br/></a>
-        <a href='$link?func=medal&fname=$FunctionName' title=\"".$text["seemedaldetails"]."\">
-        <img src=\"$MedalSrc\" border=\"0\" style=\"filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='$MedalSrc', sizingMethod='scale')\" width=\"128\" height=\"256\" name=\"$Description\">
-        </a>
-        </td>
-      </tr>
-      <tr> 
-        <td class=\"line0\" valign=\"top\" align=\"center\">
-         $Description 
-        <br><br>
-        </td>
-      </tr>
-      </table>
-      </td>
-  ";
-  $ch->close();
-  }
-
-  else 
-  {
-    echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\">
-          <tr><td colspan=\"2\" align=\"center\">".$text["medaldetails"]."</td></tr>
-          <tr><td>
-            <table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"innertable\">
-              <tr class=\"outertable\"><td width=\"50%\"align=\"center\">$MedalName</td><td align=\"center\">".$text["topplayers"]."</td></tr>
-              <tr><td>
-                <table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"5\" class=\"outertable\">
-                  <tr class=\"innertable\"><td width=\"150\" rowspan=\"3\" align=\"center\"><img src=\"$MedalSrc\" style=\"filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='$MedalSrc', sizingMethod='scale')\" width=\"128\" height=\"256\" title=\"$MedalName\"></img></td>
-                  <td valign=\"top\">
-                    <table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"innertable\">
-                      <tr><td height=\"10px\"><b><br>".$text["owner"]."<a href=\"$link?func=player&playerid=$PlayerId&config=${currentconfignumber}\" title=\"".$text["seeplayerdetails"]."\">$Nick</a></b></td></tr>
-                      <tr class=\"innertable\"><td><b>".$text["score"].": $ArchValue<br><br></b></td></tr>
-                      <tr><td colspan=\"1\" class=\"outertable\"><img src=\"images/spacer.gif\" width=\"1\" height=\"1\" alt=\"\"></td></tr>
-                      <tr class=\"innertable\"><td valign=\"top\"><b><br>".$text["medaldescription"]."<br></b>$Description</td></tr>
-                    </table></td>
-                </table></td>
-                  <td valign=\"top\">
-                    <table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"innertable\">
-                      <tr><td>
-                        <table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"innertable\">
-                          <tr class=\"outertable\">
-                          <td align=\"center\">".$text["place"]."</td>
-                          ".(file_exists($geoip_path."GeoIP.dat") ? "<td align=\"center\">".$text["cntry"]."</td>" : "")."
-                          <td align=\"center\">".$text["player"]."</td>
-                          <td align=\"center\">".$text["mdscore"]."</td></tr>
-        ";
-  
-    for ($i=0; $i<10; $i++)
-    {
-      if(@$Scores[$i] > 0) 
-      {
-        echo "<tr class=\"innertable\">
-              <td width=\"50\" align=\"center\">".($i+1)."</td>
-              ".(file_exists($geoip_path."GeoIP.dat") ? "<td width=\"50\" align=\"center\">".$Country[$i]."</td>" : "")."
-              <td align=\"left\"><a href=\"$link?func=player&playerid=".$PlayerListIds[$i]."&config=${currentconfignumber}\" title=\"".$text["seeplayerdetails"]."\">".htmlspecialchars(utf2iso($PlayerNames[$i]))."</td></a>
-              <td align=\"center\">".$Scores[$i]."</td></tr>
-              <tr><td colspan=".(file_exists($geoip_path."GeoIP.dat") ? '4' : '3')." class=\"outertable\"><img src=\"images/spacer.gif\" width=\"1\" height=\"1\" alt=\"\"></td></tr>
-             ";
-      }
-    }
-  
-    echo "</table></tr></td>
-          </table></td></tr>
-      </table></td></tr>
-      </table>
-      ";
-  }
-}
- 
-function global_lame_awards()
-{
-  $link = baselink();
-  global $shame_medals;
-  global $main_width;
-  global $text;
-  
-  $nr_awards = intval($main_width / 160); 
-
-  pro_medals_begin($text["shameaward"], $text["shame"]);
-  shuffle($shame_medals);
-  foreach(array_slice($shame_medals, 0, $nr_awards) as $m)
-    eval($m.";");
-  unset($m);
-
-  pro_medals_end($text["dontbetophere"]); 
-}
+//------------------------------------------------------------------------------------------------------------
 
 function shame_medal_target_no_one()
 {
@@ -2474,57 +2477,56 @@ function shame_medal_careless()
   }
 }
 
+//------------------------------------------------------------------------------------------------------------
 class cache
 {
-    var $cache_dir = './dynamic/cache/';//This is the directory where the cache files will be stored;
-    var $cache_time = 1800;//How much time will keep the cache files in seconds.
-    
-    var $caching = false;
-    var $file = '';
-    var $cval = 0;
+  var $cache_dir = './dynamic/cache/';//This is the directory where the cache files will be stored;
+  var $cache_time = 1800;//How much time will keep the cache files in seconds.
+  
+  var $caching = false;
+  var $file = '';
+  var $cval = 0;
 
-    function cache($fname, $currentconfignumber)
+  function cache($fname, $currentconfignumber)
+  {
+    global $lang_file;
+    $lang = explode(".", $lang_file);
+    //Constructor of the class
+    $this->file = $this->cache_dir . $fname . '_' . $currentconfignumber . '_' . $lang[0] . ".txt";
+    if ( file_exists ( $this->file ) && ( filemtime($this->file) + $this->cache_time ) > time() && !isset($_GET['fname']) )
     {
-        global $lang_file;
-        $lang = explode(".", $lang_file);
-        //Constructor of the class
-        $this->file = $this->cache_dir . $fname . '_' . $currentconfignumber . '_' . $lang[0] . ".txt";
-        if ( file_exists ( $this->file ) && ( filemtime($this->file) + $this->cache_time ) > time() && !isset($_GET['fname']) )
-        {
-            //Grab the cache:
-            $handle = fopen( $this->file , "r");
-            do {
-                $data = fread($handle, 8192);
-                if (strlen($data) == 0) {
-                    break;
-                }
-                $this->cval = 1;
-                echo $data;
-            } while (true);
-            fclose($handle);
+      //Grab the cache:
+      $handle = fopen( $this->file , "r");
+      do {
+        $data = fread($handle, 8192);
+        if (strlen($data) == 0) {
+          break;
         }
-        else
-        {
-            //create cache :
-            $this->caching = true;
-            ob_start();
-        }
+        $this->cval = 1;
+        echo $data;
+      } while (true);
+      fclose($handle);
     }
-    
-    function close()
+    else
     {
-        //You should have this at the end of each page
-        if ( $this->caching )
-        {
-            //You were caching the contents so display them, and write the cache file
-            $data = ob_get_clean();
-            echo $data;
-            $fp = fopen( $this->file , 'w' );
-            fwrite ( $fp , $data );
-            fclose ( $fp );
-        }
+      //create cache :
+      $this->caching = true;
+      ob_start();
     }
+  }
+  
+  function close()
+  {
+    //You should have this at the end of each page
+    if ( $this->caching )
+    {
+      //You were caching the contents so display them, and write the cache file
+      $data = ob_get_clean();
+      echo $data;
+      $fp = fopen( $this->file , 'w' );
+      fwrite ( $fp , $data );
+      fclose ( $fp );
+    }
+  }
 }
-
-
 ?>

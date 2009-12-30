@@ -21,7 +21,7 @@
 # http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-XLRstats webfront (v.2.0.x) for B3
+XLRstats webfront (v.2.1.x) for B3
 ################################################################################
 
 Make your XLRstats public!

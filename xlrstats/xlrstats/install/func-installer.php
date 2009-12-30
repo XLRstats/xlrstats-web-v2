@@ -410,6 +410,8 @@ function list_templates()
  
   $key = array_search('site.png', $templatelist);
   unset($templatelist[$key]);
+  $key = array_search('loader.css', $templatelist);
+  unset($templatelist[$key]);
   $key = array_search('holidaypack', $templatelist);
   unset($templatelist[$key]);
 

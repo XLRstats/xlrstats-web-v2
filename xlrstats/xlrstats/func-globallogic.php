@@ -689,10 +689,13 @@ function stylepicker()
   sort($templatelist);
   foreach ($templatelist as $key=>$value) 
   {
+    // remove hidden directories
     if (preg_match('/^[.]/', $value)) unset($templatelist[$key]);
   }
  
   $key = array_search('site.png', $templatelist);
+  unset($templatelist[$key]);
+  $key = array_search('loader.css', $templatelist);
   unset($templatelist[$key]);
   $key = array_search('holidaypack', $templatelist);
   unset($templatelist[$key]);

@@ -154,9 +154,15 @@ $text["bestwinstrk"] = "En Ýyi Galibiyet Serisi";
 $text["headhunter"] = "Kafa Avcýsý";
 $text["pheadshots"] = "Kafadan Vurma";
 $text["mosthdsht"] = "En Yüksek Kafadan Vurma Oraný";
-$text["actionhero"] = "Olay Kahramaný"; //"Action Hero";
-$text["totalactions"] = "Olay Sayýsý"; //"Total Actions";
-$text["mostactions"] = "En Fazla Olay Baþarma"; //"Most Action Achievements";
+$text["actionhero"] = "Olay Kahramaný";
+$text["totalactions"] = "Olay Sayýsý";
+$text["mostactions"] = "En Fazla Olay Baþarma";
+$text["molotov"] = "Ölümcül Kokteyl";
+$text["molotovkills"] = "Öldürme/Raund";
+$text["mostmolotov"] = "Molotof Kokteyliyle En Çok Öldürme/Raund";
+$text["flamekiller"] = "Kundakçý";
+$text["fthrowerkills"] = "Öldürme/Raund";
+$text["mostflamekill"] = "Alev Silahýyla En Çok Öldürme/Raund";
 $text["awardavailable"] = "Ödül Henüz Verilmedi ::";
 $text["topthisplayers"] = "Ödül kazanmak için bu oyuncularý alt etmelisiniz!";
 
@@ -206,6 +212,9 @@ $text["mostsniped"] = "Keskin Niþancýlarca En Çok Öldürülme/Raund";
 $text["accidenthero"] = "Kazara Kahraman";
 $text["blindasbat"] = "Yarasa Kadar Kör";
 $text["mostaccdeath"] = "Kaza Kurþunuyla En Çok Öldürülme/Raund";
+$text["barrelvictim"] = "Varil Kurbaný";
+$text["barreldeaths"] = "Ölüm/Raund";
+$text["mostbarrel"] = "Patlayan Varillerle En Çok Öldürülme/Raund";
 $text["dontbetophere"] = "Bu bölümde ödül kazanmaya çalýþmayýn ;)";
 
 //MEDAL DETAILS
@@ -314,12 +323,12 @@ $text["clickmapname"] = "Bir haritada kimin daha baþarýlý olduðunu görmek için h
 $text["worstenemies"] = "En Azýlý Düþmanlarýnýz";
 $text["yourkdratio"] = "Öldürme/Ölüm Oraný";
 $text["whosyourenemy"] = "En azýlý düþmanýnýz kim?";
-$text["actions"] = "Olaylar"; //"Actions";
-$text["actionbased"] = "Olay bazlý istatistikleriniz"; //"Your Action Based Statistics";
-$text["actionname"] = "Olay Adý"; //"Action Name";
-$text["count"] = "Sayý";//"Count";
-$text["perofactions"] = "Toplam Olay Baþarýlarýnýz Ýçindeki Oraný"; //"Percentage of Your Total Actions";
-$text["ofyouractions"] = " -> Toplam Olay Baþarýlarýnýz Ýçindeki Oraný; Toplam Olay Baþarýnýz:"; //"% of your total actions which is";
+$text["actions"] = "Olaylar";
+$text["actionbased"] = "Olay bazlý istatistikleriniz";
+$text["actionname"] = "Olay Adý";
+$text["count"] = "Sayý";
+$text["perofactions"] = "Toplam Olay Baþarýlarýnýz Ýçindeki Oraný";
+$text["ofyouractions"] = " -> Toplam Olay Baþarýlarýnýz Ýçindeki Oraný; Toplam Olay Baþarýnýz:";
 
 //RANKS
 $text["private"] = "Er";

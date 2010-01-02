@@ -157,6 +157,12 @@ $text["mosthdsht"] = "Porcentaje m&acute;s alto de headshot";
 $text["actionhero"] = "Action Hero";
 $text["totalactions"] = "Total Actions";
 $text["mostactions"] = "Most Action Achievements";
+$text["molotov"] = "Mortal Cocktail";
+$text["molotovkills"] = "Molotov kills p/r";
+$text["mostmolotov"] = "Most molotov cocktail kills per round";
+$text["flamekiller"] = "Firestarter";
+$text["fthrowerkills"] = "Kills p/r";
+$text["mostflamekill"] = "Most flamethrower kills per round";
 $text["awardavailable"] = "Premio A&uacute;n disponible ::";
 $text["topthisplayers"] = "&iexcl;Estos jugadores ganaron un premio!";
 
@@ -206,6 +212,9 @@ $text["mostsniped"] = "M&aacute;s muertes por francotirador por ronda";
 $text["accidenthero"] = "Heroe Accidental";
 $text["blindasbat"] = "Ciego como un Murci&eacute;lago";
 $text["mostaccdeath"] = "M&aacute;s muertes accidentales por ronda";
+$text["barrelvictim"] = "Barrel Victim";
+$text["barreldeaths"] = "Barrel deaths p/r";
+$text["mostbarrel"] = "Most deaths by exploding barrels per round";
 $text["dontbetophere"] = "No intente estar aqui ;D";
 
 //DETALLES DE MEDALLAS

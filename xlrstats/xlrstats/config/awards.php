@@ -64,7 +64,10 @@ if ($game == 'cod4')
 if ($game == 'codwaw' )
 {
     $pro_medals[] = 'pro_medal_bouncing_betty()';           // bouncing betty kills codwaw
+    $pro_medals[] = 'pro_medal_mortal_cocktail()';          // molotov kills        codwaw
+    $pro_medals[] = 'pro_medal_firestarter()';              // flame thrower kills  codwaw
 }
+
 if ($game == 'cod4' || $game == 'urt'  || $game == 'codwaw' )
 {
     $pro_medals[] = 'pro_medal_cold_weapon_killer()';       // knife kills          cod4 codwaw urt
@@ -109,6 +112,11 @@ if ($game == 'cod1' || $game == 'coduo' || $game == 'cod2')
 if ($game == 'cod4'  || $game == 'codwaw')
 {
     $shame_medals[] = 'shame_medal_fireman()';              // exploding vehicle    cod4 codwaw
+}
+
+if ($game == 'codwaw' )
+{
+    $shame_medals[] = 'shame_medal_barrel_deaths()';        // barrel explosion     codwaw
 }
 
 if ($game == 'wop')

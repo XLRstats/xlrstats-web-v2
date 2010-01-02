@@ -145,7 +145,7 @@ $text["surpriselover"] = "Surprise lover";
 $text["claymorekill"] = "Claymore kills p/r";
 $text["mostclaymore"] = "Most Claymore kills per round";
 $text["minekiller"] = "Mine Killer";
-$text["bouncingbettykill"] = "Bouncing Betty kills p/r";
+$text["bouncingbettykill"] = "B. Betty kills p/r";
 $text["mostbouncingbetty"] = "Most Bouncing Betty kills per round";
 $text["notingbetr"] = "Nothing better to do";
 $text["mostround"] = "Most rounds played";
@@ -157,6 +157,12 @@ $text["mosthdsht"] = "Highest headshot percentage";
 $text["actionhero"] = "Action Hero";
 $text["totalactions"] = "Total Actions";
 $text["mostactions"] = "Most Action Achievements";
+$text["molotov"] = "Mortal Cocktail";
+$text["molotovkills"] = "Molotov kills p/r";
+$text["mostmolotov"] = "Most molotov cocktail kills per round";
+$text["flamekiller"] = "Firestarter";
+$text["fthrowerkills"] = "Kills p/r";
+$text["mostflamekill"] = "Most flamethrower kills per round";
 $text["awardavailable"] = "Award Still Available ::";
 $text["topthisplayers"] = "Top these players to win an award!";
 
@@ -206,6 +212,9 @@ $text["mostsniped"] = "Most sniper deaths per round";
 $text["accidenthero"] = "Accidental Hero";
 $text["blindasbat"] = "Blind as a Bat";
 $text["mostaccdeath"] = "Most accidental deaths per round";
+$text["barrelvictim"] = "Barrel Victim";
+$text["barreldeaths"] = "Barrel deaths p/r";
+$text["mostbarrel"] = "Most deaths by exploding barrels per round";
 $text["dontbetophere"] = "Do not try to be on top in here ;)";
 
 //MEDAL DETAILS

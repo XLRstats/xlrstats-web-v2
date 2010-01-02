@@ -145,7 +145,7 @@ $text["surpriselover"] = "Verrassings terrorist";
 $text["claymorekill"] = "Claymore kills p/r";
 $text["mostclaymore"] = "Meeste Claymore kills per ronde";
 $text["minekiller"] = "Mine Killer";
-$text["bouncingbettykill"] = "Bouncing Betty kills p/r";
+$text["bouncingbettykill"] = "B. Betty kills p/r";
 $text["mostbouncingbetty"] = "Most Bouncing Betty kills per round";
 $text["notingbetr"] = "Niets beter te doen";
 $text["mostround"] = "Meeste rondes gespeeld";
@@ -157,6 +157,12 @@ $text["mosthdsht"] = "Hoogste headshot percentage";
 $text["actionhero"] = "Action Hero";
 $text["totalactions"] = "Total Actions";
 $text["mostactions"] = "Most Action Achievements";
+$text["molotov"] = "Mortal Cocktail";
+$text["molotovkills"] = "Molotov kills p/r";
+$text["mostmolotov"] = "Most molotov cocktail kills per round";
+$text["flamekiller"] = "Firestarter";
+$text["fthrowerkills"] = "Kills p/r";
+$text["mostflamekill"] = "Most flamethrower kills per round";
 $text["awardavailable"] = "Medaille nog beschikbaar ::";
 $text["topthisplayers"] = "Win van deze spelers om medailles te bemachtigen!";
 
@@ -206,6 +212,9 @@ $text["mostsniped"] = "Meeste sniper deaths per ronde";
 $text["accidenthero"] = "Murphy's wet?";
 $text["blindasbat"] = "Blinde vink";
 $text["mostaccdeath"] = "Meeste ongelukken per ronde";
+$text["barrelvictim"] = "Barrel Victim";
+$text["barreldeaths"] = "Barrel deaths p/r";
+$text["mostbarrel"] = "Most deaths by exploding barrels per round";
 $text["dontbetophere"] = "Beter niet in deze lijst terecht komen ;)";
 
 //MEDAL DETAILS

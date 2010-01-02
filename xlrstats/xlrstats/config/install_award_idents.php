@@ -892,6 +892,48 @@ function codwaw_awards()
   $buffer .= ")\";\n";
   $coddb->sql_freeresult($result);
   
+    // Molotov
+  $query = "SELECT id 
+            FROM ${t["weapons"]}
+            WHERE name = 'molotov_mp'
+            LIMIT 0 , 30";
+  
+  $result = $coddb->sql_query($query);
+  $numrows = $coddb->sql_numrows($result);
+  
+  $buffer .= "\$wp_molotov = \"(";
+  $c = 0;
+  while ($row = $coddb->sql_fetchrow($result))
+  {
+    $c += 1;
+    $buffer .= $row["id"];
+    if($c < $numrows)
+      $buffer .=  ", ";
+  }
+  $buffer .= ")\";\n";
+  $coddb->sql_freeresult($result);
+
+    // Flame Thrower
+  $query = "SELECT id 
+            FROM ${t["weapons"]}
+            WHERE name = 'm2_flamethrower_mp'
+            LIMIT 0 , 30";
+  
+  $result = $coddb->sql_query($query);
+  $numrows = $coddb->sql_numrows($result);
+  
+  $buffer .= "\$wp_flamethrower = \"(";
+  $c = 0;
+  while ($row = $coddb->sql_fetchrow($result))
+  {
+    $c += 1;
+    $buffer .= $row["id"];
+    if($c < $numrows)
+      $buffer .=  ", ";
+  }
+  $buffer .= ")\";\n";
+  $coddb->sql_freeresult($result);
+
   // Bashes
   $query = "SELECT id 
             FROM ${t["weapons"]}
@@ -1018,7 +1060,28 @@ function codwaw_awards()
   }
   $buffer .= ")\";\n";
   $coddb->sql_freeresult($result);
+
+  // Barrel Victim
+  $query = "SELECT id 
+            FROM ${t["weapons"]}
+            WHERE name = 'explodable_barrel'
+            LIMIT 0 , 30";
   
+  $result = $coddb->sql_query($query);
+  $numrows = $coddb->sql_numrows($result);
+  
+  $buffer .= "\$wp_barrel = \"(";
+  $c = 0;
+  while ($row = $coddb->sql_fetchrow($result))
+  {
+    $c += 1;
+    $buffer .= $row["id"];
+    if($c < $numrows)
+      $buffer .=  ", ";
+  }
+  $buffer .= ")\";\n";
+  $coddb->sql_freeresult($result);
+
   //-- Bodyparts -----------------------------------------------------------------
   $buffer .= "\n// Bodyparts ---------------------\n";
   
@@ -1303,5 +1366,11 @@ function wop_awards()
   $coddb->sql_freeresult($result);
 }
 
+//delete cache to display new medal owners
+$files = glob("../dynamic/cache/*.txt");
+foreach($files as $file) 
+{
+  unlink($file);
+}  
 
 ?>

@@ -1416,6 +1416,158 @@ function pro_medal_action_hero()
   }
 }
 
+function pro_medal_mortal_cocktail()
+{
+  $link = baselink();
+  global $currentconfignumber;
+  global $coddb;
+  global $separatorline;
+  global $t;  //table names
+  global $a_name;  //award names 
+  global $a_desc;  //award descriptions
+  global $w;
+  global $minkills;
+  global $minrounds;
+  global $maxdays;
+  global $wp_molotov;
+  global $text;
+  global $exclude_ban;
+
+  $fname = __FUNCTION__;
+  $ch = new cache($fname, $currentconfignumber);
+  if ($ch->cval == 0)
+  {
+    $current_time = gmdate("U");
+  
+    $query = " SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds ) AS total_kills
+            FROM ${t['weaponusage']}
+            JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
+            JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
+            WHERE (${t['weaponusage']}.weapon_id = $wp_molotov)
+            AND ((${t['players']}.kills > $minkills)
+            OR (${t['players']}.rounds > $minrounds))
+            AND (${t['players']}.hide = 0)
+            AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)";
+  
+      if ($exclude_ban) {
+        $query .= " AND ${t['b3_clients']}.id NOT IN (
+            SELECT distinct(target.id)
+            FROM ${t['b3_penalties']} as penalties, ${t['b3_clients']} as target
+            WHERE (penalties.type = 'Ban' OR penalties.type = 'TempBan')
+            AND inactive = 0
+            AND penalties.client_id = target.id
+            AND ( penalties.time_expire = -1 OR penalties.time_expire > UNIX_TIMESTAMP(NOW()) )
+          )";
+        }
+  
+    $query .= " GROUP BY ${t['players']}.id
+            ORDER BY total_kills DESC
+            LIMIT 1 ";
+  
+    $result = $coddb->sql_query($query);
+    $row = $coddb->sql_fetchrow($result);
+    $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+    $score = sprintf("%.2f",$row['total_kills']);
+    $playerid = $row['id'];
+    
+    $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
+    $result = $coddb->sql_query($query);
+    while ($row = $coddb->sql_fetchrow($result)) 
+    {
+      $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+      $players[] = $names;
+      $scores[] = sprintf("%.2f",$row['total_kills']);
+      $playerids[] = $row['id'];
+      $flags[] = country_flag($row['ip']);
+    }
+  
+    if(!isset($playerids, $flags, $players, $scores)) {
+      $playerids = "";
+      $flags = "";
+      $players = "";
+      $scores = "";
+      }
+  
+    ShowMedal($text["molotov"], $text["molotovkills"], $score, $playerid, $name, "xlr_pro_mortal_cocktail.png", $text["mostmolotov"], $players, $scores, $fname, $playerids, $flags, $ch);  
+  }
+}
+
+function pro_medal_firestarter()
+{
+  $link = baselink();
+  global $currentconfignumber;
+  global $coddb;
+  global $separatorline;
+  global $t;  //table names
+  global $a_name;  //award names 
+  global $a_desc;  //award descriptions
+  global $w;
+  global $minkills;
+  global $minrounds;
+  global $maxdays;
+  global $wp_flamethrower;
+  global $text;
+  global $exclude_ban;
+
+  $fname = __FUNCTION__;
+  $ch = new cache($fname, $currentconfignumber);
+  if ($ch->cval == 0)
+  {
+    $current_time = gmdate("U");
+  
+    $query = " SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds ) AS total_kills
+            FROM ${t['weaponusage']}
+            JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
+            JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
+            WHERE (${t['weaponusage']}.weapon_id = $wp_flamethrower)
+            AND ((${t['players']}.kills > $minkills)
+            OR (${t['players']}.rounds > $minrounds))
+            AND (${t['players']}.hide = 0)
+            AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)";
+  
+      if ($exclude_ban) {
+        $query .= " AND ${t['b3_clients']}.id NOT IN (
+            SELECT distinct(target.id)
+            FROM ${t['b3_penalties']} as penalties, ${t['b3_clients']} as target
+            WHERE (penalties.type = 'Ban' OR penalties.type = 'TempBan')
+            AND inactive = 0
+            AND penalties.client_id = target.id
+            AND ( penalties.time_expire = -1 OR penalties.time_expire > UNIX_TIMESTAMP(NOW()) )
+          )";
+        }
+  
+    $query .= " GROUP BY ${t['players']}.id
+            ORDER BY total_kills DESC
+            LIMIT 1 ";
+  
+    $result = $coddb->sql_query($query);
+    $row = $coddb->sql_fetchrow($result);
+    $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+    $score = sprintf("%.2f",$row['total_kills']);
+    $playerid = $row['id'];
+    
+    $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
+    $result = $coddb->sql_query($query);
+    while ($row = $coddb->sql_fetchrow($result)) 
+    {
+      $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+      $players[] = $names;
+      $scores[] = sprintf("%.2f",$row['total_kills']);
+      $playerids[] = $row['id'];
+      $flags[] = country_flag($row['ip']);
+    }
+  
+    if(!isset($playerids, $flags, $players, $scores)) {
+      $playerids = "";
+      $flags = "";
+      $players = "";
+      $scores = "";
+      }
+  
+    ShowMedal($text["flamekiller"], $text["fthrowerkills"], $score, $playerid, $name, "xlr_pro_firestarter.png", $text["mostflamekill"], $players, $scores, $fname, $playerids, $flags, $ch);  
+  }
+}
+
 //------------------------------------------------------------------------------------------------------------
 
 function shame_medal_target_no_one()
@@ -2142,10 +2294,7 @@ function shame_medal_fireman()
     $result = $coddb->sql_query($query);
     $row = $coddb->sql_fetchrow($result);
     $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
-    if ($row['total_deaths'] > 0)
-      $score = $row['total_deaths'];
-    else
-      $score = sprintf("%.2f",$row['total_deaths']);
+    $score = sprintf("%.2f",$row['total_deaths']);
     $playerid = $row['id'];
     
     $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
@@ -2474,6 +2623,82 @@ function shame_medal_careless()
       }
   
     ShowMedal($text["accidenthero"], $text["blindasbat"], $score, $playerid, $name, "xlr_shame_blind.png", $text["mostaccdeath"], $players, $scores, $fname, $playerids, $flags, $ch);  
+  }
+}
+
+function shame_medal_barrel_deaths()
+{
+  $link = baselink();
+  global $currentconfignumber;
+  global $coddb;
+  global $separatorline;
+  global $t;  //table names
+  global $a_name;  //award names 
+  global $a_desc;  //award descriptions
+  global $w;
+  global $minkills;
+  global $maxdays;
+  global $minrounds;
+  global $wp_barrel;
+  global $text;
+  global $exclude_ban;
+
+  $fname = __FUNCTION__;
+  $ch = new cache($fname, $currentconfignumber);
+  if ($ch->cval == 0)
+  {
+    $current_time = gmdate("U");
+  
+    $query = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.deaths) / ${t['players']}.rounds) AS total_deaths
+        FROM ${t['weaponusage']}
+        JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
+        JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
+        WHERE (${t['weaponusage']}.weapon_id IN $wp_barrel)
+        AND ((${t['players']}.kills > $minkills)
+        OR (${t['players']}.rounds > $minrounds))
+        AND (${t['players']}.hide = 0)
+        AND ($current_time - ${t['b3_clients']}.time_edit  < $maxdays*60*60*24)";
+  
+    if ($exclude_ban) {
+      $query .= " AND ${t['b3_clients']}.id NOT IN (
+        SELECT distinct(target.id)
+        FROM ${t['b3_penalties']} as penalties, ${t['b3_clients']} as target
+        WHERE (penalties.type = 'Ban' OR penalties.type = 'TempBan')
+        AND inactive = 0
+        AND penalties.client_id = target.id
+        AND ( penalties.time_expire = -1 OR penalties.time_expire > UNIX_TIMESTAMP(NOW()) )
+      )";
+    }
+  
+     $query .= " GROUP BY ${t['players']}.id
+        ORDER BY total_deaths DESC
+        LIMIT 1 ";
+  
+    $result = $coddb->sql_query($query);
+    $row = $coddb->sql_fetchrow($result);
+    $name = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+    $score = sprintf("%.2f",$row['total_deaths']);
+    $playerid = $row['id'];
+  
+    $query = str_replace("LIMIT 1", "LIMIT 0, 10", $query);
+    $result = $coddb->sql_query($query);
+    while ($row = $coddb->sql_fetchrow($result)) 
+    {
+      $names = $row['fixed_name'] ? $row['fixed_name'] : $row['name'];
+      $players[] = $names;
+      $scores[] = sprintf("%.2f",$row['total_deaths']);
+      $playerids[] = $row['id'];
+      $flags[] = country_flag($row['ip']);
+    }
+  
+    if(!isset($playerids, $flags, $players, $scores)) {
+      $playerids = "";
+      $flags = "";
+      $players = "";
+      $scores = "";
+      }
+  
+    ShowMedal($text["barrelvictim"], $text["barreldeaths"], $score, $playerid, $name, "xlr_shame_barrel_deaths.png", $text["mostbarrel"], $players, $scores, $fname, $playerids, $flags, $ch);  
   }
 }
 

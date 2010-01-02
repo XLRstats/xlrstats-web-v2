@@ -68,6 +68,33 @@ function pathlink($pop=0)
   return implode("/", $ptemp)."/";
 }
 
+function lang_pathlink($pop)
+{
+	$lang = explode('\\', $_SERVER['SCRIPT_FILENAME']);
+	$h='';
+	$c2 = count(explode('\\', $_SERVER['DOCUMENT_ROOT']))+1;
+	if(!isset($lang))
+	{
+		$lang = explode('/', $_SERVER['SCRIPT_FILENAME']);
+	}
+	if(!isset($c2))
+	{
+		$c2 = count(explode('/', $_SERVER['DOCUMENT_ROOT']))+1;
+	}
+	$c = count($lang)-$c2;
+	$i=1;
+	foreach($lang as $v => $lang)
+	{
+		if($i == $c)
+		{
+			$h .= '../';
+		}
+		$i++;
+	}
+	$lang2 = explode('.ph', $_SERVER['PHP_SELF']);
+	return ''.$h.''.str_ireplace('p', '', $lang2[1]).'';
+}
+
 function httplink($pop=0)
 {
   $ptemp = explode("/", GetFileDir($_SERVER['PHP_SELF']));
@@ -494,6 +521,7 @@ function welcometext($pop=0)
  </tr>
  </table>
       ";
+  flush();
 }
 
 function gamelauncher($type)
@@ -661,10 +689,13 @@ function stylepicker()
   sort($templatelist);
   foreach ($templatelist as $key=>$value) 
   {
+    // remove hidden directories
     if (preg_match('/^[.]/', $value)) unset($templatelist[$key]);
   }
  
   $key = array_search('site.png', $templatelist);
+  unset($templatelist[$key]);
+  $key = array_search('loader.css', $templatelist);
   unset($templatelist[$key]);
   $key = array_search('holidaypack', $templatelist);
   unset($templatelist[$key]);
@@ -858,6 +889,7 @@ function displayheader($pop=0)
 
   $xlrpath = pathlink($pop);
   $csspath = $xlrpath . "templates/" . $template . "/style.css";
+  $loadercsspath = $xlrpath . "templates/loader.css";
   // Include existing php dynamic css?
   $template_dyn_css = $xlrpath . "templates/" . $template . "/style-css.php?config=" . $currentconfignumber;
 
@@ -917,10 +949,11 @@ function displayheader($pop=0)
   echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"".$xlrpath."lib/autocomplete/jquery.autocomplete.css\" />\n";
   echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"".$xlrpath."lib/jquery-boxy/boxy.css\" media=\"screen\" />\n";
   echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"".$csspath."\" media=\"screen\" />\n";
+  echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"".$loadercsspath."\" media=\"screen\" />\n";
   // include the php dynamic css
   echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"".$template_dyn_css."\" media=\"screen\" />\n";
 
-//  echo "<script type=\"text/JavaScript\" src=\"".$xlrpath."lib/sorttable/sorttable.js\"></script>\n";
+  // echo "<script type=\"text/JavaScript\" src=\"".$xlrpath."lib/sorttable/sorttable.js\"></script>\n";
   echo "<script type=\"text/JavaScript\" src=\"".$xlrpath."lib/jquery-1.2.6.min.js\"></script>\n";
   echo "<script type=\"text/JavaScript\" src=\"".$xlrpath."lib/jquery-boxy/jquery.boxy.js\"></script>\n";
   echo "<script type=\"text/javascript\" src=\"".$xlrpath."lib/autocomplete/jquery.autocomplete.js\"></script>\n";
@@ -1011,8 +1044,22 @@ $(document).ready(function(){
 
   echo "</head>\n";
   echo "<body bgcolor=\"#333333\">\n";
-  // Start opening the MAIN table defining general look
 
+  // Here is the loader div and script
+  echo "<div id=\"loading\" class=\"loading-invisible\">\n";
+  echo "  <p><img src=\"./images/loader.gif\"></p>\n";
+  echo "</div>\n";
+?>
+<script type="text/javascript">
+  document.getElementById("loading").className = "loading-visible";
+  var hideDiv = function(){document.getElementById("loading").className = "loading-invisible";};
+  var oldLoad = window.onload;
+  var newLoad = oldLoad ? function(){hideDiv.call(this);oldLoad.call(this);} : hideDiv;
+  window.onload = newLoad;
+</script>
+<?php
+
+  // Start opening the MAIN table defining general look
   echo "<div id=\"page-body\"><div class=\"page-body-img\">";
   echo "<div id=\"page-footer\"><div class=\"page-footer-img\">";
 
@@ -1090,6 +1137,7 @@ $(document).ready(function(){
   ";
 
   echo "</table>\n";
+  flush();
 }
 
 function displaysimplefooter($pop=0)

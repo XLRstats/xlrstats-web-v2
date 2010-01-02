@@ -72,7 +72,7 @@ $w['32'] = "Bitchslapped";
 $w['35'] = "Negev";
 $w['38'] = "M4";
 $w['24'] = "Got kicked";
-$w['40'] = "(Bad Obituary)";
+$w['40'] = "Curb Stomped";
 $w['Team_Switch_Penalty'] = "Unfair Teamswitch Suicide Penalty";
 $w['mod_falling'] = "Doing the Lemming thing";
 

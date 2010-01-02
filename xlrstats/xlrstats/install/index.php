@@ -167,6 +167,15 @@ if (isset($start_install))
 
   echo "</tr>";
   echo "<tr>";
+  echo "<td class=\"prechecktable\">./dynamic/cache/</td>";
+
+  if(is_writable('../dynamic/cache/'))
+    echo "<td class=\"precheckOK\">Writable</td>";
+  else
+    echo "<td class=\"precheckERROR\">Not Writable</td>";
+
+  echo "</tr>";
+  echo "<tr>";
   echo "<td class=\"prechecktable\">./config/</td>";
 
   if(is_writable('../config/'))

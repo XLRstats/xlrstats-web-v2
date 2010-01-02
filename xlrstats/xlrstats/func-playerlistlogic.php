@@ -223,6 +223,7 @@ function currentplayers()
    echo " 
            </table> 
          </table>";
+   flush();
 }
 
 function addClients($clients, $backgroundColor)

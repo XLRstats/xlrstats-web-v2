@@ -90,15 +90,15 @@ $rankimage[14] = "2_stars/2-Staff-Sergeant.gif";
 
 $rankname[15] = $text["gunnerysergeant"];
 $killsneeded[15] = 5000;
-$rankimage[15] = "1_star/1-Staff-Sergeant.gif";   
+$rankimage[15] = "Gunnery-Sergeant.gif";   
 
 $rankname[16] = $text["gunnerysergeant1"];
 $killsneeded[16] = 6000;
-$rankimage[16] = "1_star/1-Staff-Sergeant.gif";   
+$rankimage[16] = "1_star/1-Gunnery-Sergeant.gif";   
 
 $rankname[17] = $text["gunnerysergeant2"];
 $killsneeded[17] = 7000;
-$rankimage[17] = "2_stars/2-Staff-Sergeant.gif";   
+$rankimage[17] = "2_stars/2-Gunnery-Sergeant.gif";   
 
 $rankname[18] = $text["mastersergeant"];
 $killsneeded[18] = 8000;

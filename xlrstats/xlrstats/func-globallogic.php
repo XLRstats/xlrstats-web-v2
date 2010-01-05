@@ -1223,7 +1223,7 @@ function displayfooter($pop=0)
   
   $versionfile = abs_pathlink($pop) . "version.txt";
   if ( file_exists($versionfile) )
-    $version = file_get_contents($versionfile);
+    $version = "XLRstats " . file_get_contents($versionfile);
   else
     $version = "Unknown Version";
 

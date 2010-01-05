@@ -723,17 +723,17 @@ function player_badges($playerid, $dbID = false)
   echo "                      </tr>";  
   echo "             <td width=\"25%\" class=\"outertable\" colspan=\"1\" align=\"center\"><font class=\"fontNormal\" size=\"2\" face=\"Geneva, Arial, Helvetica, sans-serif\">";
   if($previmage != -1)
-    echo "             <img src=\"images/ranks/".$rankimage[$previmage]."\" width=\"60\" height=\"60\" border=\"1\">";
+    echo "             <img src=\"images/ranks/".$rankimage[$previmage]."\" style=\"background-color: white;\" width=\"60\" height=\"60\" border=\"1\">";
 
   else
     echo $text["none"];
   
   echo "             </font></td> ";
-  echo "             <td class=\"highlight\" colspan=\"1\" align=\"center\"><font class=\"fontNormal\" size=\"2\" face=\"Geneva, Arial, Helvetica, sans-serif\"><img src=\"images/ranks/".$rankimage[$kills]."\" width=\"112\" height=\"112\" border=\"1\"></font></td> ";
+  echo "             <td class=\"highlight\" colspan=\"1\" align=\"center\"><font class=\"fontNormal\" size=\"2\" face=\"Geneva, Arial, Helvetica, sans-serif\"><img src=\"images/ranks/".$rankimage[$kills]."\" style=\"background-color: white;\" width=\"112\" height=\"112\" border=\"1\"></font></td> ";
 
   echo "             <td  width=\"25%\" class=\"outertable\"  colspan=\"1\" align=\"center\"><font class=\"fontNormal\" size=\"2\" face=\"Geneva, Arial, Helvetica, sans-serif\">";
   if($nextimage < count( $killsneeded))   
-    echo "             <img src=\"images/ranks/".$rankimage[$nextimage]."\" width=\"60\" height=\"60\" border=\"1\">";
+    echo "             <img src=\"images/ranks/".$rankimage[$nextimage]."\" style=\"background-color: white;\" width=\"60\" height=\"60\" border=\"1\">";
   else
     echo "None (max)";
 

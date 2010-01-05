@@ -37,6 +37,8 @@ if (isset($_COOKIE['XLR_langfile']))
   if(file_exists($lang_path."/".$lang_file)) {
     include ($lang_path."/".$lang_file);
   }
+  // reset the $lang_file back to $default_lang for effective caching of awards
+  else $lang_file = $default_lang;
 }
 
 //if GeoIP is installed the language file is set according to client's IP location
@@ -52,6 +54,8 @@ elseif (file_exists($geoip_path."GeoIP.dat"))
   if(file_exists($lang_path."/".$lang_file)) {
     include ($lang_path."/".$lang_file);
     }
+  // reset the $lang_file back to $default_lang for effective caching of awards
+  else $lang_file = $default_lang;
 }
 
 //if GeoIP is not installed the language file is set according to client's browser language
@@ -62,6 +66,8 @@ else
     if(file_exists($lang_path."/".$lang_file)) {
       include ($lang_path."/".$lang_file);
       }
+    // reset the $lang_file back to $default_lang for effective caching of awards
+    else $lang_file = $default_lang;
 }
 
 ?>

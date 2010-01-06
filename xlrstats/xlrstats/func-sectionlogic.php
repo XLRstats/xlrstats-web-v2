@@ -247,12 +247,12 @@ function topplayers($sortby = "skill", $direction = "DESC", $offset = 0, $clan_n
       echo "        <table width=\"$KillRatioTableWidth\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" align=\"center\">
           <tr>
           <td bgcolor=\"#770000\" width=\"50%\" align=\"left\"><!-- ratio with minus --> 
-          <img align=\"middle\" src=\"images/bars/bar-small/red_middle_9.gif\" width=\"$KillRatioWidthMinus%\" height=\"9\" title=\"$KillRatioWidthMinusText\">";
+          <img align=\"middle\" src=\"images/bars/bar-small/red_middle_9.png\" width=\"$KillRatioWidthMinus%\" height=\"9\" title=\"$KillRatioWidthMinusText\">";
 
           if ($temp >= $MaxKillRatio)
           {
             echo "</td><td bgcolor=\"#FFFF00\" width=\"50%\" align=\"left\"><!-- ratio with plus --> 
-            <img align=\"left\" src=\"images/bars/bar-small/yellow_middle_9.gif\" width=\"$KillRatioWidthPlus%\" height=\"9\" title=\"$KillRatioWidthPlusText\">";
+            <img align=\"left\" src=\"images/bars/bar-small/yellow_middle_9.png\" width=\"$KillRatioWidthPlus%\" height=\"9\" title=\"$KillRatioWidthPlusText\">";
           }
           else
           {
@@ -260,7 +260,7 @@ function topplayers($sortby = "skill", $direction = "DESC", $offset = 0, $clan_n
             if ($KillRatioWidthPlus == 0)
               echo "<img src=\"images/spacer.gif\" width=\"1\" height=\"9\" alt=\"\">";
             else
-              echo "<img align=\"left\" src=\"images/bars/bar-small/green_middle_9.gif\" width=\"$KillRatioWidthPlus%\" height=\"9\" title=\"$KillRatioWidthPlusText\">";
+              echo "<img align=\"left\" src=\"images/bars/bar-small/green_middle_9.png\" width=\"$KillRatioWidthPlus%\" height=\"9\" title=\"$KillRatioWidthPlusText\">";
           }
           echo "</td>         
           </tr>
@@ -273,13 +273,13 @@ function topplayers($sortby = "skill", $direction = "DESC", $offset = 0, $clan_n
 	  echo "<td>";
       echo "        <table width=\"$KillRatioTableWidth\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" align=\"center\">
   		<td bgcolor=\"#000000\" width=\"100%\" align=\"left\"><!-- ratio with minus -->
-  		<img align=\"middle\" src=\"images/bars/bar-small/red_middle_9.gif\" width=\"$KillRatioWidthMinus%\" height=\"13\" title=\"$KillRatioWidthMinusText\"><div style=\"margin-top:-13px\"><center><font size=\"1\" color=\"#FFFFFF\">$temp</font></center></div>";
+  		<img align=\"middle\" src=\"images/bars/bar-middle/red_middle_13.png\" width=\"$KillRatioWidthMinus%\" height=\"13\" title=\"$KillRatioWidthMinusText\"><div style=\"margin-top:-13px\"><center><font size=\"1\" color=\"#FFFFFF\">$temp</font></center></div>";
   	  echo "<tr></td><td><img src=\"images/spacer.gif\" width=\"1\" height=\"2\" alt=\"\">";
 
           if ($temp >= $MaxKillRatio)
           {
             echo"</td><tr><td bgcolor=\"#51260B\" width=\"100%\" align=\"left\"><!-- ratio with plus -->
-        		<img align=\"middle\" src=\"images/bars/bar-small/yellow_middle_9.gif\" width=\"$KillRatioWidthPlus%\" height=\"13\" title=\"$KillRatioWidthPlusText\"><div style=\"margin-top:-13px\"><center><font size=\"1\" color=\"#000000\">$KillRatioWidthPlus%</font></center></div>";
+        		<img align=\"middle\" src=\"images/bars/bar-middle/yellow_middle_13.png\" width=\"$KillRatioWidthPlus%\" height=\"13\" title=\"$KillRatioWidthPlusText\"><div style=\"margin-top:-13px\"><center><font size=\"1\" color=\"#000000\">$KillRatioWidthPlus%</font></center></div>";
           }
           else
           {
@@ -287,7 +287,7 @@ function topplayers($sortby = "skill", $direction = "DESC", $offset = 0, $clan_n
             if ($KillRatioWidthPlus == 0)
               echo "<img src=\"images/spacer.gif\" width=\"1\" height=\"9\" alt=\"\"><div style=\"margin-top:-9px\"><center><font size=\"1\" color=\"#FFFFFF\">$KillRatioWidthPlus%</font></center></div>";
             else
-              echo "<img src=\"images/bars/bar-small/green_middle_9.gif\" width=\"$KillRatioWidthPlus%\" height=\"13\" title=\"$KillRatioWidthPlusText\"><div style=\"margin-top:-13px\"><center><font size=\"1\" color=\"#FFFFFF\">$KillRatioWidthPlus%</font></center></div>";
+              echo "<img src=\"images/bars/bar-middle/green_middle_13.png\" width=\"$KillRatioWidthPlus%\" height=\"13\" title=\"$KillRatioWidthPlusText\"><div style=\"margin-top:-13px\"><center><font size=\"1\" color=\"#FFFFFF\">$KillRatioWidthPlus%</font></center></div>";
           }
           echo "</td>         
           </tr>
@@ -301,11 +301,11 @@ function topplayers($sortby = "skill", $direction = "DESC", $offset = 0, $clan_n
     echo "        <table width=\"$KillRatioTableWidth\" cellpadding=\"1\" cellspacing=\"0\" border=\"0\" align=\"center\">
           <tr>
       		<td bgcolor=\"#000000\" width=\"50%\" align=\"left\"><!-- ratio with minus -->
-      		<img align=\"middle\" src=\"images/bars/bar-small/red_middle_9.gif\" width=\"$KillRatioWidthMinus%\" height=\"13\" title=\"$KillRatioWidthMinusText\"><div style=\"margin-top:-13px\"><center><font size=\"1\" color=\"#FFFFFF\">$temp</font></center></div>";
+      		<img align=\"middle\" src=\"images/bars/bar-middle/red_middle_13.png\" width=\"$KillRatioWidthMinus%\" height=\"13\" title=\"$KillRatioWidthMinusText\"><div style=\"margin-top:-13px\"><center><font size=\"1\" color=\"#FFFFFF\">$temp</font></center></div>";
           if ($temp >= $MaxKillRatio)
           {
             echo"<td></td><td bgcolor=\"#51260B\" width=\"50%\" align=\"left\"><!-- ratio with plus -->
-        		<img align=\"middle\" src=\"images/bars/bar-small/yellow_middle_9.gif\" width=\"$KillRatioWidthPlus%\" height=\"13\" title=\"$KillRatioWidthPlusText\"><div style=\"margin-top:-13px\"><center><font size=\"1\" color=\"#000000\">$KillRatioWidthPlus%</font></center></div>";
+        		<img align=\"middle\" src=\"images/bars/bar-middle/yellow_middle_13.png\" width=\"$KillRatioWidthPlus%\" height=\"13\" title=\"$KillRatioWidthPlusText\"><div style=\"margin-top:-13px\"><center><font size=\"1\" color=\"#000000\">$KillRatioWidthPlus%</font></center></div>";
           }
           else
           {
@@ -313,7 +313,7 @@ function topplayers($sortby = "skill", $direction = "DESC", $offset = 0, $clan_n
             if ($KillRatioWidthPlus == 0)
               echo "<img src=\"images/spacer.gif\" width=\"1\" height=\"9\" alt=\"\"><div style=\"margin-top:-9px\"><center><font size=\"1\" color=\"#FFFFFF\">$KillRatioWidthPlus%</font></center></div>";
             else
-              echo "<img src=\"images/bars/bar-small/green_middle_9.gif\" width=\"$KillRatioWidthPlus%\" height=\"13\" title=\"$KillRatioWidthPlusText\"><div style=\"margin-top:-13px\"><center><font size=\"1\" color=\"#FFFFFF\">$KillRatioWidthPlus%</font></center></div>";
+              echo "<img src=\"images/bars/bar-middle/green_middle_13.png\" width=\"$KillRatioWidthPlus%\" height=\"13\" title=\"$KillRatioWidthPlusText\"><div style=\"margin-top:-13px\"><center><font size=\"1\" color=\"#FFFFFF\">$KillRatioWidthPlus%</font></center></div>";
           }
           echo "</td>         
           </tr>
@@ -743,7 +743,7 @@ function player_badges($playerid, $dbID = false)
   echo "         </tr>";   
   echo "         <tr bgcolor=\"#e8e8e8\"> "; 
   echo "          <td colspan=\"2\" width=\"600\">  "; 
-  echo "          <div style=\"padding: 0px; background-image: url('images/bars/bar-small/red_middle_9.gif'); background-repeat: repeat-x;\" height=\"9\"><img src=\"images/bars/bar-small/green_middle_9.gif\" alt=\"&nbsp;Progress till next rank\" width=\"".$percent."%\" height=\"9\"></div></td> "; 
+  echo "          <div style=\"padding: 0px; background-image: url('images/bars/bar-small/red_middle_9.png'); background-repeat: repeat-x;\" height=\"9\"><img src=\"images/bars/bar-small/green_middle_9.png\" alt=\"&nbsp;Progress till next rank\" width=\"".$percent."%\" height=\"9\"></div></td> "; 
   echo "          <td align=\"center\" width=\"200\"><font color=\"#000000\" size=\"2\">".$text["killsneed"]." <b>".$neexed." (".$percent."%)</b></font></td></tr>  "; 
   echo "     </table>";
   echo "</table>";
@@ -909,10 +909,10 @@ function player_compare_item($player1, $player2, $citem="skill", $cbar=true, $sw
     $temp1 = sprintf("%.2f",$player1perc)*100;
     $temp2 = sprintf("%.2f",$player2perc)*100;
     echo "<tr height=\"10\" class=\"outertable\"><td align=\"center\" colspan=\"3\">".ucfirst($citem)."</td></tr>";
-    echo "<tr height=\"10\"><td class=$cclass1 width=\"140\" align=\"left\">".htmlspecialchars(utf2iso($player1['name']))."</td><td class=$cclass1 width=\"60\" align=\"left\">".$player1[$citem]."</td><td width=\"$cwidth\" class=$cclass1 align=\"left\"><img src=\"images/bars/bar-small/".$cbarcolor1."_middle_9.gif\" height=\"9\" width=\"".$player1perc*$cwidth."\" title=\"".$temp1."%\"></td></tr>";
+    echo "<tr height=\"10\"><td class=$cclass1 width=\"140\" align=\"left\">".htmlspecialchars(utf2iso($player1['name']))."</td><td class=$cclass1 width=\"60\" align=\"left\">".$player1[$citem]."</td><td width=\"$cwidth\" class=$cclass1 align=\"left\"><img src=\"images/bars/bar-small/".$cbarcolor1."_middle_9.png\" height=\"9\" width=\"".$player1perc*$cwidth."\" title=\"".$temp1."%\"></td></tr>";
     if ($separatorline == 1)
       echo "<tr><td colspan=\"3\" class=\"outertable\"><img src=\"images/spacer.gif\" width=\"1\" height=\"1\" alt=\"\"></td></tr>";  // This draws a one pixel line between rows
-    echo "<tr height=\"10\"><td class=$cclass2 width=\"140\" align=\"left\">".htmlspecialchars(utf2iso($player2['name']))."</td><td class=$cclass2 width=\"60\" align=\"left\">".$player2[$citem]."</td><td width=\"$cwidth\" class=$cclass2 align=\"left\"><img src=\"images/bars/bar-small/".$cbarcolor2."_middle_9.gif\" height=\"9\" width=\"".$player2perc*$cwidth."\" title=\"".$temp2."%\"></td></tr>";
+    echo "<tr height=\"10\"><td class=$cclass2 width=\"140\" align=\"left\">".htmlspecialchars(utf2iso($player2['name']))."</td><td class=$cclass2 width=\"60\" align=\"left\">".$player2[$citem]."</td><td width=\"$cwidth\" class=$cclass2 align=\"left\"><img src=\"images/bars/bar-small/".$cbarcolor2."_middle_9.png\" height=\"9\" width=\"".$player2perc*$cwidth."\" title=\"".$temp2."%\"></td></tr>";
   }
   elseif ($citem == "country")
   {
@@ -1524,7 +1524,7 @@ function player_weapons_s($playerid, $dbID = false)
         <td  width=\"100%\">
         ";
         if($ratiola > 0.00 )
-            $Output .= "<img align=\"middle\" src=\"images/bars/bar-small/green_left_9.gif\" width=\"4\" height=\"9\" title=\"$ratiola % of total kills\"><img align=\"middle\" src=\"images/bars/bar-small/green_middle_9.gif\" width=".$temp."%\" height=\"9\" alt=".$ratiola." title=\"$ratiola % of total kills\"><img align=\"middle\" src=\"images/bars/bar-small/green_right_9.gif\" width=\"4\" height=\"9\"  title=\"$ratiola %\" ></td>
+            $Output .= "<img align=\"middle\" src=\"images/bars/bar-small/green_left_9.png\" width=\"4\" height=\"9\" title=\"$ratiola % of total kills\"><img align=\"middle\" src=\"images/bars/bar-small/green_middle_9.png\" width=".$temp."%\" height=\"9\" alt=".$ratiola." title=\"$ratiola % of total kills\"><img align=\"middle\" src=\"images/bars/bar-small/green_right_9.png\" width=\"4\" height=\"9\"  title=\"$ratiola %\" ></td>
             ";
               
     $Output .= "    </td>
@@ -1681,7 +1681,7 @@ echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" cla
         <tr>
         <td  width=\"100%\">";
     if($ratiola > 0.00 )
-      echo "<img align=\"middle\" src=\"images/bars/bar-small/green_left_9.gif\" width=\"\" height=\"9\" title=\"$ratiola %\"><img align=\"middle\" src=\"images/bars/bar-small/green_middle_9.gif\" width=".$ratiola."%\" height=\"9\" alt=".$ratiola." title=\"$ratiola %\"><img align=\"middle\" src=\"images/bars/bar-small/green_right_9.gif\" width=\"\" height=\"9\"  title=\"$ratiola %\" ></td>";
+      echo "<img align=\"middle\" src=\"images/bars/bar-small/green_left_9.png\" width=\"\" height=\"9\" title=\"$ratiola %\"><img align=\"middle\" src=\"images/bars/bar-small/green_middle_9.png\" width=".$ratiola."%\" height=\"9\" alt=".$ratiola." title=\"$ratiola %\"><img align=\"middle\" src=\"images/bars/bar-small/green_right_9.png\" width=\"\" height=\"9\"  title=\"$ratiola %\" ></td>";
         
     echo "  </td>
             </tr>
@@ -2587,7 +2587,7 @@ function player_actions_s($playerid, $dbID = false)
       $Output .= "<td></td>";                                                                 
      
         if($ratio_actions > 0.00 )
-            $Output .= "<td align=\"left\"><img align=\"middle\" src=\"images/bars/bar-small/green_left_9.gif\" width=\"4\" height=\"9\" title=\"$ratio_actions % ".$text["ofyouractions"]." $total_actions\"><img align=\"middle\" src=\"images/bars/bar-small/green_middle_9.gif\" width=".$temp."%\" height=\"9\" alt=".$ratio_actions." title=\"$ratio_actions % ".$text["ofyouractions"]." $total_actions\"><img align=\"middle\" src=\"images/bars/bar-small/green_right_9.gif\" width=\"4\" height=\"9\"  title=\"$ratio_actions % ".$text["ofyouractions"]." $total_actions\" ></td>
+            $Output .= "<td align=\"left\"><img align=\"middle\" src=\"images/bars/bar-small/green_left_9.png\" width=\"4\" height=\"9\" title=\"$ratio_actions % ".$text["ofyouractions"]." $total_actions\"><img align=\"middle\" src=\"images/bars/bar-small/green_middle_9.png\" width=".$temp."%\" height=\"9\" alt=".$ratio_actions." title=\"$ratio_actions % ".$text["ofyouractions"]." $total_actions\"><img align=\"middle\" src=\"images/bars/bar-small/green_right_9.png\" width=\"4\" height=\"9\"  title=\"$ratio_actions % ".$text["ofyouractions"]." $total_actions\" ></td>
             ";
   }
 

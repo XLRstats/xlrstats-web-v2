@@ -1,1 +1,2 @@
-XLRstats version 2.1.0b - 28 december 2009
+version: 2.1.0 
+date: 5 january 2010

@@ -33,6 +33,7 @@ include("func-clan.php");
 include("lib/geoip.inc");
 
 session_start();
+checkinstalldir();
 cleanglobals();
 pageloader_start();
 

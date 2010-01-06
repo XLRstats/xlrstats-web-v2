@@ -122,6 +122,50 @@ function checklang($pop=0)
     return "<a href=index.php?func=savelang><img src=\"".pathlink($pop)."images/flags/gb.gif\" border=\"0\" align=\"absmiddle\" title=\"Switch to English\"></a>&nbsp;";
 }
 
+function checkinstalldir()
+{
+  $configfiles = scandir('config');
+  // Check the [array] config dir for a filename containing 'statsconfig'
+  $statsconfig_exists = array_find('statsconfig', $configfiles);
+  if (is_dir('install') && $statsconfig_exists)
+  {
+    echo '<html>
+<head>
+<title>XLRstats B3 - ERROR</title>
+  <style type="text/css">
+  body{text-align: center; font-family:Arial, Helvetica, sans-serif; font-weight: bold}
+  </style>
+</head>
+<body>
+  <p>We found a valid configfile for XLRstats, seems you have finished installation.</p>
+  <p>However, your installation directory is still at the default location!<br />
+  Before you can continue, you need to</p>
+  <p style="font-size:1.5em; color: red"><i>Remove</i> or <i>Rename</i> your installation directory.</p>
+</body>
+</html>';
+    exit;
+  }
+  elseif (is_dir('install'))
+  {
+    // Not installed yet, forward to the install folder
+    $install_loc =  httplink() . 'install/';
+    header("Location: $install_loc");
+  }
+}
+
+function array_find($needle, $haystack) // Find a part of a value in an array 
+{
+  foreach ($haystack as $item)
+  {
+    if (strpos($item, $needle) !== false)
+    {
+      return true;
+      break;
+    }
+  }
+  return false;
+}
+
 function cleanglobals()
 {
   if (ini_get('register_globals') == 1)
@@ -1179,7 +1223,7 @@ function displayfooter($pop=0)
   
   $versionfile = abs_pathlink($pop) . "version.txt";
   if ( file_exists($versionfile) )
-    $version = file_get_contents($versionfile);
+    $version = "XLRstats " . file_get_contents($versionfile);
   else
     $version = "Unknown Version";
 

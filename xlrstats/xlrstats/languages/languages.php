@@ -26,6 +26,7 @@
 if (!isset($pop))
   $pop = 0;
 
+
 $lang_path = abs_pathlink($pop)."languages";
 $default_lang = "en.php";
 
@@ -48,7 +49,7 @@ elseif (file_exists($geoip_path."GeoIP.dat"))
   $gi = geoip_open($geoip_path."GeoIP.dat", GEOIP_STANDARD);
   $lang_file = geoip_country_code_by_addr($gi, $client_ip).".php"; 
   $lang_file = strtolower($lang_file);
-    
+  $lang_file = checklangreplacement($lang_file);
   geoip_close($gi);
 
   if(file_exists($lang_path."/".$lang_file)) {
@@ -62,6 +63,7 @@ elseif (file_exists($geoip_path."GeoIP.dat"))
 else
 {
   $lang_file = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2).".php"; 
+  $lang_file = checklangreplacement($lang_file);
 
     if(file_exists($lang_path."/".$lang_file)) {
       include ($lang_path."/".$lang_file);
@@ -70,4 +72,16 @@ else
     else $lang_file = $default_lang;
 }
 
+// -----------------------------------------------------------------------------
+function checklangreplacement($lang_file)
+{
+  // array holding countryfiles which should default to a common language file
+  $lang_es = array('mx.php',  'co.php',  'ar.php',  'pe.php',  've.php',  'cl.php',  'ec.php',  'gt.php',  'cu.php',  'bo.php',  'do.php',  'hn.php',  'sv.php',  'py.php',  'ni.php',  'cr.php',  'uy.php',  'pa.php',  'gq.php');
+  $lang_nl = array('be.php');
+
+  if (in_array($lang_file, $lang_es)) $lang_file = "es.php";
+  elseif (in_array($lang_file, $lang_nl)) $lang_file = "nl.php";
+
+  return $lang_file;
+}
 ?>

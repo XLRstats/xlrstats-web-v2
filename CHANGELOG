@@ -1,5 +1,39 @@
 2010-01-08  xlr8or <xlr8or@xlr8or.com>
 
+	* xlrstats/xlrstats/block.php, xlrstats/xlrstats/config/awards.php,
+	xlrstats/xlrstats/config/cod1.php,
+	xlrstats/xlrstats/config/cod2.php,
+	xlrstats/xlrstats/config/cod4.php,
+	xlrstats/xlrstats/config/coduo.php,
+	xlrstats/xlrstats/config/codwaw.php,
+	xlrstats/xlrstats/config/distro-config.php,
+	xlrstats/xlrstats/config/install_award_idents.php,
+	xlrstats/xlrstats/config/ranks.php,
+	xlrstats/xlrstats/config/urt.php, xlrstats/xlrstats/config/wop.php,
+	xlrstats/xlrstats/func-awardlogic.php,
+	xlrstats/xlrstats/func-block.php, xlrstats/xlrstats/func-clan.php,
+	xlrstats/xlrstats/func-globallogic.php,
+	xlrstats/xlrstats/func-playerlistlogic.php,
+	xlrstats/xlrstats/func-sectionlogic.php,
+	xlrstats/xlrstats/func-siglogic.php, xlrstats/xlrstats/help.php,
+	xlrstats/xlrstats/inc_activitygraph.php,
+	xlrstats/xlrstats/inc_navigation.php, xlrstats/xlrstats/index.php,
+	xlrstats/xlrstats/install/func-installer.php,
+	xlrstats/xlrstats/install/index.php,
+	xlrstats/xlrstats/languages/en.php,
+	xlrstats/xlrstats/languages/es.php,
+	xlrstats/xlrstats/languages/fr.php,
+	xlrstats/xlrstats/languages/languages.php,
+	xlrstats/xlrstats/languages/nl.php,
+	xlrstats/xlrstats/languages/tr.php, xlrstats/xlrstats/reset.php,
+	xlrstats/xlrstats/rss.php: Updated (c) info dates.
+
+2010-01-08  xlr8or <xlr8or@xlr8or.com>
+
+	* CHANGELOG, ChangeLog.txt: FilenameChange
+
+2010-01-08  xlr8or <xlr8or@xlr8or.com>
+
 	* ChangeLog.txt: Created Changelog
 
 2010-01-06  xlr8or <xlr8or@xlr8or.com>

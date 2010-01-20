@@ -1,0 +1,754 @@
+2010-01-08  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/block.php, xlrstats/xlrstats/config/awards.php,
+	xlrstats/xlrstats/config/cod1.php,
+	xlrstats/xlrstats/config/cod2.php,
+	xlrstats/xlrstats/config/cod4.php,
+	xlrstats/xlrstats/config/coduo.php,
+	xlrstats/xlrstats/config/codwaw.php,
+	xlrstats/xlrstats/config/distro-config.php,
+	xlrstats/xlrstats/config/install_award_idents.php,
+	xlrstats/xlrstats/config/ranks.php,
+	xlrstats/xlrstats/config/urt.php, xlrstats/xlrstats/config/wop.php,
+	xlrstats/xlrstats/func-awardlogic.php,
+	xlrstats/xlrstats/func-block.php, xlrstats/xlrstats/func-clan.php,
+	xlrstats/xlrstats/func-globallogic.php,
+	xlrstats/xlrstats/func-playerlistlogic.php,
+	xlrstats/xlrstats/func-sectionlogic.php,
+	xlrstats/xlrstats/func-siglogic.php, xlrstats/xlrstats/help.php,
+	xlrstats/xlrstats/inc_activitygraph.php,
+	xlrstats/xlrstats/inc_navigation.php, xlrstats/xlrstats/index.php,
+	xlrstats/xlrstats/install/func-installer.php,
+	xlrstats/xlrstats/install/index.php,
+	xlrstats/xlrstats/languages/en.php,
+	xlrstats/xlrstats/languages/es.php,
+	xlrstats/xlrstats/languages/fr.php,
+	xlrstats/xlrstats/languages/languages.php,
+	xlrstats/xlrstats/languages/nl.php,
+	xlrstats/xlrstats/languages/tr.php, xlrstats/xlrstats/reset.php,
+	xlrstats/xlrstats/rss.php: Updated (c) info dates.
+
+2010-01-08  xlr8or <xlr8or@xlr8or.com>
+
+	* CHANGELOG, ChangeLog.txt: FilenameChange
+
+2010-01-08  xlr8or <xlr8or@xlr8or.com>
+
+	* ChangeLog.txt: Created Changelog
+
+2010-01-06  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/languages/languages.php: Ad func. in
+	languagefile to check for countries that also use a certain
+	lang-file.
+
+2010-01-06  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/func-sectionlogic.php: new bar images
+
+2010-01-05  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/func-globallogic.php,
+	xlrstats/xlrstats/version.txt, xlrstats/xlrstats/versionchecker.php: 
+	First piece of code for the versionchecker added.
+
+2010-01-05  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/func-globallogic.php,
+	xlrstats/xlrstats/index.php: Added check for install dir.
+
+2010-01-05  Freelander <freelander00@gmail.com>
+
+	* : removed old rank images
+
+2010-01-05  Freelander <freelander00@gmail.com>
+
+	* : new medal images
+
+2010-01-05  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/config/ranks.php,
+	xlrstats/xlrstats/func-sectionlogic.php: new rank images: converted
+	to png with transparent background to fit better with various
+	templates
+
+2010-01-05  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/languages/languages.php: bugfix: better caching
+	of files based on default language. It was caching based on current
+	countrycode, not checking if that languagefile was available.
+	Leading to a too large, unnecesary cache.
+
+2010-01-05  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/func-awardlogic.php: simplified awardlogic
+
+2010-01-04  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/config/ranks.php: minor fix on ranks sorting
+
+2010-01-03  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/config/awards.php,
+	xlrstats/xlrstats/config/install_award_idents.php,
+	xlrstats/xlrstats/func-awardlogic.php,
+	xlrstats/xlrstats/languages/en.php,
+	xlrstats/xlrstats/languages/es.php,
+	xlrstats/xlrstats/languages/fr.php,
+	xlrstats/xlrstats/languages/nl.php,
+	xlrstats/xlrstats/languages/tr.php: New medals (barrel explosions,
+	molotov kills, flame thrower kills) for CoD:WaW
+
+2009-12-30  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/README.TXT,
+	xlrstats/xlrstats/func-globallogic.php,
+	xlrstats/xlrstats/install/func-installer.php,
+	xlrstats/xlrstats/install/index.php: Updated readme and installer to
+	fit version 2.1.0
+
+2009-12-30  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/func-globallogic.php: minor fix
+
+2009-12-29  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/dynamic/cache/empty: added cachefolder
+
+2009-12-29  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/func-awardlogic.php: set caching to 1 hour
+
+2009-12-29  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/func-awardlogic.php,
+	xlrstats/xlrstats/version.txt: version 2.1.0beta
+
+2009-12-28  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/func-awardlogic.php: cache files per language
+
+2009-12-28  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/func-awardlogic.php,
+	xlrstats/xlrstats/func-globallogic.php,
+	xlrstats/xlrstats/func-playerlistlogic.php,
+	xlrstats/xlrstats/templates/loader.css,
+	xlrstats/xlrstats/version.txt: v2.1.0: Performance improvements:
+	Staged Loading
+
+2009-12-28  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/func-awardlogic.php: Performance improvement ->
+	caching awards
+
+2009-12-28  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/func-globallogic.php: Alternate pathlink
+	functions by zskull
+
+2009-12-28  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/func-awardlogic.php: minor fix
+
+2009-12-28  xlr8or <xlr8or@xlr8or.com>
+
+	* : commit a2db6cb5923fe741a2c3324376ba5172fa9a8dd0 Author: xlr8or
+	<xlr8or@xlr8or.com> Date:   Mon Dec 28 16:36:18 2009 +0100
+
+2009-12-28  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/config/urt.php: minor update in urt.php
+
+2009-12-17  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/func-awardlogic.php,
+	xlrstats/xlrstats/func-sectionlogic.php,
+	xlrstats/xlrstats/index.php, xlrstats/xlrstats/languages/en.php,
+	xlrstats/xlrstats/languages/es.php,
+	xlrstats/xlrstats/languages/fr.php,
+	xlrstats/xlrstats/languages/nl.php,
+	xlrstats/xlrstats/languages/tr.php: language files for action stats
+
+2009-11-20  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/func-globallogic.php,
+	xlrstats/xlrstats/func-siglogic.php,
+	xlrstats/xlrstats/lib/jpgraph/gd_image.inc.php,
+	xlrstats/xlrstats/lib/jpgraph/jpgraph.php,
+	xlrstats/xlrstats/lib/jpgraph/jpgraph_gantt.php,
+	xlrstats/xlrstats/sig/first.php, xlrstats/xlrstats/sig/index.php: 
+	deprecated split() exchanged for explode()
+
+2009-11-20  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/b3-plugins/README.TXT,
+	xlrstats/xlrstats/languages/es.php,
+	xlrstats/xlrstats/languages/nl.php: updates to ctime readme, added
+	es.php spanish language file (by Metallized=>DeMente) For other
+	latin languages we'll need to copy this file to the corresponding 2
+	character country codes.
+
+2009-11-07  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/config/awards.php,
+	xlrstats/xlrstats/func-awardlogic.php,
+	xlrstats/xlrstats/func-sectionlogic.php: action award
+
+2009-11-04  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/config/distro-config.php: new table names added
+
+2009-11-04  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/config/distro-config.php,
+	xlrstats/xlrstats/func-sectionlogic.php,
+	xlrstats/xlrstats/index.php,
+	xlrstats/xlrstats/install/func-installer.php,
+	xlrstats/xlrstats/install/index.php: displaying actionstats
+
+2009-11-01  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/b3-plugins/status.py, xlrstats/xlrstats/version.txt: 
+	preparations for v2.0.8b
+
+2009-11-01  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/sql/recreate-xlrstats.sql,
+	xlrstats/sql/xlrstats-update-to-v1.0.0.sql,
+	xlrstats/sql/xlrstats.sql: sql additions for v 2.0.7
+
+2009-11-01  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/version.txt: release additions
+
+2009-10-31  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/config/install_award_idents.php,
+	xlrstats/xlrstats/func-globallogic.php,
+	xlrstats/xlrstats/inc_activitygraph.php: fixed cod5 exploding car
+	award and some template issues
+
+2009-10-31  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/block.php, xlrstats/xlrstats/func-block.php,
+	xlrstats/xlrstats/inc_activitygraph.php: minor updates
+
+2009-10-31  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/func-awardlogic.php,
+	xlrstats/xlrstats/languages/en.php,
+	xlrstats/xlrstats/languages/fr.php,
+	xlrstats/xlrstats/languages/nl.php,
+	xlrstats/xlrstats/languages/tr.php: new medal image (bouncing betty)
+	and language files
+
+2009-10-31  Freelander <freelander00@gmail.com>
+
+	* : Merge commit 'xlrstats/master'
+
+2009-10-27  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/config/awards.php,
+	xlrstats/xlrstats/config/install_award_idents.php,
+	xlrstats/xlrstats/func-awardlogic.php: New medal for Bouncing Betty
+	in CoD:WaW
+
+2009-09-30  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/func-globallogic.php: dynamic css for templates
+
+2009-09-30  Freelander <freelander00@gmail.com>
+
+	* : Merge commit 'xlrstats/master' Conflicts: 	xlrstats/xlrstats/config/codwaw.php 	xlrstats/xlrstats/lib/autocomplete/localdata.php
+
+2009-09-29  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/func-globallogic.php,
+	xlrstats/xlrstats/lib/autocomplete/localdata.php,
+	xlrstats/xlrstats/lib/sorttable/sorttable.js: fixed autocomplete
+	using distinct playernames
+
+2009-09-22  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/func-globallogic.php,
+	xlrstats/xlrstats/index.php: Added func "server"
+
+2009-09-22  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/config/codwaw.php: Signed-off-by: xlr8or
+	<xlr8or@xlr8or.com>
+
+2009-09-20  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/config/codwaw.php,
+	xlrstats/xlrstats/func-globallogic.php: codwaw 1.6 patch update Signed-off-by: xlr8or <xlr8or@xlr8or.com>
+
+2009-09-19  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/config/codwaw.php,
+	xlrstats/xlrstats/func-globallogic.php: codwaw 1.6 patch update
+
+2009-09-19  Freelander <freelander00@gmail.com>
+
+	* : Merge commit 'xlrstats/master'
+
+2009-08-22  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/func-globallogic.php,
+	xlrstats/xlrstats/func-playerlistlogic.php,
+	xlrstats/xlrstats/install/func-installer.php: minor fix
+
+2009-08-22  Freelander <freelander00@gmail.com>
+
+	* : Merge commit 'xlrstats/master'
+
+2009-08-22  Freelander <freelander00@gmail.com>
+
+	* : Merge commit 'xlrstats/master'
+
+2009-08-22  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/func-globallogic.php,
+	xlrstats/xlrstats/func-playerlistlogic.php,
+	xlrstats/xlrstats/languages/en.php,
+	xlrstats/xlrstats/languages/nl.php,
+	xlrstats/xlrstats/languages/tr.php: manual import of Freelanders
+	commit
+
+2009-08-20  Freelander <freelander00@gmail.com>
+
+	* : Merge commit 'xlrstats/master'
+
+2009-08-20  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/lib/autocomplete/localdata.php: discard hidden
+	players from automoplete Signed-off-by: xlr8or <xlr8or@xlr8or.com>
+
+2009-08-20  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/func-globallogic.php,
+	xlrstats/xlrstats/func-playerlistlogic.php,
+	xlrstats/xlrstats/languages/en.php,
+	xlrstats/xlrstats/languages/fr.php,
+	xlrstats/xlrstats/languages/nl.php,
+	xlrstats/xlrstats/languages/tr.php: translation update
+
+2009-08-20  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/lib/autocomplete/localdata.php: discard hidden
+	players from automoplete
+
+2009-08-20  Freelander <freelander00@gmail.com>
+
+	* : Merge commit 'xlrstats/master'
+
+2009-08-17  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/config/ranks.php: fixed 2star corporal
+	promotion.
+
+2009-08-13  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/func-globallogic.php.BASE.8480.php,
+	xlrstats/xlrstats/func-globallogic.php.LOCAL.8480.php,
+	xlrstats/xlrstats/func-globallogic.php.REMOTE.8480.php: removed temp
+	files
+
+2009-08-13  Freelander <freelander00@gmail.com>
+
+	* : Merge commit 'xlrstats/master' Conflicts: 	xlrstats/xlrstats/func-globallogic.php 	xlrstats/xlrstats/lib/autocomplete/localdata.php
+
+2009-08-11  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/func-globallogic.php,
+	xlrstats/xlrstats/lib/autocomplete/jquery.autocomplete.css,
+	xlrstats/xlrstats/lib/autocomplete/jquery.autocomplete.js,
+	xlrstats/xlrstats/lib/autocomplete/localdata.php: autocomplete for
+	player search Signed-off-by: xlr8or <xlr8or@xlr8or.com>
+
+2009-08-11  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/func-globallogic.php,
+	xlrstats/xlrstats/lib/autocomplete/jquery.autocomplete.css,
+	xlrstats/xlrstats/lib/autocomplete/jquery.autocomplete.js,
+	xlrstats/xlrstats/lib/autocomplete/localdata.php: autocomplete for
+	player search
+
+2009-08-11  Freelander <freelander00@gmail.com>
+
+	* : Merge commit 'xlrstats/master'
+
+2009-08-01  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/func-sectionlogic.php,
+	xlrstats/xlrstats/index.php: previous and next links on top pages
+
+2009-07-31  Freelander <freelander00@gmail.com>
+
+	* : Merge commit 'xlrstats/master' Conflicts: 	xlrstats/xlrstats/languages/fr.php
+
+2009-07-20  “Freelander” <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/func-globallogic.php,
+	xlrstats/xlrstats/languages/fr.php: French translation by [MMk]ZTk
+	from Team MixoMatik Signed-off-by: xlr8or <xlr8or@xlr8or.com>
+
+2009-07-20  “Freelander” <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/func-globallogic.php,
+	xlrstats/xlrstats/languages/fr.php: French translation by [MMk]ZTk
+	from Team MixoMatik
+
+2009-07-20  “Freelander” <freelander00@gmail.com>
+
+	* : Merge commit 'xlrstats/master'
+
+2009-07-04  “Freelander” <freelander00@gmail.com>
+
+	* : Merge commit 'xlrstats/master'
+
+2009-07-04  “Freelander” <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/index.php: minor bugfix to solve display min
+	kill etc.
+
+2009-07-04  “Freelander” <freelander00@gmail.com>
+
+	* : Merge commit 'xlrstats/master'
+
+2009-06-30  “Freelander” <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/func-awardlogic.php: exclude banned players from
+	medal top 10 lists Signed-off-by: xlr8or <xlr8or@xlr8or.com>
+
+2009-06-29  “Freelander” <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/func-awardlogic.php: exclude banned players from
+	medal top 10 lists
+
+2009-06-29  “Freelander” <freelander00@gmail.com>
+
+	* : Merge commit 'xlrstats/master'
+
+2009-06-05  “Freelander” <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/install/func-installer.php,
+	xlrstats/xlrstats/install/index.php: bug fix and a small change in
+	installer
+
+2009-06-05  “Freelander” <freelander00@gmail.com>
+
+	* : Merge commit 'xlrstats/master'
+
+2009-06-04  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/languages/nl.php: nl.php: some translations
+	(still not complete)
+
+2009-06-04  “Freelander” <freelander00@gmail.com>
+
+	* : Merge commit 'xlrstats/master'
+
+2009-06-03  “Freelander” <freelander00@gmail.com>
+
+	* : Merge commit 'xlrstats/master'
+
+2009-04-26  Freelander <freelander00@gmail.com>
+
+	* : Merge commit 'xlrstats/master' Conflicts: 	xlrstats/xlrstats/install/func-installer.php
+
+2009-04-25  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/config/distro-config.php,
+	xlrstats/xlrstats/config/distro-statsconfig.php,
+	xlrstats/xlrstats/install/check.php,
+	xlrstats/xlrstats/install/func-installer.php,
+	xlrstats/xlrstats/install/index.php: webinstaller final - by
+	Freelander
+
+2009-04-25  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/config/distro-config.php,
+	xlrstats/xlrstats/config/distro-statsconfig.php,
+	xlrstats/xlrstats/install/func-installer.php,
+	xlrstats/xlrstats/install/index.php: web installer final
+
+2009-04-25  Freelander <freelander00@gmail.com>
+
+	* : Merge commit 'xlrstats/master' Conflicts: 	xlrstats/xlrstats/install/func-installer.php 	xlrstats/xlrstats/install/index.php 	xlrstats/xlrstats/templates/xlrstats/installer.css
+
+2009-04-23  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/version.txt: version dated
+
+2009-04-23  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/install/func-installer.php,
+	xlrstats/xlrstats/install/index.php,
+	xlrstats/xlrstats/templates/xlrstats/installer.css: freelanders push
+
+2009-04-23  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/config/distro-statsconfig.php,
+	xlrstats/xlrstats/config/statsconfig-distro.php,
+	xlrstats/xlrstats/func-sectionlogic.php: fixed error in player
+	comparison page regarding geoIP data
+
+2009-04-23  xlr8or <xlr8or@xlr8or.com>
+
+	* : commit c05db30f1ddd7923790b309127bc98b4a25b6886 Author:
+	Freelander <freelander00@gmail.com> Date:   Mon Apr 20 23:27:20 2009
+	+0800
+
+2009-04-23  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/config/statsconfig-distro.php,
+	xlrstats/xlrstats/install/check.php,
+	xlrstats/xlrstats/install/func-installer.php,
+	xlrstats/xlrstats/install/index.php: web installer
+
+2009-04-20  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/config/install_award_idents.php,
+	xlrstats/xlrstats/install/func-installer.php,
+	xlrstats/xlrstats/install/index.php,
+	xlrstats/xlrstats/templates/xlrstats/installer.css: web installer
+
+2009-04-09  Freelander <freelander00@gmail.com>
+
+	* : Merge commit 'xlrstats/master'
+
+2009-04-08  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/func-awardlogic.php: used
+	htmlspecialchars(utf2iso()) for readable names in top 10 awards list
+
+2009-04-05  xlr8or <xlr8or@xlr8or.com>
+
+	* : .gif medals -> .png medals
+
+2009-04-08  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/func-awardlogic.php: 
+	htmlspecialchars(utf2iso([/etc/profile.d/*.sh])) for readable names
+	in top 10 awards list
+
+2009-04-05  Freelander <freelander00@gmail.com>
+
+	* : Merge commit 'xlrstats/master'
+
+2009-04-05  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/func-awardlogic.php: medals now accept png
+	files, per round based scores have 2 decimals Signed-off-by: xlr8or <xlr8or@xlr8or.com>
+
+2009-04-05  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/func-awardlogic.php: medals now accept png
+	files, per round based scores have 2 decimals
+
+2009-04-04  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/func-awardlogic.php: test file: listing order
+	bug fix Signed-off-by: xlr8or <xlr8or@xlr8or.com>
+
+2009-04-04  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/func-awardlogic.php: test file: list order bug
+	fix
+
+2009-04-04  Freelander <freelander00@gmail.com>
+
+	* : Merge commit 'xlrstats/master'
+
+2009-04-04  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/sql/recreate-xlrstats.sql, xlrstats/sql/xlrstats.sql,
+	xlrstats/xlrstats/README.TXT, xlrstats/xlrstats/version.txt: added
+	sql files and fixed documentation
+
+2009-04-04  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/func-awardlogic.php,
+	xlrstats/xlrstats/index.php: medal details: fixing number of players
+	listed and some minor changes Signed-off-by: xlr8or <xlr8or@xlr8or.com>
+
+2009-04-04  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/func-awardlogic.php: test file: listing order
+	bug fix
+
+2009-04-03  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/func-awardlogic.php,
+	xlrstats/xlrstats/index.php: medal details: fixing number of players
+	listed and some minor changes
+
+2009-04-03  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/func-awardlogic.php,
+	xlrstats/xlrstats/index.php, xlrstats/xlrstats/languages/en.php,
+	xlrstats/xlrstats/languages/tr.php: medal details Signed-off-by: xlr8or <xlr8or@xlr8or.com>
+
+2009-04-03  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/func-awardlogic.php,
+	xlrstats/xlrstats/index.php, xlrstats/xlrstats/languages/en.php,
+	xlrstats/xlrstats/languages/tr.php: medal details
+
+2009-03-31  Freelander <freelander00@gmail.com>
+
+	* : Merge commit 'xlrstats/master'
+
+2009-03-28  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/config/statsconfig-distro.php,
+	xlrstats/xlrstats/func-playerlistlogic.php,
+	xlrstats/xlrstats/reset.php, xlrstats/xlrstats/rss.php: minor
+	bugfixes
+
+2009-03-15  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/languages/en.php: conflict en.php
+
+2009-03-15  Freelander <freelander00@gmail.com>
+
+	* : Merge commit 'xlrstats/master' Conflicts: 	xlrstats/xlrstats/languages/en.php
+
+2009-03-14  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/languages/en.php: per map -> per round
+
+2009-03-14  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/func-awardlogic.php,
+	xlrstats/xlrstats/func-globallogic.php,
+	xlrstats/xlrstats/func-sectionlogic.php,
+	xlrstats/xlrstats/languages/en.php,
+	xlrstats/xlrstats/languages/tr.php: translation update Signed-off-by: xlr8or <xlr8or@xlr8or.com>
+
+2009-03-14  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/func-awardlogic.php,
+	xlrstats/xlrstats/func-globallogic.php,
+	xlrstats/xlrstats/func-sectionlogic.php,
+	xlrstats/xlrstats/languages/en.php,
+	xlrstats/xlrstats/languages/tr.php: translation update
+
+2009-03-14  Freelander <freelander00@gmail.com>
+
+	* : Merge commit 'xlrstats/master'
+
+2009-03-13  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/config/statsconfig-distro.php,
+	xlrstats/xlrstats/languages/languages.php,
+	xlrstats/xlrstats/sig/build.php, xlrstats/xlrstats/sig/index.php: 
+	auto select user language
+
+2009-03-13  Freelander <freelander00@gmail.com>
+
+	* : Merge commit 'xlrstats/master'
+
+2009-03-09  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/func-globallogic.php: refresh globallogic
+
+2009-03-09  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/func-globallogic.php,
+	xlrstats/xlrstats/languages/languages.php: refresh globallogic
+
+2009-03-08  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/desc/weapon/nodesc.txt,
+	xlrstats/xlrstats/func-awardlogic.php,
+	xlrstats/xlrstats/func-globallogic.php,
+	xlrstats/xlrstats/languages/en.php, xlrstats/xlrstats/version.txt: 
+	changed award logic
+
+2009-02-23  unknown <Thomas@.(none)>
+
+	* xlrstats/xlrstats/func-playerlistlogic.php: fix bug on link
+	parameter for the online players list Signed-off-by:  <thomasleveil+ubu@gmail.com> Signed-off-by: xlr8or <xlr8or@xlr8or.com>
+
+2009-02-22  Freelander <freelander00@gmail.com>
+
+	* : Merge commit 'xlrstats/master'
+
+2009-02-18  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/block.php, xlrstats/xlrstats/index.php,
+	xlrstats/xlrstats/rss.php, xlrstats/xlrstats/sig/build.php,
+	xlrstats/xlrstats/sig/index.php: Added double check for confignumber
+	(by Courgette)
+
+2009-02-18  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/block.php, xlrstats/xlrstats/config/awards.php,
+	xlrstats/xlrstats/config/cod1.php,
+	xlrstats/xlrstats/config/cod2.php,
+	xlrstats/xlrstats/config/cod4.php,
+	xlrstats/xlrstats/config/coduo.php,
+	xlrstats/xlrstats/config/codwaw.php,
+	xlrstats/xlrstats/config/install_award_idents.php,
+	xlrstats/xlrstats/config/ranks.php,
+	xlrstats/xlrstats/config/statsconfig-distro.php,
+	xlrstats/xlrstats/config/urt.php, xlrstats/xlrstats/config/wop.php,
+	xlrstats/xlrstats/func-awardlogic.php,
+	xlrstats/xlrstats/func-block.php, xlrstats/xlrstats/func-clan.php,
+	xlrstats/xlrstats/func-globallogic.php,
+	xlrstats/xlrstats/func-playerlistlogic.php,
+	xlrstats/xlrstats/func-sectionlogic.php,
+	xlrstats/xlrstats/func-siglogic.php, xlrstats/xlrstats/help.php,
+	xlrstats/xlrstats/inc_activitygraph.php,
+	xlrstats/xlrstats/inc_mysql.php,
+	xlrstats/xlrstats/inc_navigation.php,
+	xlrstats/xlrstats/inc_recordnav.php,
+	xlrstats/xlrstats/inc_tabControlClass.php,
+	xlrstats/xlrstats/index.php, xlrstats/xlrstats/languages/en.php,
+	xlrstats/xlrstats/languages/languages.php,
+	xlrstats/xlrstats/languages/tr.php, xlrstats/xlrstats/reset.php,
+	xlrstats/xlrstats/rss.php: Signed-off-by: xlr8or <xlr8or@xlr8or.com>
+
+2009-02-18  Freelander <freelander00@gmail.com>
+
+	* : Merge commit 'xlrstats/master'
+
+2009-02-14  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/block.php, xlrstats/xlrstats/config/awards.php,
+	xlrstats/xlrstats/config/cod1.php,
+	xlrstats/xlrstats/config/cod2.php,
+	xlrstats/xlrstats/config/cod4.php,
+	xlrstats/xlrstats/config/coduo.php,
+	xlrstats/xlrstats/config/codwaw.php,
+	xlrstats/xlrstats/config/install_award_idents.php,
+	xlrstats/xlrstats/config/ranks.php,
+	xlrstats/xlrstats/config/statsconfig-distro.php,
+	xlrstats/xlrstats/config/urt.php, xlrstats/xlrstats/config/wop.php,
+	xlrstats/xlrstats/func-awardlogic.php,
+	xlrstats/xlrstats/func-block.php, xlrstats/xlrstats/func-clan.php,
+	xlrstats/xlrstats/func-globallogic.php,
+	xlrstats/xlrstats/func-playerlistlogic.php,
+	xlrstats/xlrstats/func-sectionlogic.php,
+	xlrstats/xlrstats/func-siglogic.php, xlrstats/xlrstats/help.php,
+	xlrstats/xlrstats/inc_activitygraph.php,
+	xlrstats/xlrstats/inc_mysql.php,
+	xlrstats/xlrstats/inc_navigation.php,
+	xlrstats/xlrstats/inc_recordnav.php,
+	xlrstats/xlrstats/inc_tabControlClass.php,
+	xlrstats/xlrstats/index.php, xlrstats/xlrstats/languages/en.php,
+	xlrstats/xlrstats/languages/languages.php,
+	xlrstats/xlrstats/languages/tr.php, xlrstats/xlrstats/reset.php,
+	xlrstats/xlrstats/rss.php: language support
+
+2009-02-11  xlr8or <xlr8or@xlr8or.com>
+
+	* : removed screenshots and packages
+
+2009-02-11  xlr8or <xlr8or@xlr8or.com>
+
+	* Initial Push
+

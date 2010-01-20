@@ -44,20 +44,27 @@ function baselink()
 
 function abs_pathlink($pop=0)
 {
-  $ptemp = explode("/", GetFileDir($_SERVER['SCRIPT_FILENAME']));
-  //array_shift($ptemp);
-  array_pop($ptemp);
-  while ($pop > 0)
-  {
+  $serversoftware = $_SERVER['SERVER_SOFTWARE'];
+  if (substr($serversoftware,0,6)=="Apache")
+  {  
+    $ptemp = explode("/", GetFileDir($_SERVER['SCRIPT_FILENAME']));
+    //array_shift($ptemp);
     array_pop($ptemp);
-    $pop--;
+    while ($pop > 0)
+    {
+      array_pop($ptemp);
+      $pop--;
+    }
+    return implode("/", $ptemp)."/";
   }
-  return implode("/", $ptemp)."/";
+  else return $_SERVER['APPL_PHYSICAL_PATH'];
+
 }
 
 function pathlink($pop=0)
 {
   $ptemp = explode("/", GetFileDir($_SERVER['PHP_SELF']));
+  //$ptemp = explode("/", getcwd());
   //array_shift($ptemp);
   array_pop($ptemp);
   while ($pop > 0)
@@ -66,33 +73,6 @@ function pathlink($pop=0)
     $pop--;
   }
   return implode("/", $ptemp)."/";
-}
-
-function lang_pathlink($pop)
-{
-	$lang = explode('\\', $_SERVER['SCRIPT_FILENAME']);
-	$h='';
-	$c2 = count(explode('\\', $_SERVER['DOCUMENT_ROOT']))+1;
-	if(!isset($lang))
-	{
-		$lang = explode('/', $_SERVER['SCRIPT_FILENAME']);
-	}
-	if(!isset($c2))
-	{
-		$c2 = count(explode('/', $_SERVER['DOCUMENT_ROOT']))+1;
-	}
-	$c = count($lang)-$c2;
-	$i=1;
-	foreach($lang as $v => $lang)
-	{
-		if($i == $c)
-		{
-			$h .= '../';
-		}
-		$i++;
-	}
-	$lang2 = explode('.ph', $_SERVER['PHP_SELF']);
-	return ''.$h.''.str_ireplace('p', '', $lang2[1]).'';
 }
 
 function httplink($pop=0)

@@ -691,17 +691,54 @@ function configpicker($cpath="config")
     if (file_exists($filename)) $configlist[] = $cnt;
     else $c = false;
   }
-if ($cnt > 2)
-{
-echo "<form name=\"configselector\" id=\"configselector\" class=\"stylepicker\"><select name=\"config\" onchange=\"XLR_configPicker('parent',this,0)\">";
-  foreach ($configlist as $value)
-    if ($value == $currentconfignumber)
-      echo "<option value=\"$value\" selected=\"selected\">Server $value</option>";
-    else
-      echo "<option value=\"$value\">Server $value</option>";
+  if ($cnt > 2)
+  {
+    //find all status file paths
+    foreach ($configlist as $value)
+    {
+      $str = file("config/statsconfig".$value.".php");
 
-echo "</select></form>";
-}
+      foreach ($str as $phrase)
+      {
+       if(strstr($phrase, 'b3_status_url'))
+         $b3_status_url = explode('"',$phrase);
+      }
+      $b3_status_url_list[] = $b3_status_url[1];
+    }
+
+    //get server names from each status url
+    foreach ($b3_status_url_list as $status)
+    {
+      $servername = "Unknown Server Name";
+
+      if(@simplexml_load_file($status)) //do we have a valid xml file?
+      {
+        $xml=new simpleXMLElement($status,NULL,TRUE);
+        
+        foreach($xml->Game->Data as $serverdata)
+        {
+          if ($serverdata['Name'] == "sv_hostname")
+            $servername = removequake3color(htmlentities($serverdata['Value']));
+        }
+      }
+
+      if (strlen($servername) > 24)
+        $serverlist[] = substr($servername,0,24).'...'; //Show max 24 characters in dropdown list.
+      else
+        $serverlist[] = $servername;
+    }
+
+    echo "<form name=\"configselector\" id=\"configselector\" class=\"stylepicker\"><select name=\"config\" onchange=\"XLR_configPicker('parent',this,0)\">";
+    foreach ($configlist as $value)
+    {
+      if ($value == $currentconfignumber)
+        echo "<option value=\"$value\" selected=\"selected\">".$serverlist[$value-1]."</option>";
+      else
+        echo "<option value=\"$value\">".$serverlist[$value-1]."</option>";
+    }
+
+  echo "</select></form>";
+  }
 }
 
 function stylepicker()

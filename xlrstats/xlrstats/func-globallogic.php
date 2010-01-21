@@ -528,9 +528,25 @@ function welcometext($pop=0)
   		<td style=\"padding: 4px;\" align=\"center\" width=\"6%\"><font class=\"fontSmall\" size=\"1\"><font color=\"#000000\">&nbsp;".$text["killed"]."</font></font></td>
   		<td style=\"padding: 4px;\" align=\"center\" width=\"6%\"><font class=\"fontSmall\" size=\"1\"><font color=\"#000000\">&nbsp;".$text["headshots"]."</font></font></td>
   		<td style=\"padding: 4px;\" align=\"center\" width=\"6%\"><font class=\"fontSmall\" size=\"1\"><font color=\"#000000\">&nbsp;".$text["hpk"]."</font></font></td>
-  	</tr>
+  	</tr>";
+
+  $flag = NULL;
+  if (file_exists($geoip_path."GeoIP.dat"))
+  {
+    $geocountry = $geoip_path."GeoIP.dat";
+    $ip = explode(":", $public_ip);
+    $ip = $ip[0];
+    $gi = geoip_open($geocountry,GEOIP_STANDARD);
+    $countryid = strtolower (geoip_country_code_by_addr($gi, $ip));
+    $country = geoip_country_name_by_addr($gi, $ip);
+    if ( !is_null($countryid) and $countryid != "") 
+      $flag = "<img style=\"vertical-align: middle;\" src=\"images/flags/".$countryid.".gif\" title=\"".$country."\" alt=\"".$country."\">";
+    geoip_close($gi);
+  }
+
+  echo "
   	<tr bgcolor=\"#cccccf\" valign=\"middle\">
-  		<td style=\"background: white none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; color: black;\" align=\"left\"><font class=\"fontNormal\" size=\"2\"><img style=\"vertical-align: middle;\" src=\"images/ico/icon_$game.gif\">&nbsp;<b><a class=info  href=\"#\">$sv_hostname<span>".$text["serverversion"]."$shortversion</span></a></b></font></td>
+  		<td style=\"background: white none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; color: black;\" align=\"left\"><font class=\"fontNormal\" size=\"2\"><img style=\"vertical-align: middle;\" src=\"images/ico/icon_$game.gif\">&nbsp;$flag&nbsp;<b><a class=info  href=\"#\">$sv_hostname<span>".$text["serverversion"]."$shortversion</span></a></b></font></td>
     	<td style=\"background: white none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; color: black;\" align=\"left\"><font class=\"fontNormal\" size=\"2\">$public_ip</font></td>
     	<td style=\"background: white none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; color: black;\" align=\"center\"><font class=\"fontNormal\" size=\"2\">$currentmap ($gameType)</font></td>
     	<td style=\"background: white none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; color: black;\" align=\"center\"><font class=\"fontNormal\" size=\"2\">$curnumplayers/$maxPlayers ($sv_maxclients)</font></td>

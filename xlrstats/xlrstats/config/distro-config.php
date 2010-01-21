@@ -49,7 +49,7 @@ $template = "xlrstats";
 // Use signature module? --> You must have php version 4.3.2 or newer with php4-gd extension installed!
 $sig = 0;
 
-// Title of the statistics pages
+// Title of the statistics pages (max. 36 characters)
 $statstitle = "XLRstats, real time gamestats!";
 
 // Does this server run teambased games? (For teamkill and teamdeath awards)

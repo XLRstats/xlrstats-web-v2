@@ -2,7 +2,7 @@
 /***************************************************************************
  * Xlrstats Webmodule
  * Webfront for XLRstats for B3 (www.bigbrotherbot.com)
- * (c) 2004-2010 www.xlr8or.com (mailto:xlr8or@xlr8or.com)
+ * (c) 2004-2009 www.xlr8or.com (mailto:xlr8or@xlr8or.com)
  ***************************************************************************/
 
 /***************************************************************************
@@ -39,6 +39,7 @@
 
     if (isset($myplayerid))
       echo "<a href=\"$link?func=player&playerid=$myplayerid&config=${currentconfignumber}\" class = \"breadcrumb-a\">MyStats</a><span class=\"breadcrumb-a\"> : </span>";
+    if (strlen($statstitle) > 36) $statstitle = substr($statstitle,0,36)."...";
     echo "<a class = \"breadcrumb-b\">$statstitle</a>";
     //echo $xlrstats_url;
     //echo $_SERVER['PHP_SELF'];

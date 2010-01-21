@@ -707,9 +707,11 @@ function configpicker($cpath="config")
     }
 
     //get server names from each status url
+    $scnt = 0;
     foreach ($b3_status_url_list as $status)
     {
-      $servername = "Unknown Server Name";
+      $scnt++;
+      $servername = "Server " . $scnt;
 
       if(@simplexml_load_file($status)) //do we have a valid xml file?
       {

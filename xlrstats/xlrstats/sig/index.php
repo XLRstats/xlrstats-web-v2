@@ -53,6 +53,7 @@ $width = 0;
 $height = 0;
 $backdrop_url = "";
 $advertising = 0;
+$expired = 0;
 $color_scheme_id = 0;
 $current_time = time();
 $timelimit = $maxdays*60*60*24;
@@ -136,6 +137,7 @@ elseif ($player['rounds'] <= $minrounds )
   $player['skill'] = "Need more rounds";
 elseif ($current_time - $player['time_edit'] >= $timelimit )
   {
+  $expired = 1;
   $player['name'] .= " stats expired";
   $player['skill'] = "n.a.";
   $player['kills'] = "n.a."; 

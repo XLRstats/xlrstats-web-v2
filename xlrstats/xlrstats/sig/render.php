@@ -135,8 +135,26 @@ if ($advertising != 0)
   $font_spacing = 3;
   $x = 10; $y = 36;
   
-  write_line( $image, $font_size, 0, $x, $y, $color_stats_text, $font, " the REALTIME Stats Generator!", $font_spacing  );
+  write_line( $image, $font_size, 0, $x, $y, $color_stats_text, $font, " REALTIME Stats Generator!", $font_spacing  );
   write_line( $image, $font_size, 0, $x, $y, $color_stats_text, $font, " ", $font_spacing  );
+  write_line( $image, $font_size, 0, $x, $y, $color_stats_text, $font, "    When you make the Kill", $font_spacing  );
+  write_line( $image, $font_size, 0, $x, $y, $color_stats_text, $font, "   We calculate your Skill!", $font_spacing  );
+  write_line( $image, $font_size, 0, $x, $y, $color_stats_text, $font, " ", $font_spacing  );
+  write_line( $image, 10, 0, $x, $y, $color_stats_text, $font, "  www.xlrstats.com ", $font_spacing  );
+}
+elseif ($expired == 1)
+{
+// Stats Box 1
+  imagefilledrectangle( $image, 5, 24, 190, 95, $color_stats_shade );
+  imagerectangle( $image, 			5, 24, 190, 95, $color_stats_border );
+  
+  $font = "./fonts/lucon.ttf";
+  $font_size = 7;
+  $font_spacing = 3;
+  $x = 10; $y = 36;
+  
+  write_line( $image, $font_size, 0, $x, $y, $color_stats_text, $font, "          XLRstats", $font_spacing  );
+  write_line( $image, $font_size, 0, $x, $y, $color_stats_text, $font, " REALTIME Stats Generator!", $font_spacing  );
   write_line( $image, $font_size, 0, $x, $y, $color_stats_text, $font, "    When you make the Kill", $font_spacing  );
   write_line( $image, $font_size, 0, $x, $y, $color_stats_text, $font, "   We calculate your Skill!", $font_spacing  );
   write_line( $image, $font_size, 0, $x, $y, $color_stats_text, $font, " ", $font_spacing  );

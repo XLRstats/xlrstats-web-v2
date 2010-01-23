@@ -1,2 +1,2 @@
-version: 2.1.0 
-date: 5 january 2010
+version: 2.1.1b 
+date: 23 january 2010

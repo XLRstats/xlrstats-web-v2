@@ -1298,6 +1298,7 @@ function displayhomelink($pop=0)
   global $mysiteurl;
   global $mysitelinkname;
   global $statstitle;
+  global $disable_configpicker;
   global $xlrstats_url;
   global $myplayerid;
 

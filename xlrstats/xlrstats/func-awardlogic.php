@@ -38,13 +38,18 @@ function medal_begin($Title = "Our award winners", $AwardName = "pr0 Medals")
 
 function medal_end($EndingText = "Top these players to win an award!")
 {
+  global $text;
+  global $award_cache_time;
+
   echo "
 
     </tr>
     </table>
     <br>
   ";
-  echo "</td></tr><tr><td class=\"tiny\" align =\"right\">$EndingText";
+  if (isset($award_cache_time)) $award_refresh_time = (int)($award_cache_time/3600) . " " . $text["hours"];
+  else $award_refresh_time = $text["hour"]; 
+  echo "</td></tr><tr><td class=\"tiny\" align =\"right\" title=\"".$text["awardrefresh"]." $award_refresh_time\">$EndingText";
   echo "</td></tr></table>";  
 }
 
@@ -1032,7 +1037,12 @@ class cache
   function cache($fname, $currentconfignumber)
   {
     global $lang_file;
+    global $award_cache_time;
+
     $lang = explode(".", $lang_file);
+    if (isset($award_cache_time)) $this->cache_time = $award_cache_time;
+    //echo $this->cache_time;
+
     //Constructor of the class
     $this->file = $this->cache_dir . $fname . '_' . $currentconfignumber . '_' . $lang[0] . ".txt";
     if ( file_exists ( $this->file ) && ( filemtime($this->file) + $this->cache_time ) > time() && !isset($_GET['fname']) )

@@ -27,7 +27,7 @@
  * LANGUAGE TRANSLATION FILE
  * Language: Turkish - "tr"
  * Translated by: Freelander[*]
- * Created: 12-Feb-2009 Last Update: 20-Aug-2009
+ * Created: 12-Feb-2009 Last Update: 27-Jan-2010
  ***************************************************************************/
 
 //HTML charset
@@ -225,6 +225,9 @@ $text["owner"] = "Sahibi: ";
 $text["mdscore"] = "Skor";
 $text["seeplayerdetails"] = "Oyuncu detaylarýna bak";
 $text["seemedaldetails"] = "Madalya detaylarýna bak";
+$text["awardrefresh"] = "Madalyalarýn yenilenme süresi: ";
+$text["hours"] = "saat";
+$text["hour"] = "saat";
 
 //PLAYER SPESIFIC STATS (UPPER SECTION)
 $text["topskillrank"] = "Üstün Yetenek Sýralamasý";
@@ -291,6 +294,7 @@ $text["extraskilpoint"] = "Dipçikle, býçakla, tabancayla veya diðer zor silahlar
 $text["weapon"] = "Silah";
 $text["bodyparts"] = "Vücut Bölümü";
 $text["accuracy"] = "Ýsabet (kýrmýzý bölgeleri daha fazla vuruyorsunuz)";
+$text["hoveryourmouse"] = "Daha çok ayrýntý için imleci resmin üzerinde gezdirin";
 $text["head"] = "Kafa";
 $text["neck"] = "Boyun";
 $text["torso_lower"] = "Karýn";

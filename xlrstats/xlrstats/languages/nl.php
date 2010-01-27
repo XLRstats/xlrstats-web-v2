@@ -225,7 +225,6 @@ $text["owner"] = "Owner: ";
 $text["mdscore"] = "Score";
 $text["seeplayerdetails"] = "See player details";
 $text["seemedaldetails"] = "See medal details";
-// added 25-01-2010:
 $text["awardrefresh"] = "Medailles worden ververst per";
 $text["hours"] = "uur";
 $text["hour"] = "uur";
@@ -295,6 +294,7 @@ $text["extraskilpoint"] = "Extra skillpoints are awarded for bashing, killing wi
 $text["weapon"] = "Weapon";
 $text["bodyparts"] = "Bodyparts";
 $text["accuracy"] = "Accuracy (you hit the red parts more frequently)";
+$text["hoveryourmouse"] = "Hover your mouse over the player model for more details";
 $text["head"] = "Head";
 $text["neck"] = "Neck";
 $text["torso_lower"] = "Abdomen";

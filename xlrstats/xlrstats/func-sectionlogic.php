@@ -1703,7 +1703,49 @@ echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" cla
   echo "</td></tr><tr><td class=\"tiny\" align =\"right\">".$text["extraskilpoint"]."";
   echo "</td></tr></table>";     // Closing extra border-table
 }
-  
+
+//function that generates hitlocation tooltip content
+function displayTooltip($hitloc, $hitlocname="")
+{ 
+  global $text;
+  global $game;
+
+  if($game != 'urt' and $game != 'wop')
+  {
+    $title = "cssbody=[bdyprts-bdy] cssheader=[bdyprts-hdr] 
+            header=[".$text[$hitlocname]."] 
+            body=[
+              <table cellpadding=0>
+                <tr>
+                  <td class=bdyprts-txtbold>".$text["kills"]." </td>
+                  <td class=bdyprts-txt>: ".((@$hitloc[$hitlocname]['kills']) > 0 ? (@$hitloc[$hitlocname]['kills']) : '0')." </td>
+                  </tr> 
+                <tr>
+                   <td class=bdyprts-txtbold>".$text["deaths"]." </td>
+                   <td class=bdyprts-txt>: ".((@$hitloc[$hitlocname]['deaths']) > 0 ? (@$hitloc[$hitlocname]['deaths']) : '0')." </td>
+                   </tr>
+                <tr>
+                   <td class=bdyprts-txtbold>".$text["teamkil"]." </td>
+                   <td class=bdyprts-txt>: ".((@$hitloc[$hitlocname]['teamkills']) > 0 ? (@$hitloc[$hitlocname]['teamkills']) : '0')." </td>
+                   </tr>
+                <tr>
+                   <td class=bdyprts-txtbold>".$text["teamdeth"]." </td>
+                   <td class=bdyprts-txt>: ".((@$hitloc[$hitlocname]['teamdeaths']) > 0 ? (@$hitloc[$hitlocname]['teamdeaths']) : '0')." </td>
+                  </tr>
+                <tr>
+                   <td class=bdyprts-txtbold>".$text["suicides"]." </td>
+                   <td class=bdyprts-txt>: ".((@$hitloc[$hitlocname]['suicides']) > 0 ? (@$hitloc[$hitlocname]['suicides']) : '0')." </td>
+                   </tr>
+              </table>
+              ]
+            ";
+  }
+  else
+    $title="";
+
+  return $title;
+}
+
 function player_bodyparts_s($playerid, $dbID = false)
 {
   $Output = "";              
@@ -1766,6 +1808,8 @@ function player_bodyparts_s($playerid, $dbID = false)
 
     while ($row = $coddb->sql_fetchrow($result))
     {
+      $hitloc[$row['name']] = array('kills' => $row['kills'], 'deaths' => $row['deaths'], 'teamkills' => $row['teamkills'], 'teamdeaths' => $row['teamdeaths'], 'suicides' => $row['suicides']); //for tooltip boxes
+
       if ($separatorline == 1)
       {
         $Output .=  "<tr><td colspan=\"11\" class=\"outertable\"><img src=\"images/spacer.gif\" width=\"1\" height=\"1\" alt=\"\"></td></tr>
@@ -1922,7 +1966,7 @@ function player_bodyparts_s($playerid, $dbID = false)
       <table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td>
         <table width=\"100%\" border=\"0\" cellspacing=\"2\" cellpadding=\"0\" class=\"innertable\">
             <tr class=\"outertable\">
-                <td width=\"250\"><center>".$text["accuracy"]."</center></td> 
+                <td width=\"250\"><center>".$text["accuracy"]." <br /><div class=\"tiny\">".(($game!='wop' && $game!='urt') ? $text["hoveryourmouse"] : "")."</div></center></td> 
                 <tr>
                     <td>   
                         <table id=\"Table_01\" width=\"370\" height=\"584\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\">
@@ -1935,7 +1979,7 @@ function player_bodyparts_s($playerid, $dbID = false)
                                 <td colspan=\"6\">
                                     <img src=\"images/model/common/0_02.png\" width=\"140\" height=\"94\" alt=\"\"></td>
                                 <td colspan=\"2\">
-                                    <img src=\"images/model/".(getPercent($hz_head, $kills))."/head.png\" width=\"90\" height=\"94\" alt=\"\"></td>
+                                    <img title=\"".displayTooltip($hitloc, 'head')."\" src=\"images/model/".(getPercent($hz_head, $kills))."/head.png\" width=\"90\" height=\"94\" alt=\"\"></td>
                                 <td colspan=\"6\">
                                     <img src=\"images/model/common/0_04.png\" width=\"140\" height=\"94\" alt=\"\"></td>
                                 <td height=\"94\" nowrap></td>
@@ -1944,7 +1988,7 @@ function player_bodyparts_s($playerid, $dbID = false)
                                 <td colspan=\"4\">
                                     <img src=\"images/model/common/0_05.png\" width=\"102\" height=\"28\" alt=\"\"></td>
                                 <td colspan=\"6\">
-                                    <img src=\"images/model/".(getPercent($hz_neck, $kills))."/neck.png\" width=\"166\" height=\"28\" alt=\"\"></td>
+                                    <img title=\"".displayTooltip($hitloc, 'neck')."\" src=\"images/model/".(getPercent($hz_neck, $kills))."/neck.png\" width=\"166\" height=\"28\" alt=\"\"></td>
                                 <td colspan=\"4\">
                                     <img src=\"images/model/common/0_07.png\" width=\"102\" height=\"28\" alt=\"\"></td>
                                 <td height=\"28\" nowrap></td>
@@ -1953,11 +1997,11 @@ function player_bodyparts_s($playerid, $dbID = false)
                                 <td colspan=\"2\">
                                     <img src=\"images/model/common/0_08.png\" width=\"57\" height=\"62\" alt=\"\"></td>
                                 <td colspan=\"3\">
-                                    <img src=\"images/model/".(getPercent($hz_right_arm_upper, $kills))."/left_arm_upper.png\" width=\"68\" height=\"62\" alt=\"\"></td>
+                                    <img title=\"".displayTooltip($hitloc, 'right_arm_upper')."\" src=\"images/model/".(getPercent($hz_right_arm_upper, $kills))."/left_arm_upper.png\" width=\"68\" height=\"62\" alt=\"\"></td>
                                 <td colspan=\"4\" rowspan=\"2\">
-                                    <img src=\"images/model/".(getPercent($hz_torso_upper, $kills))."/chest.png\" width=\"120\" height=\"97\" alt=\"\"></td>
+                                    <img title=\"".displayTooltip($hitloc, 'torso_upper')."\" src=\"images/model/".(getPercent($hz_torso_upper, $kills))."/chest.png\" width=\"120\" height=\"97\" alt=\"\"></td>
                                 <td colspan=\"3\">
-                                    <img src=\"images/model/".(getPercent($hz_left_arm_upper, $kills))."/right_arm_upper.png\" width=\"61\" height=\"62\" alt=\"\"></td>
+                                    <img title=\"".displayTooltip($hitloc, 'left_arm_upper')."\" src=\"images/model/".(getPercent($hz_left_arm_upper, $kills))."/right_arm_upper.png\" width=\"61\" height=\"62\" alt=\"\"></td>
                                 <td colspan=\"2\">
                                     <img src=\"images/model/common/0_12.png\" width=\"64\" height=\"62\" alt=\"\"></td>
                                 <td height=\"62\" nowrap></td>
@@ -1966,38 +2010,38 @@ function player_bodyparts_s($playerid, $dbID = false)
                                 <td rowspan=\"2\">
                                     <img src=\"images/model/common/0_13.png\" width=\"27\" height=\"47\" alt=\"\"></td>
                                 <td colspan=\"3\" rowspan=\"2\">
-                                    <img src=\"images/model/".(getPercent($hz_right_arm_lower, $kills))."/left_arm_lower.png\" width=\"75\" height=\"47\" alt=\"\"></td>
+                                    <img title=\"".displayTooltip($hitloc, 'right_arm_lower')."\" src=\"images/model/".(getPercent($hz_right_arm_lower, $kills))."/left_arm_lower.png\" width=\"75\" height=\"47\" alt=\"\"></td>
                                 <td>
                                     <img src=\"images/model/common/0_15.png\" width=\"23\" height=\"35\" alt=\"\"></td>
                                 <td>
                                     <img src=\"images/model/common/0_16.png\" width=\"23\" height=\"35\" alt=\"\"></td>
                                 <td colspan=\"3\" rowspan=\"2\">
-                                    <img src=\"images/model/".(getPercent($hz_left_arm_lower, $kills))."/right_arm_lower.png\" width=\"71\" height=\"47\" alt=\"\"></td>
+                                    <img title=\"".displayTooltip($hitloc, 'left_arm_lower')."\" src=\"images/model/".(getPercent($hz_left_arm_lower, $kills))."/right_arm_lower.png\" width=\"71\" height=\"47\" alt=\"\"></td>
                                 <td rowspan=\"2\">
                                     <img src=\"images/model/common/0_18.png\" width=\"31\" height=\"47\" alt=\"\"></td>
                                 <td height=\"35\" nowrap></td>
                             </tr>
                             <tr>
                                 <td colspan=\"6\" rowspan=\"2\">
-                                    <img src=\"images/model/".(getPercent($hz_torso_lower, $kills))."/torso_lower.png\" width=\"166\" height=\"60\" alt=\"\"></td>
+                                    <img title=\"".displayTooltip($hitloc, 'torso_lower')."\" src=\"images/model/".(getPercent($hz_torso_lower, $kills))."/torso_lower.png\" width=\"166\" height=\"60\" alt=\"\"></td>
                                 <td height=\"12\" nowrap></td>
                             </tr>
                             <tr>
                                 <td colspan=\"3\" rowspan=\"2\">
-                                    <img src=\"images/model/".(getPercent($hz_right_hand, $kills))."/left_hand.png\" width=\"69\" height=\"59\" alt=\"\"></td>
+                                    <img title=\"".displayTooltip($hitloc, 'right_hand')."\" src=\"images/model/".(getPercent($hz_right_hand, $kills))."/left_hand.png\" width=\"69\" height=\"59\" alt=\"\"></td>
                                 <td rowspan=\"6\">
                                     <img src=\"images/model/common/0_21.png\" width=\"33\" height=\"322\" alt=\"\"></td>
                                 <td rowspan=\"6\">
                                     <img src=\"images/model/common/0_22.png\" width=\"27\" height=\"322\" alt=\"\"></td>
                                 <td colspan=\"3\" rowspan=\"2\">
-                                    <img src=\"images/model/".(getPercent($hz_left_hand, $kills))."/right_hand.png\" width=\"75\" height=\"59\" alt=\"\"></td>
+                                    <img title=\"".displayTooltip($hitloc, 'left_hand')."\" src=\"images/model/".(getPercent($hz_left_hand, $kills))."/right_hand.png\" width=\"75\" height=\"59\" alt=\"\"></td>
                                 <td height=\"48\" nowrap></td>
                             </tr>
                             <tr>
                                 <td colspan=\"3\" rowspan=\"2\">
-                                    <img src=\"images/model/".(getPercent($hz_right_leg_upper, $kills))."/left_leg_upper.png\" width=\"83\" height=\"84\" alt=\"\"></td>
+                                    <img title=\"".displayTooltip($hitloc, 'right_leg_upper')."\" src=\"images/model/".(getPercent($hz_right_leg_upper, $kills))."/left_leg_upper.png\" width=\"83\" height=\"84\" alt=\"\"></td>
                                 <td colspan=\"3\" rowspan=\"2\">
-                                    <img src=\"images/model/".(getPercent($hz_left_leg_upper, $kills))."/right_leg_upper.png\" width=\"83\" height=\"84\" alt=\"\"></td>
+                                    <img title=\"".displayTooltip($hitloc, 'left_leg_upper')."\" src=\"images/model/".(getPercent($hz_left_leg_upper, $kills))."/right_leg_upper.png\" width=\"83\" height=\"84\" alt=\"\"></td>
                                 <td height=\"11\" nowrap></td>
                             </tr>
                             <tr>
@@ -2011,18 +2055,18 @@ function player_bodyparts_s($playerid, $dbID = false)
                                 <td rowspan=\"3\">
                                     <img src=\"images/model/common/0_28.png\" width=\"23\" height=\"190\" alt=\"\"></td>
                                 <td colspan=\"2\">
-                                    <img src=\"images/model/".(getPercent($hz_right_leg_lower, $kills))."/left_leg_lower.png\" width=\"60\" height=\"98\" alt=\"\"></td>
+                                    <img title=\"".displayTooltip($hitloc, 'right_leg_lower')."\" src=\"images/model/".(getPercent($hz_right_leg_lower, $kills))."/left_leg_lower.png\" width=\"60\" height=\"98\" alt=\"\"></td>
                                 <td colspan=\"2\">
-                                    <img src=\"images/model/".(getPercent($hz_left_leg_lower, $kills))."/right_leg_lower.png\" width=\"60\" height=\"98\" alt=\"\"></td>
+                                    <img title=\"".displayTooltip($hitloc, 'left_leg_lower')."\" src=\"images/model/".(getPercent($hz_left_leg_lower, $kills))."/right_leg_lower.png\" width=\"60\" height=\"98\" alt=\"\"></td>
                                 <td rowspan=\"3\">
                                     <img src=\"images/model/common/0_31.png\" width=\"23\" height=\"190\" alt=\"\"></td>
                                 <td height=\"98\" nowrap></td>
                             </tr>
                             <tr>
                                 <td colspan=\"2\">
-                                    <img src=\"images/model/".(getPercent($hz_right_foot, $kills))."/left_foot.png\" width=\"60\" height=\"63\" alt=\"\"></td>
+                                    <img title=\"".displayTooltip($hitloc, 'right_foot')."\" src=\"images/model/".(getPercent($hz_right_foot, $kills))."/left_foot.png\" width=\"60\" height=\"63\" alt=\"\"></td>
                                 <td colspan=\"2\">
-                                    <img src=\"images/model/".(getPercent($hz_left_foot, $kills))."/right_foot.png\" width=\"60\" height=\"63\" alt=\"\"></td>
+                                    <img title=\"".displayTooltip($hitloc, 'left_foot')."\" src=\"images/model/".(getPercent($hz_left_foot, $kills))."/right_foot.png\" width=\"60\" height=\"63\" alt=\"\"></td>
                                 <td height=\"63\" nowrap></td>
                             </tr>
                             <tr>

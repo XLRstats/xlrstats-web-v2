@@ -225,6 +225,9 @@ $text["owner"] = "Propriétaire: ";
 $text["mdscore"] = "Score";
 $text["seeplayerdetails"] = "Voir les détails joueur";
 $text["seemedaldetails"] = "Voir les détails médaille";
+$text["awardrefresh"] = "Awards refreshed once every";
+$text["hours"] = "hours";
+$text["hour"] = "hour";
 
 //PLAYER SPESIFIC STATS (UPPER SECTION)
 $text["topskillrank"] = "Classement Topskill";
@@ -291,6 +294,7 @@ $text["extraskilpoint"] = "Des points skill bonus sont attribués pour dénigremen
 $text["weapon"] = "Armes";
 $text["bodyparts"] = "Parties du corps";
 $text["accuracy"] = "Précision (vous a touché le plus souvent les endroits rouge)";
+$text["hoveryourmouse"] = "Hover your mouse over the player model for more details";
 $text["head"] = "Tête";
 $text["neck"] = "Cou";
 $text["torso_lower"] = "Abdomen";

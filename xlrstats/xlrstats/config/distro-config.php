@@ -144,4 +144,14 @@ $t['playerbody'] = "xlr_playerbody";
 $t['playermaps'] = "xlr_playermaps";
 $t['actions'] = "xlr_actionstats";
 $t['playeractions'] = "xlr_playeractions";
+
+//********************
+// Advanced Settings
+//********************
+
+// How long (in seconds) to cache awards, lower = slower. 
+$award_cache_time = 3600; // 3600=1hr, 7200=2hrs, 10800=3hrs, 14400=4hrs etc.
+
+
+
 ?>

@@ -225,6 +225,10 @@ $text["owner"] = "Owner: ";
 $text["mdscore"] = "Score";
 $text["seeplayerdetails"] = "See player details";
 $text["seemedaldetails"] = "See medal details";
+// added 25-01-2010:
+$text["awardrefresh"] = "Awards refreshed once every";
+$text["hours"] = "hours";
+$text["hour"] = "hour";
 
 //PLAYER SPESIFIC STATS (UPPER SECTION)
 $text["topskillrank"] = "Topskill Ranking";

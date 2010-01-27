@@ -1,3 +1,48 @@
+2010-01-23  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/version.txt: dev-version -> 2.1.1b
+
+2010-01-23  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/func-globallogic.php,
+	xlrstats/xlrstats/inc_navigation.php: Minor improvement to
+	statstitle area
+
+2010-01-23  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/sig/index.php, xlrstats/xlrstats/sig/render.php: 
+	Minor change to signature for expired stats
+
+2010-01-22  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/func-globallogic.php: display the flag of the
+	server country
+
+2010-01-20  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/config/distro-config.php,
+	xlrstats/xlrstats/inc_navigation.php: Enforce maximum length of
+	statstitle to 36 characters
+
+2010-01-20  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/func-globallogic.php: Minor change to
+	configpicker() using servercount.
+
+2010-01-20  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/func-globallogic.php: New configpicker which
+	displays actual servernames as configured in server.cfg
+
+2010-01-10  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/func-globallogic.php: Fix for IIS install of
+	awards
+
+2010-01-08  xlr8or <xlr8or@xlr8or.com>
+
+	* CHANGELOG: Updated changelog
+
 2010-01-08  xlr8or <xlr8or@xlr8or.com>
 
 	* xlrstats/xlrstats/block.php, xlrstats/xlrstats/config/awards.php,

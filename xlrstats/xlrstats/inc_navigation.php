@@ -39,7 +39,7 @@
 
     if (isset($myplayerid))
       echo "<a href=\"$link?func=player&playerid=$myplayerid&config=${currentconfignumber}\" class = \"breadcrumb-a\">MyStats</a><span class=\"breadcrumb-a\"> : </span>";
-    if (strlen($statstitle) > 36) $statstitle = substr($statstitle,0,36)."...";
+    if (strlen($statstitle) > 36 && $disable_configpicker != 1) $statstitle = substr($statstitle,0,36)."...";
     echo "<a class = \"breadcrumb-b\">$statstitle</a>";
     //echo $xlrstats_url;
     //echo $_SERVER['PHP_SELF'];

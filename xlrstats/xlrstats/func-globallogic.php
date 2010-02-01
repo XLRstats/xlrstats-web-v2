@@ -146,6 +146,18 @@ function array_find($needle, $haystack) // Find a part of a value in an array
   return false;
 }
 
+function sumuparrays($array1, $array2) //sum up two arrays
+{
+  if(($array1 != NULL) && ($array2 != NULL))
+  {
+    for($i=0; $i<count($array1); $i++)
+    {
+      $arraytotal[] = $array1[$i] + $array2[$i];
+    }
+    return $arraytotal;
+  }
+}
+
 function cleanglobals()
 {
   if (ini_get('register_globals') == 1)

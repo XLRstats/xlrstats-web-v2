@@ -1710,7 +1710,50 @@ function displayTooltip($hitloc, $hitlocname="")
   global $text;
   global $game;
 
-  if($game != 'urt' and $game != 'wop')
+  if($game =='urt')
+  {
+    if(!isset($hitloc['0'])) $hitloc['0'] = array(0,0,0,0,0);
+    if(!isset($hitloc['1'])) $hitloc['1'] = array(0,0,0,0,0);
+    if(!isset($hitloc['2'])) $hitloc['2'] = array(0,0,0,0,0);
+    if(!isset($hitloc['3'])) $hitloc['3'] = array(0,0,0,0,0);
+    if(!isset($hitloc['4'])) $hitloc['4'] = array(0,0,0,0,0);
+    if(!isset($hitloc['5'])) $hitloc['5'] = array(0,0,0,0,0);
+
+    $hitloc['head'] = sumuparrays($hitloc['0'],$hitloc['1']);
+    $text['head'] = $text['head'] . " + " . $text['helmet'];
+    $hitloc['neck'] = sumuparrays($hitloc['2'],$hitloc['3']);
+    $text['neck'] = $text['torso'] . " + " . $text['kevlar'];
+    $hitloc['torso_upper'] = sumuparrays($hitloc['2'],$hitloc['3']);
+    $text['torso_upper'] = $text['torso'] . " + " . $text['kevlar'];
+    $hitloc['torso_lower'] = sumuparrays($hitloc['2'],$hitloc['3']);
+    $text['torso_lower'] = $text['torso'] . " + " . $text['kevlar'];
+    $hitloc['left_arm_upper'] = $hitloc['4'];
+    $text['left_arm_upper'] = $text['arms'];
+    $hitloc['left_arm_lower'] = $hitloc['4'];
+    $text['left_arm_lower'] = $text['arms'];
+    $hitloc['left_hand'] = $hitloc['4'];
+    $text['left_hand'] = $text['arms'];
+    $hitloc['right_arm_upper'] = $hitloc['4'];
+    $text['right_arm_upper'] = $text['arms'];
+    $hitloc['right_arm_lower'] = $hitloc['4'];
+    $text['right_arm_lower'] = $text['arms'];
+    $hitloc['right_hand'] = $hitloc['4'];
+    $text['right_hand'] = $text['arms'];
+    $hitloc['left_leg_upper'] = $hitloc['5'];
+    $text['left_leg_upper'] = $text['legs'];
+    $hitloc['left_leg_lower'] = $hitloc['5'];
+    $text['left_leg_lower'] = $text['legs'];
+    $hitloc['left_foot'] = $hitloc['5'];
+    $text['left_foot'] = $text['legs'];
+    $hitloc['right_leg_upper'] = $hitloc['5'];
+    $text['right_leg_upper'] = $text['legs'];
+    $hitloc['right_leg_lower'] = $hitloc['5'];
+    $text['right_leg_lower'] = $text['legs'];
+    $hitloc['right_foot'] = $hitloc['5'];
+    $text['right_foot'] = $text['legs'];
+  }
+
+  if($game != 'wop')
   {
     $title = "cssbody=[bdyprts-bdy] cssheader=[bdyprts-hdr] 
             header=[".$text[$hitlocname]."] 
@@ -1718,23 +1761,23 @@ function displayTooltip($hitloc, $hitlocname="")
               <table cellpadding=0>
                 <tr>
                   <td class=bdyprts-txtbold>".$text["kills"]." </td>
-                  <td class=bdyprts-txt>: ".((@$hitloc[$hitlocname]['kills']) > 0 ? (@$hitloc[$hitlocname]['kills']) : '0')." </td>
+                  <td class=bdyprts-txt>: ".((@$hitloc[$hitlocname][0]) > 0 ? (@$hitloc[$hitlocname][0]) : '0')." </td>
                   </tr> 
                 <tr>
                    <td class=bdyprts-txtbold>".$text["deaths"]." </td>
-                   <td class=bdyprts-txt>: ".((@$hitloc[$hitlocname]['deaths']) > 0 ? (@$hitloc[$hitlocname]['deaths']) : '0')." </td>
+                   <td class=bdyprts-txt>: ".((@$hitloc[$hitlocname][1]) > 0 ? (@$hitloc[$hitlocname][1]) : '0')." </td>
                    </tr>
                 <tr>
                    <td class=bdyprts-txtbold>".$text["teamkil"]." </td>
-                   <td class=bdyprts-txt>: ".((@$hitloc[$hitlocname]['teamkills']) > 0 ? (@$hitloc[$hitlocname]['teamkills']) : '0')." </td>
+                   <td class=bdyprts-txt>: ".((@$hitloc[$hitlocname][2]) > 0 ? (@$hitloc[$hitlocname][2]) : '0')." </td>
                    </tr>
                 <tr>
                    <td class=bdyprts-txtbold>".$text["teamdeth"]." </td>
-                   <td class=bdyprts-txt>: ".((@$hitloc[$hitlocname]['teamdeaths']) > 0 ? (@$hitloc[$hitlocname]['teamdeaths']) : '0')." </td>
+                   <td class=bdyprts-txt>: ".((@$hitloc[$hitlocname][3]) > 0 ? (@$hitloc[$hitlocname][3]) : '0')." </td>
                   </tr>
                 <tr>
                    <td class=bdyprts-txtbold>".$text["suicides"]." </td>
-                   <td class=bdyprts-txt>: ".((@$hitloc[$hitlocname]['suicides']) > 0 ? (@$hitloc[$hitlocname]['suicides']) : '0')." </td>
+                   <td class=bdyprts-txt>: ".((@$hitloc[$hitlocname][4]) > 0 ? (@$hitloc[$hitlocname][4]) : '0')." </td>
                    </tr>
               </table>
               ]
@@ -1808,7 +1851,7 @@ function player_bodyparts_s($playerid, $dbID = false)
 
     while ($row = $coddb->sql_fetchrow($result))
     {
-      $hitloc[$row['name']] = array('kills' => $row['kills'], 'deaths' => $row['deaths'], 'teamkills' => $row['teamkills'], 'teamdeaths' => $row['teamdeaths'], 'suicides' => $row['suicides']); //for tooltip boxes
+      $hitloc[$row['name']] = array($row['kills'], $row['deaths'], $row['teamkills'], $row['teamdeaths'], $row['suicides']); //for tooltip boxes
 
       if ($separatorline == 1)
       {
@@ -1887,13 +1930,13 @@ function player_bodyparts_s($playerid, $dbID = false)
       //<td align=\"center\" width=\"1\" width=\"10\">&nbsp;</td>
       
   if($game == "urt") {
-    if (isset($mybodypats['0'])) $hz_head = $mybodypats['0']+$mybodypats['1']; // Head + helmet
+    if (isset($mybodypats['0'])) $hz_head = $mybodypats['0']+@$mybodypats['1']; // Head + helmet
     else $hz_head = 0;
     if (isset($mybodypats['neck'])) $hz_neck = 0; // Neck doesn't exist
     else $hz_neck = 0;
-    if (isset($mybodypats['2'])) $hz_torso_upper = $mybodypats['2']+$mybodypats['3']; // Torso + kevlar
+    if (isset($mybodypats['2'])) $hz_torso_upper = $mybodypats['2']+@$mybodypats['3']; // Torso + kevlar
     else $hz_torso_upper = 0;
-    if (isset($mybodypats['2'])) $hz_torso_lower = $mybodypats['2']+$mybodypats['3']; // Torso + kevlar
+    if (isset($mybodypats['2'])) $hz_torso_lower = $mybodypats['2']+@$mybodypats['3']; // Torso + kevlar
     else $hz_torso_lower = 0;
     if (isset($mybodypats['4'])) $hz_left_arm_upper = $mybodypats['4']; // Arms
     else $hz_left_arm_upper = 0;
@@ -1959,6 +2002,9 @@ function player_bodyparts_s($playerid, $dbID = false)
     else $hz_none = 0;
   }
 
+    if(!isset($hitloc))
+        $hitloc = "";
+
     $zero = "0";
     $Output .= "</td>
     <td> &nbsp; </td> 
@@ -1966,7 +2012,7 @@ function player_bodyparts_s($playerid, $dbID = false)
       <table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td>
         <table width=\"100%\" border=\"0\" cellspacing=\"2\" cellpadding=\"0\" class=\"innertable\">
             <tr class=\"outertable\">
-                <td width=\"250\"><center>".$text["accuracy"]." <br /><div class=\"tiny\">".(($game!='wop' && $game!='urt') ? $text["hoveryourmouse"] : "")."</div></center></td> 
+                <td width=\"250\"><center>".$text["accuracy"]." <br /><div class=\"tiny\">".$text["hoveryourmouse"]."</div></center></td> 
                 <tr>
                     <td>   
                         <table id=\"Table_01\" width=\"370\" height=\"584\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\">
@@ -1988,7 +2034,7 @@ function player_bodyparts_s($playerid, $dbID = false)
                                 <td colspan=\"4\">
                                     <img src=\"images/model/common/0_05.png\" width=\"102\" height=\"28\" alt=\"\"></td>
                                 <td colspan=\"6\">
-                                    <img title=\"".displayTooltip($hitloc, 'neck')."\" src=\"images/model/".(getPercent($hz_neck, $kills))."/neck.png\" width=\"166\" height=\"28\" alt=\"\"></td>
+                                    <img title=\"".(($game=='urt') ? "" : (displayTooltip($hitloc, 'neck')))."\" src=\"images/model/".(getPercent($hz_neck, $kills))."/neck.png\" width=\"166\" height=\"28\" alt=\"\"></td>
                                 <td colspan=\"4\">
                                     <img src=\"images/model/common/0_07.png\" width=\"102\" height=\"28\" alt=\"\"></td>
                                 <td height=\"28\" nowrap></td>

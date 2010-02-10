@@ -2,7 +2,7 @@
 #
 # XLRstats Webfront
 # Webfront for XLRstats stats plugin for B3 (www.bigbrotherbot.com)
-# (c) 2004-2009 www.xlr8or.com (mailto:xlr8or@xlr8or.com)
+# (c) 2004-2010 www.xlr8or.com (mailto:xlr8or@xlr8or.com)
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@
 # http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-XLRstats webfront (v.2.1.x) for B3
+XLRstats webfront (v.2.x.x) for B3
 ################################################################################
 
 Make your XLRstats public!
@@ -41,7 +41,7 @@ Requirements:
 
 
 ################################################################################
-Installation:
+Automatic Single and Multi Server Installation (Using the installer): 
 ################################################################################
 
 1. Extract this package in your website!. Default folder is xlrstats, but you
@@ -50,43 +50,36 @@ can rename it to whatever you like.
 2. XLRstats comes with imagepacks for different games. Pick the appropriate 
 package and extract that into your xlrstats directory. 
 
-3. Make the directory ./dynamic is writable by the webserver, XLRstats will
-place its dynamic files there. (linux users: chmod 777).
-
-4. Copy/rename the file ./config/statsconfig-distro.php to 
-./config/statsconfig.php and edit it to fit your server settings.
-
-5. Point your webbrowser to http://path.to.xlrstats/install/ and follow the 
-instructions from there. This will initiate a single server setup and will get
-you going pretty quick. 
-
-6. If you finished installing you can rename/remove the ./install directory to 
-prevent direct access later.
-
-7. If you intend to use the GeoIP data in the playerlist you'll have to download  
-the (free) GeoIP.dat file from www.maxmind.com. Make sure the path to the file
-is set correctly in your statsconfig file! 
-(http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz
-this is a gzipped file, you need to unzip it with an unzipper like 7-zip 
-before usage.)
-NOTE 1: Add a trailing slash to the path: /path/to/GeoIP/
-NOTE 2: Windows users: Use forward slashes in the path: C:/path/to/your/GeoIP/ 
-
-8. If you also want to use the worldmap you'll have to download the (free)
-GeoLiteCity.dat file from www.maxmind.com. Make sure the path to the file
-is set correctly in your statsconfig file! (See 7. they both use the same path).
-If you don't want the worldmap, simply delete (or rename) the 
-GeoLiteCity.dat file.
-(http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz this is
-a gzipped file, you need to unzip it with an unzipper like 7-zip before usage.)
+3. Point your browser to xlrstats and follow the instructions.
 
 
 ################################################################################
-Multi Server support:
+Manual Single Server Installation:
+################################################################################
+
+1. Extract this package in your website!. Default folder is xlrstats, but you
+can rename it to whatever you like.
+
+2. XLRstats comes with imagepacks for different games. Pick the appropriate 
+package and extract that into your xlrstats directory. 
+
+3. Make the directory ./dynamic and its contents writable by the webserver, 
+XLRstats will place its dynamic files there. (linux users: chmod 777).
+
+4. Copy/rename the file ./config/distro-config.php to 
+./config/statsconfig.php and edit it to fit your server settings.
+
+5. Modify the statsconfig.php file with your favorite texteditor 
+
+6. Rename/remove the ./install directory to prevent direct access!
+
+
+################################################################################
+Manual Multi Server Installation:
 ################################################################################
 
 - XLRstats v2 is able to handle multiple gameservers from one install. How to 
-enable it? It's fairly simple. 
+enable it without going thru setup again? It's fairly simple. 
 
 1. First install XLRstats as described above. Make sure you test it all before 
 continueing.
@@ -110,7 +103,7 @@ confignumber/server you want to link to)
 
 
 ################################################################################
-Things you need to know:
+Things you NEED to know:
 ################################################################################
 
 - In the sql directory there are 2 files for creation of the databasetables for
@@ -127,6 +120,26 @@ used to override a playername in the webstats.
 
 Both fields have to be modified using a mysql directly, a webinterface like 
 phpmyadmin or a GUI like navicat.
+
+- XLRstats comes with imagepacks for different games. Pick the appropriate 
+package and extract that into your xlrstats directory. 
+
+-  If you intend to use the GeoIP data in the playerlist you'll have to download  
+the (free) GeoIP.dat file from www.maxmind.com. Make sure the path to the file
+is set correctly in your statsconfig file! 
+(http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz
+this is a gzipped file, you need to unzip it with an unzipper like 7-zip 
+before usage.)
+NOTE 1: Add a trailing slash to the path: /path/to/GeoIP/
+NOTE 2: Windows users: Use forward slashes in the path: C:/path/to/your/GeoIP/ 
+
+- If you also want to use the worldmap you'll have to download the (free)
+GeoLiteCity.dat file from www.maxmind.com. Make sure the path to the file
+is set correctly in your statsconfig file! (See 7. they both use the same path).
+If you don't want the worldmap, simply delete (or rename) the 
+GeoLiteCity.dat file.
+(http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz this is
+a gzipped file, you need to unzip it with an unzipper like 7-zip before usage.)
 
 - You can have game specific medals. At the moment these are not available, but
 you can make your own. Create a folder with your game abbreviation in 

@@ -1,6 +1,16 @@
 2010-02-10  xlr8or <xlr8or@xlr8or.com>
 
+	* : commit 3f1d1ae82acc7ad97ae58139cb942ff7509687a1 Author: xlr8or
+	<xlr8or@xlr8or.com> Date:   Wed Feb 10 17:40:27 2010 +0100
+
+2010-02-10  xlr8or <xlr8or@xlr8or.com>
+
 	* xlrstats/xlrstats/func-globallogic.php: clickable B3 logo
+
+2010-02-04  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/inc_navigation.php: break-off point in
+	$statstitle changed
 
 2010-02-02  Freelander <freelander00@gmail.com>
 

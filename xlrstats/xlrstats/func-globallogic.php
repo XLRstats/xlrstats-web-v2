@@ -1219,7 +1219,7 @@ $(document).ready(function(){
       echo "<input type=\"checkbox\" name=\"clansearch\" value=\"true\">".$text["clantag"]."</input>";
   echo "  				</form>
 			</td>
-			<td><div id=\"inea\"><div class=\"opis\">".$text["poweredby"]." </div></div>
+			<td><a href=\"http://www.bigbrotherbot.com\" target=\"_blank\" title=\"B3 game administration bot for cod, urbanterror, and quake3 games\"><div id=\"inea\"><div class=\"opis\">".$text["poweredby"]." </div></div></a>
 			</td>
 		</tr>
 		</table>

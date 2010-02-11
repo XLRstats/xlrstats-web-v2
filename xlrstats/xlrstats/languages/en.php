@@ -413,4 +413,9 @@ $text["nodescavail"] = "No description available.";
 $text["ofbestratio"] = "% of best Ratio (Which is ";
 $text["ofratio"] = "% of 1:0 Ratio";
 
+// Player History // added 11 febr. 2010
+$text["weeklyhistory"] = "Skill history";
+$text["weeklyhistoryexpl"] = "You skill in weekly intervals";
+$text["weeklyhistory_img_title"] = "skill history (weekly markers)";
+$text["pluginnotinstalled"] = "Plugin not installed!";
 ?>

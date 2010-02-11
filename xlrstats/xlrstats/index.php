@@ -276,23 +276,24 @@ if ($func == "player")
     $content4 = player_opponents_s($playerid);
     $content5 = player_activity_s($playerid);
     $content6 = player_actions_s($playerid);
+    $content7 = player_history_weekly_s($playerid);
 
 
       if ($groupbits > 0 || $limitplayerstats == 0)
       {
         if ($actionbased == 0)
         {
-          $tabControl->defineSettings(1,$main_width,100,5,2,"center","middle",
-          array($text["activity"],$text["actweapons"],$text["hitzones"],$text["mapachieve"], $text["worstenemies"]),
-          array($content5, $content1, $content2, $content3, $content4),
-          array($text["last31days"],$text["favweapused"],$text["favhitzones"],$text["yourmapachiev"],$text["worstenemies"]));
+          $tabControl->defineSettings(1,$main_width,100,6,2,"center","middle",
+          array($text["activity"],$text["weeklyhistory"], $text["actweapons"],$text["hitzones"],$text["mapachieve"], $text["worstenemies"]),
+          array($content5, $content7, $content1, $content2, $content3, $content4),
+          array($text["last31days"],$text["weeklyhistoryexpl"],$text["favweapused"],$text["favhitzones"],$text["yourmapachiev"],$text["worstenemies"]));
         }
         else
         {
-          $tabControl->defineSettings(1,$main_width,100,6,2,"center","middle",
-          array($text["activity"],$text["actweapons"],$text["hitzones"],$text["mapachieve"], $text["actions"], $text["worstenemies"]),
-          array($content5, $content1, $content2, $content3, $content6, $content4),
-          array($text["last31days"],$text["favweapused"],$text["favhitzones"],$text["yourmapachiev"],$text["actionbased"],$text["worstenemies"]));
+          $tabControl->defineSettings(1,$main_width,100,7,2,"center","middle",
+          array($text["activity"],$text["weeklyhistory"], $text["actweapons"],$text["hitzones"],$text["mapachieve"], $text["actions"], $text["worstenemies"]),
+          array($content5, $content7, $content1, $content2, $content3, $content6, $content4),
+          array($text["last31days"],$text["weeklyhistoryexpl"],$text["favweapused"],$text["favhitzones"],$text["yourmapachiev"],$text["actionbased"],$text["worstenemies"]));
         }
       }
       else
@@ -330,30 +331,31 @@ if ($func == "player")
     $content4 = player_opponents_s($playerdbid, true);
     $content5 = player_activity_s($playerdbid, true);          
     $content6 = player_actions_s($playerdbid, true);
+    $content7 = player_history_weekly_s($playerdbid, true);
 
     if ($groupbits > 0 || $limitplayerstats == 0)
     {
       if ($actionbased == 0)
       {
         $tabControl->defineSettings(1,$main_width,100,5,2,"center","middle",
-        array($text["activity"],$text["actweapons"],$text["hitzones"],$text["mapachieve"], $text["worstenemies"]),
-        array($content5, $content1, $content2, $content3, $content4),
-        array($text["last31days"],$text["favweapused"],$text["favhitzones"],$text["yourmapachiev"],$text["worstenemies"]));
+        array($text["activity"],$text["weeklyhistory"], $text["actweapons"],$text["hitzones"],$text["mapachieve"], $text["worstenemies"]),
+        array($content5, $content7, $content1, $content2, $content3, $content4),
+        array($text["last31days"],$text["weeklyhistoryexpl"], $text["favweapused"],$text["favhitzones"],$text["yourmapachiev"],$text["worstenemies"]));
       }
       else
       {
         $tabControl->defineSettings(1,$main_width,100,6,2,"center","middle",
-        array($text["activity"],$text["actweapons"],$text["hitzones"],$text["mapachieve"], $text["actions"], $text["worstenemies"]),
-        array($content5, $content1, $content2, $content3, $content6, $content4),
-        array($text["last31days"],$text["favweapused"],$text["favhitzones"],$text["yourmapachiev"],$text["actionbased"],$text["worstenemies"]));
+        array($text["activity"],$text["weeklyhistory"], $text["actweapons"],$text["hitzones"],$text["mapachieve"], $text["actions"], $text["worstenemies"]),
+        array($content5, $content7, $content1, $content2, $content3, $content6, $content4),
+        array($text["last31days"],$text["weeklyhistoryexpl"], $text["favweapused"],$text["favhitzones"],$text["yourmapachiev"],$text["actionbased"],$text["worstenemies"]));
       }
     }
     else
     {
-      $tabControl->defineSettings(1,$main_width,100,2,2,"center","middle",
-        array($text["activity"], $text["hitzones"]),
-        array($content5, $content2),
-        array($text["last31days"],$text["favhitzones"]));
+      $tabControl->defineSettings(1,$main_width,100,1,2,"center","middle",
+        array($text["activity"]),
+        array($content5),
+        array($text["last31days"]));
     }
 
     $tabControl->defineStyle($ptab_backgroundColor,$ptab_selectedBgColor,$ptab_mouseOverColor,$ptab_borderColor,$ptab_borderSize,$ptab_borderStyle,$ptab_font,$ptab_textAlign,$ptab_fontSize,$ptab_fontWeight,$ptab_Color);

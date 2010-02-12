@@ -2620,10 +2620,14 @@ function player_history_weekly_s($plid, $dbID = false)
 
   if (table_exists($t['history_weekly']) ==  FALSE)
     $Output = "<p><strong>*** XLRstatsHistory ".$text["pluginnotinstalled"]." ***</strong></p>";
-  elseif($dbID == false)
-    $Output = "<img src=\"inc_historygraph_weekly.php?id=".$plid."&config=".$currentconfignumber."\" alt=\"\"><br>";
-  else 
-    $Output = "<img src=\"inc_historygraph_weekly.php?dbid=".$plid."&config=".$currentconfignumber."\" alt=\"\"><br>";         
+  elseif($dbID == false) {
+    $Output = "<img src=\"inc_historygraph_skill_weekly.php?id=".$plid."&config=".$currentconfignumber."\" alt=\"\"><br>";
+    $Output .= "<img src=\"inc_historygraph_ratio_weekly.php?id=".$plid."&config=".$currentconfignumber."\" alt=\"\"><br>";
+    }
+  else { 
+    $Output = "<img src=\"inc_historygraph_skill_weekly.php?dbid=".$plid."&config=".$currentconfignumber."\" alt=\"\"><br>";
+    $Output .= "<img src=\"inc_historygraph_ratio_weekly.php?dbid=".$plid."&config=".$currentconfignumber."\" alt=\"\"><br>";
+    }
   
   return $Output;
 }

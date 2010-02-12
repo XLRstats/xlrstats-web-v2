@@ -414,8 +414,9 @@ $text["ofbestratio"] = "% of best Ratio (Which is ";
 $text["ofratio"] = "% of 1:0 Ratio";
 
 // Player History // added 11 febr. 2010
-$text["weeklyhistory"] = "Skill history";
-$text["weeklyhistoryexpl"] = "You skill in weekly intervals";
-$text["weeklyhistory_img_title"] = "skill history (weekly markers)";
+$text["weeklyhistory"] = "History";
+$text["weeklyhistoryexpl"] = "You history in weekly intervals";
+$text["weeklyhistory_skill_img_title"] = "skill history (weekly markers)";
+$text["weeklyhistory_ratio_img_title"] = "ratio history (weekly markers)";
 $text["pluginnotinstalled"] = "Plugin not installed!";
 ?>

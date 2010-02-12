@@ -122,13 +122,14 @@ CREATE TABLE IF NOT EXISTS `xlr_playerstats` (
   `suicides` smallint(5) unsigned NOT NULL default '0',
   `ratio` float NOT NULL default '0',
   `skill` float NOT NULL default '0',
+  `assists` mediumint(8) NOT NULL default '0',
+  `assistskill` float NOT NULL default '0',
   `curstreak` smallint(6) NOT NULL default '0',
   `winstreak` smallint(6) NOT NULL default '0',
   `losestreak` smallint(6) NOT NULL default '0',
   `rounds` smallint(5) unsigned NOT NULL default '0',
   `hide` tinyint(4) NOT NULL default '0',
-  `fixed_name` varchar(32) NOT NULL default '',
-  PRIMARY KEY  (`id`),
+  `fixed_name` varchar(32) NOT NULL default '',  PRIMARY KEY  (`id`),
   UNIQUE KEY `client_id` (`client_id`)
 ) TYPE=MyISAM;
 

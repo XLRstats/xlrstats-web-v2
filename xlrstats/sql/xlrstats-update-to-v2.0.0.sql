@@ -91,3 +91,9 @@ CREATE TABLE IF NOT EXISTS `xlr_history_weekly` (
   `day` int(2) NOT NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- Add two columns to the playerstats table. This may lead to errors if they already exist!
+-- If this generates an error: #1060 - Duplicate column name 'assists' -> ignore them!
+ALTER TABLE `xlr_playerstats` ADD `assists` MEDIUMINT( 8 ) NOT NULL DEFAULT '0' AFTER `skill` ;
+ALTER TABLE `xlr_playerstats` ADD `assistskill` FLOAT NOT NULL DEFAULT '0' AFTER `assists` ;
+

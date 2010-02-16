@@ -133,6 +133,14 @@ function checkinstalldir()
   }
 }
 
+function table_exists($table) { 
+  global $coddb;
+  if( mysql_num_rows( mysql_query("SHOW TABLES LIKE '".$table."'")))
+    return TRUE;
+  else
+    return FALSE;
+}
+
 function array_find($needle, $haystack) // Find a part of a value in an array 
 {
   foreach ($haystack as $item)
@@ -1586,25 +1594,6 @@ function menubox($menuselected, $clan_name = "")
 
   echo "</tr></table>";
   echo "</td></tr></table>";
-}
-
-
-function player_activity_s($plid, $dbID = false)       
-{
-  global $currentconfig;
-  global $currentconfignumber;
-  global $coddb;
-  global $t;
-  $count = 0;
-  $link = baselink();
-  $Output = "";
-
-  if($dbID == false)
-    $Output = "<img src=\"inc_activitygraph.php?id=".$plid."&config=".$currentconfignumber."\" alt=\"\"><br>";
-  else 
-      $Output = "<img src=\"inc_activitygraph.php?dbid=".$plid."&config=".$currentconfignumber."\" alt=\"\"><br>";         
-  
-  return $Output;
 }
 
 

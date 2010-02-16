@@ -385,6 +385,11 @@ fwrite($fp,
 \$t['actions'] = \"xlr_actionstats\";
 \$t['playeractions'] = \"xlr_playeractions\";
 
+//history tables - needs the xlrstatshistory plugin installed!
+\$t['history_monthly'] = \"xlr_history_monthly\";
+\$t['history_weekly'] = \"xlr_history_weekly\";
+
+
 ?>
 ");
 

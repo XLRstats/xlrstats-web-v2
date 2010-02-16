@@ -87,6 +87,7 @@ $pll_noteams = $_POST['pll_noteams'];
 $stylepicker = $_POST['stylepicker'];
 $disable_configpicker = $_POST['disable_configpicker'];
 $debug = $_POST['debug'];
+$award_cache_time = $_POST['award_cache_time'];
 
 install_steps();
 
@@ -701,6 +702,13 @@ elseif (isset($step3))
                               Yes</label>
                             <input type=\"radio\" name=\"debug\" value=\"0\" id=\"debug_1\" />No</p></td>
                           <td class=\"fontSmall\">Selecting &quot;Yes&quot; will enable all php-error reporting and phpinfo to show for debugging purposes. If you find that your XLRstats is okay, set it to 0. If you need support make sure you set this to 1 before posting requests in the support forums.</td>
+                        </tr>
+                        <tr>
+                          <td class=\"fontNormal\"><strong>Award Cache Time (second)</strong></td>
+                          <td><label>
+                            <input name=\"award_cache_time\" type=\"text\" id=\"award_cache_time\" value=\"3600\" />
+                          </label></td>
+                          <td class=\"fontSmall\">How long (in seconds) to cache awards, lower = slower. 3600=1hr, 7200=2hrs, 10800=3hrs, 14400=4hrs etc.</td>
                         </tr>
 						<input type=\"hidden\" name=\"hostname\" value=\"$db_host\"></input>
 						<input type=\"hidden\" name=\"username\" value=\"$db_user\"></input>

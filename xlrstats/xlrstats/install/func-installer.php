@@ -199,6 +199,7 @@ function create_statsconfig()
   global $stylepicker;
   global $disable_configpicker;
   global $debug;
+  global $award_cache_time;
 
   $config_dir = "../config";
   if(@!($dp = opendir($config_dir))) 
@@ -389,6 +390,12 @@ fwrite($fp,
 \$t['history_monthly'] = \"xlr_history_monthly\";
 \$t['history_weekly'] = \"xlr_history_weekly\";
 
+//********************
+// Advanced Settings
+//********************
+
+// How long (in seconds) to cache awards, lower = slower. 
+\$award_cache_time = $award_cache_time; // 3600=1hr, 7200=2hrs, 10800=3hrs, 14400=4hrs etc.
 
 ?>
 ");

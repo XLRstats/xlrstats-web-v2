@@ -419,6 +419,8 @@ function list_templates()
   unset($templatelist[$key]);
   $key = array_search('holidaypack', $templatelist);
   unset($templatelist[$key]);
+  $key = array_search('admin', $templatelist);
+  unset($templatelist[$key]);
 
   foreach ($templatelist as $value)
     echo "<option value=\"$value\">$value</option>";

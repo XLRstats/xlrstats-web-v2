@@ -24,7 +24,7 @@
  ***************************************************************************/
 
 include("../inc_mysql.php");
-include("../func-globallogic.php");
+require_once("../func-globallogic.php");
 
 echo "<td width=\"100%\" valign=\"top\"><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"10\">";
 echo "<tr><td align=\"left\" valign=\"top\">";
@@ -195,7 +195,7 @@ function end_process()
   echo "<p class=\"fontNormal\">1.) You may run \"install_award_idents.php\" file located in \"config\" directory at any time if you feel that certain awards are not good or certain weapons have only recently been used for the first time.<br />"; 
   //echo "Bookmark current URL to rerun this file later.</i></p>";
   echo "<p class=\"attention\">2.) When you're sure all awards are correct and all weapons have been used, delete/move the install directory so it can no longer be called directly.)</p>";
-  echo "<p class=\"fontNormal\">Click \"Index\" button to return to the frontpage</p>";
+  echo "<p class=\"fontNormal\">Click \"Stats Home\" button to return to the frontpage</p>";
   echo "<p class=\"fontNormal\"><a href=\"http://www.xlr8or.com/\">(made at www.xlr8or.com)</a></p>";
   echo "<tr>";
   echo "<td valign=\"top\"><table width=\"100%\" border=\"0\" cellspacing=\"5\" cellpadding=\"5\">";
@@ -203,7 +203,7 @@ function end_process()
   echo "<td>&nbsp;</td>";
   echo "<td width=\"80\" align=\"center\" valign=\"middle\"><a href=\"../index.php\">";
   echo "<label>";
-  echo "<input name=\"Next\" type=\"button\" class=\"line1\" id=\"Next\" value=\"Index\" />";
+  echo "<input name=\"Next\" type=\"button\" class=\"line1\" id=\"Next\" value=\"Stats Home\" />";
   echo "</label>";
   echo "</a></td>";
   echo "</tr>";

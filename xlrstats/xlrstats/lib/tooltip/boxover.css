@@ -34,3 +34,18 @@
     font-family:Arial;
     font-size:8pt;
 }
+
+.admin-bdy {
+    background:#FBF7AA;
+    border-left:4px solid #F9E98E;
+    border-right:4px solid #F9E98E;
+    border-bottom:4px solid #F9E98E;
+    border-top:4px solid #F9E98E;
+    padding:5px;
+    width:200px;
+}
+.admin-txt {
+    font-family:Arial;
+    font-size:8pt;
+    color: #694c15;
+}

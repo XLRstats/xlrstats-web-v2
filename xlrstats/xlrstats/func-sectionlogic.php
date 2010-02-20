@@ -1211,6 +1211,16 @@ function player_short($playerid, $dbID = false)
   echo "      </tr>";
   echo  "     <tr><td colspan=\"2\" class=\"outertable\"><img src=\"images/spacer.gif\" width=\"1\" height=\"1\" alt=\"\"></td></tr>";
   echo "      <tr>";
+  echo "        <td>".$text["assists"]."</td>";
+  echo "        <td title=\"".$text["descassists"]."\">${row['assists']}</td>";
+  echo "      </tr>";
+  echo "      <tr>";
+  echo "        <td>".$text["assistskill"]."</td>";
+  $temp = sprintf("%.2f",$row['assistskill']);
+  echo "        <td title=\"".$text["descassistskill"]."\">$temp</td>";
+  echo "      </tr>";
+  echo  "     <tr><td colspan=\"2\" class=\"outertable\"><img src=\"images/spacer.gif\" width=\"1\" height=\"1\" alt=\"\"></td></tr>";
+  echo "      <tr>";
   echo "        <td>".$text["rounds"]."</td>";
   echo "        <td>${row['rounds']}</td>";
   echo "      </tr>";

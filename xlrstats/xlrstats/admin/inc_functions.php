@@ -951,7 +951,7 @@ function list_players()
   $offset = ($pagenumber-1)*$rowsPerPage;
 
   //get a list of players in xlr_playerstats table
-  $query = "SELECT ${t['players']}.id, ${t['b3_clients']}.id AS dbID, ${t['b3_clients']}.ip, ${t['b3_clients']}.name, ${t['b3_clients']}.group_bits, ${t['b3_clients']}.connections, ${t['b3_clients']}.time_add, ${t['b3_clients']}.time_edit, ${t['players']}.hide
+  $query = "SELECT ${t['players']}.id, ${t['players']}.skill, ${t['b3_clients']}.id AS dbID, ${t['b3_clients']}.ip, ${t['b3_clients']}.name, ${t['b3_clients']}.group_bits, ${t['b3_clients']}.connections, ${t['b3_clients']}.time_add, ${t['b3_clients']}.time_edit, ${t['players']}.hide
             FROM ${t['b3_clients']}, ${t['players']}
             WHERE (${t['b3_clients']}.id = ${t['players']}.client_id) AND ${t['b3_clients']}.name LIKE '%$playername%'
             ORDER BY ${t['players']}.id ASC";
@@ -992,7 +992,8 @@ function list_players()
              <th scope=\"col\">dbID</th>
              <th scope=\"col\">Name</th>
              <th scope=\"col\">Level</th>
-             <th scope=\"col\">Connections</th>
+             <th scope=\"col\">Con.</th>
+             <th scope=\"col\">Skill</th>
              <th scope=\"col\">First Seen</th>
              <th scope=\"col\">Last Seen</th>
              <th scope=\"col\">Status</th>
@@ -1010,6 +1011,7 @@ function list_players()
     $name = $row['name'];
     $level = $row['group_bits'];
     $connections = $row['connections'];
+    $skill = sprintf("%.1f",$row['skill']);
     $firstseen = $row['time_add'];
     $lastseen = $row['time_edit'];
     $status = $row['hide'];
@@ -1027,6 +1029,7 @@ function list_players()
            <td align=\"left\">$name</td>
            <td align=\"left\">".client_level($level)."</td>
            <td align=\"center\">$connections</td>
+           <td align=\"center\">$skill</td>
            <td align=\"left\">".date('l, d/m/Y (H:i)',$firstseen)."</td>
            <td align=\"left\">".date('l, d/m/Y (H:i)',$lastseen)."</td>";
 

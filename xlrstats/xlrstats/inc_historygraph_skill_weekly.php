@@ -169,7 +169,7 @@ for($i=0;$i<$records;$i++)
    $name = $row[0];
    $a1[] = $row[9];
    //$a2[] = $row[8];
-   $a3[] = $row[13]."-w".$row[15];
+   $a3[] = $row[15]."-w".$row[17];
 }
 
 $datay  = array_reverse(array_merge($a1));

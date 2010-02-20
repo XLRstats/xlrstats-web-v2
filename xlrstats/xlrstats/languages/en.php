@@ -267,6 +267,11 @@ $text["thisisme"] = "This is me!";
 $text["rememberme"] = "This is me! Remember me in 'MyStats'!";
 $text["compareme"] = "Compare this player to me!";
 $text["generatesig"] = "Generate Signature";
+//added on 15 febr. 2010:
+$text["assists"] = "Kill Assists";
+$text["descassists"] = "Total number of Kill Assists";
+$text["assistskill"] = "Total skill gained";
+$text["descassistskill"] = "Sum of skill gained by assisting teammates in making kills.";
 
 //PLAYER SPESIFIC STATS (LOWER SECTION)
 $text["activity"] = "Activity";
@@ -419,4 +424,6 @@ $text["weeklyhistoryexpl"] = "You history in weekly intervals";
 $text["weeklyhistory_skill_img_title"] = "skill history (weekly markers)";
 $text["weeklyhistory_ratio_img_title"] = "ratio history (weekly markers)";
 $text["pluginnotinstalled"] = "Plugin not installed!";
+
+
 ?>

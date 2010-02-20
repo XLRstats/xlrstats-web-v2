@@ -153,34 +153,23 @@ if (mysql_num_rows($result) == 0) return;
 include ("lib/jpgraph/jpgraph.php");
 include ("lib/jpgraph/jpgraph_line.php");
 
-// van datum naar Julian date
-  $mnd = date(n);                                                               // maand 1 t/m 12
-  $day = date(j);                                                               // dag van de maand 1 31
-  $year= date(Y);                                                               // jaar in vier cijfers
-  $jd = GregorianToJD($mnd, $day, $year);
-  $jd_min = $jd-51;                                                             // bepaal hoeveel dagen terug
-  
 $records = mysql_num_rows($result);
 
 for($i=0;$i<$records;$i++)
-//while ($row = $coddb->sql_fetchrow($result))
 {
    $row  = mysql_fetch_row($result);
    $name = $row[0];
    $a1[] = $row[8];
-   //$a2[] = $row[8];
-   $a3[] = $row[13]."-w".$row[15];
+   $a2[] = $row[15]."-w".$row[17];
 }
 
 $datay  = array_reverse(array_merge($a1));
-//$data2y = array_merge($a2);
-$datax  = array_reverse(array_merge($a3));
+$datax  = array_reverse(array_merge($a2));
 
 // Setup graph
 $graph = new Graph($main_width,300,"auto");                            // breedte hoogte
 $graph->img->SetMargin(40,40,50,60);	                       // Links,rechts,boven,beneden
 $graph->SetScale("textlin");
-//$graph->SetShadow();
 
 //Setup title
 $graph->title->SetMargin(10);                                  // marge boven de koptekst
@@ -194,10 +183,6 @@ $graph->ygrid->SetFill(true,'#EFEFEF@0.6','#e5e5e5@0.6');      // kleur van de h
                                                                // hoe hoger @0,? hoe lichter de kleur
 $graph->xgrid->Show();                                         // de vertikale gridlijnen                                      
 
-// Set a background image
-//$graph->SetBackgroundImage('huis.jpg',BGIMG_FILLPLOT);       // achtergrond foto
-//$graph->SetBackgroundImageMix(15);                           // transperantie van de grafiek (0-100)
-
 // Slightly adjust the legend from it's default position
 $graph->legend->Pos(0.02,0.03,"right","top");                  // plaats van de index de eerst is horizontaal de tweede is vertikaal
 $graph->legend->SetFont(FF_FONT1,FS_BOLD);
@@ -206,7 +191,6 @@ $graph->legend->SetFont(FF_FONT1,FS_BOLD);
 $graph->xaxis->SetTextTickInterval(2);                         // hier de ticks instellen
 $graph->xaxis->SetTickLabels($datax);
 $graph->xaxis->SetFont(FF_FONT1,FS_NORMAL,8);
-//$graph->xaxis->SetLabelAngle(30);
 
 // Create the first line
 $p1 = new LinePlot($datay);
@@ -217,16 +201,6 @@ $p1->SetColor("green");
 $p1->SetCenter();
 $p1->SetLegend("Ratio");
 $graph->Add($p1);
-
-// ... and the second
-//$p2 = new LinePlot($data2y);
-//$p2->mark->SetType(MARK_DIAMOND);
-//$p2->mark->SetFillColor("green");
-//$p2->mark->SetWidth(8);
-//$p2->SetColor("green");
-//$p2->SetCenter();
-//$p2->SetLegend("Kills");
-//$graph->Add($p2);
 
 // Display the graph
 $graph->Stroke();

@@ -868,7 +868,7 @@ function save_server_settings()
     //successfull save message
     echo "<table width=\"100%\" border=\"0\" cellpadding=\"5\" cellspacing=\"0\" class=\"success\">
           <tr>
-            <td width=\"50\" align=\"left\" valign=\"middle\"><img src=\"../../xlrstats-dev/templates/admin/admin-accepted.png\" width=\"48\" height=\"48\" style=\"vertical-align:middle\" /></td>
+            <td width=\"50\" align=\"left\" valign=\"middle\"><img src=\"../templates/admin/admin-accepted.png\" width=\"48\" height=\"48\" style=\"vertical-align:middle\" /></td>
             <td align=\"left\" valign=\"middle\">XLRstats Settings for ".((isset($myserver)) ? $myserver : "your server")." changed successfully!</td>
             </tr>
           <tr>
@@ -893,7 +893,7 @@ function list_players()
           If you're looking for a better solution  to adminster your playercrowd  via a web panel, 
           use our <span class=\"link1\"><a href=\"http://www.bigbrotherbot.com/forums/downloads/?sa=view;down=11\" target=\"_blank\" class=\"players\">Echelon Web Investigation Tool
           </a></span><br /><br />
-          <div align =\"left\" class=\"info\"><img src=\"../../xlrstats-dev/templates/admin/admin-lightbulb.png\" width=\"32\" height=\"32\" style=\"vertical-align:middle\" />
+          <div align =\"left\" class=\"info\"><img src=\"../templates/admin/admin-lightbulb.png\" width=\"32\" height=\"32\" style=\"vertical-align:middle\" />
           Note that reset button will only reset the player's skill to 1000 while all other information remains intact!</div>
            <br /><br />
            </td>
@@ -1155,7 +1155,7 @@ function delete_server()
     {
       echo "<table width=\"100%\" align =\"left\" class=\"alert\">
              <tr>
-               <td align=\"left\" width=\"60\" valign=\"top\"><img src=\"../../xlrstats-dev/templates/admin/admin-warning.png\" style=\"vertical-align:middle\" /></td>
+               <td align=\"left\" width=\"60\" valign=\"top\"><img src=\"../templates/admin/admin-warning.png\" style=\"vertical-align:middle\" /></td>
                <td align=\"left\">You have only one server configured. If you delete it, the admin panel will not function until you start installer and set up at least one server again. <p>Do you wish to continue?</td>
              </tr>
              <tr>
@@ -1179,7 +1179,7 @@ function delete_server()
     {
       echo "<table width=\"100%\" align =\"left\" class=\"alert\">
              <tr>
-               <td align=\"left\" width=\"60\" valign=\"top\"><img src=\"../../xlrstats-dev/templates/admin/admin-warning.png\" style=\"vertical-align:middle\" /></td>
+               <td align=\"left\" width=\"60\" valign=\"top\"><img src=\"../templates/admin/admin-warning.png\" style=\"vertical-align:middle\" /></td>
                <td align=\"left\">This will delete the configuration file of your server \"$myserver\". <p>Do you wish to continue?</td>
              </tr>
              <tr>
@@ -1252,7 +1252,7 @@ function resetDatabase()
   {
     echo "<table width=\"100%\" align =\"left\" class=\"alert\">
          <tr>
-           <td align=\"left\" width=\"60\" valign=\"top\"><img src=\"../../xlrstats-dev/templates/admin/admin-warning.png\" style=\"vertical-align:middle\" /></td>
+           <td align=\"left\" width=\"60\" valign=\"top\"><img src=\"../templates/admin/admin-warning.png\" style=\"vertical-align:middle\" /></td>
            <td align=\"left\">This will reset all stats tables in your database. We strongly recommend backing up your database first <p>Do you wish to continue?</td>
          </tr>
          <tr>
@@ -1287,7 +1287,7 @@ function resetDatabase()
       if (!mysql_query($query))
         die (mysql_error());
 
-      echo "<tr><td width=\"20\"><img src=\"../../xlrstats-dev/templates/admin/admin-accept.png\" style=\"vertical-align:middle\" /><td align=\"left\">Table $table_name Reset Successfully!</td></tr>";
+      echo "<tr><td width=\"20\"><img src=\"../templates/admin/admin-accept.png\" style=\"vertical-align:middle\" /><td align=\"left\">Table $table_name Reset Successfully!</td></tr>";
     }
     echo "<td>&nbsp;</td>
           <td align=\"left\" valign=\"middle\">
@@ -1322,7 +1322,7 @@ function fileDelete($filepath,$filename)
   {
     echo "<table width=\"100%\" align =\"left\" class=\"success\">
             <tr>
-              <td align=\"left\" width=\"60\" valign=\"top\"><img src=\"../../xlrstats-dev/templates/admin/admin-accepted.png\" style=\"vertical-align:middle\" /></td>
+              <td align=\"left\" width=\"60\" valign=\"top\"><img src=\"../templates/admin/admin-accepted.png\" style=\"vertical-align:middle\" /></td>
               <td align=\"left\">$filename deleted successfully!</td>
             </tr>
           </table>";
@@ -1331,7 +1331,7 @@ function fileDelete($filepath,$filename)
   {
     echo "<table width=\"100%\" align =\"left\" class=\"alert\">
             <tr>
-              <td align=\"left\" width=\"60\" valign=\"top\"><img src=\"../../xlrstats-dev/templates/admin/admin-warning.png\" style=\"vertical-align:middle\" /></td>
+              <td align=\"left\" width=\"60\" valign=\"top\"><img src=\"../templates/admin/admin-warning.png\" style=\"vertical-align:middle\" /></td>
               <td align=\"left\">Cannot delete $filename. Make sure $filename exists and \"$filepath\" directory is writable</td>
             </tr>
           </table>";

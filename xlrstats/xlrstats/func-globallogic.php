@@ -711,14 +711,11 @@ function GetFileDir($php_self)
 
 function configpicker($cpath="config")
 {
-  global $servernames; //globalize to be used in adminpanel
   global $currentconfignumber;
   //$currentconfignumber = trim(trim($currentconfig, "config/statsconfig"), ".php");
   global $disable_configpicker;
 
-  //always show config picker on admin panel
-  $currentpage = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
-  if ($disable_configpicker && $currentpage == "index.php") return;
+  if ($disable_configpicker) return;
 
   $c = true;
   $cnt = 0;
@@ -735,7 +732,7 @@ function configpicker($cpath="config")
     //find all status file paths
     foreach ($configlist as $value)
     {
-      $str = file($cpath."/statsconfig".$value.".php");
+      $str = file("config/statsconfig".$value.".php");
 
       foreach ($str as $phrase)
       {
@@ -763,15 +760,13 @@ function configpicker($cpath="config")
         }
       }
 
-      $servernames[] = $servername; //for adminpanel
-
       if (strlen($servername) > 24)
         $serverlist[] = substr($servername,0,24).'...'; //Show max 24 characters in dropdown list.
       else
         $serverlist[] = $servername;
     }
 
-    echo "<form name=\"configselector\" id=\"configselector\"><select name=\"config\" class=\"stylepicker\" onchange=\"XLR_configPicker('parent',this,0)\">";
+    echo "<form name=\"configselector\" id=\"configselector\" class=\"stylepicker\"><select name=\"config\" onchange=\"XLR_configPicker('parent',this,0)\">";
     foreach ($configlist as $value)
     {
       if ($value == $currentconfignumber)
@@ -802,8 +797,6 @@ function stylepicker()
   $key = array_search('loader.css', $templatelist);
   unset($templatelist[$key]);
   $key = array_search('holidaypack', $templatelist);
-  unset($templatelist[$key]);
-  $key = array_search('admin', $templatelist);
   unset($templatelist[$key]);
 
   echo "<form name=\"stylepicker\" id=\"stylepicker\" class=\"stylepicker\"><select name=\"style\" onchange=\"XLR_stylePicker('parent',this,0)\">";
@@ -856,7 +849,17 @@ function displaysimpleheader($pop=0)
   $xlrpath = pathlink($pop);
   $csspath = $xlrpath . "templates/" . $template . "/style.css";
   // Include existing php dynamic css?
-  $template_dyn_css = $xlrpath . "templates/" . $template . "/style-css.php?config=" . $currentconfignumber;
+  $temp = abs_pathlink($pop) . "templates/" . $template . "/style-css.php";
+  if (file_exists($temp))
+    $template_dyn_css = $xlrpath . "templates/" . $template . "/style-css.php?config=" . $currentconfignumber;
+  else 
+    $template_dyn_css = 'None';
+
+  // Is logob1.png used?
+  if (file_exists(abs_pathlink($pop)."templates/".$template."/logob1.png"))
+    $logob1 = "<td height=\"40\" align=\"left\" style=\"background-image:url(".$xlrpath."templates/".$template."/logob1.png);\" width=\"150\">&nbsp;</td>";
+  else
+    $logob1 = "<td height=\"40\" align=\"left\" width=\"150\">&nbsp;</td>"; 
 
   // Lets get the holiday templates
   if (file_exists("templates/holidaypack/"))
@@ -933,7 +936,7 @@ function displaysimpleheader($pop=0)
   echo "  </tr>\n";
 	   
   echo "<tr>";
-  echo "<td height=\"40\" align=\"left\" style=\"background-image:url(".$xlrpath."templates/".$template."/logob1.png);\" width=\"150\">&nbsp;</td>";
+  echo $logob1;
 
   echo "<td height=\"40\" align=\"left\" style=\"background-image:url(".$xlrpath."templates/".$template."/menubg.png);\" colspan=2>
 			<table width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td>
@@ -997,7 +1000,17 @@ function displayheader($pop=0)
   $csspath = $xlrpath . "templates/" . $template . "/style.css";
   $loadercsspath = $xlrpath . "templates/loader.css";
   // Include existing php dynamic css?
-  $template_dyn_css = $xlrpath . "templates/" . $template . "/style-css.php?config=" . $currentconfignumber;
+  $temp = abs_pathlink($pop) . "templates/" . $template . "/style-css.php";
+  if (file_exists($temp))
+    $template_dyn_css = $xlrpath . "templates/" . $template . "/style-css.php?config=" . $currentconfignumber;
+  else 
+    $template_dyn_css = 'None';
+
+  // Is logob1.png used?
+  if (file_exists(abs_pathlink($pop)."templates/".$template."/logob1.png"))
+    $logob1 = "<td height=\"40\" align=\"left\" style=\"background-image:url(".$xlrpath."templates/".$template."/logob1.png);\" width=\"150\">&nbsp;</td>";
+  else
+    $logob1 = "<td height=\"40\" align=\"left\" width=\"150\">&nbsp;</td>"; 
 
   // Lets get the holiday templates
   if (file_exists("templates/holidaypack/"))
@@ -1187,18 +1200,18 @@ $(document).ready(function(){
   echo "<tr height=\"40\">";
 	if ($stylepicker == "left" && $template != "holidaypack")
 	{
-  	echo "<td valign=\"middle\" align=left style=\"background-image:url(".$xlrpath."templates/".$template."/logob1.png);\" width=\"150\">";
+  	echo $logob1;
     stylepicker();
     echo "</td>"; 
 	}
   elseif ($stylepicker == "right" && $template != "holidaypack")
   {
-  	echo "<td valign=\"middle\" align=left style=\"background-image:url(".$xlrpath."templates/".$template."/logob1.png);\" width=\"150\">";
+  	echo $logob1;
     configpicker();
     echo "</td>"; 
   }
   else
-    echo "<td align=left style=\"background-image:url(".$xlrpath."templates/".$template."/logob1.png);\" width=\"150\">&nbsp;</td>";
+    echo $logob1;
 
   echo "<td align=left style=\"background-image:url(".$xlrpath."templates/".$template."/menubg.png);\" colspan=2>
 			<table width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td>
@@ -1687,82 +1700,5 @@ function do_search($name, $search_aliases=false)
   }
 
   return $count;
-}
-
-//next-previous buttons
-function nextprevButtons($numRows, $recordsPerPage, $pagelink = "index.php?func=show")
-{
-  global $clan_name;
-
-  $pageid = 1;
-  if (isset($_GET['page']))
-    $pageid = escape_string($_GET['page']);
-
-  $pagenumber = 1;
-  if(isset($_GET['pagenumber']))
-    $pagenumber = escape_string($_GET['pagenumber']);
-
-  $nextpage = $pagenumber + 1;
-  $prevpage = $pagenumber - 1;
-  $firstpage = 1;
-  $totalpages = ceil($numRows / $recordsPerPage);
-  $url_clan_name = escape_hash($clan_name);
-
-  if($totalpages > 1)
-  {
-    $range = 10;
-    $range_min = ($range % 2 == 0) ? ($range / 2) - 1 : ($range - 1) / 2;
-    $range_max = ($range % 2 == 0) ? $range_min + 1 : $range_min;
-    $page_min = $pagenumber - $range_min;
-    $page_max = $pagenumber + $range_max;
-
-    $page_min = ($page_min < 1) ? 1 : $page_min;
-    $page_max = ($page_max < ($page_min + $range - 1)) ? $page_min + $range - 1 : $page_max;
-
-    if($page_max > $totalpages) 
-    {
-      $page_min = ($page_min > 1) ? $totalpages - $range + 1 : 1;
-      $page_max = $totalpages;
-    }
-
-    $page_min = ($page_min < 1) ? 1 : $page_min;
-
-    if($clan_name != "")
-      $pagelink = "index.php?func=clan&filter=$url_clan_name";
-
-    echo "<tr>";
-    echo "<td height=\"20\" class=\"line1\" align=\"center\">";
-
-    if($pagenumber != 1)
-    {
-      echo "<a href=\"$pagelink&page=$pageid&pagenumber=$firstpage\"><< </a>&nbsp&nbsp";
-      echo "<a href=\"$pagelink&page=$pageid&pagenumber=$prevpage\">< </a>&nbsp&nbsp";
-    }
-    else
-    {
-      echo "<font color=\"#888888\"><< &nbsp&nbsp</font>";
-      echo "<font color=\"#888888\">< &nbsp&nbsp</font>";
-    }
-
-    //    echo "&nbsp&nbsp - &nbsp&nbsp Page $pagenumber of $totalpages &nbsp&nbsp - &nbsp&nbsp";
-    for($i = $page_min; $i <= $page_max; $i++) 
-    {
-      if($i == $pagenumber)
-        echo "<font size=\"2px\" color=\"#555555\">$i&nbsp</font>";
-      else
-        echo "<a href=\"$pagelink&page=$pageid&pagenumber=$i\">$i</a>&nbsp";
-    }
-
-    if($pagenumber != $totalpages)
-    {
-      echo "<a href=\"$pagelink&page=$pageid&pagenumber=$nextpage\"> ></a>&nbsp&nbsp";
-      echo "<a href=\"$pagelink&page=$pageid&pagenumber=$totalpages\"> >></a></td>";
-    }
-    else 
-    {
-      echo "<font color=\"#888888\"> >&nbsp&nbsp</font>";
-      echo "<font color=\"#888888\"> >></font></td>";
-    }
-  }
 }
 ?>

@@ -724,10 +724,10 @@ function player_compare($myplayerid, $playerid)
   player_compare_item($player1, $player2, $citem="ratio", $cbar=true, $switchwinner=false, $columns=2);
   echo "<br>";
   echo "</td></tr><tr><td width=\"50%\">";
-  player_compare_item($player1, $player2, $citem="kills", $cbar=true, $switchwinner=false, $columns=2);
+  player_compare_item($player1, $player2, $citem="kills_p_round", $cbar=true, $switchwinner=false, $columns=2);
   echo "<br>";
   echo "</td><td width=\"50%\">";
-  player_compare_item($player1, $player2, $citem="deaths", $cbar=true, $switchwinner=true, $columns=2);
+  player_compare_item($player1, $player2, $citem="deaths_p_round", $cbar=true, $switchwinner=true, $columns=2);
   echo "<br>";
   echo "</td></tr><tr><td width=\"50%\">";
   player_compare_item($player1, $player2, $citem="winstreak", $cbar=true, $switchwinner=false, $columns=2);
@@ -736,10 +736,10 @@ function player_compare($myplayerid, $playerid)
   player_compare_item($player1, $player2, $citem="losestreak", $cbar=true, $switchwinner=true, $columns=2);
   echo "<br>";
   echo "</td></tr><tr><td width=\"50%\">";
-  player_compare_item($player1, $player2, $citem="teamkills", $cbar=true, $switchwinner=true, $columns=2);
+  player_compare_item($player1, $player2, $citem="teamkills_p_round", $cbar=true, $switchwinner=true, $columns=2);
   echo "<br>";
   echo "</td><td width=\"50%\">";
-  player_compare_item($player1, $player2, $citem="teamdeaths", $cbar=true, $switchwinner=true, $columns=2);
+  player_compare_item($player1, $player2, $citem="teamdeaths_p_round", $cbar=true, $switchwinner=true, $columns=2);
   echo "<br>";
   echo "</td></tr></table>";
 
@@ -969,14 +969,19 @@ function player_short_comparison($playerid)
   $cplayer['groupbits'] = $row['group_bits'];
   $cplayer['skill'] = sprintf("%.1f",$row['skill']);
   $cplayer['kills'] = $row['kills'];
+  $cplayer['kills_p_round'] = sprintf("%.3f",($row['kills'] / $row['rounds']));
   $cplayer['deaths'] = $row['deaths'];
+  $cplayer['deaths_p_round'] = sprintf("%.3f",($row['deaths'] / $row['rounds']));
   $cplayer['ratio'] = sprintf("%.2f",$row['ratio']);
   $cplayer['rounds'] = $row['rounds'];
   $cplayer['winstreak'] = $row['winstreak'];
   $cplayer['losestreak'] = -1*$row['losestreak'];
   $cplayer['teamkills'] = $row['teamkills'];
+  $cplayer['teamkills_p_round'] = sprintf("%.3f",($row['teamkills'] / $row['rounds']));
   $cplayer['teamdeaths'] = $row['teamdeaths'];
+  $cplayer['teamdeaths_p_round'] = sprintf("%.3f",($row['teamdeaths'] / $row['rounds']));
   $cplayer['suicides'] = $row['suicides'];
+  $cplayer['suicides_p_round'] = sprintf("%.3f",($row['suicides'] / $row['rounds']));
   $cplayer['connections'] = $row['connections'];
   if (file_exists($geoip_path."GeoIP.dat"))
   {

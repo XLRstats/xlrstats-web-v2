@@ -856,7 +856,17 @@ function displaysimpleheader($pop=0)
   $xlrpath = pathlink($pop);
   $csspath = $xlrpath . "templates/" . $template . "/style.css";
   // Include existing php dynamic css?
-  $template_dyn_css = $xlrpath . "templates/" . $template . "/style-css.php?config=" . $currentconfignumber;
+  $temp = abs_pathlink($pop) . "templates/" . $template . "/style-css.php";
+  if (file_exists($temp))
+    $template_dyn_css = $xlrpath . "templates/" . $template . "/style-css.php?config=" . $currentconfignumber;
+  else 
+    $template_dyn_css = 'None';
+
+  // Is logob1.png used?
+  if (file_exists(abs_pathlink($pop)."templates/".$template."/logob1.png"))
+    $logob1 = "<td height=\"40\" align=\"left\" style=\"background-image:url(".$xlrpath."templates/".$template."/logob1.png);\" width=\"150\">&nbsp;</td>";
+  else
+    $logob1 = "<td height=\"40\" align=\"left\" width=\"150\">&nbsp;</td>"; 
 
   // Lets get the holiday templates
   if (file_exists("templates/holidaypack/"))
@@ -933,7 +943,7 @@ function displaysimpleheader($pop=0)
   echo "  </tr>\n";
 	   
   echo "<tr>";
-  echo "<td height=\"40\" align=\"left\" style=\"background-image:url(".$xlrpath."templates/".$template."/logob1.png);\" width=\"150\">&nbsp;</td>";
+  echo $logob1;
 
   echo "<td height=\"40\" align=\"left\" style=\"background-image:url(".$xlrpath."templates/".$template."/menubg.png);\" colspan=2>
 			<table width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td>
@@ -997,7 +1007,17 @@ function displayheader($pop=0)
   $csspath = $xlrpath . "templates/" . $template . "/style.css";
   $loadercsspath = $xlrpath . "templates/loader.css";
   // Include existing php dynamic css?
-  $template_dyn_css = $xlrpath . "templates/" . $template . "/style-css.php?config=" . $currentconfignumber;
+  $temp = abs_pathlink($pop) . "templates/" . $template . "/style-css.php";
+  if (file_exists($temp))
+    $template_dyn_css = $xlrpath . "templates/" . $template . "/style-css.php?config=" . $currentconfignumber;
+  else 
+    $template_dyn_css = 'None';
+
+  // Is logob1.png used?
+  if (file_exists(abs_pathlink($pop)."templates/".$template."/logob1.png"))
+    $logob1 = "<td height=\"40\" align=\"left\" style=\"background-image:url(".$xlrpath."templates/".$template."/logob1.png);\" width=\"150\">&nbsp;</td>";
+  else
+    $logob1 = "<td height=\"40\" align=\"left\" width=\"150\">&nbsp;</td>"; 
 
   // Lets get the holiday templates
   if (file_exists("templates/holidaypack/"))
@@ -1058,7 +1078,7 @@ function displayheader($pop=0)
   echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"".$csspath."\" media=\"screen\" />\n";
   echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"".$loadercsspath."\" media=\"screen\" />\n";
   // include the php dynamic css
-  echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"".$template_dyn_css."\" media=\"screen\" />\n";
+  if ($template_dyn_css != 'None') echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"".$template_dyn_css."\" media=\"screen\" />\n";
 
   // echo "<script type=\"text/JavaScript\" src=\"".$xlrpath."lib/sorttable/sorttable.js\"></script>\n";
   echo "<script type=\"text/JavaScript\" src=\"".$xlrpath."lib/jquery-1.2.6.min.js\"></script>\n";
@@ -1187,18 +1207,18 @@ $(document).ready(function(){
   echo "<tr height=\"40\">";
 	if ($stylepicker == "left" && $template != "holidaypack")
 	{
-  	echo "<td valign=\"middle\" align=left style=\"background-image:url(".$xlrpath."templates/".$template."/logob1.png);\" width=\"150\">";
+  	echo $logob1;
     stylepicker();
     echo "</td>"; 
 	}
   elseif ($stylepicker == "right" && $template != "holidaypack")
   {
-  	echo "<td valign=\"middle\" align=left style=\"background-image:url(".$xlrpath."templates/".$template."/logob1.png);\" width=\"150\">";
+  	echo $logob1;
     configpicker();
     echo "</td>"; 
   }
   else
-    echo "<td align=left style=\"background-image:url(".$xlrpath."templates/".$template."/logob1.png);\" width=\"150\">&nbsp;</td>";
+    echo $logob1;
 
   echo "<td align=left style=\"background-image:url(".$xlrpath."templates/".$template."/menubg.png);\" colspan=2>
 			<table width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td>

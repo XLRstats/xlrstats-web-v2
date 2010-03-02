@@ -1648,6 +1648,13 @@ function displayTooltip($hitloc, $hitlocname="")
 
   if($game == 'urt')
   {
+    if(!isset($hitloc['0'])) $hitloc['0'] = array(0,0,0,0,0);
+    if(!isset($hitloc['1'])) $hitloc['1'] = array(0,0,0,0,0);
+    if(!isset($hitloc['2'])) $hitloc['2'] = array(0,0,0,0,0);
+    if(!isset($hitloc['3'])) $hitloc['3'] = array(0,0,0,0,0);
+    if(!isset($hitloc['4'])) $hitloc['4'] = array(0,0,0,0,0);
+    if(!isset($hitloc['5'])) $hitloc['5'] = array(0,0,0,0,0);
+
     $hitloc['head'] = sumuparrays($hitloc['0'],$hitloc['1']);
     $text['head'] = $text['head'] . " + " . $text['helmet'];
     $hitloc['neck'] = sumuparrays($hitloc['2'],$hitloc['3']);

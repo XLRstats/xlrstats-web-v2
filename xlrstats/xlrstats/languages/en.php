@@ -267,7 +267,6 @@ $text["thisisme"] = "This is me!";
 $text["rememberme"] = "This is me! Remember me in 'MyStats'!";
 $text["compareme"] = "Compare this player to me!";
 $text["generatesig"] = "Generate Signature";
-//added on 15 febr. 2010:
 $text["assists"] = "Kill Assists";
 $text["descassists"] = "Total number of Kill Assists";
 $text["assistskill"] = "Total skill gained";
@@ -321,6 +320,11 @@ $text["helmet"] = "Helmet";
 $text["torso"] = "Torso";
 $text["kevlar"] = "Kevlar";
 $text["arms"] = "Arms";
+$text["shoulders"] = "Shoulders";
+$text["stomach"] = "Stomach";
+$text["groin"] = "Groin";
+$text["hands"] = "Hands";
+$text["feet"] = "Feet";
 $text["legs"] = "Legs";
 $text["body"] = "Body";
 $text["noneurt"] = "-Unknown-";
@@ -418,7 +422,7 @@ $text["nodescavail"] = "No description available.";
 $text["ofbestratio"] = "% of best Ratio (Which is ";
 $text["ofratio"] = "% of 1:0 Ratio";
 
-// Player History // added 11 febr. 2010
+// Player History
 $text["weeklyhistory"] = "History";
 $text["weeklyhistoryexpl"] = "You history in weekly intervals";
 $text["weeklyhistory_skill_img_title"] = "skill history (weekly markers)";

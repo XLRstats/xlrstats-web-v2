@@ -267,6 +267,10 @@ $text["thisisme"] = "&iexcl;Este soy yo!";
 $text["rememberme"] = "&iexcl;Este soy yo! Recordarme en  'MisEstadisticas'!";
 $text["compareme"] = "&iexcl;Comparar este jugador con migo!";
 $text["generatesig"] = "Generar Firma";
+$text["assists"] = "Kill Assists";
+$text["descassists"] = "Total number of Kill Assists";
+$text["assistskill"] = "Total skill gained";
+$text["descassistskill"] = "Sum of skill gained by assisting teammates in making kills.";
 
 //ESTADISTCIAS ESPECIFICAS DEL JUGADOR (SECCIÓN BAJA)
 $text["activity"] = "Activdad";
@@ -316,6 +320,11 @@ $text["helmet"] = "Casco";
 $text["torso"] = "Torso";
 $text["kevlar"] = "Kevlar";
 $text["arms"] = "Brazos";
+$text["shoulders"] = "Shoulders";
+$text["stomach"] = "Stomach";
+$text["groin"] = "Groin";
+$text["hands"] = "Hands";
+$text["feet"] = "Feet";
 $text["legs"] = "Piernas";
 $text["body"] = "Cuerpo";
 $text["noneurt"] = "-Desconocido-";
@@ -412,5 +421,13 @@ $text["gettingerros"] = "&iquest;Teniendo errores? Haga clic aqu&iacute; para re
 $text["nodescavail"] = "No disponemos de descripci&oacute;n.";
 $text["ofbestratio"] = "% del mejor porcentaje (Cual es ";
 $text["ofratio"] = "% de 1:0 Porcentaje";
+
+// Player History
+$text["weeklyhistory"] = "History";
+$text["weeklyhistoryexpl"] = "You history in weekly intervals";
+$text["weeklyhistory_skill_img_title"] = "skill history (weekly markers)";
+$text["weeklyhistory_ratio_img_title"] = "ratio history (weekly markers)";
+$text["pluginnotinstalled"] = "Plugin not installed!";
+
 
 ?>

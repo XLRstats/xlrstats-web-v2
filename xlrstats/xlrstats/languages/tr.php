@@ -267,6 +267,10 @@ $text["thisisme"] = "Bu Benim!";
 $text["rememberme"] = "Bu Benim! 'MyStats' da beni hatýrla!";
 $text["compareme"] = "Beni bu oyuncuyla karþýlaþtýr!";
 $text["generatesig"] = "Ýmza Oluþtur";
+$text["assists"] = "Asist";
+$text["descassists"] = "Toplam Asist Sayýsý";
+$text["assistskill"] = "Kaznýlan Toplam Yetenek";
+$text["descassistskill"] = "Takým arkadaþlarýna öldürme yardýmý ederek kazanýlan yetenek toplamý.";
 
 //PLAYER SPESIFIC STATS (LOWER SECTION)
 $text["activity"] = "Aktivite";
@@ -299,6 +303,7 @@ $text["head"] = "Kafa";
 $text["neck"] = "Boyun";
 $text["torso_lower"] = "Karýn";
 $text["torso_upper"] = "Göðüs";
+$text["chest"] = "Göðüs";
 $text["left_arm_upper"] = "Sol Kol (Üst)";
 $text["left_arm_lower"] = "Sol Kol (Alt)";
 $text["left_hand"] = "Sol El";
@@ -315,8 +320,13 @@ $text["totaldisrupt"] = "Tamamen Parçalanma";
 $text["helmet"] = "Miðfer";
 $text["torso"] = "Gövde";
 $text["kevlar"] = "Kevlar";
-$text["arms"] = "Kol";
-$text["legs"] = "Bacak";
+$text["arms"] = "Kollar";
+$text["shoulders"] = "Omuzlar";
+$text["stomach"] = "Mide";
+$text["groin"] = "Kasýk";
+$text["hands"] = "Eller";
+$text["feet"] = "Ayaklar";
+$text["legs"] = "Bacaklar";
 $text["body"] = "Vücut";
 $text["noneurt"] = "-Bilinmeyen-";
 $text["notidentify"] = "-Tanýmlanamayan-";
@@ -412,5 +422,13 @@ $text["gettingerros"] = "Hata mesajlarý mý alýyorsunuz? Buraya týklayarak bütün 
 $text["nodescavail"] = "Taným bulunamadý.";
 $text["ofbestratio"] = "% => en iyi orana göre yüzdesi - (En iyi oran ";
 $text["ofratio"] = "% => 1:0 orana göre yüzdesi";
+
+// Player History
+$text["weeklyhistory"] = "Geçmiþ";
+$text["weeklyhistoryexpl"] = "Haftalýk Geçmiþiniz";
+$text["weeklyhistory_skill_img_title"] = "yetenek geçmiþi (haftalýk)";
+$text["weeklyhistory_ratio_img_title"] = "oran geçmiþi (haftalýk)";
+$text["pluginnotinstalled"] = "Eklenti Yüklü Deðil!";
+
 
 ?>

@@ -1646,15 +1646,8 @@ function displayTooltip($hitloc, $hitlocname="")
   global $text;
   global $game;
 
-  if($game =='urt')
+  if($game == 'urt')
   {
-    if(!isset($hitloc['0'])) $hitloc['0'] = array(0,0,0,0,0);
-    if(!isset($hitloc['1'])) $hitloc['1'] = array(0,0,0,0,0);
-    if(!isset($hitloc['2'])) $hitloc['2'] = array(0,0,0,0,0);
-    if(!isset($hitloc['3'])) $hitloc['3'] = array(0,0,0,0,0);
-    if(!isset($hitloc['4'])) $hitloc['4'] = array(0,0,0,0,0);
-    if(!isset($hitloc['5'])) $hitloc['5'] = array(0,0,0,0,0);
-
     $hitloc['head'] = sumuparrays($hitloc['0'],$hitloc['1']);
     $text['head'] = $text['head'] . " + " . $text['helmet'];
     $hitloc['neck'] = sumuparrays($hitloc['2'],$hitloc['3']);
@@ -1687,6 +1680,38 @@ function displayTooltip($hitloc, $hitlocname="")
     $text['right_leg_lower'] = $text['legs'];
     $hitloc['right_foot'] = $hitloc['5'];
     $text['right_foot'] = $text['legs'];
+  }
+
+  if($game == 'smg')
+  {
+    $hitloc['torso_upper'] = $hitloc['chest'];
+    $text['torso_upper'] = $text["torso_upper"];
+    $hitloc['torso_lower'] = $hitloc['stomach'];
+    $text['torso_lower'] = $text["stomach"];
+    $hitloc['left_arm_upper'] = $hitloc['shoulder'];
+    $text['left_arm_upper'] = $text["shoulders"];
+    $hitloc['left_arm_lower'] = $hitloc['arm'];
+    $text['left_arm_lower'] = $text["arms"];
+    $hitloc['left_hand'] = $hitloc['hand'];
+    $text['left_hand'] = $text["hands"];
+    $hitloc['right_arm_upper'] = $hitloc['shoulder'];
+    $text['right_arm_upper'] = $text["shoulders"];
+    $hitloc['right_arm_lower'] = $hitloc['arm'];
+    $text['right_arm_lower'] = $text["arms"];
+    $hitloc['right_hand'] = $hitloc['hand'];
+    $text['right_hand'] = $text["hands"];
+    $hitloc['left_leg_upper'] = $hitloc['groin'];
+    $text['left_leg_upper'] = $text["groin"];
+    $hitloc['left_leg_lower'] = $hitloc['leg'];
+    $text['left_leg_lower'] = $text['legs'];
+    $hitloc['left_foot'] = $hitloc['foot'];
+    $text['left_foot'] = $text["feet"];
+    $hitloc['right_leg_upper'] = $hitloc['groin'];
+    $text['right_leg_upper'] = $text["groin"];
+    $hitloc['right_leg_lower'] = $hitloc['leg'];
+    $text['right_leg_lower'] = $text['legs'];
+    $hitloc['right_foot'] = $hitloc['foot'];
+    $text['right_foot'] = $text["feet"];
   }
 
   if($game != 'wop')

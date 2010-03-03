@@ -28,17 +28,31 @@
 //*********************
 
 // Teamnames and colors
-$team1 = "Outlaws"; // red team
-$team2 = "Lawmen"; // blue team
+$team1 = "Lawmen"; // red team
+$team2 = "Outlaws"; // blue team
 $spectators = "Spectators";
-
 
 //*********************
 // Weapons names
 //*********************
 
 $w['0'] = "Unknown";
-$w['mod_falling'] = "Fallen to Death";
+$w['1'] = "Bowie Knife";
+$w['2'] = "Remington 1858";
+$w['3'] = "Smith & Wesson Schofield";
+$w['4'] = "Colt Peacemaker";
+$w['5'] = "Winchester 1866";
+$w['6'] = "Colt Lightning";
+$w['7'] = "Sharps Rifle";
+$w['8'] = "Remington 12 Gauge";
+$w['9'] = "Sawed-Off Shotgun";
+$w['10'] = "Winchester 1897";
+$w['11'] = "Gatling Gun";
+$w['12'] = "Dynamite";
+$w['13'] = "Molotov Cocktail";
+$w['20'] = "Teamswitch Suicide Penalty"; //on team change or go to spectate (haven't tried if it triggers for autobalance)
+$w['22'] = "Accidental Death"; //All kinds of accidents such as falling into the river or in a deathpit
+$w['mod_falling'] = "Falling";
 
 //No weapon? 
 $w[''] = "Bad luck...";

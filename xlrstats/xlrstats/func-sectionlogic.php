@@ -1691,6 +1691,15 @@ function displayTooltip($hitloc, $hitlocname="")
 
   if($game == 'smg')
   {
+    if(!isset($hitloc['chest'])) $hitloc['chest'] = array(0,0,0,0,0);
+    if(!isset($hitloc['stomach'])) $hitloc['stomach'] = array(0,0,0,0,0);
+    if(!isset($hitloc['shoulder'])) $hitloc['shoulder'] = array(0,0,0,0,0);
+    if(!isset($hitloc['arm'])) $hitloc['arm'] = array(0,0,0,0,0);
+    if(!isset($hitloc['hand'])) $hitloc['hand'] = array(0,0,0,0,0);
+    if(!isset($hitloc['groin'])) $hitloc['groin'] = array(0,0,0,0,0);
+    if(!isset($hitloc['foot'])) $hitloc['foot'] = array(0,0,0,0,0);
+    if(!isset($hitloc['leg'])) $hitloc['leg'] = array(0,0,0,0,0);
+
     $hitloc['torso_upper'] = $hitloc['chest'];
     $text['torso_upper'] = $text["torso_upper"];
     $hitloc['torso_lower'] = $hitloc['stomach'];

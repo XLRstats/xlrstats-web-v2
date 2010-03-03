@@ -163,6 +163,9 @@ $text["mostmolotov"] = "Most molotov cocktail kills per round";
 $text["flamekiller"] = "Firestarter";
 $text["fthrowerkills"] = "Kills p/r";
 $text["mostflamekill"] = "Most flamethrower kills per round";
+$text["dynamitekiller"] = "Dynamite Specialist";             //Added 03.03.2010
+$text["dynamitekills"] = "Dynamite kills p/r";               //Added 03.03.2010
+$text["mostdynamitekill"] = "Most dynamite kills per round"; //Added 03.03.2010
 $text["awardavailable"] = "Award Still Available ::";
 $text["topthisplayers"] = "Top these players to win an award!";
 
@@ -215,6 +218,9 @@ $text["mostaccdeath"] = "Most accidental deaths per round";
 $text["barrelvictim"] = "Barrel Victim";
 $text["barreldeaths"] = "Barrel deaths p/r";
 $text["mostbarrel"] = "Most deaths by exploding barrels per round";
+$text["mmdynamite"] = "Mmmm Dynamites!";                     //Added 03.03.2010
+$text["dynamitedeth"] = "Dynamite deaths p/r";               //Added 03.03.2010
+$text["mostdyndeth"] = "Most dynamite deaths per round";     //Added 03.03.2010
 $text["dontbetophere"] = "Do not try to be on top in here ;)";
 
 //MEDAL DETAILS

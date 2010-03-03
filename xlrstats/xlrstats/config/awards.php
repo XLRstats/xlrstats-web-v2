@@ -43,10 +43,14 @@ if ($game == 'cod1' || $game == 'coduo' || $game == 'cod2' || $game == 'cod4' ||
 {
     $pro_medals[] = 'pro_medal_nade_killer()';              // nade kills           cod urt
     $pro_medals[] = 'pro_medal_sniper_killer()';            // sniper kills         cod urt
-    $pro_medals[] = 'pro_medal_head_hunter()';              // most headshots       cod urt
-    $pro_medals[] = 'pro_medal_pistol_killer()';            // pistol kills         cod urt
 }
-    
+
+if ($game == 'cod1' || $game == 'coduo' || $game == 'cod2' || $game == 'cod4' || $game == 'codwaw'  || $game == 'urt' || $game == 'smg')
+{
+    $pro_medals[] = 'pro_medal_head_hunter()';              // most headshots       cod urt smg
+    $pro_medals[] = 'pro_medal_pistol_killer()';            // pistol kills         cod urt smg
+}
+
 if ($game == 'cod1' || $game == 'coduo' || $game == 'cod2')
 {
     $pro_medals[] = 'pro_medal_bash_killer()';              // bash kills           cod1 coduo cod2
@@ -61,16 +65,21 @@ if ($game == 'cod4')
 {
     $pro_medals[] = 'pro_medal_surprise_lover()';           // claymore kills       cod4
 }
+
 if ($game == 'codwaw' )
 {
     $pro_medals[] = 'pro_medal_bouncing_betty()';           // bouncing betty kills codwaw
-    $pro_medals[] = 'pro_medal_mortal_cocktail()';          // molotov kills        codwaw
     $pro_medals[] = 'pro_medal_firestarter()';              // flame thrower kills  codwaw
 }
 
-if ($game == 'cod4' || $game == 'urt'  || $game == 'codwaw' )
+if ($game == 'codwaw' || $game == 'smg' )
 {
-    $pro_medals[] = 'pro_medal_cold_weapon_killer()';       // knife kills          cod4 codwaw urt
+    $pro_medals[] = 'pro_medal_mortal_cocktail()';          // molotov kills        codwaw smg
+}
+
+if ($game == 'cod4' || $game == 'urt'  || $game == 'codwaw' || $game == 'smg')
+{
+    $pro_medals[] = 'pro_medal_cold_weapon_killer()';       // knife kills          cod4 codwaw urt smg
 }
 
 if ($game == 'wop')
@@ -79,7 +88,12 @@ if ($game == 'wop')
     $pro_medals[] = 'pro_medal_betty_killer()';             // betty kills          wop
     $pro_medals[] = 'pro_medal_killerducks_killer()';       // killerducks kills    wop
     $pro_medals[] = 'pro_medal_punchy_killer()';            // punchy kills         wop
-}	
+}
+
+if ($game == 'smg' )
+{
+    $pro_medals[] = 'pro_medal_dynamite()';                 // dynamite kills       smg
+}
 
 // Shame Medals ------------------------------------------------------------------------------------
 $shame_medals[] = 'shame_medal_target_no_one()';            // deaths               all
@@ -99,9 +113,9 @@ if ($game == 'cod1' || $game == 'coduo' || $game == 'cod2' || $game == 'cod4'  |
     $shame_medals[] = 'shame_medal_sniped()';               // killed by snipers    cod urt
 }
 
-if ($game == 'cod4'  || $game == 'codwaw' || $game == 'urt')
+if ($game == 'cod4'  || $game == 'codwaw' || $game == 'urt' || $game == 'smg')
 {
-    $shame_medals[] = 'shame_medal_def_knifes()';           // knife deaths         cod4 codwaw urt
+    $shame_medals[] = 'shame_medal_def_knifes()';           // knife deaths         cod4 codwaw urt smg
 }
 
 if ($game == 'cod1' || $game == 'coduo' || $game == 'cod2')
@@ -125,5 +139,10 @@ if ($game == 'wop')
     $shame_medals[] = 'shame_medal_def_betty()';            // betty deaths         wop
     $shame_medals[] = 'shame_medal_def_punchy()';           // punchy deaths        wop
     $shame_medals[] = 'shame_medal_killerducks()';          // killerducks deaths   wop
+}
+
+if ($game == 'smg' )
+{
+    $shame_medals[] = 'shame_medal_dynamite_deaths()';      // dynamite deaths      smg
 }
 ?>

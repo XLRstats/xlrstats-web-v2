@@ -1366,6 +1366,150 @@ function wop_awards()
   $coddb->sql_freeresult($result);
 }
 
+function smg_awards()
+{
+  global $t;
+  global $coddb;
+  global $buffer;
+  
+  //-- Weapons -------------------------------------------------------------------
+  $buffer .= "\n// Weapons / Means of Death --------\n";
+  
+  // Not used by UrT
+  //$buffer .= "\$wp_bomb = 0;\n";
+  //$buffer .= "\$wp_fireman = 0;\n";
+  //$buffer .= "\$wp_claymore = 0;\n";
+  
+  // Knives
+  $query = "SELECT id 
+            FROM ${t["weapons"]}
+            WHERE name = '1'
+            LIMIT 0 , 30";
+  
+  $result = $coddb->sql_query($query);
+  $numrows = $coddb->sql_numrows($result);
+  
+  $buffer .= "\$wp_knives = \"(";
+  $c = 0;
+  while ($row = $coddb->sql_fetchrow($result))
+  {
+    $c += 1;
+    $buffer .= $row["id"];
+    if($c < $numrows)
+      $buffer .=  ", ";
+  }
+  $buffer .= ")\";\n";
+  $coddb->sql_freeresult($result);
+  
+  // Dynamit
+  $query = "SELECT id 
+            FROM ${t["weapons"]}
+            WHERE name = '12'
+            LIMIT 0 , 30";
+
+  $result = $coddb->sql_query($query);
+  $numrows = $coddb->sql_numrows($result);
+
+  $buffer .= "\$wp_dynamite = \"(";
+  $c = 0;
+  while ($row = $coddb->sql_fetchrow($result))
+  {
+    $c += 1;
+    $buffer .= $row["id"];
+    if($c < $numrows)
+      $buffer .=  ", ";
+  }
+  $buffer .= ")\";\n";
+  $coddb->sql_freeresult($result);
+
+  // Pistols
+  $query = "SELECT id 
+            FROM ${t["weapons"]}
+            WHERE name IN ('2', '3', '4')
+            LIMIT 0 , 30";
+  
+  $result = $coddb->sql_query($query);
+  $numrows = $coddb->sql_numrows($result);
+  
+  $buffer .= "\$wp_pistols = \"(";
+  $c = 0;
+  while ($row = $coddb->sql_fetchrow($result))
+  {
+    $c += 1;
+    $buffer .= $row["id"];
+    if($c < $numrows)
+      $buffer .=  ", ";
+  }
+  $buffer .= ")\";\n";
+  $coddb->sql_freeresult($result);
+
+  // Molotov
+  $query = "SELECT id 
+            FROM ${t["weapons"]}
+            WHERE name = '13'
+            LIMIT 0 , 30";
+
+  $result = $coddb->sql_query($query);
+  $numrows = $coddb->sql_numrows($result);
+
+  $buffer .= "\$wp_molotov = \"(";
+  $c = 0;
+  while ($row = $coddb->sql_fetchrow($result))
+  {
+    $c += 1;
+    $buffer .= $row["id"];
+    if($c < $numrows)
+      $buffer .=  ", ";
+  }
+  $buffer .= ")\";\n";
+  $coddb->sql_freeresult($result);
+
+  // Accidents
+  $query = "SELECT id 
+            FROM ${t["weapons"]}
+            WHERE name IN ('20', '22', 'mod_falling')
+            LIMIT 0 , 30";
+  
+  $result = $coddb->sql_query($query);
+  $numrows = $coddb->sql_numrows($result);
+  
+  $buffer .= "\$wp_accidents = \"(";
+  $c = 0;
+  while ($row = $coddb->sql_fetchrow($result))
+  {
+    $c += 1;
+    $buffer .= $row["id"];
+    if($c < $numrows)
+      $buffer .=  ", ";
+  }
+  $buffer .= ")\";\n";
+  $coddb->sql_freeresult($result);
+  
+  //-- Bodyparts -----------------------------------------------------------------
+  $buffer .= "\n// Bodyparts ---------------------\n";
+  
+  // Head
+  $query = "SELECT id 
+            FROM ${t["bodyparts"]}
+            WHERE name = 'head'
+            LIMIT 0 , 30";
+  
+  $result = $coddb->sql_query($query);
+  $numrows = $coddb->sql_numrows($result);
+  
+  $buffer .= "\$bp_head = \"(";
+  $c = 0;
+  while ($row = $coddb->sql_fetchrow($result))
+  {
+    $c += 1;
+    $buffer .= $row["id"];
+    if($c < $numrows)
+      $buffer .=  ", ";
+  }
+  $buffer .= ")\";\n";
+  $coddb->sql_freeresult($result);
+}
+
 //delete cache to display new medal owners
 $files = glob("../dynamic/cache/*.txt");
 foreach($files as $file) 

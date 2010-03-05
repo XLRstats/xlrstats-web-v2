@@ -598,8 +598,9 @@ function gamelauncher($type)
     if ($game == 'cod4') $tgame = 'cod4mp';
     if ($game == 'codwaw') $tgame = 'codwawmp';
     if ($game == 'urt') $tgame = 'utq3';
-    if ($game == 'q3a') $tgame = 'q3';    
-    if ($game == 'wop') $tgame = 'wopad';    
+    if ($game == 'q3a') $tgame = 'q3';
+    if ($game == 'smg') $tgame = 'smokin';
+    if ($game == 'wop') $tgame = 'wopad';
     $link = ' <a href="xfire:join?game='.$tgame.'&amp;server='.$public_ip.'"><img src="images/ico/icon_xfire.jpg" title="'.$text["conwxfire"].'" alt="xfire" width="16" height="16" border="0" align="absmiddle" id="xfire" /></a>'; 
   }
   elseif ($type == 'qtracker')
@@ -610,8 +611,9 @@ function gamelauncher($type)
     if ($game == 'cod4') $tgame = 'CallOfDuty4';
     if ($game == 'codwaw') $tgame = 'CallOfDutyWorldAtWar';
     if ($game == 'urt') $tgame = 'UrbanTerror';
-    if ($game == 'q3a') $tgame = 'Quake3';    
-    if ($game == 'wop') $tgame = 'WorldOfPadman';    
+    if ($game == 'q3a') $tgame = 'Quake3';
+    if ($game == 'smg') $tgame = 'Quake3';
+    if ($game == 'wop') $tgame = 'WorldOfPadman';
     $link = ' <a href="qtracker://'.$public_ip.'/?game='.$tgame.'&action=join"><img src="images/ico/icon_qtracker.jpg" title="'.$text["conwqtracker"].'" alt="qtracker" width="16" height="16" border="0" align="absmiddle" id="qtracker" /></a>';
   }
   elseif ($type == 'hlsw')
@@ -626,8 +628,9 @@ function gamelauncher($type)
     if ($game == 'cod4') $tgame = 'cod4';
     if ($game == 'codwaw') $tgame = 'codww';
     if ($game == 'urt') $tgame = 'urbanterror';
-    if ($game == 'q3a') $tgame = 'q3';    
-    if ($game == 'wop') $tgame = 'wop';    
+    if ($game == 'q3a') $tgame = 'q3';
+    if ($game == 'smg') $tgame = 'q3';
+    if ($game == 'wop') $tgame = 'wop';
     $temp = explode(":", $public_ip);
     $link = ' <a href="gsc://joinGame:game='.$tgame.'&ip='.$temp[0].'&port='.$temp[1].'"><img src="images/ico/icon_gsc.jpg" title="'.$text["conwgsc"].'" alt="gsc" width="16" height="16" border="0" align="absmiddle" id="gsc" /></a>';
   }

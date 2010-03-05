@@ -163,6 +163,9 @@ $text["mostmolotov"] = "Most molotov cocktail kills per round";
 $text["flamekiller"] = "Firestarter";
 $text["fthrowerkills"] = "Kills p/r";
 $text["mostflamekill"] = "Most flamethrower kills per round";
+$text["dynamitekiller"] = "Dynamite Specialist";             //Added 03.03.2010
+$text["dynamitekills"] = "Dynamite kills p/r";               //Added 03.03.2010
+$text["mostdynamitekill"] = "Most dynamite kills per round"; //Added 03.03.2010
 $text["awardavailable"] = "Award Still Available ::";
 $text["topthisplayers"] = "Top these players to win an award!";
 
@@ -215,6 +218,9 @@ $text["mostaccdeath"] = "Most accidental deaths per round";
 $text["barrelvictim"] = "Barrel Victim";
 $text["barreldeaths"] = "Barrel deaths p/r";
 $text["mostbarrel"] = "Most deaths by exploding barrels per round";
+$text["mmdynamite"] = "Mmmm Dynamites!";                     //Added 03.03.2010
+$text["dynamitedeth"] = "Dynamite deaths p/r";               //Added 03.03.2010
+$text["mostdyndeth"] = "Most dynamite deaths per round";     //Added 03.03.2010
 $text["dontbetophere"] = "Do not try to be on top in here ;)";
 
 //MEDAL DETAILS
@@ -267,7 +273,6 @@ $text["thisisme"] = "This is me!";
 $text["rememberme"] = "This is me! Remember me in 'MyStats'!";
 $text["compareme"] = "Compare this player to me!";
 $text["generatesig"] = "Generate Signature";
-//added on 15 febr. 2010:
 $text["assists"] = "Kill Assists";
 $text["descassists"] = "Total number of Kill Assists";
 $text["assistskill"] = "Total skill gained";
@@ -321,6 +326,11 @@ $text["helmet"] = "Helmet";
 $text["torso"] = "Torso";
 $text["kevlar"] = "Kevlar";
 $text["arms"] = "Arms";
+$text["shoulders"] = "Shoulders";
+$text["stomach"] = "Stomach";
+$text["groin"] = "Groin";
+$text["hands"] = "Hands";
+$text["feet"] = "Feet";
 $text["legs"] = "Legs";
 $text["body"] = "Body";
 $text["noneurt"] = "-Unknown-";
@@ -418,7 +428,7 @@ $text["nodescavail"] = "No description available.";
 $text["ofbestratio"] = "% of best Ratio (Which is ";
 $text["ofratio"] = "% of 1:0 Ratio";
 
-// Player History // added 11 febr. 2010
+// Player History
 $text["weeklyhistory"] = "History";
 $text["weeklyhistoryexpl"] = "You history in weekly intervals";
 $text["weeklyhistory_skill_img_title"] = "skill history (weekly markers)";

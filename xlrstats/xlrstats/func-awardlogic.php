@@ -689,6 +689,29 @@ function pro_medal_firestarter()
   }
 }
 
+function pro_medal_dynamite()
+{
+  global $currentconfignumber;
+  global $t;  //table names
+  global $wp_dynamite;
+  global $text;
+
+  $fname = __FUNCTION__;
+  $ch = new cache($fname, $currentconfignumber);
+
+  if ($ch->cval == 0)
+  {
+    $qry = " SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds ) AS total_kills
+            FROM ${t['weaponusage']}
+            JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
+            JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
+            WHERE (${t['weaponusage']}.weapon_id = $wp_dynamite)";
+
+    list($score, $playerid, $name, $players, $scores, $playerids, $flags) = CreateMedal($qry, "total_kills", "total_kills DESC", 2, "");
+    ShowMedal($text["dynamitekiller"], $text["dynamitekills"], $score, $playerid, $name, "xlr_pro_default.png", $text["mostdynamitekill"], $players, $scores, $fname, $playerids, $flags, $ch);  
+  }
+}
+
 //------------------------------------------------------------------------------------------------------------
 
 function shame_medal_target_no_one()
@@ -1021,6 +1044,29 @@ function shame_medal_barrel_deaths()
 
     list($score, $playerid, $name, $players, $scores, $playerids, $flags) = CreateMedal($qry, "total_deaths", "total_deaths DESC", 2, "");
     ShowMedal($text["barrelvictim"], $text["barreldeaths"], $score, $playerid, $name, "xlr_shame_barrel_deaths.png", $text["mostbarrel"], $players, $scores, $fname, $playerids, $flags, $ch);  
+  }
+}
+
+function shame_medal_dynamite_deaths()
+{
+  global $currentconfignumber;
+  global $t;  //table names
+  global $wp_dynamite;
+  global $text;
+
+  $fname = __FUNCTION__;
+  $ch = new cache($fname, $currentconfignumber);
+
+  if ($ch->cval == 0)
+  {
+    $qry = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.deaths) / ${t['players']}.rounds) AS total_deaths
+        FROM ${t['weaponusage']}
+        JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
+        JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
+        WHERE (${t['weaponusage']}.weapon_id IN $wp_dynamite)";
+
+    list($score, $playerid, $name, $players, $scores, $playerids, $flags) = CreateMedal($qry, "total_deaths", "total_deaths DESC", 2, "");
+    ShowMedal($text["mmdynamite"], $text["dynamitedeth"], $score, $playerid, $name, "xlr_shame_nade.png", $text["mostdyndeth"], $players, $scores, $fname, $playerids, $flags, $ch);  
   }
 }
 

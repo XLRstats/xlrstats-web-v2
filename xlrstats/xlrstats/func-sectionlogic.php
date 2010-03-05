@@ -1646,7 +1646,7 @@ function displayTooltip($hitloc, $hitlocname="")
   global $text;
   global $game;
 
-  if($game =='urt')
+  if($game == 'urt')
   {
     if(!isset($hitloc['0'])) $hitloc['0'] = array(0,0,0,0,0);
     if(!isset($hitloc['1'])) $hitloc['1'] = array(0,0,0,0,0);
@@ -1687,6 +1687,47 @@ function displayTooltip($hitloc, $hitlocname="")
     $text['right_leg_lower'] = $text['legs'];
     $hitloc['right_foot'] = $hitloc['5'];
     $text['right_foot'] = $text['legs'];
+  }
+
+  if($game == 'smg')
+  {
+    if(!isset($hitloc['chest'])) $hitloc['chest'] = array(0,0,0,0,0);
+    if(!isset($hitloc['stomach'])) $hitloc['stomach'] = array(0,0,0,0,0);
+    if(!isset($hitloc['shoulder'])) $hitloc['shoulder'] = array(0,0,0,0,0);
+    if(!isset($hitloc['arm'])) $hitloc['arm'] = array(0,0,0,0,0);
+    if(!isset($hitloc['hand'])) $hitloc['hand'] = array(0,0,0,0,0);
+    if(!isset($hitloc['groin'])) $hitloc['groin'] = array(0,0,0,0,0);
+    if(!isset($hitloc['foot'])) $hitloc['foot'] = array(0,0,0,0,0);
+    if(!isset($hitloc['leg'])) $hitloc['leg'] = array(0,0,0,0,0);
+
+    $hitloc['torso_upper'] = $hitloc['chest'];
+    $text['torso_upper'] = $text["torso_upper"];
+    $hitloc['torso_lower'] = $hitloc['stomach'];
+    $text['torso_lower'] = $text["stomach"];
+    $hitloc['left_arm_upper'] = $hitloc['shoulder'];
+    $text['left_arm_upper'] = $text["shoulders"];
+    $hitloc['left_arm_lower'] = $hitloc['arm'];
+    $text['left_arm_lower'] = $text["arms"];
+    $hitloc['left_hand'] = $hitloc['hand'];
+    $text['left_hand'] = $text["hands"];
+    $hitloc['right_arm_upper'] = $hitloc['shoulder'];
+    $text['right_arm_upper'] = $text["shoulders"];
+    $hitloc['right_arm_lower'] = $hitloc['arm'];
+    $text['right_arm_lower'] = $text["arms"];
+    $hitloc['right_hand'] = $hitloc['hand'];
+    $text['right_hand'] = $text["hands"];
+    $hitloc['left_leg_upper'] = sumuparrays($hitloc['leg'], $hitloc['groin']);
+    $text['left_leg_upper'] = $text["legs"] . " + " . $text["groin"] ;
+    $hitloc['left_leg_lower'] = $hitloc['leg'];
+    $text['left_leg_lower'] = $text['legs'];
+    $hitloc['left_foot'] = $hitloc['foot'];
+    $text['left_foot'] = $text["feet"];
+    $hitloc['right_leg_upper'] = sumuparrays($hitloc['leg'], $hitloc['groin']);
+    $text['right_leg_upper'] = $text["legs"] . " + " . $text["groin"];
+    $hitloc['right_leg_lower'] = $hitloc['leg'];
+    $text['right_leg_lower'] = $text['legs'];
+    $hitloc['right_foot'] = $hitloc['foot'];
+    $text['right_foot'] = $text["feet"];
   }
 
   if($game != 'wop')
@@ -1864,7 +1905,7 @@ function player_bodyparts_s($playerid, $dbID = false)
         </table> 
     ";    
       //<td align=\"center\" width=\"1\" width=\"10\">&nbsp;</td>
-      
+
   if($game == "urt") {
     if (isset($mybodypats['0'])) $hz_head = $mybodypats['0']+@$mybodypats['1']; // Head + helmet
     else $hz_head = 0;
@@ -1899,6 +1940,43 @@ function player_bodyparts_s($playerid, $dbID = false)
     if (isset($mybodypats['5'])) $hz_right_foot = $mybodypats['5']; // Legs
     else $hz_right_foot = 0;
     if (isset($mybodypats['none'])) $hz_none = 0;
+    else $hz_none = 0;
+  }
+  elseif($game == "smg")
+  {
+    if (isset($mybodypats['head'])) $hz_head = $mybodypats['head'];
+    else $hz_head = 0;
+    if (isset($mybodypats['neck'])) $hz_neck = $mybodypats['neck'];
+    else $hz_neck = 0;
+    if (isset($mybodypats['chest'])) $hz_torso_upper = $mybodypats['chest'];
+    else $hz_torso_upper = 0;
+    if (isset($mybodypats['stomach'])) $hz_torso_lower = $mybodypats['stomach'];
+    else $hz_torso_lower = 0;
+    if (isset($mybodypats['shoulder'])) $hz_left_arm_upper = $mybodypats['shoulder'];
+    else $hz_left_arm_upper = 0;
+    if (isset($mybodypats['arm'])) $hz_left_arm_lower = $mybodypats['arm'];
+    else $hz_left_arm_lower = 0;
+    if (isset($mybodypats['hand'])) $hz_left_hand = $mybodypats['hand'];
+    else $hz_left_hand = 0;
+    if (isset($mybodypats['shoulder'])) $hz_right_arm_upper = $mybodypats['shoulder'];
+    else $hz_right_arm_upper = 0;
+    if (isset($mybodypats['arm'])) $hz_right_arm_lower = $mybodypats['arm'];
+    else $hz_right_arm_lower = 0;
+    if (isset($mybodypats['hand'])) $hz_right_hand = $mybodypats['hand'];
+    else $hz_right_hand = 0;
+    if (isset($mybodypats['leg'])) $hz_left_leg_upper = $mybodypats['leg'] + @$mybodypats['groin'];
+    else $hz_left_leg_upper = 0;
+    if (isset($mybodypats['leg'])) $hz_left_leg_lower = $mybodypats['leg'];
+    else $hz_left_leg_lower = 0;
+    if (isset($mybodypats['foot'])) $hz_left_foot = $mybodypats['foot'];
+    else $hz_left_foot = 0;
+    if (isset($mybodypats['leg'])) $hz_right_leg_upper = $mybodypats['leg'] + @$mybodypats['groin'];
+    else $hz_right_leg_upper = 0;
+    if (isset($mybodypats['leg'])) $hz_right_leg_lower = $mybodypats['leg'];
+    else $hz_right_leg_lower = 0;
+    if (isset($mybodypats['foot'])) $hz_right_foot = $mybodypats['foot'];
+    else $hz_right_foot = 0;
+    if (isset($mybodypats['none'])) $hz_none = $mybodypats['none'];
     else $hz_none = 0;
   }
   else {

@@ -1,5 +1,6 @@
 <?php
 error_reporting( E_ERROR ^ E_WARNING );
+//error_reporting( E_ALL );
 
 include("../func-globallogic.php");
 include("../func-siglogic.php");
@@ -58,22 +59,26 @@ $color_scheme_id = 0;
 $current_time = time();
 $timelimit = $maxdays*60*60*24;
 
-$advertising = $_GET['adv'];
+
+if( isset($_GET['adv']) )	$advertising = $_GET['adv'];
 // REQUIRED INPUT
 if( !isset($_GET['id']) )	$advertising = 1;
 $player_id  = $_GET['id'];
 
 // OPTIONAL INPUT
-$backdrop_url = $_GET['b'];
+if( isset($_GET['b']) )	$backdrop_url = $_GET['b'];
 
-$style_options = explode("-", $_GET['s'] );
-foreach( $style_options as $opt )
+$style_options = '';
+if( isset($_GET['s']) )	$style_options = explode("-", $_GET['s'] );
+if( $style_options != '' )
 {
-	if( $opt{0} == "c" ) $color_scheme_id = substr($opt,1);
-	if( $opt{0} == "w" ) $width = substr($opt,1);
-	if( $opt{0} == "h" ) $height = substr($opt,1);
+  foreach( $style_options as $opt )
+  {
+  	if( $opt{0} == "c" ) $color_scheme_id = substr($opt,1);
+  	if( $opt{0} == "w" ) $width = substr($opt,1);
+  	if( $opt{0} == "h" ) $height = substr($opt,1);
+  }
 }
-
 // DATABASE
 $coddb = new sql_db($db_host, $db_user, $db_pass, $db_db, false);
 if(!$coddb->db_connect_id) 
@@ -159,8 +164,8 @@ include( "render.php" );
 // OUTPUT
 ob_start();
 header( "Cache-Control: no-cache, must-revalidate" );
-header( "Content-Type: image/jpeg" );
-imagejpeg( $image, "", 100 );
+header( "Content-Type: image/png" );
+imagepng( $image );
 imagedestroy( $image );
 ob_end_flush();
 

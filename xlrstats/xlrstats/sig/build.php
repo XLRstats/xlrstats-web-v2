@@ -92,9 +92,9 @@ if( isset($_POST['submit']) )
 
   echo "<b>Stats URL:</b><br>&nbsp;&nbsp;" . $stats_url . " (<a href=\"" . $stats_url . "\">link</a>)<br><br>";
 
-	echo "<b>Forum Sig HTML-Code:</b><br>&nbsp;&nbsp;" . htmlspecialchars("<a href=\"" . $stats_url . "\"><img border=\"0\" src=\"" . $url . "&.jpg\"></a>") . "<br><br>";
+	echo "<b>Forum Sig HTML-Code:</b><br>&nbsp;&nbsp;" . htmlspecialchars("<a href=\"" . $stats_url . "\"><img border=\"0\" src=\"" . $url . "&.png\"></a>") . "<br><br>";
 	
-	echo "<b>Forum Sig BB-Code:</b><br>&nbsp;&nbsp;" . htmlspecialchars("[url=" . $stats_url . "][img]" . $url . "&.jpg[/img][/url]") . "<br><br>";
+	echo "<b>Forum Sig BB-Code:</b><br>&nbsp;&nbsp;" . htmlspecialchars("[url=" . $stats_url . "][img]" . $url . "&.png[/img][/url]") . "<br><br>";
 	
 	echo "<a href=\"" . $stats_url . "\"><img border=\"0\" src=\"" . $url . "\"></a><br>";
 

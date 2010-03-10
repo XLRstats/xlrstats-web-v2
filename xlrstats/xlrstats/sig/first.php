@@ -93,8 +93,8 @@ include( "render.php" );
 // OUTPUT
 ob_start();
 header( "Cache-Control: no-cache, must-revalidate" );
-header( "Content-Type: image/jpeg" );
-imagejpeg( $image, "", 100 );
+header( "Content-Type: image/png" );
+imagepng( $image );
 imagedestroy( $image );
 ob_end_flush();
 ?>

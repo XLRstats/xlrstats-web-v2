@@ -42,6 +42,7 @@ require_once($currentconfig);
 
 // pop should hold the subdir depth of this file in relation to the xlrstats root.
 $pop = 1;
+include("../config/inc_constants.php");
 include("../languages/languages.php");
 
 include( "settings.php" );

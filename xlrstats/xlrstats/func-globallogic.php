@@ -44,7 +44,8 @@ function baselink()
 
 function abs_pathlink($pop=0)
 {
-  $serversoftware = $_SERVER['SERVER_SOFTWARE'];
+return XLRSTATS_ROOT_DIR;
+/*  $serversoftware = $_SERVER['SERVER_SOFTWARE'];
   if (substr($serversoftware,0,6)=="Apache")
   {  
     $ptemp = explode("/", GetFileDir($_SERVER['SCRIPT_FILENAME']));
@@ -58,7 +59,7 @@ function abs_pathlink($pop=0)
     return implode("/", $ptemp)."/";
   }
   else return $_SERVER['APPL_PHYSICAL_PATH'];
-
+*/
 }
 
 function pathlink($pop=0)
@@ -73,6 +74,7 @@ function pathlink($pop=0)
     $pop--;
   }
   return implode("/", $ptemp)."/";
+
 }
 
 function httplink($pop=0)

@@ -25,6 +25,7 @@
 
 include("../inc_mysql.php");
 require_once("../func-globallogic.php");
+require_once("../config/inc_constants.php");
 
 echo "<td width=\"100%\" valign=\"top\"><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"10\">";
 echo "<tr><td align=\"left\" valign=\"top\">";

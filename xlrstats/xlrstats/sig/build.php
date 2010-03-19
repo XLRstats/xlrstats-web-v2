@@ -42,6 +42,8 @@ require_once($currentconfig);
 // pop should hold the subdir depth of this file in relation to the xlrstats root.
 $pop = 1;
 include("../languages/languages.php");
+require_once("../config/inc_constants.php");
+
 
 displaysimpleheader(1);
 opentablerow('100');

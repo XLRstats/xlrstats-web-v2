@@ -26,11 +26,14 @@
 if (!isset($pop))
   $pop = 0;
 
+if (file_exists("config/inc_constants.php")) require_once("config/inc_constants.php");
+if (file_exists("../config/inc_constants.php")) require_once("../config/inc_constants.php");
 
 $lang_path = abs_pathlink($pop)."languages";
 $default_lang = "en.php";
 
 include ($lang_path."/".$default_lang);
+
 
 if (isset($_COOKIE['XLR_langfile']))
 {

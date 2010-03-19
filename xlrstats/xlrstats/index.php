@@ -79,6 +79,7 @@ if ($currentconfignumber == 0)
 else
   include("dynamic/award_idents_".$currentconfignumber.".php");
 
+include("config/inc_constants.php");
 include("languages/languages.php");
 include("config/ranks.php");
 include("config/awards.php");

@@ -32,7 +32,10 @@ function tag_start_simple($parser, $attr, $params)
     $tmp = "";
     $cli = $params['NAME'];
 
-    $clients[$params['CID']] = new client ($params['DBID'], $params['NAME'], $params['COLORNAME'],$params['LEVEL'], $params['CONNECTIONS'], $params['SCORE'], $params['CID'], $params['GUID'], $params['PBID'], $params['TEAM'], $params['STATE'], $params['IP']);
+    if(isset($params['SCORE'])) $score = $params['SCORE'];
+    else $score = 'n.a.';
+
+    $clients[$params['CID']] = new client ($params['DBID'], $params['NAME'], $params['COLORNAME'],$params['LEVEL'], $params['CONNECTIONS'], $score, $params['CID'], $params['GUID'], $params['PBID'], $params['TEAM'], $params['STATE'], $params['IP']);
   }   
 }
 
@@ -59,20 +62,23 @@ function tag_start($parser, $attr, $params)
     $tmp = "";
     $cli = $params['NAME'];
 
+    if(isset($params['SCORE'])) $score = $params['SCORE'];
+    else $score = 'n.a.';
+
     if (in_array($gameType, $ffa_modes) || ($pll_noteams != 0))
     {
-      $clientsSpec[$params['CID']] = new client ($params['DBID'], $params['NAME'], $params['COLORNAME'],$params['LEVEL'], $params['CONNECTIONS'], $params['SCORE'], $params['CID'], $params['GUID'], $params['PBID'], $params['TEAM'], $params['STATE'], $params['IP']);
+      $clientsSpec[$params['CID']] = new client ($params['DBID'], $params['NAME'], $params['COLORNAME'],$params['LEVEL'], $params['CONNECTIONS'], $score, $params['CID'], $params['GUID'], $params['PBID'], $params['TEAM'], $params['STATE'], $params['IP']);
     }
     else
     {
       if($params['TEAM'] == 2)
-        $clientsRed[$params['CID']] = new client ($params['DBID'], $params['NAME'], $params['COLORNAME'],$params['LEVEL'], $params['CONNECTIONS'], $params['SCORE'], $params['CID'], $params['GUID'], $params['PBID'], $params['TEAM'], $params['STATE'], $params['IP']);
+        $clientsRed[$params['CID']] = new client ($params['DBID'], $params['NAME'], $params['COLORNAME'],$params['LEVEL'], $params['CONNECTIONS'], $score, $params['CID'], $params['GUID'], $params['PBID'], $params['TEAM'], $params['STATE'], $params['IP']);
   
       if($params['TEAM'] == 3)
-        $clientsBlue[$params['CID']] = new client ($params['DBID'], $params['NAME'], $params['COLORNAME'],$params['LEVEL'], $params['CONNECTIONS'], $params['SCORE'], $params['CID'], $params['GUID'], $params['PBID'], $params['TEAM'], $params['STATE'], $params['IP']);
+        $clientsBlue[$params['CID']] = new client ($params['DBID'], $params['NAME'], $params['COLORNAME'],$params['LEVEL'], $params['CONNECTIONS'], $score, $params['CID'], $params['GUID'], $params['PBID'], $params['TEAM'], $params['STATE'], $params['IP']);
   
       if($params['TEAM'] == -1 || $params['TEAM'] == 1)
-        $clientsSpec[$params['CID']] = new client ($params['DBID'], $params['NAME'], $params['COLORNAME'],$params['LEVEL'], $params['CONNECTIONS'], $params['SCORE'], $params['CID'], $params['GUID'], $params['PBID'], $params['TEAM'], $params['STATE'], $params['IP']);
+        $clientsSpec[$params['CID']] = new client ($params['DBID'], $params['NAME'], $params['COLORNAME'],$params['LEVEL'], $params['CONNECTIONS'], $score, $params['CID'], $params['GUID'], $params['PBID'], $params['TEAM'], $params['STATE'], $params['IP']);
     }
   }   
   else if($attr == 'DATA')

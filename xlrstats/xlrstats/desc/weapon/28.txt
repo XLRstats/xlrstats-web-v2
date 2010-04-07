@@ -1,0 +1,7 @@
+The Remington SR8 is the marksmen Rifle, which is Bolt-Action<br />
+At the moment, it's only a prototype (Remington canceled the project), but used in several games.<br />
+Magaine Capacity: 5 Shot Box Magazine<br />
+Caliber: .338 Lapua<br />
+Weight: 15.75 lbs (7.16 kg)<br />
+Length: 47" - 49" (1193.8 - 1244.6mm)#<br />
+Sight: Leupold Mk4 M1 16x<br />

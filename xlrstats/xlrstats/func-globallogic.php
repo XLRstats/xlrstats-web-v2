@@ -592,6 +592,11 @@ function gamelauncher($type)
   global $text;
   include($currentconfig);
 
+  $img_xfire = rel2abs('xlrstats/images/ico/icon_xfire.jpg');
+  $img_qtracker = rel2abs('xlrstats/images/ico/icon_qtracker.jpg');
+  $img_hlsw = rel2abs('xlrstats/images/ico/icon_hlsw.jpg');
+  $img_gsc = rel2abs('xlrstats/images/ico/icon_gsc.jpg');
+
   if ($type == 'xfire')
   {
     if ($game == 'cod1') $tgame = 'codmp';
@@ -603,7 +608,7 @@ function gamelauncher($type)
     if ($game == 'q3a') $tgame = 'q3';
     if ($game == 'smg') $tgame = 'smokin';
     if ($game == 'wop') $tgame = 'wopad';
-    $link = ' <a href="xfire:join?game='.$tgame.'&amp;server='.$public_ip.'"><img src="images/ico/icon_xfire.jpg" title="'.$text["conwxfire"].'" alt="xfire" width="16" height="16" border="0" align="absmiddle" id="xfire" /></a>'; 
+    $link = ' <a href="xfire:join?game='.$tgame.'&amp;server='.$public_ip.'"><img src="'.$img_xfire.'" title="'.$text["conwxfire"].'" alt="xfire" width="16" height="16" border="0" align="absmiddle" id="xfire" /></a>'; 
   }
   elseif ($type == 'qtracker')
   {
@@ -616,11 +621,11 @@ function gamelauncher($type)
     if ($game == 'q3a') $tgame = 'Quake3';
     if ($game == 'smg') $tgame = 'Quake3';
     if ($game == 'wop') $tgame = 'WorldOfPadman';
-    $link = ' <a href="qtracker://'.$public_ip.'/?game='.$tgame.'&action=join"><img src="images/ico/icon_qtracker.jpg" title="'.$text["conwqtracker"].'" alt="qtracker" width="16" height="16" border="0" align="absmiddle" id="qtracker" /></a>';
+    $link = ' <a href="qtracker://'.$public_ip.'/?game='.$tgame.'&action=join"><img src="'.$img_qtracker.'" title="'.$text["conwqtracker"].'" alt="qtracker" width="16" height="16" border="0" align="absmiddle" id="qtracker" /></a>';
   }
   elseif ($type == 'hlsw')
   {
-    $link = ' <a href="hlsw://'.$public_ip.'"><img src="images/ico/icon_hlsw.jpg" title="'.$text["conwhlsw"].'" alt="hlsw" width="16" height="16" border="0" align="absmiddle" id="hlsw" /></a>';
+    $link = ' <a href="hlsw://'.$public_ip.'"><img src="'.$img_hlsw.'" title="'.$text["conwhlsw"].'" alt="hlsw" width="16" height="16" border="0" align="absmiddle" id="hlsw" /></a>';
   }
   elseif ($type == 'gsc')
   {
@@ -634,7 +639,7 @@ function gamelauncher($type)
     if ($game == 'smg') $tgame = 'q3';
     if ($game == 'wop') $tgame = 'wop';
     $temp = explode(":", $public_ip);
-    $link = ' <a href="gsc://joinGame:game='.$tgame.'&ip='.$temp[0].'&port='.$temp[1].'"><img src="images/ico/icon_gsc.jpg" title="'.$text["conwgsc"].'" alt="gsc" width="16" height="16" border="0" align="absmiddle" id="gsc" /></a>';
+    $link = ' <a href="gsc://joinGame:game='.$tgame.'&ip='.$temp[0].'&port='.$temp[1].'"><img src="'.$img_gsc.'" title="'.$text["conwgsc"].'" alt="gsc" width="16" height="16" border="0" align="absmiddle" id="gsc" /></a>';
   }
   return $link;
 }
@@ -1789,5 +1794,39 @@ function nextprevButtons($numRows, $recordsPerPage, $pagelink = "index.php?func=
       echo "<font color=\"#888888\"> >></font></td>";
     }
   }
+}
+
+//Function that returns absolute URL of relative paths
+function rel2abs($rel)
+{
+  $base = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']);
+
+  // return if already absolute URL
+  if (parse_url($rel, PHP_URL_SCHEME) != '') 
+    return $rel;
+
+  // queries and anchors
+  if ($rel[0]=='#' || $rel[0]=='?') 
+    return $base.$rel;
+
+  // parse base URL and convert to local variables: $scheme, $host, $path */
+  extract(parse_url($base));
+
+  // remove non-directory element from path
+  $path = preg_replace('#/[^/]*$#', '', $path);
+
+  // destroy path if relative url points to root
+  if ($rel[0] == '/') $path = '';
+
+  // dirty absolute URL
+  $abs = "$host$path/$rel";
+
+  // replace '//' or '/./' or '/foo/../' with '/'
+  $re = array('#(/\.?/)#', '#/(?!\.\.)[^/]+/\.\./#');
+
+  for($n=1; $n>0; $abs=preg_replace($re, '/', $abs, -1, $n)) {}
+ 
+ // absolute URL is ready!
+  return $scheme.'://'.$abs;
 }
 ?>

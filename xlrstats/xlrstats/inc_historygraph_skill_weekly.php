@@ -146,7 +146,21 @@ $link = baselink();
 $result = $coddb->sql_query($query);
 
 // Do not show the graph on an empty result
-if (mysql_num_rows($result) == 0) return;
+if (mysql_num_rows($result) == 0) 
+{
+  header('Content-type: image/png');
+  $im = imagecreatetruecolor(340, 30);
+  $bg = imagecolorallocate($im, 204, 204, 204);
+  $grey = imagecolorallocate($im, 88, 88, 88);
+  imagefilledrectangle($im, 0, 0, 399, 29, $bg);
+  $text = 'There\'s not enough data for skill graph yet!';
+  $font = 'sig/fonts/lucon.ttf';
+  imagettftext($im, 9, 0, 21, 21, $grey, $font, $text); // Add some shadow to the text
+
+  imagepng($im);
+  imagedestroy($im);
+  return;
+}
 
 //===========================================================================================================================
 

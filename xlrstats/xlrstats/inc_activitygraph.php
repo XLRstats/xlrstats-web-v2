@@ -141,7 +141,18 @@ $link = baselink();
 $result = $coddb->sql_query($query);
 
 // Do not show the graph on an empty result
-if (mysql_num_rows($result) == 0) return;
+if (mysql_num_rows($result) == 0) 
+{
+  header("Content-type: image/png"); 
+  $width = 20;
+  $height = 20;
+  $im = ImageCreateTrueColor($width, $height); 
+  $grey = ImageColorAllocate($im, 204, 204, 204); 
+  ImageFillToBorder($im, 0, 0, $grey, $grey);
+  ImagePNG($im); 
+  ImageDestroy($im); 
+  return;
+}
 
 $d = array();
 $max = 31;

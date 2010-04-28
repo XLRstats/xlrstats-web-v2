@@ -81,7 +81,7 @@ function topplayersblock($sortby = "skill", $direction = "DESC", $offset = 0)
     echo "<tr>";
     echo "<td>$rank</td>";
     
-    $name = ($row['fixed_name'] ? $row['fixed_name'] : $row['name']);
+    $name = htmlspecialchars(utf2iso(($row['fixed_name'] ? $row['fixed_name'] : $row['name'])));
     if (strlen($name) > $user_length)
       $name = (substr($name, 0, $user_length) . '...');
     

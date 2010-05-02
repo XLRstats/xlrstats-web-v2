@@ -26,7 +26,7 @@
 $clientsRed  = array();
 $clientsBlue  = array();
 $clientsSpec  = array();
-$supportedgames = array('cod', 'coduo', 'cod2', 'cod4', 'cod5', 'etpro', 'iourt41', 'smg', 'wop'); // B3 parsernames
+$supportedgames = array('cod', 'coduo', 'cod2', 'cod4', 'cod5', 'etpro', 'iourt41', 'smg', 'wop', 'bfbc2'); // B3 parsernames
 $ffa_modes = array('dm', 'ffa', 'syc-ffa');
 
 $sv_privateClients = 0;
@@ -591,7 +591,7 @@ function gamelauncher($type)
   global $currentconfig;
   global $text;
   include($currentconfig);
-
+  $link = "";
   $img_xfire = rel2abs('xlrstats/images/ico/icon_xfire.jpg');
   $img_qtracker = rel2abs('xlrstats/images/ico/icon_qtracker.jpg');
   $img_hlsw = rel2abs('xlrstats/images/ico/icon_hlsw.jpg');
@@ -599,6 +599,7 @@ function gamelauncher($type)
 
   if ($type == 'xfire')
   {
+    $tgame = False;
     if ($game == 'cod1') $tgame = 'codmp';
     if ($game == 'coduo') $tgame = 'coduomp';
     if ($game == 'cod2') $tgame = 'cod2mp';
@@ -608,10 +609,11 @@ function gamelauncher($type)
     if ($game == 'q3a') $tgame = 'q3';
     if ($game == 'smg') $tgame = 'smokin';
     if ($game == 'wop') $tgame = 'wopad';
-    $link = ' <a href="xfire:join?game='.$tgame.'&amp;server='.$public_ip.'"><img src="'.$img_xfire.'" title="'.$text["conwxfire"].'" alt="xfire" width="16" height="16" border="0" align="absmiddle" id="xfire" /></a>'; 
+    if ($tgame) $link = ' <a href="xfire:join?game='.$tgame.'&amp;server='.$public_ip.'"><img src="'.$img_xfire.'" title="'.$text["conwxfire"].'" alt="xfire" width="16" height="16" border="0" align="absmiddle" id="xfire" /></a>'; 
   }
   elseif ($type == 'qtracker')
   {
+    $tgame = False;
     if ($game == 'cod1') $tgame = 'CallOfDuty';
     if ($game == 'coduo') $tgame = 'CallOfDutyUnitedOffensive';
     if ($game == 'cod2') $tgame = 'CallOfDuty2';
@@ -621,7 +623,7 @@ function gamelauncher($type)
     if ($game == 'q3a') $tgame = 'Quake3';
     if ($game == 'smg') $tgame = 'Quake3';
     if ($game == 'wop') $tgame = 'WorldOfPadman';
-    $link = ' <a href="qtracker://'.$public_ip.'/?game='.$tgame.'&action=join"><img src="'.$img_qtracker.'" title="'.$text["conwqtracker"].'" alt="qtracker" width="16" height="16" border="0" align="absmiddle" id="qtracker" /></a>';
+    if ($tgame) $link = ' <a href="qtracker://'.$public_ip.'/?game='.$tgame.'&action=join"><img src="'.$img_qtracker.'" title="'.$text["conwqtracker"].'" alt="qtracker" width="16" height="16" border="0" align="absmiddle" id="qtracker" /></a>';
   }
   elseif ($type == 'hlsw')
   {
@@ -629,6 +631,7 @@ function gamelauncher($type)
   }
   elseif ($type == 'gsc')
   {
+    $tgame = False;
     if ($game == 'cod1') $tgame = 'cod';
     if ($game == 'coduo') $tgame = 'uo';
     if ($game == 'cod2') $tgame = 'cod2';
@@ -639,7 +642,7 @@ function gamelauncher($type)
     if ($game == 'smg') $tgame = 'q3';
     if ($game == 'wop') $tgame = 'wop';
     $temp = explode(":", $public_ip);
-    $link = ' <a href="gsc://joinGame:game='.$tgame.'&ip='.$temp[0].'&port='.$temp[1].'"><img src="'.$img_gsc.'" title="'.$text["conwgsc"].'" alt="gsc" width="16" height="16" border="0" align="absmiddle" id="gsc" /></a>';
+    if ($tgame) $link = ' <a href="gsc://joinGame:game='.$tgame.'&ip='.$temp[0].'&port='.$temp[1].'"><img src="'.$img_gsc.'" title="'.$text["conwgsc"].'" alt="gsc" width="16" height="16" border="0" align="absmiddle" id="gsc" /></a>';
   }
   return $link;
 }

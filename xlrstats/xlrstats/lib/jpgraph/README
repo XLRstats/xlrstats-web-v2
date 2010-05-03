@@ -1,81 +1,28 @@
-README FOR JPGRAPH
-==================
+README FOR JPGRAPH 3.0.x
+========================
 
-This package contains JpGraph, an Object Oriented PHP4 Graph Plotting library.
+This package contains JpGraph, an Object Oriented PHP5 Graph Plotting library.
 
-The library is Copyright (C) 2001-2008 Aditus Consulting and
+The library is Copyright (C) 2001-2009 Aditus Consulting and
 released under dual license QPL 1.0 for open source and educational
 use and JpGraph Professional License for commercial use. 
 
 Please see full license details at http://www.aditus.nu/jpgraph/
 
 * --------------------------------------------------------------------
-* PHP5 IS NOT SUPPORTED IN THE 1.x SERIES
-* Please use the 2.x serie if PHP5 support is required
+* PHP4 IS NOT SUPPORTED in the 2.x or 3.x series
 * --------------------------------------------------------------------
-
-
-Included files
---------------
-README	                This file
-QPL.txt                 QPL 1.0  Licensee
-
-/src
-  Changelog			Changelog
-  jpg-config.inc.php		Configuration setup for JpGraph
-  jpgraph.php			Base library
-  jpgraph_errhandler.inc.php	Base library. Error handler module.
-  gd_image.inc.php		Base library. GD interface class
-  jpgraph_ttf.inc.php		Base library. TTF font handling
-
-  jpgraph_led.php		Extension: LED digits module
-  jpgraph_log.php		Extension: logarithmic scales
-  jpgraph_date.php		Extension: date/time scales	
-  jpgraph_line.php		Extension: line plots 
-  jpgraph_bar.php		Extension: bar plots
-  jpgraph_error.php		Extension: error plots
-  jpgraph_scatter.php		Extension: scatter/impulse plots
-  jpgraph_radar.php		Extension: radar plots
-  jpgraph_pie.php		Extension: pie plots
-  jpgraph_pie3d.php		Extension: 3D pie plots
-  jpgraph_canvas.php		Extension: drawing canvas
-  jpgraph_canvtools.php		Extension: utility classes for working with canvas
-  jpgraph_gantt.php		Extension: Gantt chart
-  jpgraph_regstat.php		Extension: Statistics and cubic splines.
-  jpgraph_stock.php		Extension: Stock and box plots.
-  jpgraph_gradient.php		Extension: Color gradient class
-  jpgraph_gb2312.php		Extension: Chinese GB2312 to Unicode translation
-  jpgraph_plotmark.php		Extension: Handle plotmarks in plots
-  jpgraph_imgtrans.php		Extension: Basic image transformation
-  jpgraph_flags.php		Extension: Country flags
-  jpgraph_iconplot.php		Extension: Use image icons in plots
-  jpgraph_plotband.php		Extension: Plotbands in graphs
-  jpgraph_plotmark.inc.php	Extension: Using plotmarks in graphs
-  jpgraph_antispam.php		Extension: Antispam module
-  jpgraph_utils.inc.php		Extension: Non mandatory Utility classes
-  jpgraph_mgraph.php		Extension: Multi graph
-  imgdata_*.inc			Extension: Encoded images for plot marks
-  flags*.dat			Raw Image data: Pre-compiled data for country flags.
-
-/src/Examples		A directory with example sripts.
-			Run testsuit.php to get a list of all
-			files and you can easily click on a file to
-			see the code and the resulting image.
-
-/docs			Directory with all documentation		
-/docs/index.html	Documentation portal
-
-			
+		
 Requirements:
 -------------
 Miminum:
-* PHP 4.3.1 or higher 
-  (earlier versions might work but is unsupported)
-* GD 1.8.x or GD 2.15 or higher
+* PHP 5.1.0 or higher 
+* GD 2.0.28 or higher
+Note: Earlier versions might work but is unsupported.
 
 Recommended:
-* PHP 4.4.0 
-* PHP Builtin GD 2.28 library
+* PHP >= 5.2.0
+* PHP Built-in GD library
 
 Installation
 ------------
@@ -103,10 +50,9 @@ Installation
 
 3. Check that all rest of the DEFINE in jpg-config.inc 
    is setup to your preference. The default should be fine
-   for most users. (See also Note 3. below)
-   
-4. If any problems are encounted please start by reading the FAQ on 
-   http://www.aditus.nu/jpgraph/jpgraphfaq.php.
+   for most users. 
+
+4. Read the chapters on installation in the manual.
 
 
 Documentation
@@ -116,36 +62,10 @@ library. The portal page for all the documentation is
 <YOUR-INSTALLATION-DIRECTORY>/docs/index.html
 
 
-Troubleshooting
----------------
-0. Make sure your PHP installation has the minimum requirements and has
-   the GD library enabled (most modern installations fulfills the minimmum
-   requirements). See chapter 3.1 in the manual.
+Bug reports and suggestions
+---------------------------
+Should be reported using the the issue tracker at
 
-1. If an empty page is returned back when running an example check
-   the following
-
-     i)  Increase the maximum memory allowed by PHP (in php.ini) to at least 32MB
-    ii)  Enable all error messages and notices in php.ini (error_reporting = E_ALL)
-    III) Make sure output buffering is disabled in php.ini (output_buffering = Off) 
-         this will make it possible to see the errors more easily
-    IV)  Disable any PHP accelerometer you may have installed (e.g. Zend Cache)
-
-   Then try running the example again. Most likely an error message will
-   now be shown that will give further information on what is wrong.
-   For further clarifiction on the casues for the error messages see
-   the FAQ section on the WEB site.
-
-2. If you are running IIS and Win2k and get the error "Can't find
-   font' when trying to use TTF fonts then try to change you paths
-   to UNIX style, i.e. "/usr/local/fonts/ttf/". Remember that the
-   path is absolute and not relative to the htdocs catalogue. Some 
-   versions of GD for Windows also need you to set the environment
-   variable GDFONTPATH for GD to find the fonts.
-
-3. If you are using the cache please make sure that you have
-   set the permissions correctly for the cache directory so that
-   Apache/PHP can write to that directory.
-
+http://www.aditus.nu/bugtraq
 
 <EOF>

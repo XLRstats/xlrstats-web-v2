@@ -599,6 +599,66 @@ function pro_medal_serial_killer()
   }  
 }
 
+function pro_medal_best_ratio()
+{
+  global $currentconfignumber;
+  global $t;  //table names
+  global $text;
+
+  $fname = __FUNCTION__;
+  $ch = new cache($fname, $currentconfignumber);
+
+  if ($ch->cval == 0)
+  {
+    $qry = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ratio, fixed_name
+        FROM ${t['b3_clients']}, ${t['players']}
+        WHERE (${t['b3_clients']}.id = ${t['players']}.client_id)";
+
+    list($score, $playerid, $name, $players, $scores, $playerids, $flags) = CreateMedal($qry, "ratio", "ratio DESC", 2, "");
+    ShowMedal($text["bestratio"], $text["bestratio1"], $score, $playerid, $name, "xlr_pro_default.png", $text["bestratio2"], $players, $scores, $fname, $playerids, $flags, $ch);
+  }  
+}
+
+function pro_medal_most_kills()
+{
+  global $currentconfignumber;
+  global $t;  //table names
+  global $text;
+
+  $fname = __FUNCTION__;
+  $ch = new cache($fname, $currentconfignumber);
+
+  if ($ch->cval == 0)
+  {
+    $qry = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, kills, fixed_name
+        FROM ${t['b3_clients']}, ${t['players']}
+        WHERE (${t['b3_clients']}.id = ${t['players']}.client_id)";
+
+    list($score, $playerid, $name, $players, $scores, $playerids, $flags) = CreateMedal($qry, "kills", "kills DESC", 0, "");
+    ShowMedal($text["mostkills"], $text["mostkills1"], $score, $playerid, $name, "xlr_pro_default.png", $text["mostkills2"], $players, $scores, $fname, $playerids, $flags, $ch);
+  }  
+}
+
+function pro_medal_highest_skill()
+{
+  global $currentconfignumber;
+  global $t;  //table names
+  global $text;
+
+  $fname = __FUNCTION__;
+  $ch = new cache($fname, $currentconfignumber);
+
+  if ($ch->cval == 0)
+  {
+    $qry = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, skill, fixed_name
+        FROM ${t['b3_clients']}, ${t['players']}
+        WHERE (${t['b3_clients']}.id = ${t['players']}.client_id)";
+
+    list($score, $playerid, $name, $players, $scores, $playerids, $flags) = CreateMedal($qry, "skill", "skill DESC", 0, "");
+    ShowMedal($text["highestskill"], $text["highestskill1"], $score, $playerid, $name, "xlr_pro_default.png", $text["highestskill2"], $players, $scores, $fname, $playerids, $flags, $ch);
+  }  
+}
+
 function pro_medal_head_hunter()
 {
   global $currentconfignumber;

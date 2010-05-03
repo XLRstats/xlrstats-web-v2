@@ -1152,7 +1152,6 @@ $(document).ready(function(){
 
   echo  "//-->\n";
   echo  "</script>\n";
-
   
   // We need this to be in the header for our stylepicker
   if ($stylepicker != "0")

@@ -38,6 +38,7 @@ function topplayers($sortby = "skill", $direction = "DESC", $offset = 0, $clan_n
   $link = baselink();
 
   global $coddb;
+  global $game;
   global $minkills;
   global $minrounds;
   global $toplist_max;
@@ -167,6 +168,34 @@ function topplayers($sortby = "skill", $direction = "DESC", $offset = 0, $clan_n
             
   $result = $coddb->sql_query($query);
   
+  // Queue the gamestats for these players
+  if($game == 'bfbc2') {
+    while($row = $coddb->sql_fetchrow($result))
+      $players[] = $row['name'];
+    
+    $last_element = end($players);
+    
+    //Build url
+    
+    $url = "http://api.bfbcs.com/api/pc?players=";
+    $clanpattern = '/\[.*\]\s/i';
+    foreach ($players as $player)
+    {
+      $url .= urlencode(preg_replace($clanpattern, '', $player));
+      if($player != $last_element)
+        $url .= ",";
+    }
+    $url .= "&fields=basic";
+    
+    //This will activate the link so the players will get queued for renewed global stats
+    file_get_contents($url);
+    //echo $url;
+    //Reset the cursor
+    $row = 0;
+    if(!mysql_data_seek($result,$row))continue;
+  }
+
+
   while ($row = $coddb->sql_fetchrow($result))
   {
     global $rankname;
@@ -183,7 +212,10 @@ function topplayers($sortby = "skill", $direction = "DESC", $offset = 0, $clan_n
 
     echo "<tr>";
     echo "<td align=\"center\"><strong>$rank</strong></td>";
-      echo "<td><img src=\"images/ranks/".$rankimage[$kills]."\" width=\"30\" height=\"30\" title=\"".$rankname[$kills]."\"></td>";
+      if ($game == 'bfbc2')
+        echo "<td><img src=\"http://g.bfbcs.com/2196/pc_".urlencode(preg_replace($clanpattern, '', $row['name'])).".png\" width=\"30\" height=\"30\"></td>";
+      else 
+        echo "<td><img src=\"images/ranks/".$rankimage[$kills]."\" width=\"30\" height=\"30\" title=\"".$rankname[$kills]."\"></td>";
 
     echo "<td><a href=\"$link?func=player&playerid=${row['id']}&config=${currentconfignumber}\">", htmlspecialchars(utf2iso($row['fixed_name'] ? $row['fixed_name'] : $row['name'])), "</a></td>";
 

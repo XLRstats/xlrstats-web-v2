@@ -592,10 +592,10 @@ function gamelauncher($type)
   global $text;
   include($currentconfig);
   $link = "";
-  $img_xfire = rel2abs('xlrstats/images/ico/icon_xfire.jpg');
-  $img_qtracker = rel2abs('xlrstats/images/ico/icon_qtracker.jpg');
-  $img_hlsw = rel2abs('xlrstats/images/ico/icon_hlsw.jpg');
-  $img_gsc = rel2abs('xlrstats/images/ico/icon_gsc.jpg');
+  $img_xfire = httplink() . 'images/ico/icon_xfire.jpg';
+  $img_qtracker = httplink() . 'images/ico/icon_qtracker.jpg';
+  $img_hlsw = httplink() . 'images/ico/icon_hlsw.jpg';
+  $img_gsc = httplink() . 'images/ico/icon_gsc.jpg';
 
   if ($type == 'xfire')
   {
@@ -1798,37 +1798,4 @@ function nextprevButtons($numRows, $recordsPerPage, $pagelink = "index.php?func=
   }
 }
 
-//Function that returns absolute URL of relative paths
-function rel2abs($rel)
-{
-  $base = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']);
-
-  // return if already absolute URL
-  if (parse_url($rel, PHP_URL_SCHEME) != '') 
-    return $rel;
-
-  // queries and anchors
-  if ($rel[0]=='#' || $rel[0]=='?') 
-    return $base.$rel;
-
-  // parse base URL and convert to local variables: $scheme, $host, $path */
-  extract(parse_url($base));
-
-  // remove non-directory element from path
-  $path = preg_replace('#/[^/]*$#', '', $path);
-
-  // destroy path if relative url points to root
-  if ($rel[0] == '/') $path = '';
-
-  // dirty absolute URL
-  $abs = "$host$path/$rel";
-
-  // replace '//' or '/./' or '/foo/../' with '/'
-  $re = array('#(/\.?/)#', '#/(?!\.\.)[^/]+/\.\./#');
-
-  for($n=1; $n>0; $abs=preg_replace($re, '/', $abs, -1, $n)) {}
- 
- // absolute URL is ready!
-  return $scheme.'://'.$abs;
-}
 ?>

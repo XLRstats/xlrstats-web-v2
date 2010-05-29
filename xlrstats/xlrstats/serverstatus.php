@@ -66,7 +66,7 @@ $gametypes = array(
 
 $ffa_modes = array('dm', 'ffa', 'syc-ffa');
 
-$images_folder = rel2abs('xlrstats/images');  //absolute url to xlrstats images folder.
+$images_folder = httplink() . 'images';
 
 session_start();
 cleanglobals();
@@ -209,13 +209,13 @@ function listOnlinePlayers()
   
   echo "
     <table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\">
-    <tr><td align=\"center\" class=\"onlineplayers\">Online Players";
+    <tr class=\"serverstatus\"><td align=\"center\" class=\"onlineplayers\">Online Players";
 
   echo " (".(count($clientsBlue) + count($clientsRed) + count($clientsSpec))." Players)";
   echo "
-    </td></tr><tr><td>
+    </td></tr><tr class=\"serverstatus\"><td class=\"serverstatus\">
     <table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\">
-    <tr>
+    <tr class=\"serverstatus\">
     <td class=\"playerstitle_exp\" align=\"center\" width=\"\">Lp.</td>
     <td class=\"playerstitle_exp\" align=\"center\" width=\"\">Nick</td>
     <td class=\"playerstitle_exp\" align=\"center\">Score</td>";
@@ -229,16 +229,16 @@ function listOnlinePlayers()
 
   if (in_array($gametype_short, $ffa_modes) || ($pll_noteams != 0))
     {
-      echo "<tr><td class=\"teams\" colspan=6 align=\"center\" class=\"status-spectators\">Players (".count($clientsSpec).") </td></tr>";
+      echo "<tr class=\"serverstatus\"><td class=\"teams\" colspan=6 align=\"center\" class=\"status-spectators\">Players (".count($clientsSpec).") </td></tr>";
       addClientsNew($clientsSpec, $onlineplayers_bgcolor);
     }
   else
   {
-    echo "<tr><td class=\"teams\" colspan=6 align=\"center\" class=\"status-blueteam\">$team2 (".count($clientsBlue).") </td></tr>";
+    echo "<tr class=\"serverstatus\"><td class=\"teams\" colspan=6 align=\"center\" class=\"status-blueteam\">$team2 (".count($clientsBlue).") </td></tr>";
     addClientsNew($clientsBlue, $onlineplayers_bgcolor);
-    echo "<tr><td class=\"teams\" colspan=6 align=\"center\" class=\"status-redteam\">$team1 (".count($clientsRed).") </td></tr>";
+    echo "<tr class=\"serverstatus\"><td class=\"teams\" colspan=6 align=\"center\" class=\"status-redteam\">$team1 (".count($clientsRed).") </td></tr>";
     addClientsNew($clientsRed, $onlineplayers_bgcolor);
-    echo "<tr><td class=\"teams\" colspan=6 align=\"center\" class=\"status-spectators\">$spectators (".count($clientsSpec).") </td></tr>";
+    echo "<tr class=\"serverstatus\"><td class=\"teams\" colspan=6 align=\"center\" class=\"status-spectators\">$spectators (".count($clientsSpec).") </td></tr>";
     addClientsNew($clientsSpec, $onlineplayers_bgcolor);
   }
 
@@ -353,58 +353,66 @@ $img_pattern = $images_folder.'/pattern.gif';
     border-bottom: 1px solid #222;
     padding-right: 10px;
 }
+tr.serverstatus {
+    border:0px;
+    padding:0px;
+}
+td.serverstatus {
+    border:0px;
+    padding:0px;
+}
 </style>
 
 <table class="maintable" width="<?php echo $main_width; ?>" border="0" cellpadding="0" cellspacing="0">
-  <tr>
-    <td width="150" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0">
-      <tr>
-        <td colspan="4" align="center"><img class="map" src="<?php echo $img_map ?>">
+  <tr class="serverstatus">
+    <td class="serverstatus" width="150" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr class="serverstatus">
+        <td class="serverstatus" colspan="4" align="center"><img class="map" src="<?php echo $img_map ?>">
         </td>
       </tr>
-      <tr>
-        <td>
+      <tr class="serverstatus">
+        <td class="serverstatus">
           <table width="100%" border="0" cellpadding="5" cellspacing="0">
             <td class="map" align="center">Con:<?php echo gamelauncher('xfire'); echo gamelauncher('qtracker'); echo gamelauncher('gsc'); echo gamelauncher('hlsw'); ?></td>
           </table>
         </td>
       </tr>
-      <tr>
+      <tr class="serverstatus">
         <td class="topfive" colspan="4"><?php topplayersblock($sortby=$func); ?></td>
       </tr></table>
     </td>
-    <td width="5">&nbsp;</td>
-    <td valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0">
-      <tr>
-        <td>
+    <td class="serverstatus" width="5">&nbsp;</td>
+    <td class="serverstatus" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr class="serverstatus">
+        <td class="serverstatus">
           <table width="100%" border="0" cellpadding="2" cellspacing="0">
-            <tr>
+            <tr class="serverstatus">
               <td colspan="3" class="servername"><?php echo utf2iso(ColorizeName($servername)); ?></td>
             </tr>
             <tr class="serverinfo">
-              <td width="100" align="left">Game</td><td width="5">:</td><td align="left"><?php echo $gameName; ?></td>
+              <td class="serverstatus" width="100" align="left">Game</td><td width="5">:</td><td align="left"><?php echo $gameName; ?></td>
             </tr>
             <tr class="serverinfo">
-              <td align="left">Server IP</td><td>:</td><td align="left"><?php echo $public_ip; ?></td>
+              <td class="serverstatus" align="left">Server IP</td><td class=\"serverstatus\">:</td><td align="left"><?php echo $public_ip; ?></td>
             </tr>
             <tr class="serverinfo">
-              <td align="left">Current Map</td><td>:</td><td align="left"><?php echo $nmapname; ?></td>
+              <td class="serverstatus" align="left">Current Map</td><td class=\"serverstatus\">:</td><td align="left"><?php echo $nmapname; ?></td>
             </tr>
             <tr class="serverinfo">
-            <td align="left">Game Type</td><td>:</td><td align="left"><?php echo $gametype; ?></td>
+            <td class="serverstatus" align="left">Game Type</td><td class=\"serverstatus\">:</td><td align="left"><?php echo $gametype; ?></td>
             </tr>
             <tr class="serverinfo">
-              <td align="left">Punkbuster</td><td>:</td><td align="left"><?php echo $punkbuster; ?></td>
+              <td class="serverstatus" align="left">Punkbuster</td><td class=\"serverstatus\">:</td><td align="left"><?php echo $punkbuster; ?></td>
             </tr>
           </table>
         </td>
       </tr>
-      <tr>
-        <td><?php listOnlinePlayers(); ?></td>
+      <tr class="serverstatus">
+        <td class="serverstatus"><?php listOnlinePlayers(); ?></td>
       </tr></table>    
     </td>
   </tr>
-  <tr>
+  <tr class="serverstatus">
     <td colspan="3" class="bottom" align="right">Powered by: <a href="http://www.xlrstats.com" target="_blank" title="XLRstats: Real Time Game Stats">XLRstats</a></td>
   </tr>
 </table>

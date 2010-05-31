@@ -170,29 +170,32 @@ function topplayers($sortby = "skill", $direction = "DESC", $offset = 0, $clan_n
   
   // Queue the gamestats for these players
   if($game == 'bfbc2') {
-    while($row = $coddb->sql_fetchrow($result))
-      $players[] = $row['name'];
-    
-    $last_element = end($players);
-    
-    //Build url
-    
-    $url = "http://api.bfbcs.com/api/pc?players=";
-    $clanpattern = '/\[.*\]\s/i';
-    foreach ($players as $player)
+    if(!empty($row))
     {
-      $url .= urlencode(preg_replace($clanpattern, '', $player));
-      if($player != $last_element)
-        $url .= ",";
-    }
-    $url .= "&fields=basic";
+      while($row = $coddb->sql_fetchrow($result))
+        $players[] = $row['name'];
     
-    //This will activate the link so the players will get queued for renewed global stats
-    file_get_contents($url);
-    //echo $url;
-    //Reset the cursor
-    $row = 0;
-    if(!mysql_data_seek($result,$row))continue;
+      $last_element = end($players);
+    
+      //Build url
+    
+      $url = "http://api.bfbcs.com/api/pc?players=";
+      $clanpattern = '/\[.*\]\s/i';
+      foreach ($players as $player)
+      {
+        $url .= urlencode(preg_replace($clanpattern, '', $player));
+        if($player != $last_element)
+          $url .= ",";
+      }
+      $url .= "&fields=basic";
+    
+      //This will activate the link so the players will get queued for renewed global stats
+      file_get_contents($url);
+      //echo $url;
+      //Reset the cursor
+      $row = 0;
+      if(!mysql_data_seek($result,$row))continue;
+    }
   }
 
 

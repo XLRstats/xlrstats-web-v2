@@ -97,9 +97,9 @@ if ($game == 'smg' )
 
 if ($game == 'bfbc2' )
 {
-    $pro_medals[] = 'pro_medal_best_ratio()';               // dynamite kills       bfbc2
-    $pro_medals[] = 'pro_medal_most_kills()';               // dynamite kills       bfbc2
-    $pro_medals[] = 'pro_medal_highest_skill()';            // dynamite kills       bfbc2
+    $pro_medals[] = 'pro_medal_best_ratio()';               // highest ratio        bfbc2
+    $pro_medals[] = 'pro_medal_most_kills()';               // most kills           bfbc2
+    $pro_medals[] = 'pro_medal_highest_skill()';            // highest skill        bfbc2
 }
 
 // Shame Medals ------------------------------------------------------------------------------------

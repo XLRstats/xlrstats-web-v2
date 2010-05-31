@@ -95,6 +95,13 @@ if ($game == 'smg' )
     $pro_medals[] = 'pro_medal_dynamite()';                 // dynamite kills       smg
 }
 
+if ($game == 'bfbc2' )
+{
+    $pro_medals[] = 'pro_medal_best_ratio()';               // dynamite kills       bfbc2
+    $pro_medals[] = 'pro_medal_most_kills()';               // dynamite kills       bfbc2
+    $pro_medals[] = 'pro_medal_highest_skill()';            // dynamite kills       bfbc2
+}
+
 // Shame Medals ------------------------------------------------------------------------------------
 $shame_medals[] = 'shame_medal_target_no_one()';            // deaths               all
 $shame_medals[] = 'shame_medal_need_some_practice()';       // lose streak          all

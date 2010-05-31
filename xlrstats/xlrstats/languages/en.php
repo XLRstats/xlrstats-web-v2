@@ -166,6 +166,15 @@ $text["mostflamekill"] = "Most flamethrower kills per round";
 $text["dynamitekiller"] = "Dynamite Specialist";             //Added 03.03.2010
 $text["dynamitekills"] = "Dynamite kills p/r";               //Added 03.03.2010
 $text["mostdynamitekill"] = "Most dynamite kills per round"; //Added 03.03.2010
+$text["mostkills"] = "Bone Collector";                       //Added 31.05.2010
+$text["mostkills1"] = "Kills";                               //Added 31.05.2010
+$text["mostkills2"] = "Top Killer";                          //Added 31.05.2010
+$text["highestskill"] = "The Player to Beat";                //Added 31.05.2010
+$text["highestskill1"] = "Skill";                            //Added 31.05.2010
+$text["highestskill2"] = "Top Skilled";                      //Added 31.05.2010
+$text["bestratio"] = "Hard to Hit";                          //Added 31.05.2010
+$text["bestratio1"] = "Ratio";                               //Added 31.05.2010
+$text["bestratio2"] = "Best Ratio";                          //Added 31.05.2010
 $text["awardavailable"] = "Award Still Available ::";
 $text["topthisplayers"] = "Top these players to win an award!";
 

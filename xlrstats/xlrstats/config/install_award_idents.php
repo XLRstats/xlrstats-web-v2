@@ -1518,4 +1518,8 @@ foreach($files as $file)
   unlink($file);
 }  
 
+function bfbc2_awards()
+{
+}
+
 ?>

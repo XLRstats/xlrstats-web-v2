@@ -330,3 +330,126 @@ tt { font-family: Arial, Courier New, Courier, fixed; font-size: 12px;}
 	
 }
 
+/************** Global Stats Styles*****************/
+.rankbarbg {
+	position:relative;
+	display: inline-block;
+	width:100px;
+	height:5px;
+	text-align:left;
+	border:1px solid #000;
+	background:#CCC;
+	margin-top:8px;
+	margin-bottom:5px;
+}
+.rankbar {
+	position:absolute;
+	background: none;
+	border: 0px;
+	padding: 0px;
+}
+.general_stars_box {
+	position:relative;
+	display: inline-block;
+	width:100px;
+	height:21px;
+}
+.general_stars {
+	background: none;
+	border: 0px;
+	padding: 0px;
+}
+.insignia  {
+	/* background:none repeat scroll 0 0 #F2F2F2; */
+	border:1px solid #888;
+	display:inline-block;
+	height:170px;
+	margin:6px;
+	padding:5px;
+	vertical-align:top;
+	width:130px;
+}
+.insignia.locked {
+	background:none repeat scroll 0 0 transparent;
+	filter:alpha(opacity=35);
+	-moz-opacity:0.35;
+	-khtml-opacity: 0.35;
+	opacity: 0.35;
+	padding:5px;
+	border:1px solid #F2F2F2;
+}
+.insignia .image {
+	text-align:center
+}
+.insignia .name {
+	font-size:11px;
+	font-weight:bold;
+	padding:2px;
+	text-align:center;
+	height:40px;
+}
+.insignia .criteria {
+	font-size:10px;
+	padding:2px;
+	text-align:center;
+}
+.insignia .count {
+	background:none repeat scroll 0 0 #768E99;
+	float:right;
+	font-size:11px;
+	font-weight:bold;
+	margin-top:-25px;
+	padding:2px;
+	text-align:center;
+	color:white;
+	margin-right:5px;
+}
+.weapon {
+	border:1px solid #F2F2F2;
+	display:inline-block;
+	height:170px;
+	margin:5px;
+	padding:4px;
+	vertical-align:top;
+	width:130px;
+}
+.weapon.locked {
+	background:none repeat scroll 0 0 transparent;
+	border:1px solid #F2F2F2;
+	-moz-opacity:0.25;
+	-khtml-opacity: 0.25;
+	opacity: 0.25;
+	padding:5px;
+}
+.weapon .name {
+	background:none repeat scroll 0 0 #F2F2F2;
+	font-size:11px;
+	font-weight:bold;
+	padding:2px;
+	text-align:center;
+}
+.weapon .image {
+	background:none repeat scroll 0 0 #F2F2F2;
+	padding:5px;
+	text-align:center;
+}
+.weapon ul li {
+	border-bottom:1px solid #F2F2F2;
+	font-size:11px;
+	padding:2px;
+}
+.weapon ul li span.label, ul.classstats li span.label, ul.stats li span.label {
+	display:block;
+	font-weight:bold;
+	text-align:left;
+}
+.weapon ul li span.score {
+	display:block;
+	float:right;
+	margin-top:-13px;
+}
+ul {
+	list-style:none outside none;
+	padding:0;
+	margin-top:3px;
+}

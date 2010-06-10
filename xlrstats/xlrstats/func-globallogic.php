@@ -1088,6 +1088,7 @@ function displayheader($pop=0)
   echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"".$xlrpath."lib/autocomplete/jquery.autocomplete.css\" />\n";
   echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"".$xlrpath."lib/jquery-boxy/boxy.css\" media=\"screen\" />\n";
   echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"".$xlrpath."lib/tooltip/boxover.css\" media=\"screen\" />\n";
+  echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"".$xlrpath."lib/tabber/tabber.css\" media=\"screen\" />\n";
   echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"".$csspath."\" media=\"screen\" />\n";
   echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"".$loadercsspath."\" media=\"screen\" />\n";
   // include the php dynamic css
@@ -1098,6 +1099,7 @@ function displayheader($pop=0)
   echo "<script type=\"text/JavaScript\" src=\"".$xlrpath."lib/jquery-boxy/jquery.boxy.js\"></script>\n";
   echo "<script type=\"text/javascript\" src=\"".$xlrpath."lib/autocomplete/jquery.autocomplete.js\"></script>\n";
   echo "<script type=\"text/JavaScript\" src=\"".$xlrpath."lib/tooltip/boxover.js\"></script>\n";
+  echo "<script type=\"text/JavaScript\" src=\"".$xlrpath."lib/tabber/tabber.js\"></script>\n";
 
   echo "<style type=\"text/css\">\n";
   echo "<!--\n";

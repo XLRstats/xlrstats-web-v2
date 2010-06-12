@@ -373,7 +373,7 @@ function bfbc2_display_player_weapons($player)
 
   foreach($weapons as $wname => $wstats)
   {
-    if($wstats['kills'] > 0)
+    if($wstats['seconds'] > 0)
     {
       //Change seconds to hh:mm:ss (specially format time)
       $time_seconds = round($wstats['seconds']);
@@ -475,6 +475,10 @@ function bfbc2_display_player_vehicles($player)
                            <li>
                              <span class="label">Class:</span>
                              <span class="score">'.ucwords($vstats['class']).'</span>
+                           </li>
+                           <li>
+                             <span class="label">Kills:</span>
+                             <span class="score">'.number_format($vstats['kills'], 0, " ", " ").'</span>
                            </li>
                            <li>
                              <span class="label">Roadkills:</span>

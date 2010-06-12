@@ -529,6 +529,8 @@ echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" cla
       echo "<td align=\"center\"><a href=\"$link?func=map&mapid=${row['id']}\">${row['name']}</a></td>";
 
     //$mapName = strtolower($row['name']);
+    if($game == "bfbc2")
+      $row['name'] = preg_replace('/Levels\//', '', $row['name']);
 
     echo "<td align=\"center\"><a href=\"$link?func=map&mapid=${row['id']}\">";
     // catch cod1, coduo and cod2 in one imagefolder
@@ -3234,6 +3236,10 @@ function map_short($mapid)
     $gamename = "cod2";
   else
     $gamename = $game;
+
+  if($game == "bfbc2")
+    $row['name'] = preg_replace('/Levels\//', '', $row['name']);
+
   get_pic("images/maps/$gamename/middle/${row['name']}");
 
   echo "  </td><td valign=\"top\" class=\"tiny\">";

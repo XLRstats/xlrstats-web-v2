@@ -55,18 +55,21 @@ function player_bfbc2_globalstats($playerid, $dbID = false)
   $url = 'http://api.bfbcs.com/api/pc';
   $postdata = 'players='.$playername.'&fields=all';
 
-  if(!function_exists('curl_init'))
+  if(function_exists('curl_init'))
   {
-    $output = '<span class="servererrmsg">Site Admin: cURL support is disabled in your php.ini! Please enable it or contact your web service provider.</span>';
-    return $output;
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $postdata);
+    $playerstats = curl_exec($ch);
+    curl_close($ch);
   }
-
-  $ch = curl_init($url);
-  curl_setopt($ch, CURLOPT_POST, true);
-  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($ch, CURLOPT_POSTFIELDS, $postdata);
-  $playerstats = curl_exec($ch);
-  curl_close($ch);
+  else
+  {
+    //Alternative for cURL support
+    $url = $url.'?'.$postdata;
+    $playerstats = file_get_contents($url);
+  }
 
   $playerstats = json_decode($playerstats);
   

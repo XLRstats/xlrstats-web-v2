@@ -448,6 +448,12 @@ tt { font-family: Arial, Courier New, Courier, fixed; font-size: 12px;}
 	float:right;
 	margin-top:-13px;
 }
+.star {
+	float:right;
+	margin-top: -32px;
+	margin-right: 10px;
+	font-size:smaller;
+}
 ul {
 	list-style:none outside none;
 	padding:0;

@@ -399,10 +399,17 @@ function bfbc2_display_player_weapons($player)
       else
         $weaponname = $wstats['name'];
 
+      $star = get_star($wstats);
+ 
       $weaponlist .= '<div class="weapon">
                         <div class="image"><img src ="images/weapons/bfbc2/small/'.$wname.'.png" width="120px"/></div>
                         <div class="name">'.$weaponname.'</div>
-                        <ul>
+                     ';
+
+      if(isset($star))
+        $weaponlist .= '<div class="star"><img src ="images/bc2global/stars/'.$star[0].'.png" title="You have '.((isset($star[1])) ? ($star[1] . ' ' . $star[2]. ' stars!') : ('a ' . $star[2]) . ' star!').' " />'.$star[1].'</div>';
+
+        $weaponlist .= '<ul>
                           <li>
                             <span class="label">Kills:</span>
                             <span class="score">'.number_format($wstats['kills'], 0, " ", " ").'</span>
@@ -471,10 +478,17 @@ function bfbc2_display_player_vehicles($player)
 
       $avgspeed = @($vstats['distance'] / $time_seconds);
 
+      $star = get_star($vstats);
+
       $vehiclelist .= '<div class="weapon">
                          <div class="image"><img src ="images/weapons/bfbc2/small/'.$vname.'.png" width="120"/></div>
                          <div class="name">'.$vstats['name'].'</div>
-                         <ul>
+                      ';
+
+      if(isset($star))
+        $vehiclelist .= '<div class="star"><img src ="images/bc2global/stars/'.$star[0].'.png" title="You have '.((isset($star[1])) ? ($star[1] . ' ' . $star[2]. ' stars!') : ('a ' . $star[2]) . ' star!').' " />'.$star[1].'</div>';
+
+      $vehiclelist .= '  <ul>
                            <li>
                              <span class="label">Class:</span>
                              <span class="score">'.ucwords($vstats['class']).'</span>
@@ -1071,6 +1085,46 @@ function display_bestweapon($player)
   $bestweapon_img = '<img src ="images/weapons/bfbc2/small/' . $bestweapon_img .'" title="Favorite Weapon : ' . $bestweapon . '"/>';
 
   return $bestweapon_img;
+}
+
+//Function that returns the star/count of the weapon/vehicle 
+function get_star($object)
+{
+  $stars = array_reverse($object['stars']);
+
+  foreach($stars as $key => $value)
+  {
+    if ($value > 0) 
+    {
+      switch($key)
+      {
+        case "plat":
+        $madeof = "Platin";
+        break;
+
+        case "gold":
+        $madeof = "Gold";
+        break;
+
+        case "silv":
+        $madeof = "Silver";
+        break;
+
+        case "bron":
+        $madeof = "Bronze";
+        break;
+      }
+
+      if($value == 1)
+        $star = array($key, null, $madeof);
+      else
+        $star = array($key, $value, $madeof);
+      break;
+    }
+  }
+
+  if(isset($star))
+    return $star;
 }
 
 //function that converts objects to array

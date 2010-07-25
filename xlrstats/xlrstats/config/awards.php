@@ -32,6 +32,9 @@ $shame_medals = array();
 // Pro Medals --------------------------------------------------------------------------------------
 $pro_medals[] = 'pro_medal_serial_killer()';                // win streak           all
 $pro_medals[] = 'pro_medal_nothing_better_to_do()';         // rounds played        all
+$pro_medals[] = 'pro_medal_best_ratio()';                   // highest ratio        all
+$pro_medals[] = 'pro_medal_most_kills()';                   // most kills           all
+$pro_medals[] = 'pro_medal_highest_skill()';                // highest skill        all
 
 // Action medals in actionbased games only
 if ($actionbased == 1)
@@ -45,10 +48,10 @@ if ($game == 'cod1' || $game == 'coduo' || $game == 'cod2' || $game == 'cod4' ||
     $pro_medals[] = 'pro_medal_sniper_killer()';            // sniper kills         cod urt
 }
 
-if ($game == 'cod1' || $game == 'coduo' || $game == 'cod2' || $game == 'cod4' || $game == 'codwaw'  || $game == 'urt' || $game == 'smg')
+if ($game == 'cod1' || $game == 'coduo' || $game == 'cod2' || $game == 'cod4' || $game == 'codwaw'  || $game == 'urt' || $game == 'smg' || $game == 'bfbc2')
 {
-    $pro_medals[] = 'pro_medal_head_hunter()';              // most headshots       cod urt smg
-    $pro_medals[] = 'pro_medal_pistol_killer()';            // pistol kills         cod urt smg
+    $pro_medals[] = 'pro_medal_head_hunter()';              // most headshots       cod urt smg bfbc2
+    $pro_medals[] = 'pro_medal_pistol_killer()';            // pistol kills         cod urt smg bfbc2
 }
 
 if ($game == 'cod1' || $game == 'coduo' || $game == 'cod2')
@@ -97,9 +100,7 @@ if ($game == 'smg' )
 
 if ($game == 'bfbc2' )
 {
-    $pro_medals[] = 'pro_medal_best_ratio()';               // highest ratio        bfbc2
-    $pro_medals[] = 'pro_medal_most_kills()';               // most kills           bfbc2
-    $pro_medals[] = 'pro_medal_highest_skill()';            // highest skill        bfbc2
+
 }
 
 // Shame Medals ------------------------------------------------------------------------------------

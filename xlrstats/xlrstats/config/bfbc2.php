@@ -62,6 +62,7 @@ $m['Levels/MP_009CQ'] = "Laguna Preza (Conquest)";
 //Rush Levels
 $m['Levels/MP_002'] = "Valparaiso (Rush)";
 $m['Levels/MP_004'] = "Isla Inocentes (Rush)";
+$m['Levels/MP_005GR'] = "Atacama Desert (Rush)";
 $m['Levels/MP_006'] = "Africa Harbor (Rush)";
 $m['Levels/MP_008'] = "Nelson Bay (Rush)";
 $m['Levels/MP_009GR'] = "Laguna Preza (Rush)";

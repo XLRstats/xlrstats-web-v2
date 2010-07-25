@@ -1767,6 +1767,19 @@ function displayTooltip($hitloc, $hitlocname="")
     $text['right_foot'] = $text["feet"];
   }
 
+  if($game == 'bfbc2')
+  {
+    if(!isset($hitloc['head'])) $hitloc['head'] = array(0,0,0,0,0);
+    if(!isset($hitloc['torso'])) $hitloc['torso'] = array(0,0,0,0,0);
+
+    $hitloc['head'] = $hitloc['head'];
+    $text['head'] = $text["head"];
+    $hitloc['torso_upper'] = $hitloc['torso'];
+    $text['torso_upper'] = $text["torso"];
+    $hitloc['torso_lower'] = $hitloc['torso'];
+    $text['torso_lower'] = $text["torso"];
+  }
+
   if($game != 'wop')
   {
     $title = "cssbody=[bdyprts-bdy] cssheader=[bdyprts-hdr] 
@@ -2014,6 +2027,31 @@ function player_bodyparts_s($playerid, $dbID = false)
     if (isset($mybodypats['foot'])) $hz_right_foot = $mybodypats['foot'];
     else $hz_right_foot = 0;
     if (isset($mybodypats['none'])) $hz_none = $mybodypats['none'];
+    else $hz_none = 0;
+  }
+  elseif($game == "bfbc2")
+  {
+    // This is currently set to display head and torso (=chest+abdomen), bfbc2 differentiates only headshots from the rest.
+    if (isset($mybodypats['head'])) $hz_head = $mybodypats['head'];
+    else $hz_head = 0;
+    if (isset($mybodypats['torso'])) $hz_torso_upper = $mybodypats['torso'];
+    else $hz_torso_upper = 0;
+    if (isset($mybodypats['torso'])) $hz_torso_lower = $mybodypats['torso'];
+    else $hz_torso_lower = 0;
+    $hz_neck = 0;
+    $hz_left_arm_upper = 0;
+    $hz_left_arm_lower = 0;
+    $hz_left_hand = 0;
+    $hz_right_arm_upper = 0;
+    $hz_right_arm_lower = 0;
+    $hz_right_hand = 0;
+    $hz_left_leg_upper = 0;
+    $hz_left_leg_lower = 0;
+    $hz_left_foot = 0;
+    $hz_right_leg_upper = 0;
+    $hz_right_leg_lower = 0;
+    $hz_right_foot = 0;
+    if (isset($mybodypats['none'])) $hz_none = $mybodypats['torso'];
     else $hz_none = 0;
   }
   else {

@@ -1511,6 +1511,37 @@ function smg_awards()
   $coddb->sql_freeresult($result);
 }
 
+function bfbc2_awards()
+{
+  global $t;
+  global $coddb;
+  global $buffer;
+  
+  //-- Bodyparts -----------------------------------------------------------------
+  $buffer .= "\n// Bodyparts ---------------------\n";
+  
+  // Head
+  $query = "SELECT id 
+            FROM ${t["bodyparts"]}
+            WHERE name = 'head'
+            LIMIT 0 , 30";
+  
+  $result = $coddb->sql_query($query);
+  $numrows = $coddb->sql_numrows($result);
+  
+  $buffer .= "\$bp_head = \"(";
+  $c = 0;
+  while ($row = $coddb->sql_fetchrow($result))
+  {
+    $c += 1;
+    $buffer .= $row["id"];
+    if($c < $numrows)
+      $buffer .=  ", ";
+  }
+  $buffer .= ")\";\n";
+  $coddb->sql_freeresult($result);
+}
+
 //delete cache to display new medal owners
 $files = glob("../dynamic/cache/*.txt");
 foreach($files as $file) 
@@ -1518,8 +1549,5 @@ foreach($files as $file)
   unlink($file);
 }  
 
-function bfbc2_awards()
-{
-}
 
 ?>

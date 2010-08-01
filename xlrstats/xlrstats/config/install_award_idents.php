@@ -1517,6 +1517,30 @@ function bfbc2_awards()
   global $coddb;
   global $buffer;
   
+  //-- Weapons -------------------------------------------------------------------
+  $buffer .= "\n// Weapons / Means of Death --------\n";
+
+  // Pistols
+  $query = "SELECT id 
+            FROM ${t["weapons"]}
+            WHERE name IN ('M1911', 'MP443', '9', 'M9-3')
+            LIMIT 0 , 30";
+  
+  $result = $coddb->sql_query($query);
+  $numrows = $coddb->sql_numrows($result);
+  
+  $buffer .= "\$wp_pistols = \"(";
+  $c = 0;
+  while ($row = $coddb->sql_fetchrow($result))
+  {
+    $c += 1;
+    $buffer .= $row["id"];
+    if($c < $numrows)
+      $buffer .=  ", ";
+  }
+  $buffer .= ")\";\n";
+  $coddb->sql_freeresult($result);
+
   //-- Bodyparts -----------------------------------------------------------------
   $buffer .= "\n// Bodyparts ---------------------\n";
   

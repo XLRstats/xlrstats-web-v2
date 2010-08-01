@@ -56,17 +56,19 @@ $m['Levels/MP_012'] = "Port Valdez";
 $m['Levels/MP_001'] = "Panama Canal (Conquest)";
 $m['Levels/MP_003'] = "Laguna Alta (Conquest)";
 $m['Levels/MP_005'] = "Atacama Desert (Conquest)";
-$m['Levels/MP_006CQ'] = "Africa Harbor (Conquest)";
+$m['Levels/MP_006CQ'] = "Arica Harbor (Conquest)";
 $m['Levels/MP_007'] = "White Pass (Conquest)";
 $m['Levels/MP_009CQ'] = "Laguna Preza (Conquest)";
+$m['Levels/MP_012CQ'] = "Port Valdez (Conquest)";
 //Rush Levels
 $m['Levels/MP_002'] = "Valparaiso (Rush)";
 $m['Levels/MP_004'] = "Isla Inocentes (Rush)";
 $m['Levels/MP_005GR'] = "Atacama Desert (Rush)";
-$m['Levels/MP_006'] = "Africa Harbor (Rush)";
+$m['Levels/MP_006'] = "Arica Harbor (Rush)";
 $m['Levels/MP_008'] = "Nelson Bay (Rush)";
 $m['Levels/MP_009GR'] = "Laguna Preza (Rush)";
 $m['Levels/MP_012GR'] = "Port Valdez (Rush)";
+$m['Levels/MP_007GR'] = "White Pass (Rush)";
 //Squadrush Levels
 $m['Levels/MP_001SR'] = "Panama Canal (Squadrush)";
 $m['Levels/MP_002SR'] = "Valparaiso (Squadrush)";
@@ -74,7 +76,7 @@ $m['Levels/MP_005SR'] = "Atacama Desert (Squadrush)";
 $m['Levels/MP_012SR'] = "Port Valdez (Squadrush)";
 //Squad Deathmatch
 $m['Levels/MP_004SDM'] = "Isla Inocentes (Squad DM)";
-$m['Levels/MP_006SDM'] = "Africa Harbor (Squad DM)";
+$m['Levels/MP_006SDM'] = "Arica Harbor (Squad DM)";
 $m['Levels/MP_007SDM'] = "White Pass (Squad DM)";
 $m['Levels/MP_009SDM'] = "Laguna Preza (Squad DM)";
 

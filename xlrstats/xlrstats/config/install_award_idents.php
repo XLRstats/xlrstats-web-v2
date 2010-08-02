@@ -211,6 +211,61 @@ function end_process()
   echo "</table>";
 }
 
+function add_weaponaward($var, $weaps)
+{
+  global $t;
+  global $coddb;
+  global $buffer;
+
+  $query = "SELECT id 
+            FROM ${t["weapons"]}
+            WHERE name IN ($weaps)
+            LIMIT 0 , 30";
+  
+  $result = $coddb->sql_query($query);
+  $numrows = $coddb->sql_numrows($result);
+  
+  $buffer .= "\$".$var." = \"(";
+  $c = 0;
+  while ($row = $coddb->sql_fetchrow($result))
+  {
+    $c += 1;
+    $buffer .= $row["id"];
+    if($c < $numrows)
+      $buffer .=  ", ";
+  }
+  $buffer .= ")\";\n";
+  $coddb->sql_freeresult($result);
+
+}
+
+function add_bodypartaward($var, $bodyp)
+{
+  global $t;
+  global $coddb;
+  global $buffer;
+
+  $query = "SELECT id 
+            FROM ${t["bodyparts"]}
+            WHERE name IN ($bodyp)
+            LIMIT 0 , 30";
+  
+  $result = $coddb->sql_query($query);
+  $numrows = $coddb->sql_numrows($result);
+  
+  $buffer .= "\$".$var." = \"(";
+  $c = 0;
+  while ($row = $coddb->sql_fetchrow($result))
+  {
+    $c += 1;
+    $buffer .= $row["id"];
+    if($c < $numrows)
+      $buffer .=  ", ";
+  }
+  $buffer .= ")\";\n";
+  $coddb->sql_freeresult($result);
+}
+
 //********************************************************************************
 //  AWARDS
 //********************************************************************************
@@ -226,26 +281,7 @@ function cod1_awards()
   $buffer .= "\n// Weapons / Means of Death --------\n";
   
   // Bashes
-  $query = "SELECT id 
-            FROM ${t["weapons"]}
-            WHERE name = 'mod_melee'
-            LIMIT 0 , 30";
-  
-  $result = $coddb->sql_query($query);
-  $numrows = $coddb->sql_numrows($result);
-  
-  $buffer .= "\$wp_bashes = \"(";
-  $c = 0;
-  while ($row = $coddb->sql_fetchrow($result))
-  {
-    $c += 1;
-    $buffer .= $row["id"];
-    if($c < $numrows)
-      $buffer .=  ", ";
-  }
-  $buffer .= ")\";\n";
-  $coddb->sql_freeresult($result);
-  
+  add_weaponaward("wp_bashes", "'mod_melee'"); 
   // Nades
   $query = "SELECT id 
             FROM ${t["weapons"]}
@@ -267,49 +303,10 @@ function cod1_awards()
   }
   $buffer .= ")\";\n";
   $coddb->sql_freeresult($result);
-  
   // Snipers
-  $query = "SELECT id 
-            FROM ${t["weapons"]}
-            WHERE name IN ('springfield_mp', 'kar98k_sniper_mp', 'mosin_nagant_sniper_mp', 'enfield_scope_mp')
-            LIMIT 0 , 30";
-  
-  $result = $coddb->sql_query($query);
-  $numrows = $coddb->sql_numrows($result);
-  
-  $buffer .= "\$wp_snipers = \"(";
-  $c = 0;
-  while ($row = $coddb->sql_fetchrow($result))
-  {
-    $c += 1;
-    $buffer .= $row["id"];
-    if($c < $numrows)
-      $buffer .=  ", ";
-  }
-  $buffer .= ")\";\n";
-  $coddb->sql_freeresult($result);
-  
+  add_weaponaward("wp_snipers", "'springfield_mp', 'kar98k_sniper_mp', 'mosin_nagant_sniper_mp', 'enfield_scope_mp'"); 
   // Pistols
-  $query = "SELECT id 
-            FROM ${t["weapons"]}
-            WHERE name IN ('colt_mp', 'luger_mp', 'webley_mp', 'TT30_mp')
-            LIMIT 0 , 30";
-  
-  $result = $coddb->sql_query($query);
-  $numrows = $coddb->sql_numrows($result);
-  
-  $buffer .= "\$wp_pistols = \"(";
-  $c = 0;
-  while ($row = $coddb->sql_fetchrow($result))
-  {
-    $c += 1;
-    $buffer .= $row["id"];
-    if($c < $numrows)
-      $buffer .=  ", ";
-  }
-  $buffer .= ")\";\n";
-  $coddb->sql_freeresult($result);
-  
+  add_weaponaward("wp_pistols", "'colt_mp', 'luger_mp', 'webley_mp', 'TT30_mp'"); 
   // Accidents
   $query = "SELECT id 
             FROM ${t["weapons"]}
@@ -368,47 +365,9 @@ function coduo_awards()
   $buffer .= "\n// Weapons / Means of Death --------\n";
   
   // bomb (satchell)
-  $query = "SELECT id 
-            FROM ${t["weapons"]}
-            WHERE name = 'satchelcharge_mp'
-            LIMIT 0 , 30";
-  
-  $result = $coddb->sql_query($query);
-  $numrows = $coddb->sql_numrows($result);
-  
-  $buffer .= "\$wp_bomb = \"(";
-  $c = 0;
-  while ($row = $coddb->sql_fetchrow($result))
-  {
-    $c += 1;
-    $buffer .= $row["id"];
-    if($c < $numrows)
-      $buffer .=  ", ";
-  }
-  $buffer .= ")\";\n";
-  $coddb->sql_freeresult($result);
-  
+  add_weaponaward("wp_bomb", "'satchelcharge_mp'"); 
   // Bashes
-  $query = "SELECT id 
-            FROM ${t["weapons"]}
-            WHERE name = 'mod_melee'
-            LIMIT 0 , 30";
-  
-  $result = $coddb->sql_query($query);
-  $numrows = $coddb->sql_numrows($result);
-  
-  $buffer .= "\$wp_bashes = \"(";
-  $c = 0;
-  while ($row = $coddb->sql_fetchrow($result))
-  {
-    $c += 1;
-    $buffer .= $row["id"];
-    if($c < $numrows)
-      $buffer .=  ", ";
-  }
-  $buffer .= ")\";\n";
-  $coddb->sql_freeresult($result);
-  
+  add_weaponaward("wp_bashes", "'mod_melee'"); 
   // Nades
   $query = "SELECT id 
             FROM ${t["weapons"]}
@@ -430,49 +389,10 @@ function coduo_awards()
   }
   $buffer .= ")\";\n";
   $coddb->sql_freeresult($result);
-  
   // Snipers
-  $query = "SELECT id 
-            FROM ${t["weapons"]}
-            WHERE name IN ('springfield_mp', 'kar98k_sniper_mp', 'mosin_nagant_sniper_mp', 'enfield_scope_mp')
-            LIMIT 0 , 30";
-  
-  $result = $coddb->sql_query($query);
-  $numrows = $coddb->sql_numrows($result);
-  
-  $buffer .= "\$wp_snipers = \"(";
-  $c = 0;
-  while ($row = $coddb->sql_fetchrow($result))
-  {
-    $c += 1;
-    $buffer .= $row["id"];
-    if($c < $numrows)
-      $buffer .=  ", ";
-  }
-  $buffer .= ")\";\n";
-  $coddb->sql_freeresult($result);
-  
+  add_weaponaward("wp_snipers", "'springfield_mp', 'kar98k_sniper_mp', 'mosin_nagant_sniper_mp', 'enfield_scope_mp'"); 
   // Pistols
-  $query = "SELECT id 
-            FROM ${t["weapons"]}
-            WHERE name IN ('colt_mp', 'luger_mp', 'webley_mp', 'tt33_mp')
-            LIMIT 0 , 30";
-  
-  $result = $coddb->sql_query($query);
-  $numrows = $coddb->sql_numrows($result);
-  
-  $buffer .= "\$wp_pistols = \"(";
-  $c = 0;
-  while ($row = $coddb->sql_fetchrow($result))
-  {
-    $c += 1;
-    $buffer .= $row["id"];
-    if($c < $numrows)
-      $buffer .=  ", ";
-  }
-  $buffer .= ")\";\n";
-  $coddb->sql_freeresult($result);
-  
+  add_weaponaward("wp_pistols", "'colt_mp', 'luger_mp', 'webley_mp', 'tt33_mp'"); 
   // Accidents
   $query = "SELECT id 
             FROM ${t["weapons"]}
@@ -531,26 +451,7 @@ function cod2_awards()
   $buffer .= "\n// Weapons / Means of Death --------\n";
   
   // Bashes
-  $query = "SELECT id 
-            FROM ${t["weapons"]}
-            WHERE name = 'mod_melee'
-            LIMIT 0 , 30";
-  
-  $result = $coddb->sql_query($query);
-  $numrows = $coddb->sql_numrows($result);
-  
-  $buffer .= "\$wp_bashes = \"(";
-  $c = 0;
-  while ($row = $coddb->sql_fetchrow($result))
-  {
-    $c += 1;
-    $buffer .= $row["id"];
-    if($c < $numrows)
-      $buffer .=  ", ";
-  }
-  $buffer .= ")\";\n";
-  $coddb->sql_freeresult($result);
-  
+  add_weaponaward("wp_bashes", "'mod_melee'"); 
   // Nades
   $query = "SELECT id 
             FROM ${t["weapons"]}
@@ -571,49 +472,10 @@ function cod2_awards()
   }
   $buffer .= ")\";\n";
   $coddb->sql_freeresult($result);
-  
   // Snipers
-  $query = "SELECT id 
-            FROM ${t["weapons"]}
-            WHERE name IN ('springfield_mp', 'kar98k_sniper_mp', 'mosin_nagant_sniper_mp', 'enfield_scope_mp')
-            LIMIT 0 , 30";
-  
-  $result = $coddb->sql_query($query);
-  $numrows = $coddb->sql_numrows($result);
-  
-  $buffer .= "\$wp_snipers = \"(";
-  $c = 0;
-  while ($row = $coddb->sql_fetchrow($result))
-  {
-    $c += 1;
-    $buffer .= $row["id"];
-    if($c < $numrows)
-      $buffer .=  ", ";
-  }
-  $buffer .= ")\";\n";
-  $coddb->sql_freeresult($result);
-  
+  add_weaponaward("wp_snipers", "'springfield_mp', 'kar98k_sniper_mp', 'mosin_nagant_sniper_mp', 'enfield_scope_mp'"); 
   // Pistols
-  $query = "SELECT id 
-            FROM ${t["weapons"]}
-            WHERE name IN ('colt_mp', 'luger_mp', 'webley_mp', 'TT30_mp')
-            LIMIT 0 , 30";
-  
-  $result = $coddb->sql_query($query);
-  $numrows = $coddb->sql_numrows($result);
-  
-  $buffer .= "\$wp_pistols = \"(";
-  $c = 0;
-  while ($row = $coddb->sql_fetchrow($result))
-  {
-    $c += 1;
-    $buffer .= $row["id"];
-    if($c < $numrows)
-      $buffer .=  ", ";
-  }
-  $buffer .= ")\";\n";
-  $coddb->sql_freeresult($result);
-  
+  add_weaponaward("wp_pistols", "'colt_mp', 'luger_mp', 'webley_mp', 'TT30_mp'"); 
   // Accidents
   $query = "SELECT id 
             FROM ${t["weapons"]}
@@ -671,172 +533,21 @@ function cod4_awards()
   $buffer .= "\n// Weapons / Means of Death --------\n";
   
   // Claymore
-  $query = "SELECT id 
-            FROM ${t["weapons"]}
-            WHERE name = 'claymore_mp'
-            LIMIT 0 , 30";
-  
-  $result = $coddb->sql_query($query);
-  $numrows = $coddb->sql_numrows($result);
-  
-  $buffer .= "\$wp_claymore = \"(";
-  $c = 0;
-  while ($row = $coddb->sql_fetchrow($result))
-  {
-    $c += 1;
-    $buffer .= $row["id"];
-    if($c < $numrows)
-      $buffer .=  ", ";
-  }
-  $buffer .= ")\";\n";
-  $coddb->sql_freeresult($result);
-  
+  add_weaponaward("wp_claymore", "'claymore_mp'"); 
   // Fireman (Car)
-  $query = "SELECT id 
-            FROM ${t["weapons"]}
-            WHERE name = 'destructible_car'
-            LIMIT 0 , 30";
-  
-  $result = $coddb->sql_query($query);
-  $numrows = $coddb->sql_numrows($result);
-  
-  $buffer .= "\$wp_fireman = \"(";
-  $c = 0;
-  while ($row = $coddb->sql_fetchrow($result))
-  {
-    $c += 1;
-    $buffer .= $row["id"];
-    if($c < $numrows)
-      $buffer .=  ", ";
-  }
-  $buffer .= ")\";\n";
-  $coddb->sql_freeresult($result);
-  
+  add_weaponaward("wp_fireman", "'destructible_car'"); 
   // bomb (C4)
-  $query = "SELECT id 
-            FROM ${t["weapons"]}
-            WHERE name = 'c4_mp'
-            LIMIT 0 , 30";
-  
-  $result = $coddb->sql_query($query);
-  $numrows = $coddb->sql_numrows($result);
-  
-  $buffer .= "\$wp_bomb = \"(";
-  $c = 0;
-  while ($row = $coddb->sql_fetchrow($result))
-  {
-    $c += 1;
-    $buffer .= $row["id"];
-    if($c < $numrows)
-      $buffer .=  ", ";
-  }
-  $buffer .= ")\";\n";
-  $coddb->sql_freeresult($result);
-  
+  add_weaponaward("wp_bomb", "'c4_mp'"); 
   // Knives
-  $query = "SELECT id 
-            FROM ${t["weapons"]}
-            WHERE name = 'mod_melee'
-            LIMIT 0 , 30";
-  
-  $result = $coddb->sql_query($query);
-  $numrows = $coddb->sql_numrows($result);
-  
-  $buffer .= "\$wp_knives = \"(";
-  $c = 0;
-  while ($row = $coddb->sql_fetchrow($result))
-  {
-    $c += 1;
-    $buffer .= $row["id"];
-    if($c < $numrows)
-      $buffer .=  ", ";
-  }
-  $buffer .= ")\";\n";
-  $coddb->sql_freeresult($result);
-  
+  add_weaponaward("wp_knives", "'mod_melee'"); 
   // Nades
-  $query = "SELECT id 
-            FROM ${t["weapons"]}
-            WHERE name IN ('frag_grenade_mp', 'frag_grenade_short_mp')
-            LIMIT 0 , 30";
-  
-  $result = $coddb->sql_query($query);
-  $numrows = $coddb->sql_numrows($result);
-  
-  $buffer .= "\$wp_nades = \"(";
-  $c = 0;
-  while ($row = $coddb->sql_fetchrow($result))
-  {
-    $c += 1;
-    $buffer .= $row["id"];
-    if($c < $numrows)
-      $buffer .=  ", ";
-  }
-  $buffer .= ")\";\n";
-  $coddb->sql_freeresult($result);
-  
+  add_weaponaward("wp_nades", "'frag_grenade_mp', 'frag_grenade_short_mp'"); 
   // Snipers
-  $query = "SELECT id 
-            FROM ${t["weapons"]}
-            WHERE name IN ('m40a3_acog_mp', 'm40a3_mp', 'm21_acog_mp', 'm21_mp','dragunov_mp', 'dragunov_acog_mp', 'remington700_mp', 'remington700_acog_mp', 'humvee_50cal_mp')
-            LIMIT 0 , 30";
-  
-  $result = $coddb->sql_query($query);
-  $numrows = $coddb->sql_numrows($result);
-  
-  $buffer .= "\$wp_snipers = \"(";
-  $c = 0;
-  while ($row = $coddb->sql_fetchrow($result))
-  {
-    $c += 1;
-    $buffer .= $row["id"];
-    if($c < $numrows)
-      $buffer .=  ", ";
-  }
-  $buffer .= ")\";\n";
-  $coddb->sql_freeresult($result);
-  
+  add_weaponaward("wp_snipers", "'m40a3_acog_mp', 'm40a3_mp', 'm21_acog_mp', 'm21_mp','dragunov_mp', 'dragunov_acog_mp', 'remington700_mp', 'remington700_acog_mp', 'humvee_50cal_mp'"); 
   // Pistols
-  $query = "SELECT id 
-            FROM ${t["weapons"]}
-            WHERE name IN ('colt45_mp', 'colt45_silencer_mp', 'usp_mp', 'usp_silencer_mp', 'beretta_mp', 'beretta_silencer_mp', 'deserteagle_mp', 'deserteaglegold_mp')
-            LIMIT 0 , 30";
-  
-  $result = $coddb->sql_query($query);
-  $numrows = $coddb->sql_numrows($result);
-  
-  $buffer .= "\$wp_pistols = \"(";
-  $c = 0;
-  while ($row = $coddb->sql_fetchrow($result))
-  {
-    $c += 1;
-    $buffer .= $row["id"];
-    if($c < $numrows)
-      $buffer .=  ", ";
-  }
-  $buffer .= ")\";\n";
-  $coddb->sql_freeresult($result);
-  
+  add_weaponaward("wp_pistols", "'colt45_mp', 'colt45_silencer_mp', 'usp_mp', 'usp_silencer_mp', 'beretta_mp', 'beretta_silencer_mp', 'deserteagle_mp', 'deserteaglegold_mp'"); 
   // Accidents
-  $query = "SELECT id 
-            FROM ${t["weapons"]}
-            WHERE name IN ('artillery_mp', 'mod_falling', 'none')
-            LIMIT 0 , 30";
-  
-  $result = $coddb->sql_query($query);
-  $numrows = $coddb->sql_numrows($result);
-  
-  $buffer .= "\$wp_accidents = \"(";
-  $c = 0;
-  while ($row = $coddb->sql_fetchrow($result))
-  {
-    $c += 1;
-    $buffer .= $row["id"];
-    if($c < $numrows)
-      $buffer .=  ", ";
-  }
-  $buffer .= ")\";\n";
-  $coddb->sql_freeresult($result);
+  add_weaponaward("wp_accidents", "'artillery_mp', 'mod_falling', 'none'"); 
   
   //-- Bodyparts -----------------------------------------------------------------
   $buffer .= "\n// Bodyparts ---------------------\n";
@@ -873,89 +584,13 @@ function codwaw_awards()
   $buffer .= "\n// Weapons / Means of Death --------\n";
   
   // Bouncing Betty
-  $query = "SELECT id 
-            FROM ${t["weapons"]}
-            WHERE name = 'mine_bouncing_betty_mp'
-            LIMIT 0 , 30";
-  
-  $result = $coddb->sql_query($query);
-  $numrows = $coddb->sql_numrows($result);
-  
-  $buffer .= "\$wp_bouncingbetty = \"(";
-  $c = 0;
-  while ($row = $coddb->sql_fetchrow($result))
-  {
-    $c += 1;
-    $buffer .= $row["id"];
-    if($c < $numrows)
-      $buffer .=  ", ";
-  }
-  $buffer .= ")\";\n";
-  $coddb->sql_freeresult($result);
-  
-    // Molotov
-  $query = "SELECT id 
-            FROM ${t["weapons"]}
-            WHERE name = 'molotov_mp'
-            LIMIT 0 , 30";
-  
-  $result = $coddb->sql_query($query);
-  $numrows = $coddb->sql_numrows($result);
-  
-  $buffer .= "\$wp_molotov = \"(";
-  $c = 0;
-  while ($row = $coddb->sql_fetchrow($result))
-  {
-    $c += 1;
-    $buffer .= $row["id"];
-    if($c < $numrows)
-      $buffer .=  ", ";
-  }
-  $buffer .= ")\";\n";
-  $coddb->sql_freeresult($result);
-
-    // Flame Thrower
-  $query = "SELECT id 
-            FROM ${t["weapons"]}
-            WHERE name = 'm2_flamethrower_mp'
-            LIMIT 0 , 30";
-  
-  $result = $coddb->sql_query($query);
-  $numrows = $coddb->sql_numrows($result);
-  
-  $buffer .= "\$wp_flamethrower = \"(";
-  $c = 0;
-  while ($row = $coddb->sql_fetchrow($result))
-  {
-    $c += 1;
-    $buffer .= $row["id"];
-    if($c < $numrows)
-      $buffer .=  ", ";
-  }
-  $buffer .= ")\";\n";
-  $coddb->sql_freeresult($result);
-
+  add_weaponaward("wp_bouncingbetty", "'mine_bouncing_betty_mp'"); 
+  // Molotov
+  add_weaponaward("wp_molotov", "'molotov_mp'"); 
+  // Flame Thrower
+  add_weaponaward("wp_flamethrower", "'m2_flamethrower_mp'"); 
   // Bashes
-  $query = "SELECT id 
-            FROM ${t["weapons"]}
-            WHERE name = 'mod_melee'
-            LIMIT 0 , 30";
-  
-  $result = $coddb->sql_query($query);
-  $numrows = $coddb->sql_numrows($result);
-  
-  $buffer .= "\$wp_knives = \"(";
-  $c = 0;
-  while ($row = $coddb->sql_fetchrow($result))
-  {
-    $c += 1;
-    $buffer .= $row["id"];
-    if($c < $numrows)
-      $buffer .=  ", ";
-  }
-  $buffer .= ")\";\n";
-  $coddb->sql_freeresult($result);
-  
+  add_weaponaward("wp_knives", "'mod_melee'"); 
   // Nades
   $query = "SELECT id 
             FROM ${t["weapons"]}
@@ -976,70 +611,12 @@ function codwaw_awards()
   }
   $buffer .= ")\";\n";
   $coddb->sql_freeresult($result);
-  
   // Snipers
-  $query = "SELECT id 
-            FROM ${t["weapons"]}
-            WHERE name IN ('springfield_scoped_mp', 'kar98k_scoped_mp', 'm1garand_scoped_mp', 'mosinrifle_scoped_mp', 'type99rifle_scoped_mp')
-            LIMIT 0 , 30";
-  
-  $result = $coddb->sql_query($query);
-  $numrows = $coddb->sql_numrows($result);
-  
-  $buffer .= "\$wp_snipers = \"(";
-  $c = 0;
-  while ($row = $coddb->sql_fetchrow($result))
-  {
-    $c += 1;
-    $buffer .= $row["id"];
-    if($c < $numrows)
-      $buffer .=  ", ";
-  }
-  $buffer .= ")\";\n";
-  $coddb->sql_freeresult($result);
-  
+  add_weaponaward("wp_snipers", "'springfield_scoped_mp', 'kar98k_scoped_mp', 'm1garand_scoped_mp', 'mosinrifle_scoped_mp', 'type99rifle_scoped_mp'"); 
   // Pistols
-  $query = "SELECT id 
-            FROM ${t["weapons"]}
-            WHERE name IN ('colt_mp', 'luger_mp', 'webley_mp', 'TT30_mp')
-            LIMIT 0 , 30";
-  
-  $result = $coddb->sql_query($query);
-  $numrows = $coddb->sql_numrows($result);
-  
-  $buffer .= "\$wp_pistols = \"(";
-  $c = 0;
-  while ($row = $coddb->sql_fetchrow($result))
-  {
-    $c += 1;
-    $buffer .= $row["id"];
-    if($c < $numrows)
-      $buffer .=  ", ";
-  }
-  $buffer .= ")\";\n";
-  $coddb->sql_freeresult($result);
-  
+  add_weaponaward("wp_pistols", "'colt_mp', 'luger_mp', 'webley_mp', 'TT30_mp'"); 
   // Fireman (Car)
-  $query = "SELECT id 
-            FROM ${t["weapons"]}
-            WHERE name = 'destructible_car'
-            LIMIT 0 , 30";
-  
-  $result = $coddb->sql_query($query);
-  $numrows = $coddb->sql_numrows($result);
-  
-  $buffer .= "\$wp_fireman = \"(";
-  $c = 0;
-  while ($row = $coddb->sql_fetchrow($result))
-  {
-    $c += 1;
-    $buffer .= $row["id"];
-    if($c < $numrows)
-      $buffer .=  ", ";
-  }
-  $buffer .= ")\";\n";
-  $coddb->sql_freeresult($result);
-
+  add_weaponaward("wp_fireman", "'destructible_car'"); 
   // Accidents
   $query = "SELECT id 
             FROM ${t["weapons"]}
@@ -1061,27 +638,8 @@ function codwaw_awards()
   }
   $buffer .= ")\";\n";
   $coddb->sql_freeresult($result);
-
   // Barrel Victim
-  $query = "SELECT id 
-            FROM ${t["weapons"]}
-            WHERE name = 'explodable_barrel'
-            LIMIT 0 , 30";
-  
-  $result = $coddb->sql_query($query);
-  $numrows = $coddb->sql_numrows($result);
-  
-  $buffer .= "\$wp_barrel = \"(";
-  $c = 0;
-  while ($row = $coddb->sql_fetchrow($result))
-  {
-    $c += 1;
-    $buffer .= $row["id"];
-    if($c < $numrows)
-      $buffer .=  ", ";
-  }
-  $buffer .= ")\";\n";
-  $coddb->sql_freeresult($result);
+  add_weaponaward("wp_barrel", "'explodable_barrel'"); 
 
   //-- Bodyparts -----------------------------------------------------------------
   $buffer .= "\n// Bodyparts ---------------------\n";
@@ -1117,115 +675,16 @@ function urt_awards()
   //-- Weapons -------------------------------------------------------------------
   $buffer .= "\n// Weapons / Means of Death --------\n";
   
-  // Not used by UrT
-  //$buffer .= "\$wp_bomb = 0;\n";
-  //$buffer .= "\$wp_fireman = 0;\n";
-  //$buffer .= "\$wp_claymore = 0;\n";
-  
   // Knives
-  $query = "SELECT id 
-            FROM ${t["weapons"]}
-            WHERE name IN ('12', '13')
-            LIMIT 0 , 30";
-  
-  $result = $coddb->sql_query($query);
-  $numrows = $coddb->sql_numrows($result);
-  
-  $buffer .= "\$wp_knives = \"(";
-  $c = 0;
-  while ($row = $coddb->sql_fetchrow($result))
-  {
-    $c += 1;
-    $buffer .= $row["id"];
-    if($c < $numrows)
-      $buffer .=  ", ";
-  }
-  $buffer .= ")\";\n";
-  $coddb->sql_freeresult($result);
-  
+  add_weaponaward("wp_knives", "'12', '13'"); 
   // Nades
-  $query = "SELECT id 
-            FROM ${t["weapons"]}
-            WHERE name IN ('22', '25', '37')
-            LIMIT 0 , 30";
-  
-  $result = $coddb->sql_query($query);
-  $numrows = $coddb->sql_numrows($result);
-  
-  $buffer .= "\$wp_nades = \"(";
-  $c = 0;
-  while ($row = $coddb->sql_fetchrow($result))
-  {
-    $c += 1;
-    $buffer .= $row["id"];
-    if($c < $numrows)
-      $buffer .=  ", ";
-  }
-  $buffer .= ")\";\n";
-  $coddb->sql_freeresult($result);
-  
+  add_weaponaward("wp_nades", "'22', '25', '37'"); 
   // Snipers
-  $query = "SELECT id 
-            FROM ${t["weapons"]}
-            WHERE name IN ('21', '28')
-            LIMIT 0 , 30";
-  
-  $result = $coddb->sql_query($query);
-  $numrows = $coddb->sql_numrows($result);
-  
-  $buffer .= "\$wp_snipers = \"(";
-  $c = 0;
-  while ($row = $coddb->sql_fetchrow($result))
-  {
-    $c += 1;
-    $buffer .= $row["id"];
-    if($c < $numrows)
-      $buffer .=  ", ";
-  }
-  $buffer .= ")\";\n";
-  $coddb->sql_freeresult($result);
-  
+  add_weaponaward("wp_snipers", "'21', '28'"); 
   // Pistols
-  $query = "SELECT id 
-            FROM ${t["weapons"]}
-            WHERE name IN ('14', '15')
-            LIMIT 0 , 30";
-  
-  $result = $coddb->sql_query($query);
-  $numrows = $coddb->sql_numrows($result);
-  
-  $buffer .= "\$wp_pistols = \"(";
-  $c = 0;
-  while ($row = $coddb->sql_fetchrow($result))
-  {
-    $c += 1;
-    $buffer .= $row["id"];
-    if($c < $numrows)
-      $buffer .=  ", ";
-  }
-  $buffer .= ")\";\n";
-  $coddb->sql_freeresult($result);
-  
+  add_weaponaward("wp_pistols", "'14', '15'"); 
   // Accidents
-  $query = "SELECT id 
-            FROM ${t["weapons"]}
-            WHERE name IN ('1', '6', 'mod_falling', '7', '31')
-            LIMIT 0 , 30";
-  
-  $result = $coddb->sql_query($query);
-  $numrows = $coddb->sql_numrows($result);
-  
-  $buffer .= "\$wp_accidents = \"(";
-  $c = 0;
-  while ($row = $coddb->sql_fetchrow($result))
-  {
-    $c += 1;
-    $buffer .= $row["id"];
-    if($c < $numrows)
-      $buffer .=  ", ";
-  }
-  $buffer .= ")\";\n";
-  $coddb->sql_freeresult($result);
+  add_weaponaward("wp_accidents", "'1', '6', 'mod_falling', '7', '31'"); 
   
   //-- Bodyparts -----------------------------------------------------------------
   $buffer .= "\n// Bodyparts ---------------------\n";
@@ -1520,50 +979,22 @@ function bfbc2_awards()
   //-- Weapons -------------------------------------------------------------------
   $buffer .= "\n// Weapons / Means of Death --------\n";
 
+  // Snipers
+  add_weaponaward("wp_snipers", "'M24', 'M95', 'GOL', 'QBU88', 'SV98', 'VSS'"); 
   // Pistols
-  $query = "SELECT id 
-            FROM ${t["weapons"]}
-            WHERE name IN ('M1911', 'MP443', '9', 'M9-3')
-            LIMIT 0 , 30";
-  
-  $result = $coddb->sql_query($query);
-  $numrows = $coddb->sql_numrows($result);
-  
-  $buffer .= "\$wp_pistols = \"(";
-  $c = 0;
-  while ($row = $coddb->sql_fetchrow($result))
-  {
-    $c += 1;
-    $buffer .= $row["id"];
-    if($c < $numrows)
-      $buffer .=  ", ";
-  }
-  $buffer .= ")\";\n";
-  $coddb->sql_freeresult($result);
+  add_weaponaward("wp_pistols", "'M1911', 'MP443', '9', 'M9-3'"); 
+  // Nades
+  add_weaponaward("wp_nades", "'HG-2'"); 
+  // Knives
+  add_weaponaward("wp_knives", "'knv-1'"); 
+  // Accidents
+  add_weaponaward("wp_accidents", "'roadkill', 'RPG7', 'DTN-4', 'MRTR-5', 'M2CG', 'M136', 'TM-00', '40mmgl'"); 
 
   //-- Bodyparts -----------------------------------------------------------------
   $buffer .= "\n// Bodyparts ---------------------\n";
   
   // Head
-  $query = "SELECT id 
-            FROM ${t["bodyparts"]}
-            WHERE name = 'head'
-            LIMIT 0 , 30";
-  
-  $result = $coddb->sql_query($query);
-  $numrows = $coddb->sql_numrows($result);
-  
-  $buffer .= "\$bp_head = \"(";
-  $c = 0;
-  while ($row = $coddb->sql_fetchrow($result))
-  {
-    $c += 1;
-    $buffer .= $row["id"];
-    if($c < $numrows)
-      $buffer .=  ", ";
-  }
-  $buffer .= ")\";\n";
-  $coddb->sql_freeresult($result);
+  add_bodypartaward("bp_head", "'head'"); 
 }
 
 //delete cache to display new medal owners

@@ -402,7 +402,7 @@ function bfbc2_display_player_weapons($player)
       $star = get_star($wstats);
  
       $weaponlist .= '<div class="weapon">
-                        <div class="image"><img src ="images/weapons/bfbc2/small/'.$wname.'.png" width="120px"/></div>
+                        <div class="image"><img src ="images/weapons/bfbc2/small/'.strtolower($wname).'.png" width="120px"/></div>
                         <div class="name">'.$weaponname.'</div>
                      ';
 
@@ -481,7 +481,7 @@ function bfbc2_display_player_vehicles($player)
       $star = get_star($vstats);
 
       $vehiclelist .= '<div class="weapon">
-                         <div class="image"><img src ="images/weapons/bfbc2/small/'.$vname.'.png" width="120"/></div>
+                         <div class="image"><img src ="images/weapons/bfbc2/small/'.strtolower($vname).'.png" width="120"/></div>
                          <div class="name">'.$vstats['name'].'</div>
                       ';
 

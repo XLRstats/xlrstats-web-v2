@@ -400,9 +400,27 @@ function bfbc2_display_player_weapons($player)
         $weaponname = $wstats['name'];
 
       $star = get_star($wstats);
- 
+      $wname = strtolower($wname);
+
+      //Array of weapons that have different names on gamelog and bfbcs.com data (bfbcs_name => gamelog_name)
+      $dif_wnames = array (
+                            "aek" => "aek971",
+                            "mcs" => "870mcs",
+                            "m1" => "garand",
+                            "m1a1" => "m1a1 thompson",
+                            "m93r" => "m9-3",
+                            "n2k" => "ns2000",
+                            "pp2" => "pp2000",
+                            "s12k" => "s20k",
+                            "u12" => "usas12",
+                            "xm8lmg" => "xm8 lmg"
+                           );
+
+      if(array_key_exists($wname, $dif_wnames))
+        $wname = $dif_wnames[$wname];
+
       $weaponlist .= '<div class="weapon">
-                        <div class="image"><img src ="images/weapons/bfbc2/small/'.strtolower($wname).'.png" width="120px"/></div>
+                        <div class="image"><img src ="images/weapons/bfbc2/small/'.$wname.'.png" width="120px"/></div>
                         <div class="name">'.$weaponname.'</div>
                      ';
 
@@ -479,9 +497,23 @@ function bfbc2_display_player_vehicles($player)
       $avgspeed = @($vstats['distance'] / $time_seconds);
 
       $star = get_star($vstats);
+      $vname = strtolower($vname);
+
+      //Array of vehicles that have different names on gamelog and bfbcs.com data (bfbcs_name => gamelog_name)
+      $dif_vnames = array(
+                           "hmv" => "humv",
+                           "t90" => "t90r",
+                           "havoc" => "mi24",
+                           "uav" => "uav1",
+                           "xm312" => "x312",
+                           "aav" => "zu23"
+                         );
+
+      if(array_key_exists($vname, $dif_vnames))
+        $vname = $dif_vnames[$vname];
 
       $vehiclelist .= '<div class="weapon">
-                         <div class="image"><img src ="images/weapons/bfbc2/small/'.strtolower($vname).'.png" width="120"/></div>
+                         <div class="image"><img src ="images/weapons/bfbc2/small/'.$vname.'.png" width="120"/></div>
                          <div class="name">'.$vstats['name'].'</div>
                       ';
 

@@ -448,7 +448,21 @@ echo "
       $gamename = "cod2";
     else
       $gamename = $game;
-    get_pic("images/weapons/$gamename/small/${row['name']}");
+
+    $weapon_name = $row['name'];
+
+    if($game == 'bfbc2')
+    {
+      if(preg_match("/#/", $weapon_name))
+      {
+        $weapon_name = explode("#", $weapon_name);
+        $weapon_name = $weapon_name[0];
+      }
+    }
+
+    $weapon_name = strtolower($weapon_name);
+
+    get_pic("images/weapons/$gamename/small/$weapon_name");
     echo "</a></td>";
       
     echo "<td align=\"center\">", $row['kills'] ? $row['kills'] : "", "</td>";

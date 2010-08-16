@@ -3118,9 +3118,23 @@ function weapon_short($weaponid)
     $gamename = "cod2";
   else
     $gamename = $game;
-  get_pic("images/weapons/$gamename/normal/${row['name']}");
+
+  $weapon_name = $row['name'];
+
+  if($game == 'bfbc2')
+  {
+    if(preg_match("/#/", $weapon_name))
+    {
+      $weapon_name = explode("#", $weapon_name);
+      $weapon_name = $weapon_name[0];
+    }
+  }
+
+  $weapon_name = strtolower($weapon_name);
+
+  get_pic("images/weapons/$gamename/normal/$weapon_name");
   echo "  </td><td valign=\"top\" class=\"tiny\">";
-  get_desc("weapon/${row['name']}");
+  get_desc("weapon/$weapon_name");
   echo "</td></tr>";
   echo "</table>";
 }

@@ -36,10 +36,7 @@ tablenames.
 3. Open your B3.xml file (in b3/conf) and add the next line in the
 <plugins> section of the file:
 
-<plugin name="xlrstatshistory" priority="12"/>
-
-The numer 12 in this just an example. Make sure it fits your
-plugin list. Put it last in the list, for it is not a critical plugin.
+<plugin name="xlrstatshistory"/>
 
 
 Changelog

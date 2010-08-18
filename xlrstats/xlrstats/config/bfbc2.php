@@ -224,12 +224,14 @@ $m['Levels/MP_002SR'] = "Valparaiso (Squadrush)";
 $m['Levels/MP_005SR'] = "Atacama Desert (Squadrush)";
 $m['Levels/MP_012SR'] = "Port Valdez (Squadrush)";
 $m['Levels/MP_003SR'] = "Laguna Alta (Squadrush)";
+$m['Levels/MP_009SR'] = "Laguna Presa (Squadrush)";
 //Squad Deathmatch
 $m['Levels/MP_004SDM'] = "Isla Inocentes (Squad DM)";
 $m['Levels/MP_006SDM'] = "Arica Harbor (Squad DM)";
 $m['Levels/MP_007SDM'] = "White Pass (Squad DM)";
 $m['Levels/MP_009SDM'] = "Laguna Preza (Squad DM)";
 $m['Levels/MP_008SDM'] = "Nelson Bay (Squad DM)";
+$m['Levels/MP_001SDM'] = "Panama Canal (Squad DM)";
 
 $m['None'] = "-Unknown-";
 

@@ -120,22 +120,44 @@ if(@simplexml_load_file($b3_status_url)) //do we have a valid xml file?
 {
   $xml=new simpleXMLElement($b3_status_url,NULL,TRUE);
 
-  foreach($xml->Game->Data as $serverdata)
+  if($game == 'bfbc2')
   {
-    if ($serverdata['Name'] == "gamename")
-      $gameName = $serverdata['Value'];
+    $gameName = "Battlefield Bad Company 2";
 
-    if ($serverdata['Name'] == "sv_hostname")
-      $servername = $serverdata['Value'];
+    foreach($xml->Game->Data as $serverdata)
+    {
+      if ($serverdata['Name'] == "sv_hostname")
+        $servername = $serverdata['Value'];
 
-    if ($serverdata['Name'] == "gameType")
-      $gametype = $serverdata['Value'];
+      if ($serverdata['Name'] == "gameType")
+        $gametype = $serverdata['Value'];
 
-    if ($serverdata['Name'] == "sv_punkbuster")
-      $punkbuster = $serverdata['Value'];
+      if ($serverdata['Name'] == "punkBuster")
+        $punkbuster = $serverdata['Value'];
 
-    if ($serverdata['Name'] == "mapName")
-      $mapname = $serverdata['Value'];
+      if ($serverdata['Name'] == "mapName")
+        $mapname = $serverdata['Value'];
+    }
+  }
+  else
+  {
+    foreach($xml->Game->Data as $serverdata)
+    {
+      if ($serverdata['Name'] == "gamename")
+        $gameName = $serverdata['Value'];
+
+      if ($serverdata['Name'] == "sv_hostname")
+        $servername = $serverdata['Value'];
+
+      if ($serverdata['Name'] == "gameType")
+        $gametype = $serverdata['Value'];
+
+      if ($serverdata['Name'] == "sv_punkbuster")
+        $punkbuster = $serverdata['Value'];
+
+      if ($serverdata['Name'] == "mapName")
+        $mapname = $serverdata['Value'];
+    }
   }
 }
 
@@ -145,17 +167,27 @@ if(isset($m["$mapname"]))
 else
   $nmapname = $mapname;
 
-if($punkbuster == 1)
+if($punkbuster == 1 || $punkbuster == 'True')
   $punkbuster = "<span><font color=\"green\">On</font></span>";
 else
   $punkbuster = "<span><font color=\"red\">Off</font></span>";
 
-foreach($gametypes as $key => $value)
+if($game == 'bfbc2')
 {
-  if($key == $gametype)
+  $tmp = explode("(", $nmapname);
+  $nmapname = $tmp[0];
+  $tmp = explode(")", $tmp[1]);
+  $gametype = $tmp[0];
+}
+else
+{
+  foreach($gametypes as $key => $value)
   {
-    $gametype_short = $key;
-    $gametype = $value;
+    if($key == $gametype)
+    {
+      $gametype_short = $key;
+      $gametype = $value;
+    }
   }
 }
 

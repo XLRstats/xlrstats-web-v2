@@ -335,6 +335,12 @@ if(!isset($pop))
 $currentpath = abs_pathlink($pop);
 
 //Current map image
+if($game == 'bfbc2')
+{
+  $mapname = explode("/", $mapname);
+  $mapname = $mapname[1];
+}
+
 if(file_exists($currentpath.'images/maps/'.$game.'/middle/'.$mapname.'.jpg'))
   $img_map = $images_folder.'/maps/'.$game.'/middle/'.$mapname.'.jpg';
 else 

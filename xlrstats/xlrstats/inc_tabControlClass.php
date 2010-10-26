@@ -19,6 +19,10 @@
  * @todo Mozilla, Netscape on Windows support
  * @todo Macintosh support
  */
+
+// no direct access
+defined( '_XLREXEC' ) or die( 'Restricted access' );
+
 class TabControl {
 	/**
 	 * Main tabcontrol settings...

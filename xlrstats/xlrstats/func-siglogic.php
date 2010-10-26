@@ -30,6 +30,8 @@
 //
 //**************************************************************************************
 
+// no direct access
+defined( '_XLREXEC' ) or die( 'Restricted access' );
 
 function get_user_image( $image_url, $width, $height, $cache_life )
 {

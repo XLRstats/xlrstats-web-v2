@@ -39,6 +39,9 @@
  * of this page so that server status window better fits your web layout
  ***************************************************************************/
 
+// Set flag that this is a parent file
+define( '_XLREXEC', 1 );
+
 $main_width="100%"; // Enter a value (i.e. $main_width="400px";) if you need to set a fixed width.
 $onlineplayers_bgcolor = ""; //Background color for online players. (you can leave blank)
 

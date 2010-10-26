@@ -1,5 +1,8 @@
 <?php
 
+// no direct access
+defined( '_XLREXEC' ) or die( 'Restricted access' );
+
 if( $width > IMAGE_MAX_WIDTH || $width < IMAGE_MIN_WIDTH ) $width = IMAGE_DEF_WIDTH;
 if( $height > IMAGE_MAX_HEIGHT || $height < IMAGE_MIN_HEIGHT ) $height = IMAGE_DEF_HEIGHT;
 	

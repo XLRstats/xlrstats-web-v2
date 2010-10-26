@@ -1,4 +1,7 @@
 <?php
+// Set flag that this is a parent file
+define( '_XLREXEC', 1 );
+
 error_reporting( E_ERROR ^ E_WARNING );
 
 include("../func-globallogic.php");

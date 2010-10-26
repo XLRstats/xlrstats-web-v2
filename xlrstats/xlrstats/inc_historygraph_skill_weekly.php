@@ -23,6 +23,9 @@
  *  http://www.gnu.org/copyleft/gpl.html
  ***************************************************************************/
 
+// Set flag that this is a parent file
+define( '_XLREXEC', 1 );
+
 require_once('inc_mysql.php');
 require_once('func-globallogic.php');
 require_once('languages/languages.php');

@@ -23,6 +23,9 @@
  *  http://www.gnu.org/copyleft/gpl.html
  ***************************************************************************/
 
+// Set flag that this is a parent file
+define( '_XLREXEC', 1 );
+
 include("lib/ctracker.php");
 include("inc_mysql.php");
 include("func-globallogic.php");
@@ -74,11 +77,6 @@ elseif (file_exists("config/statsconfig1.php"))
   }
 }
 include($currentconfig);
-if ($currentconfignumber == 0)
-  include("dynamic/award_idents.php");
-else
-  include("dynamic/award_idents_".$currentconfignumber.".php");
-
 include("config/inc_constants.php");
 include("languages/languages.php");
 include("config/ranks.php");
@@ -189,6 +187,18 @@ if ($func == "server")
   //currentplayers();
   exit;
 }
+
+if ($func == "cron")
+{
+  run_cronjobs();
+  exit;
+}
+
+// Include award idents for normal page generation -----------------------------
+if ($currentconfignumber == 0)
+  include("dynamic/award_idents.php");
+else
+  include("dynamic/award_idents_".$currentconfignumber.".php");
 
 // Display header --------------------------------------------------------------
 displayheader();
@@ -594,7 +604,8 @@ if($func == "medal")
 {
   if(isset($_GET['fname'])) {
     $fname = $_GET['fname'];
-    eval($fname."();");
+    if (in_array($fname, $allowed_funcs)) eval($fname."();");
+    else die('Hacking attempt!');
     }
 }
 

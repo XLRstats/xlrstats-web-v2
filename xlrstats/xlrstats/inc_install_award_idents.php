@@ -23,23 +23,15 @@
  *  http://www.gnu.org/copyleft/gpl.html
  ***************************************************************************/
 
-include("../inc_mysql.php");
-require_once("../func-globallogic.php");
-require_once("../config/inc_constants.php");
+// no direct access
+defined( '_XLREXEC' ) or die( 'Restricted access' );
 
-echo "<td width=\"100%\" valign=\"top\"><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"10\">";
-echo "<tr><td align=\"left\" valign=\"top\">";
-
-if (!isset($pop))
-  $pop = 1;
-
-$cpath = abs_pathlink($pop);
-
-error_reporting(0);
-
-//scan available configs and save the appropriate awardfiles
-configscanner();
-end_process();
+function install_award_idents()
+{
+  //scan available configs and save the appropriate awardfiles
+  configscanner();
+  end_process();
+}
 
 //********************************************************************************
 //  FUNCTIONS
@@ -154,7 +146,10 @@ function startbuffer()
   $buffer .= "//------------------------------------------------------\n";
   $buffer .= "// This is an automatically generated file!\n";
   $buffer .= "// Do not alter this unless you know what you are doing!\n";
-  $buffer .= "//------------------------------------------------------\n";
+  $buffer .= "//------------------------------------------------------\n\n";
+  $buffer .= "// no direct access\n";
+  $buffer .= "defined( '_XLREXEC' ) or die( 'Restricted access' );\n";
+
   
   $coddb = new sql_db($db_host, $db_user, $db_pass, $db_db, false);
   if(!$coddb->db_connect_id) 
@@ -193,7 +188,7 @@ function closebuffer_write()
 function end_process()
 {
   echo "<p class=\"precheckOK\"><strong>Your awards have been identified using the current database content.</strong></p>";
-  echo "<p class=\"fontNormal\">1.) You may run \"install_award_idents.php\" file located in \"config\" directory at any time if you feel that certain awards are not good or certain weapons have only recently been used for the first time.<br />"; 
+  echo "<p class=\"fontNormal\">1.) You may run \"http://www.yoursite.com/xlrstats/?func=cron\" at any time if you feel that certain awards are not good or certain weapons have only recently been used for the first time.<br />"; 
   //echo "Bookmark current URL to rerun this file later.</i></p>";
   echo "<p class=\"attention\">2.) When you're sure all awards are correct and all weapons have been used, delete/move the install directory so it can no longer be called directly.)</p>";
   echo "<p class=\"fontNormal\">Click \"Stats Home\" button to return to the frontpage</p>";

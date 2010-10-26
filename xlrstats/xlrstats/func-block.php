@@ -30,6 +30,8 @@
 //
 //**************************************************************************************
 
+// no direct access
+defined( '_XLREXEC' ) or die( 'Restricted access' );
 
 // Function that prints a table of the best skilled players. 
 function topplayersblock($sortby = "skill", $direction = "DESC", $offset = 0)

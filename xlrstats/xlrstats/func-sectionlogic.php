@@ -30,6 +30,8 @@
 //
 //**************************************************************************************
 
+// no direct access
+defined( '_XLREXEC' ) or die( 'Restricted access' );
 
 // Function that prints a table of the best players. The criterium (e.g. skill or kills) can be
 // specified.

@@ -23,6 +23,9 @@
  *  http://www.gnu.org/copyleft/gpl.html
  ***************************************************************************/
 
+// no direct access
+defined( '_XLREXEC' ) or die( 'Restricted access' );
+
 function tag_start_simple($parser, $attr, $params)
 {
   if($attr == 'CLIENT')

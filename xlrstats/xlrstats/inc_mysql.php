@@ -19,6 +19,9 @@
 *
 ***************************************************************************/
 
+// no direct access
+defined( '_XLREXEC' ) or die( 'Restricted access' );
+
 if(!defined("SQL_LAYER"))
 {
 

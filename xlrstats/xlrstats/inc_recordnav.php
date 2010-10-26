@@ -28,6 +28,9 @@ for ($y = 0; $y < count($links); $y++) {
 }
 ?>
 */
+// no direct access
+defined( '_XLREXEC' ) or die( 'Restricted access' );
+
 
 class navbar {
   // Default values for the navigation link bar

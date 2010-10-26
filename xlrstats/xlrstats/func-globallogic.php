@@ -23,6 +23,9 @@
  *  http://www.gnu.org/copyleft/gpl.html
  ***************************************************************************/
 
+// no direct access
+defined( '_XLREXEC' ) or die( 'Restricted access' );
+
 $clientsRed  = array();
 $clientsBlue  = array();
 $clientsSpec  = array();
@@ -1798,6 +1801,12 @@ function nextprevButtons($numRows, $recordsPerPage, $pagelink = "index.php?func=
       echo "<font color=\"#888888\"> >></font></td>";
     }
   }
+}
+
+function run_cronjobs()
+{
+  require_once("inc_install_award_idents.php");
+  install_award_idents();
 }
 
 ?>

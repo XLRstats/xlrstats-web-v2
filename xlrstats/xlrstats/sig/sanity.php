@@ -3,6 +3,9 @@
 // Email: nemon@blueyonder.co.uk
 // Web: terrorfaction.com
 
+// no direct access
+defined( '_XLREXEC' ) or die( 'Restricted access' );
+
 $ver = phpversion();
 
 // imagecolorallocatealpha requires 4.3.2

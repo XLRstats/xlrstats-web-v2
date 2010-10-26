@@ -24,6 +24,9 @@
  *  http://www.gnu.org/copyleft/gpl.html
  ***************************************************************************/
 
+// no direct access
+defined( '_XLREXEC' ) or die( 'Restricted access' );
+
 // This function displays the clan search box
 function clansearchbox()
 {

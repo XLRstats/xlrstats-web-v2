@@ -22,6 +22,10 @@
  *
  *  http://www.gnu.org/copyleft/gpl.html
  ***************************************************************************/
+
+// no direct access
+defined( '_XLREXEC' ) or die( 'Restricted access' );
+
     global $currentconfignumber;
  
     echo "<a href=\"http://$mysiteurl\"  class = \"breadcrumb-a\">$mysitelinkname</a><span class=\"breadcrumb-a\"> : </span>";

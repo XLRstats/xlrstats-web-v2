@@ -1,4 +1,7 @@
 <?php
+// no direct access
+defined( '_XLREXEC' ) or die( 'Restricted access' );
+
 require_once("../func-globallogic.php");
 // If statsconfig.php exists, we won't enable multiconfig functionality
 if (file_exists("../config/statsconfig.php"))

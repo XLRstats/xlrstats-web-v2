@@ -23,6 +23,9 @@
  *  http://www.gnu.org/copyleft/gpl.html
  ***************************************************************************/
 
+// Set flag that this is a parent file
+define( '_XLREXEC', 1 );
+
 include("lib/rss/FeedWriter.php");
 include("inc_mysql.php");
 include("func-globallogic.php");

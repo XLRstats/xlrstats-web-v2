@@ -1,4 +1,7 @@
 <?php 
+// Set flag that this is a parent file
+define( '_XLREXEC', 1 );
+
 include('../../func-globallogic.php');
 
 if (isset($_GET['config'])) 

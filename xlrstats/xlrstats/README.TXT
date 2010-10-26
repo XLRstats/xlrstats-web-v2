@@ -1,7 +1,7 @@
 ################################################################################
 #
 # XLRstats Webfront
-# Webfront for XLRstats stats plugin for B3 (www.bigbrotherbot.com)
+# Webfront for XLRstats stats plugin for B3 (www.bigbrotherbot.net)
 # (c) 2004-2010 www.xlr8or.com (mailto:xlr8or@xlr8or.com)
 #
 # This program is free software; you can redistribute it and/or modify
@@ -35,10 +35,28 @@ Requirements:
 - Website running php.
 - website must have access to your B3 database.
 
-- B3 plugin status.py version 1.2.5 or higher! (included in this package)
 - Installed B3 plugin ctime.py (included in this package)
   (See directory b3-plugins in this package)
 
+################################################################################
+Disclaimer - What you must know before installing this package: 
+################################################################################
+
+We (the creators and distributors) take no responsibility whatsoever for this
+software package. Any damage done to you, your site or your server is at your
+own risk. 
+
+The ./dynamic and ./dynamic/cache directories are vulnerable to php and software 
+exploits. By making these directories, or any other directories, writable to
+others than yourself (including the webserver process) you knowingly take this
+risk. We will try our best to fix any security issues asap when we take notice
+of them. Please sign up for our newsletter at www.xlrstats.com and keep a close 
+eye on our forums and website for urgent updates. 
+
+If you feel intimidated you can safely disable writing to all files and 
+directories after installation of the package and after successfully identifying
+all award idents. This will improve security, but will increase load on the
+server. Also the visitor counters will not work.
 
 ################################################################################
 Automatic Single and Multi Server Installation (Using the installer): 
@@ -52,6 +70,9 @@ package and extract that into your xlrstats directory.
 
 3. Point your browser to xlrstats and follow the instructions.
 
+4. When done, make sure you remove the ./install directory completely! Also 
+consider the security issues that come with making directories writable. (See 
+the disclaimer and also next chapter step 3.)
 
 ################################################################################
 Manual Single Server Installation:
@@ -64,14 +85,17 @@ can rename it to whatever you like.
 package and extract that into your xlrstats directory. 
 
 3. Make the directory ./dynamic and its contents writable by the webserver, 
-XLRstats will place its dynamic files there. (linux users: chmod 777).
+XLRstats will place its dynamic files there. On most linux hosting environments 
+setting 'chmod 755' should suffice, but if an empty cache remains, or the 
+visitor counters don't work you could consider changing the rights to 
+'chmod 777'. Do this at you own risk though.
 
 4. Copy/rename the file ./config/distro-config.php to 
 ./config/statsconfig.php and edit it to fit your server settings.
 
 5. Modify the statsconfig.php file with your favorite texteditor 
 
-6. Rename/remove the ./install directory to prevent direct access!
+6. Remove the ./install directory to prevent direct access!
 
 
 ################################################################################
@@ -91,7 +115,7 @@ and copy it to statsconfig2.php
 
 4. You can continue adding configs untill you run out of servers ;)
 
-5. Visit http://path.to.xlrstats/config/install_award_idents.php to create
+5. Visit http://path.to.xlrstats/index.php?func=cron to create
 award files for each server! You can repeat this later when you find not all
 weapons have been used ingame yet. When you get empty awards this is usually
 the case (or ofcourse it indicates that no kills where made with the weapon yet).
@@ -193,4 +217,4 @@ Contributors
   made by Freelander[*] 
   of the xlr8or community (cod2, cod4a cod5, pardus, urt1, urt2, urt3, urt4)  
 ################################################################################
-xlr8or - 4 april 2009 - www.bigbrotherbot.com // www.xlr8or.com
+xlr8or - 26 october 2010 - www.xlrstats.com // www.bigbrotherbot.net

@@ -1,3 +1,122 @@
+2010-10-26  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/README.TXT, xlrstats/xlrstats/images/.htaccess,
+	xlrstats/xlrstats/sig/.htaccess,
+	xlrstats/xlrstats/templates/.htaccess: Readme additions Minor
+	updates
+
+2010-10-26  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/version.txt: Versioning 2.3
+
+2010-10-26  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/lib/worldmap/index.php: minor fix
+
+2010-10-26  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/block.php, xlrstats/xlrstats/config/.htaccess,
+	xlrstats/xlrstats/config/index.php,
+	xlrstats/xlrstats/config/install_award_idents.php,
+	xlrstats/xlrstats/desc/.htaccess, xlrstats/xlrstats/desc/index.php,
+	xlrstats/xlrstats/desc/map/index.php,
+	xlrstats/xlrstats/desc/weapon/index.php,
+	xlrstats/xlrstats/dynamic/.htaccess,
+	xlrstats/xlrstats/dynamic/README.TXT,
+	xlrstats/xlrstats/dynamic/cache/.htaccess,
+	xlrstats/xlrstats/dynamic/cache/index.php,
+	xlrstats/xlrstats/dynamic/index.php,
+	xlrstats/xlrstats/func-awardlogic.php,
+	xlrstats/xlrstats/func-bfbc2global.php,
+	xlrstats/xlrstats/func-block.php, xlrstats/xlrstats/func-clan.php,
+	xlrstats/xlrstats/func-globallogic.php,
+	xlrstats/xlrstats/func-playerlistlogic.php,
+	xlrstats/xlrstats/func-sectionlogic.php,
+	xlrstats/xlrstats/func-siglogic.php,
+	xlrstats/xlrstats/images/.htaccess,
+	xlrstats/xlrstats/images/bars/balken_25/index.php,
+	xlrstats/xlrstats/images/bars/bar-middle/index.php,
+	xlrstats/xlrstats/images/bars/bar-small/index.php,
+	xlrstats/xlrstats/images/bars/index.php,
+	xlrstats/xlrstats/images/flags/index.php,
+	xlrstats/xlrstats/images/ico/index.php,
+	xlrstats/xlrstats/images/index.php,
+	xlrstats/xlrstats/images/maps/index.php,
+	xlrstats/xlrstats/images/medals/index.php,
+	xlrstats/xlrstats/images/model/0/index.php,
+	xlrstats/xlrstats/images/model/10/index.php,
+	xlrstats/xlrstats/images/model/100/index.php,
+	xlrstats/xlrstats/images/model/20/index.php,
+	xlrstats/xlrstats/images/model/30/index.php,
+	xlrstats/xlrstats/images/model/40/index.php,
+	xlrstats/xlrstats/images/model/50/index.php,
+	xlrstats/xlrstats/images/model/60/index.php,
+	xlrstats/xlrstats/images/model/70/index.php,
+	xlrstats/xlrstats/images/model/80/index.php,
+	xlrstats/xlrstats/images/model/90/index.php,
+	xlrstats/xlrstats/images/model/common/index.php,
+	xlrstats/xlrstats/images/model/index.php,
+	xlrstats/xlrstats/images/player/allies/0/index.php,
+	xlrstats/xlrstats/images/player/allies/10/index.php,
+	xlrstats/xlrstats/images/player/allies/100/index.php,
+	xlrstats/xlrstats/images/player/allies/20/index.php,
+	xlrstats/xlrstats/images/player/allies/30/index.php,
+	xlrstats/xlrstats/images/player/allies/40/index.php,
+	xlrstats/xlrstats/images/player/allies/50/index.php,
+	xlrstats/xlrstats/images/player/allies/60/index.php,
+	xlrstats/xlrstats/images/player/allies/70/index.php,
+	xlrstats/xlrstats/images/player/allies/80/index.php,
+	xlrstats/xlrstats/images/player/allies/90/index.php,
+	xlrstats/xlrstats/images/player/allies/hover/index.php,
+	xlrstats/xlrstats/images/player/allies/index.php,
+	xlrstats/xlrstats/images/player/index.php,
+	xlrstats/xlrstats/images/ranks/1_star/index.php,
+	xlrstats/xlrstats/images/ranks/2_stars/index.php,
+	xlrstats/xlrstats/images/ranks/index.php,
+	xlrstats/xlrstats/images/weapons/index.php,
+	xlrstats/xlrstats/inc_activitygraph.php,
+	xlrstats/xlrstats/inc_historygraph_ratio_weekly.php,
+	xlrstats/xlrstats/inc_historygraph_skill_weekly.php,
+	xlrstats/xlrstats/inc_install_award_idents.php,
+	xlrstats/xlrstats/inc_mysql.php,
+	xlrstats/xlrstats/inc_navigation.php,
+	xlrstats/xlrstats/inc_recordnav.php,
+	xlrstats/xlrstats/inc_tabControlClass.php,
+	xlrstats/xlrstats/index.php, xlrstats/xlrstats/languages/index.php,
+	xlrstats/xlrstats/lib/autocomplete/index.php,
+	xlrstats/xlrstats/lib/index.php,
+	xlrstats/xlrstats/lib/jpgraph/index.php,
+	xlrstats/xlrstats/lib/jpgraph/lang/index.php,
+	xlrstats/xlrstats/lib/jquery-boxy/images/index.php,
+	xlrstats/xlrstats/lib/jquery-boxy/index.php,
+	xlrstats/xlrstats/lib/rss/index.php,
+	xlrstats/xlrstats/lib/sorttable/index.php,
+	xlrstats/xlrstats/lib/tabber/index.php,
+	xlrstats/xlrstats/lib/tooltip/index.php,
+	xlrstats/xlrstats/reset.php, xlrstats/xlrstats/rss.php,
+	xlrstats/xlrstats/serverstatus.php,
+	xlrstats/xlrstats/sig/backdrops/bfbc2/index.php,
+	xlrstats/xlrstats/sig/backdrops/cod2/index.php,
+	xlrstats/xlrstats/sig/backdrops/cod4/index.php,
+	xlrstats/xlrstats/sig/backdrops/codwaw/index.php,
+	xlrstats/xlrstats/sig/backdrops/index.php,
+	xlrstats/xlrstats/sig/backdrops/smg/index.php,
+	xlrstats/xlrstats/sig/backdrops/urt/index.php,
+	xlrstats/xlrstats/sig/build.php, xlrstats/xlrstats/sig/first.php,
+	xlrstats/xlrstats/sig/fonts/index.php,
+	xlrstats/xlrstats/sig/icons/index.php,
+	xlrstats/xlrstats/sig/index.php, xlrstats/xlrstats/sig/render.php,
+	xlrstats/xlrstats/sig/sanity.php,
+	xlrstats/xlrstats/sig/settings.php,
+	xlrstats/xlrstats/sig/user_store/index.php,
+	xlrstats/xlrstats/templates/.htaccess,
+	xlrstats/xlrstats/templates/index.php: Security Patch.
+
+2010-08-25  xlr8or <xlr8or@xlr8or.com>
+
+	* ChangeLogDetailed.txt: Updated Detailed Changelog and tagged
+	version 2.2b
+
 2010-08-25  xlr8or <xlr8or@xlr8or.com>
 
 	* xlrstats/xlrstats/serverstatus.php: Signed-off-by: xlr8or

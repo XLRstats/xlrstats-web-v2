@@ -992,6 +992,35 @@ function bfbc2_awards()
   add_bodypartaward("bp_head", "'head'"); 
 }
 
+function moh_awards()
+{
+  global $t;
+  global $coddb;
+  global $buffer;
+  
+  //-- Weapons -------------------------------------------------------------------
+  $buffer .= "\n// Weapons / Means of Death --------\n";
+
+  // Snipers
+  add_weaponaward("wp_snipers", "'H_M21', 'H_M24', 'H_G3', 'H_SV98', 'H_SVD'");
+  // Pistols
+  add_weaponaward("wp_pistols", "'H_M9', 'H_TARIQ'");
+  // Nades
+  add_weaponaward("wp_nades", "'H_HG', 'H_SHG'");
+  // bomb (C4)
+  add_weaponaward("wp_bomb", "'H_C4', 'H_IED'");
+  // Knives
+  add_weaponaward("wp_knives", "'H_AXE', 'H_KNIFE'");
+  // Accidents
+  add_weaponaward("wp_accidents", "'H_ROADKILL', 'KILL_MSG_SUICIDE'"); 
+
+  //-- Bodyparts -----------------------------------------------------------------
+  $buffer .= "\n// Bodyparts ---------------------\n";
+  
+  // Head
+  add_bodypartaward("bp_head", "'head'");
+}
+
 //delete cache to display new medal owners
 $files = glob("../dynamic/cache/*.txt");
 foreach($files as $file) 

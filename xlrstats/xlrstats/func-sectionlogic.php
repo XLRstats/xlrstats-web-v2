@@ -1783,7 +1783,7 @@ function displayTooltip($hitloc, $hitlocname="")
     $text['right_foot'] = $text["feet"];
   }
 
-  if($game == 'bfbc2')
+  if($game == 'bfbc2' || $game == 'moh')
   {
     if(!isset($hitloc['head'])) $hitloc['head'] = array(0,0,0,0,0);
     if(!isset($hitloc['torso'])) $hitloc['torso'] = array(0,0,0,0,0);
@@ -2045,9 +2045,9 @@ function player_bodyparts_s($playerid, $dbID = false)
     if (isset($mybodypats['none'])) $hz_none = $mybodypats['none'];
     else $hz_none = 0;
   }
-  elseif($game == "bfbc2")
+  elseif($game == "bfbc2" || $game == "moh")
   {
-    // This is currently set to display head and torso (=chest+abdomen), bfbc2 differentiates only headshots from the rest.
+    // This is currently set to display head and torso (=chest+abdomen), bfbc2 and moh differentiates only headshots from the rest.
     if (isset($mybodypats['head'])) $hz_head = $mybodypats['head'];
     else $hz_head = 0;
     if (isset($mybodypats['torso'])) $hz_torso_upper = $mybodypats['torso'];

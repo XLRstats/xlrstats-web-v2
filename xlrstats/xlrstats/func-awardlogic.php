@@ -26,48 +26,6 @@
 // no direct access
 defined( '_XLREXEC' ) or die( 'Restricted access' );
 
-$allowed_funcs = array(
-  'pro_medal_serial_killer',
-  'pro_medal_nothing_better_to_do',
-  'pro_medal_best_ratio',
-  'pro_medal_most_kills',
-  'pro_medal_highest_skill',
-  'pro_medal_action_hero',
-  'pro_medal_nade_killer',
-  'pro_medal_sniper_killer',
-  'pro_medal_head_hunter',
-  'pro_medal_pistol_killer',
-  'pro_medal_bash_killer',
-  'pro_medal_remote_bomb_fan',
-  'pro_medal_surprise_lover',
-  'pro_medal_bouncing_betty',
-  'pro_medal_firestarter',
-  'pro_medal_mortal_cocktail',
-  'pro_medal_cold_weapon_killer',
-  'pro_medal_ballooney_killer',
-  'pro_medal_betty_killer',
-  'pro_medal_killerducks_killer',
-  'pro_medal_punchy_killer',
-  'pro_medal_dynamite',
-  'shame_medal_target_no_one',
-  'shame_medal_need_some_practice',
-  'shame_medal_careless',
-  'shame_medal_most_teamkills',
-  'shame_medal_most_teamdeaths',
-  'shame_medal_nade_magneto',
-  'shame_medal_sniped',
-  'shame_medal_def_knifes',
-  'shame_medal_def_bashes',
-  'shame_medal_fireman',
-  'shame_medal_barrel_deaths',
-  'shame_medal_def_ballooney',
-  'shame_medal_def_betty',
-  'shame_medal_def_punchy',
-  'shame_medal_killerducks',
-  'shame_medal_dynamite_deaths'
-);
-
-
 //------------------------------------------------------------------------------------------------------------
 
 function medal_begin($Title = "Our award winners", $AwardName = "pr0 Medals")
@@ -109,7 +67,7 @@ function global_awards()
   medal_begin($text["winner"], $text["pro"]);
   shuffle($pro_medals);
   foreach(array_slice($pro_medals, 0, $nr_awards) as $m)
-    eval($m.";");
+    eval($m."();");
   unset($m);
   medal_end($text["topthisplayers"]);
 }
@@ -126,7 +84,7 @@ function global_lame_awards()
   medal_begin($text["shameaward"], $text["shame"]);
   shuffle($shame_medals);
   foreach(array_slice($shame_medals, 0, $nr_awards) as $m)
-    eval($m.";");
+    eval($m."();");
   unset($m);
 
   medal_end($text["dontbetophere"]); 

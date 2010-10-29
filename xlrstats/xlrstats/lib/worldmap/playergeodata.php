@@ -1,5 +1,9 @@
-<?php echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>
-" ?>
+<?php
+// Set flag that this is a parent file
+define( '_XLREXEC', 1 );
+echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>" 
+?>
+
 <countrydata>
 
 <state id="default_color"><color>000000</color></state>

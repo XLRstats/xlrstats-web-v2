@@ -604,7 +604,8 @@ if($func == "medal")
 {
   if(isset($_GET['fname'])) {
     $fname = $_GET['fname'];
-    if (in_array($fname, $allowed_funcs)) eval($fname."();");
+    $all_medals = array_merge($pro_medals, $shame_medals);
+    if( in_array($fname, $all_medals, true) ) eval($fname."();");
     else die('Hacking attempt!');
     }
 }

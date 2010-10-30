@@ -202,6 +202,14 @@ function feedlink($pop=0)
   return $temp;
 }
 
+function pluginreq()
+{
+  global $minkills;
+  global $minrounds;
+  global $maxdays;
+  echo $minkills.','.$minrounds.','.$maxdays;
+}
+
 function info()
 {
   phpinfo();

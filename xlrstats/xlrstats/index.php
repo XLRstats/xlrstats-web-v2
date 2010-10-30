@@ -188,6 +188,12 @@ if ($func == "server")
   exit;
 }
 
+if ($func == "pluginreq")
+{
+  pluginreq();
+  exit;
+}
+
 if ($func == "cron")
 {
   run_cronjobs();

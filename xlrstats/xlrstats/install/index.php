@@ -23,6 +23,9 @@
  *  http://www.gnu.org/copyleft/gpl.html
  ***************************************************************************/
 
+// Set flag that this is a parent file
+define( '_XLREXEC', 1 );
+
 // Debug mode?
 $debuginstaller = 0;
 if ($debuginstaller == 1)

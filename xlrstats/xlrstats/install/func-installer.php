@@ -23,6 +23,11 @@
  *  http://www.gnu.org/copyleft/gpl.html
  ***************************************************************************/
 
+// no direct access
+defined( '_XLREXEC' ) or die( 'Restricted access' );
+
+require_once('../func-globallogic.php');
+
 function display_header()
 {
   echo "<html xmlns=\"http://www.w3.org/1999/xhtml\">";
@@ -275,7 +280,7 @@ fwrite($fp,
 \$db_pass = \"$db_pass\";
 \$db_db = \"$db_db\";
 
-// What game? (urt, cod1, coduo, cod2, cod4, codwaw, wop, smg, bfbc2)
+// What game? (urt, cod1, coduo, cod2, cod4, codwaw, wop, smg, bfbc2, moh)
 \$game = \"$game\";
 \$public_ip = \"$public_ip\";
 // This is the path where B3 stores the status.xml file. May be an absolute path or an URL. (Use forward slashes / only!)
@@ -427,6 +432,8 @@ function list_templates()
   $key = array_search('holidaypack', $templatelist);
   unset($templatelist[$key]);
   $key = array_search('admin', $templatelist);
+  unset($templatelist[$key]);
+  $key = array_search('index.php', $templatelist);
   unset($templatelist[$key]);
 
   foreach ($templatelist as $value)

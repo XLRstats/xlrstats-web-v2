@@ -308,9 +308,10 @@ elseif (isset($step2))
     echo "<option value=\"wop\">World of Padman</option>";
     echo "<option value=\"smg\">Smokin' Guns</option>";
     echo "<option value=\"bfbc2\">Battlefield Bad Company 2</option>";
+    echo "<option value=\"moh\">Medal of Honor</option>";
     echo "</select>";
     echo "</label></td>";
-    echo "<td class=\"fontSmall\">What game? (urt, cod1, coduo, cod2, cod4, codwaw, wop, smg, bfbc2)</td>";
+    echo "<td class=\"fontSmall\">What game? (urt, cod1, coduo, cod2, cod4, codwaw, wop, smg, bfbc2, moh)</td>";
     echo "</tr>";
     echo "<tr>";
     echo "<td><strong class=\"fontNormal\">Public IP:</strong></td>";
@@ -789,7 +790,17 @@ elseif (isset($step4))
 
 elseif (isset($step5))
 {
-  require ('../config/install_award_idents.php');
+  require_once("../inc_install_award_idents.php");
+  $cpath = "../";
+
+  echo "<td width=\"100%\" valign=\"top\"><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"10\">
+                <tr>
+                  <td align=\"left\" valign=\"top\"><p><span class=\"fontTitle\">Identify Awards:</span>";
+
+  install_award_idents();
+
+  echo "</td>
+          </tr>";
 }
 
 else

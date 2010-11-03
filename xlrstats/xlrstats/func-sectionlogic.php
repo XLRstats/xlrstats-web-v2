@@ -539,14 +539,17 @@ echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" cla
     echo "<tr>";
     echo "<td align=\"center\"><strong>$rank</strong></td>";
 
+    if($game == "moh")
+      $row['name'] = strtolower($row['name']);
+
     if (isset($m[$row['name']]))
       echo "<td align=\"center\">"."  <a href=\"$link?func=map&mapid=${row['id']}\">".$m[ $row['name'] ]."</a></td>";
     else
       echo "<td align=\"center\"><a href=\"$link?func=map&mapid=${row['id']}\">${row['name']}</a></td>";
 
     //$mapName = strtolower($row['name']);
-    if($game == "bfbc2")
-      $row['name'] = preg_replace('/Levels\//', '', $row['name']);
+    if($game == "bfbc2" || $game="moh")
+      $row['name'] = preg_replace('/Levels\//i', '', $row['name']);
 
     echo "<td align=\"center\"><a href=\"$link?func=map&mapid=${row['id']}\">";
     // catch cod1, coduo and cod2 in one imagefolder

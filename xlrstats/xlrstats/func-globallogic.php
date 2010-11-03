@@ -527,6 +527,9 @@ function welcometext($pop=0)
   $curnumplayers = (count($clientsBlue) + count($clientsRed) + count($clientsSpec));
   $currentmap = $mapName;
 
+  if($game == 'moh')
+    $currentmap = strtolower($currentmap);
+
   $maxPlayers = $sv_maxclients - $sv_privateClients;
 
   // Replace the mapname with a friendly name

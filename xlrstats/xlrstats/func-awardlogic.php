@@ -506,7 +506,7 @@ function pro_medal_remote_bomb_fan()
         FROM ${t['weaponusage']}
         JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
         JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
-        WHERE (${t['weaponusage']}.weapon_id = $wp_bomb)";
+        WHERE (${t['weaponusage']}.weapon_id IN $wp_bomb)";
 
     list($score, $playerid, $name, $players, $scores, $playerids, $flags) = CreateMedal($qry, "total_kills", "total_kills DESC", 2, "");
     ShowMedal($text["remotebomb"], $text["c4kill"], $score, $playerid, $name, "xlr_pro_c4.png", $text["mostc4"], $players, $scores, $fname, $playerids, $flags, $ch);  

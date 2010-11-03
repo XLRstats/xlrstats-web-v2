@@ -31,6 +31,13 @@ function install_award_idents()
   //scan available configs and save the appropriate awardfiles
   configscanner();
   end_process();
+
+  //delete cache to display new medal owners
+  $files = glob("dynamic/cache/*.txt");
+  foreach($files as $file) 
+  {
+    unlink($file);
+  }
 }
 
 //********************************************************************************
@@ -1020,13 +1027,6 @@ function moh_awards()
   // Head
   add_bodypartaward("bp_head", "'head'");
 }
-
-//delete cache to display new medal owners
-$files = glob("../dynamic/cache/*.txt");
-foreach($files as $file) 
-{
-  unlink($file);
-}  
 
 
 ?>

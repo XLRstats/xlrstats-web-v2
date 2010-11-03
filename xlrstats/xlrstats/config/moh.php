@@ -135,6 +135,17 @@ $m['levels/mp_08_tdm'] = "Kunar Base";
 $m['levels/mp_09_tdm'] = "Kabul City Ruins";
 $m['levels/mp_10_tdm'] = "Garmzir Town";
 
+//Clean Sweep
+$m['levels/mp_01_elimination'] = "Bagram Hangar";
+$m['levels/mp_03_elimination'] = "Khyber Caves";
+$m['levels/mp_06_elimination'] = "Diwagal Camp";
+$m['levels/mp_09_elimination'] = "Kabul City Ruins";
+
+//Hot Zone
+$m['levels/mp_02_koth'] = "Hindu Kush Pass";
+$m['levels/mp_04_koth'] = "Helmand River Hill";
+$m['levels/mp_07_koth'] = "Korengal Outpost";
+
 $m['None'] = "-Unknown-";
 
 //*********************

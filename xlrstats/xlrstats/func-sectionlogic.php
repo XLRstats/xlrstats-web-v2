@@ -2370,6 +2370,7 @@ function player_maps_s($playerid, $dbID = false)
   global $coddb;
   global $separatorline;
   global $text;
+  global $game;
     
   global $t; // table names from config
   global $m; // map names from config
@@ -2429,6 +2430,8 @@ function player_maps_s($playerid, $dbID = false)
     ";  // This draws a one pixel line between rows
     $Output .= "<tr>
     ";
+
+    if($game == 'moh') $row['name'] = strtolower($row['name']);
 
     if (isset($m[$row['name']]))
     {

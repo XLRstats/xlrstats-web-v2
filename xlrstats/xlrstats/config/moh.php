@@ -110,41 +110,41 @@ $w['[]'] = $text["notidentify"];
 //*********************
 
 //Combat Mission
-$m['levels/mp_01'] = "Mazar-i-Sharif Airfield";
-$m['levels/mp_02'] = "Shah-i-Khot Mountains";
-$m['levels/mp_04'] = "Helmand Valley";
+$m['levels/mp_01'] = "Mazar-i-Sharif Airfield (Combat Mission)";
+$m['levels/mp_02'] = "Shah-i-Khot Mountains (Combat Mission)";
+$m['levels/mp_04'] = "Helmand Valley (Combat Mission)";
 
 //Sector Control
-$m['levels/mp_05_domination'] = "Kandahar Marketplace";
-$m['levels/mp_06_domination'] = "Diwagal Camp";
-$m['levels/mp_08_domination'] = "Kunar Base";
-$m['levels/mp_09_domination'] = "Kabul City Ruins";
-$m['levels/mp_10_domination'] = "Garmzir Town";
+$m['levels/mp_05_domination'] = "Kandahar Marketplace (Sector Control)";
+$m['levels/mp_06_domination'] = "Diwagal Camp (Sector Control)";
+$m['levels/mp_08_domination'] = "Kunar Base (Sector Control)";
+$m['levels/mp_09_domination'] = "Kabul City Ruins (Sector Control)";
+$m['levels/mp_10_domination'] = "Garmzir Town (Sector Control)";
 
 //Objective Raid
-$m['levels/mp_05_overrun'] = "Kandahar Marketplace";
-$m['levels/mp_06_overrun'] = "Diwagal Camp";
-$m['levels/mp_08_overrun'] = "Kunar Base";
-$m['levels/mp_09_overrun'] = "Kabul City Ruins";
-$m['levels/mp_10_overrun'] = "Garmzir Town";
+$m['levels/mp_05_overrun'] = "Kandahar Marketplace (Objective Raid)";
+$m['levels/mp_06_overrun'] = "Diwagal Camp (Objective Raid)";
+$m['levels/mp_08_overrun'] = "Kunar Base (Objective Raid)";
+$m['levels/mp_09_overrun'] = "Kabul City Ruins (Objective Raid)";
+$m['levels/mp_10_overrun'] = "Garmzir Town (Objective Raid)";
 
 //Team Assault
-$m['levels/mp_05_tdm'] = "Kandahar Marketplace";
-$m['levels/mp_06_tdm'] = "Diwagal Camp";
-$m['levels/mp_08_tdm'] = "Kunar Base";
-$m['levels/mp_09_tdm'] = "Kabul City Ruins";
-$m['levels/mp_10_tdm'] = "Garmzir Town";
+$m['levels/mp_05_tdm'] = "Kandahar Marketplace (Team Assault)";
+$m['levels/mp_06_tdm'] = "Diwagal Camp (Team Assault)";
+$m['levels/mp_08_tdm'] = "Kunar Base (Team Assault)";
+$m['levels/mp_09_tdm'] = "Kabul City Ruins (Team Assault)";
+$m['levels/mp_10_tdm'] = "Garmzir Town (Team Assault)";
 
 //Clean Sweep
-$m['levels/mp_01_elimination'] = "Bagram Hangar";
-$m['levels/mp_03_elimination'] = "Khyber Caves";
-$m['levels/mp_06_elimination'] = "Diwagal Camp";
-$m['levels/mp_09_elimination'] = "Kabul City Ruins";
+$m['levels/mp_01_elimination'] = "Bagram Hangar (Clean Sweep)";
+$m['levels/mp_03_elimination'] = "Khyber Caves (Clean Sweep)";
+$m['levels/mp_06_elimination'] = "Diwagal Camp (Clean Sweep)";
+$m['levels/mp_09_elimination'] = "Kabul City Ruins (Clean Sweep)";
 
 //Hot Zone
-$m['levels/mp_02_koth'] = "Hindu Kush Pass";
-$m['levels/mp_04_koth'] = "Helmand River Hill";
-$m['levels/mp_07_koth'] = "Korengal Outpost";
+$m['levels/mp_02_koth'] = "Hindu Kush Pass (Hot Zone)";
+$m['levels/mp_04_koth'] = "Helmand River Hill (Hot Zone)";
+$m['levels/mp_07_koth'] = "Korengal Outpost (Hot Zone)";
 
 $m['None'] = "-Unknown-";
 

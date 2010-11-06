@@ -31,6 +31,7 @@ require_once('func-globallogic.php');
 
 session_start();
 cleanglobals();
+$pop = 0;
 
 // If statsconfig.php exists, we won't enable multiconfig functionality
 if (file_exists("config/statsconfig.php"))
@@ -98,9 +99,10 @@ if (file_exists("templates/holidaypack/"))
   
 
 $templateconfig = "templates/" . $template . "/config.php";
+// Default width of a template:
+$main_width = 800;
 if (file_exists($templateconfig))
   include($templateconfig);
-$main_width = $main_width ? $main_width : 800; 
 
 
 global $coddb;

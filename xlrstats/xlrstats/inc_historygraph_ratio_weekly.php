@@ -32,6 +32,7 @@ require_once('languages/languages.php');
 
 session_start();
 cleanglobals();
+$pop = 0;
 
 // If statsconfig.php exists, we won't enable multiconfig functionality
 if (file_exists("config/statsconfig.php"))
@@ -63,6 +64,9 @@ elseif (file_exists("config/statsconfig1.php"))
   }
 }
 require_once($currentconfig);
+
+// Determine debugmode
+getdebugmode();
 
 // Do we have template specific settings?
 if (isset($_SESSION['template']))

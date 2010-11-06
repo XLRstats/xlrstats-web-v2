@@ -86,15 +86,8 @@ include("config/".$game.".php");
 if($game == "bfbc2")
   include("func-bfbc2global.php");
 
-// Debug mode?
-if (!isset($debug))
-  $debug = 0;
-if ($debug == 2)
-  error_reporting(E_ALL);
-elseif ($debug == 1)
-  error_reporting(E_ALL ^ E_NOTICE);
-else
-  error_reporting(0);
+// Determine debugmode
+getdebugmode();
 
 // Retrieve cookie contents
 //if (isset($_COOKIE["XLR_template"]))
@@ -174,7 +167,7 @@ if ($func == "saveme")
 
 if ($func == "info")
 {
-  if ($debug == 1)
+  if ($debug > 0)
   {
     info();
     exit;

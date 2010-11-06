@@ -1,2 +1,2 @@
-version: 2.3.1 
-date: 26 oktober 2010
+version: 2.3.2 
+date: 7 november 2010

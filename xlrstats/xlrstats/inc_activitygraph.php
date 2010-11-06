@@ -64,6 +64,9 @@ elseif (file_exists("config/statsconfig1.php"))
 }
 require_once($currentconfig);
 
+// Determine debugmode
+getdebugmode();
+
 // Do we have template specific settings?
 if (isset($_SESSION['template']))
   $template = $_SESSION['template'];

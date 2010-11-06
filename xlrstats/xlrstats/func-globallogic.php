@@ -93,6 +93,21 @@ function httplink($pop=0)
   return "http://".$_SERVER['HTTP_HOST'].implode("/", $ptemp)."/";
 }
 
+function getdebugmode()
+{
+  global $debug;
+
+  // Debug mode?
+  if (!isset($debug))
+    $debug = 0;
+  if ($debug == 2)
+    error_reporting(E_ALL);
+  elseif ($debug == 1)
+    error_reporting(E_ALL ^ E_NOTICE);
+  else
+    error_reporting(0);
+}
+
 function getvisitorip()
 {
   // Get the visitors IP address

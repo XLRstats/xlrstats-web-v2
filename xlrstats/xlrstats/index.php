@@ -88,9 +88,11 @@ if($game == "bfbc2")
 
 // Debug mode?
 if (!isset($debug))
-  $debug = 1;
-if ($debug == 1)
+  $debug = 0;
+if ($debug == 2)
   error_reporting(E_ALL);
+elseif ($debug == 1)
+  error_reporting(E_ALL ^ E_NOTICE);
 else
   error_reporting(0);
 

@@ -157,6 +157,7 @@ $w['KORN#Missile Launcher'] = "Stationary AT KORN";
 $w['TOW2#Launcher'] = "Stationary AT TOW2";
 $w['ZU23#Cannons'] = "Anti-Air Gun";
 $w['VADS#AutoCannon'] = "VADS Auto Cannon";
+$w['CAVJ#XM-307'] = "XM307 ACSW";
 
 //*********************
 // Other Weapon Names
@@ -184,7 +185,6 @@ $w['DTN-4'] = "C4 Explosive";
 $w['MRTR-5'] = "Mortar Strike";
 $w['HG-2'] = "Hand Grenade";
 $w['TRCR-357'] = "Tracer Dart Gun";
-$w['CAVJ#XM-307'] = "XM307 ACSW grenade launcher"; //Which perk is that?
 
 //*********************
 // Map names

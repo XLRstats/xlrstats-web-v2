@@ -1028,5 +1028,6 @@ function moh_awards()
   add_bodypartaward("bp_head", "'head'");
 }
 
-
+function cod6_awards()
+{}
 ?>

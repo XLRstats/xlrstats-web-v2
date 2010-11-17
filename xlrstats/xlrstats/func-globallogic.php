@@ -29,7 +29,7 @@ defined( '_XLREXEC' ) or die( 'Restricted access' );
 $clientsRed  = array();
 $clientsBlue  = array();
 $clientsSpec  = array();
-$supportedgames = array('cod', 'coduo', 'cod2', 'cod4', 'cod5', 'etpro', 'iourt41', 'smg', 'wop', 'bfbc2', 'moh'); // B3 parsernames
+$supportedgames = array('cod', 'coduo', 'cod2', 'cod4', 'cod5', 'etpro', 'iourt41', 'smg', 'wop', 'bfbc2', 'moh', 'cod6'); // B3 parsernames
 $ffa_modes = array('dm', 'ffa', 'syc-ffa');
 
 $sv_privateClients = 0;

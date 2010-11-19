@@ -847,6 +847,8 @@ function stylepicker()
   unset($templatelist[$key]);
   $key = array_search('admin', $templatelist);
   unset($templatelist[$key]);
+  $key = array_search('index.php', $templatelist);
+  unset($templatelist[$key]);
 
   echo "<form name=\"stylepicker\" id=\"stylepicker\" class=\"stylepicker\"><select name=\"style\" onchange=\"XLR_stylePicker('parent',this,0)\">";
   foreach ($templatelist as $value)

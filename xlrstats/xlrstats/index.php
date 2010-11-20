@@ -32,6 +32,7 @@ include("func-globallogic.php");
 include("func-playerlistlogic.php");
 include("func-sectionlogic.php");
 include("func-awardlogic.php");
+include("func-leaguelogic.php");
 include("func-clan.php");
 include("lib/geoip.inc");
 
@@ -609,6 +610,11 @@ if($func == "medal")
     if( in_array($fname, $all_medals, true) ) eval($fname."();");
     else die('Hacking attempt!');
     }
+}
+
+if($func == "league")
+{
+  test();
 }
 
 // Close the page properly (footer)

@@ -614,7 +614,29 @@ if($func == "medal")
 
 if($func == "league")
 {
-  test();
+  global $useppllist;
+  global $b3_status_url;
+  // show general data for index page
+  welcometext();
+  echo "<br/>";
+
+  if($useppllist == 1)
+  {
+    $fp = @fopen($b3_status_url, "r");
+    if (@fread($fp, 4096))
+    {
+      currentplayers();
+      echo "<br/>";
+    }
+  }
+  //menubox(1);
+  //echo "<br/>";
+
+  show_leagues();
+  echo "<br/>";
+  global_awards();   
+  echo "<br/>";
+  global_lame_awards();
 }
 
 // Close the page properly (footer)

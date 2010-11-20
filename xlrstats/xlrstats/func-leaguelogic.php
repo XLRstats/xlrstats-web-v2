@@ -29,18 +29,20 @@ defined( '_XLREXEC' ) or die( 'Restricted access' );
 class league {
 
   //--Support Functions-----------------------------------------------------------
-  function draw_blocks($array, $title="League", $number=10, $blocks=4, $on="skill")
+  function draw_blocks($array, $title="League", $number=10, $blocks=4, $on="skill", $name_length=14)
   {
+    $link = baselink();
+    echo "<table width=100% class='outertable'><tr><td><h2>".$title."</h2></td></tr></table>";
     $blockcount = 1;
     echo "<table width='100%'>\n";
     echo "  <tr>\n";
     foreach($array as $k1 => $v1){
-      echo "  <td valign='top'>\n";
+      echo "  <td valign='top' class='outertable'>\n";
       $count = 1;
       $width = 100/$blocks."%";
-      echo "    <table width=$width>\n";
+      echo "    <table width=100% class='innertable'>\n";
       $division = $k1 + 1;
-      echo "    <tr><td colspan='2'><h4>".$title." Division ".$division." (top ".$number.")</h4></td></tr>\n";
+      echo "    <tr><td colspan='2'><p><strong>Division ".$division." (top ".$number.")</strong></p></td></tr>\n";
       //print_r($array);
       //echo $k1.": <br />";
       if (is_array($v1)) {
@@ -51,9 +53,11 @@ class league {
               if ($k3 == 'id')
                 $id = $v3;
               if ($k3 == 'name')
-                echo "    <tr><td>".$v3."</td>";
+                 echo "    <tr><td><a href='$link?func=player&playerid=$id'>$v3</a></td>";
               if ($k3 == $on)
                 {
+                if ($on == 'skill')
+                  $v3 = sprintf("%.1f",$v3);
                 echo "    <td>".$v3."</td></tr>\n";
                 $count += 1;
                 }
@@ -75,7 +79,7 @@ class league {
     echo "  </tr>\n</table>\n";
   }
   
-  function retrieve_players($limit = 0, $sortby = "skill", $direction = "DESC", $offset = 0)
+  function retrieve_players($limit = 0, $sortby = "skill", $direction = "DESC", $offset = 0, $name_length=14)
   {
     global $coddb;
     global $game;
@@ -136,6 +140,8 @@ class league {
     while ($row = $coddb->sql_fetchrow($result))
       {
       $name = htmlspecialchars(utf2iso($row['fixed_name'] ? $row['fixed_name'] : $row['name']));
+      if (strlen($name) > $name_length)
+        $name = (substr($name, 0, $name_length) . '...');
       $players[] = array('id' => $row['id'], 'name' => $name, 'skill' => $row['skill'], 'kills' => $row['kills'], 'deaths' => $row['deaths'], 'ratio' => $row['ratio'], 'winstreak' => $row['winstreak'], 'losestreak' => $row['losestreak'], 'rounds' => $row['rounds'], 'fixed_name' => $row['fixed_name'], 'ip' => $row['ip'], 'time_edit' => $row['time_edit']);
       }
     
@@ -230,7 +236,7 @@ class league {
 }
 //------------------------------------------------------------------------------
 
-function test()
+function show_leagues()
 {
   // init the league class
   $league = new league;
@@ -285,7 +291,9 @@ function test()
   echo $tmp;
 
   echo "<hr>";
-
+  echo "(Peak Mem usage: " . sprintf("%.2f",memory_get_peak_usage()/1024) . " Kb)";
+  echo "<hr>";
+  
 }
 
 ?>

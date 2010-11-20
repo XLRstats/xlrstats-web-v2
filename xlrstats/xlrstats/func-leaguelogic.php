@@ -29,18 +29,21 @@ defined( '_XLREXEC' ) or die( 'Restricted access' );
 class league {
 
   //--Support Functions-----------------------------------------------------------
-  function draw_blocks($array, $title="League", $number=10, $blocks=4, $on="skill", $name_length=14)
+  function draw_blocks($array, $title="League", $number=10, $blocks=4, $on="skill", $name_length=10)
   {
+    global $main_width;
     $link = baselink();
-    echo "<table width=100% class='outertable'><tr><td><h2>".$title."</h2></td></tr></table>";
+
+    $width = $main_width/$blocks;
+    echo "<table width='100%' class='outertable'><tr><td><div style='font-size:1.5em;'>".$title."</div></td></tr></table>";
     $blockcount = 1;
     echo "<table width='100%'>\n";
     echo "  <tr>\n";
     foreach($array as $k1 => $v1){
-      echo "  <td valign='top' class='outertable'>\n";
+      echo "  <td width='$width' valign='top' class='outertable'>\n";
       $count = 1;
       //$width = 100/$blocks."%";
-      echo "    <table width=100% class='innertable'>\n";
+      echo "    <table width='$width' class='innertable'>\n";
       $division = $k1 + 1;
       echo "    <tr><td colspan='4'><p><strong>Division ".$division." (top ".$number.")</strong></p></td></tr>\n";
       //print_r($array);
@@ -64,9 +67,9 @@ class league {
               if ($k3 == 'ip')
               {
                 $flag = $this->get_flag($v3);
-                echo "    <tr><td>$count</td>";
-                echo "    <td align=\"center\">".$flag."</td>";
-                echo "    <td><a href='$link?func=player&playerid=$id'>$name</a></td>";
+                echo "    <tr><td>$count</td>\n";
+                echo "    <td align=\"center\">".$flag."</td>\n";
+                echo "    <td><a href='$link?func=player&playerid=$id'>$name</a></td>\n";
                 echo "    <td>".$value."</td></tr>\n";
                 $count += 1;
               }
@@ -78,6 +81,7 @@ class league {
       }
       echo "    </table>\n";
       echo "  </td>\n";
+      $fill = $blocks-$blockcount;
       $blockcount += 1;
       if ($blockcount > $blocks)
       {
@@ -85,10 +89,13 @@ class league {
         echo "  </tr>\n  <tr>\n";
       }
     }
+    if ($fill > 0 )
+      for ($i = 0; $i < $fill; $i++)
+        echo "<td>&nbsp;</td>\n";
     echo "  </tr>\n</table>\n";
   }
   
-  function retrieve_players($limit = 0, $sortby = "skill", $direction = "DESC", $offset = 0, $name_length=14)
+  function retrieve_players($limit = 0, $sortby = "skill", $direction = "DESC", $offset = 0, $name_length=10)
   {
     global $coddb;
     global $game;
@@ -155,7 +162,7 @@ class league {
     return $players;
   }
 
-  function fix_name($name, $fixed_name='', $name_length=14)
+  function fix_name($name, $fixed_name='', $name_length=10)
   {
     if ($fixed_name == '')
       unset($fixed_name);
@@ -286,52 +293,42 @@ function show_leagues()
   $expertleague = $playerbase;
   // create a league by filtering a certain skill range
   $expertleague = $league->filter_league($expertleague, 'skill', 1400, 99999);
-  $tmp = "<div style='float:right;font-style:italic;'>(".count($expertleague)." players in this league)</div>";
+  $tmp = "<div style='float:right;font-style:italic;font-size:0.8em;'>(".count($expertleague)." players in this league)</div>";
   // Chop the league into divisions of # players
   $expertleague = $league->limit_subleague($expertleague, 10); // make this equal to the number of players drawn in a block to show all players in the league :) 
   // draw a block with a top # players of each division 
   $league->draw_blocks($expertleague, $title="Expert League", 10);
   echo $tmp;
 
-  echo "<hr>";
-
   $premierleague = $playerbase;
   $premierleague = $league->filter_league($premierleague, 'skill', 1250, 1400);
-  $tmp = "<div style='float:right;font-style:italic;'>(".count($premierleague)." players in this league)</div>";
+  $tmp = "<div style='float:right;font-style:italic;font-size:0.8em;'>(".count($premierleague)." players in this league)</div>";
   $premierleague = $league->limit_subleague($premierleague, 25);
   $league->draw_blocks($premierleague, $title="Premier League");
   echo $tmp;
 
-  echo "<hr>";
-
   $majorleague = $playerbase;
   $majorleague = $league->filter_league($majorleague, 'skill', 1100, 1250);
-  $tmp = "<div style='float:right;font-style:italic;'>(".count($majorleague)." players in this league)</div>";
+  $tmp = "<div style='float:right;font-style:italic;font-size:0.8em;'>(".count($majorleague)." players in this league)</div>";
   $majorleague = $league->limit_subleague($majorleague, 25);
   $league->draw_blocks($majorleague, $title="Major League");
   echo $tmp;
 
-  echo "<hr>";
-
   $minorleague = $playerbase;
   $minorleague = $league->filter_league($minorleague, 'skill', 1000, 1100);
-  $tmp = "<div style='float:right;font-style:italic;'>(".count($minorleague)." players in this league)</div>";
+  $tmp = "<div style='float:right;font-style:italic;font-size:0.8em;'>(".count($minorleague)." players in this league)</div>";
   $minorleague = $league->limit_subleague($minorleague, 25);
   $league->draw_blocks($minorleague, $title="Minor League");
   echo $tmp;
 
-  echo "<hr>";
-
   $motivationleague = $playerbase;
   $motivationleague = $league->filter_league($motivationleague, 'skill', 0, 1000);
-  $tmp = "<div style='float:right;font-style:italic;'>(".count($motivationleague)." players in this league)</div>";
+  $tmp = "<div style='float:right;font-style:italic;font-size:0.8em;'>(".count($motivationleague)." players in this league)</div>";
   $motivationleague = $league->limit_subleague($motivationleague, 25);
   $league->draw_blocks($motivationleague, $title="Motivation League");
   echo $tmp;
 
-  echo "<hr>";
-  echo "(Peak Mem usage: " . sprintf("%.2f",memory_get_peak_usage()/1024) . " Kb)";
-  echo "<hr>";
+  echo "<div style='font-size:0.7em;'>(Peak Mem usage: " . sprintf("%.2f",memory_get_peak_usage()/1024) . " Kb)</div>";
   
 }
 

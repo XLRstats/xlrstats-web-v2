@@ -161,14 +161,13 @@ function topplayers($sortby = "skill", $direction = "DESC", $offset = 0, $clan_n
   }
   
     
-    $query .= "ORDER BY $sortby $direction";
-    $result = $coddb->sql_query($query);
-    $numRows = $coddb->sql_numrows($result);
+  $query .= "ORDER BY $sortby $direction";
 
   if ($toplist_max > 0)
     $query .= " LIMIT $offset, $toplist_max";
             
   $result = $coddb->sql_query($query);
+  $numRows = $coddb->sql_numrows($result);
   
   // Queue the gamestats for these players
   if($game == 'bfbc2') {
@@ -832,8 +831,14 @@ function player_compare_item($player1, $player2, $citem="skill", $cbar=true, $sw
     {
       if (is_numeric($player1[$citem]))
       {
-        $player1perc = 1;
-        $player2perc = $player2[$citem]/$player1[$citem];
+        // catch Division by zero if no teamkills were made start
+        if ($player1[$citem] == 0)
+        {
+            $player2perc = 1; // both itemattributes are 0
+        } else {
+            $player2perc = $player2[$citem]/$player1[$citem];
+        }
+        // catch Division by zero if no teamkills were made end
       }
       $cclass1 = "innertable";
       $cbarcolor1 = "green";

@@ -60,7 +60,6 @@ class league {
                   $value = sprintf("%.1f",$v3);
                 else
                   $value = $v3;
-                $count += 1;
                 }
               if ($k3 == 'ip')
               {
@@ -69,6 +68,7 @@ class league {
                 echo "    <td align=\"center\">".$flag."</td>";
                 echo "    <td><a href='$link?func=player&playerid=$id'>$name</a></td>";
                 echo "    <td>".$value."</td></tr>\n";
+                $count += 1;
               }
               if ($count > $number)
                 break;

@@ -39,10 +39,10 @@ class league {
     foreach($array as $k1 => $v1){
       echo "  <td valign='top' class='outertable'>\n";
       $count = 1;
-      $width = 100/$blocks."%";
+      //$width = 100/$blocks."%";
       echo "    <table width=100% class='innertable'>\n";
       $division = $k1 + 1;
-      echo "    <tr><td colspan='2'><p><strong>Division ".$division." (top ".$number.")</strong></p></td></tr>\n";
+      echo "    <tr><td colspan='4'><p><strong>Division ".$division." (top ".$number.")</strong></p></td></tr>\n";
       //print_r($array);
       //echo $k1.": <br />";
       if (is_array($v1)) {
@@ -53,14 +53,23 @@ class league {
               if ($k3 == 'id')
                 $id = $v3;
               if ($k3 == 'name')
-                 echo "    <tr><td><a href='$link?func=player&playerid=$id'>$v3</a></td>";
+                $name = $v3;
               if ($k3 == $on)
                 {
                 if ($on == 'skill')
-                  $v3 = sprintf("%.1f",$v3);
-                echo "    <td>".$v3."</td></tr>\n";
+                  $value = sprintf("%.1f",$v3);
+                else
+                  $value = $v3;
                 $count += 1;
                 }
+              if ($k3 == 'ip')
+              {
+                $flag = $this->get_flag($v3);
+                echo "    <tr><td>$count</td>";
+                echo "    <td align=\"center\">".$flag."</td>";
+                echo "    <td><a href='$link?func=player&playerid=$id'>$name</a></td>";
+                echo "    <td>".$value."</td></tr>\n";
+              }
               if ($count > $number)
                 break;
             }
@@ -139,14 +148,44 @@ class league {
     $players = array();
     while ($row = $coddb->sql_fetchrow($result))
       {
-      $name = htmlspecialchars(utf2iso($row['fixed_name'] ? $row['fixed_name'] : $row['name']));
-      if (strlen($name) > $name_length)
-        $name = (substr($name, 0, $name_length) . '...');
+      $name = $this->fix_name($name=$row['name'], $fixed_name=$row['fixed_name'], $name_length=$name_length);
       $players[] = array('id' => $row['id'], 'name' => $name, 'skill' => $row['skill'], 'kills' => $row['kills'], 'deaths' => $row['deaths'], 'ratio' => $row['ratio'], 'winstreak' => $row['winstreak'], 'losestreak' => $row['losestreak'], 'rounds' => $row['rounds'], 'fixed_name' => $row['fixed_name'], 'ip' => $row['ip'], 'time_edit' => $row['time_edit']);
       }
     
     return $players;
   }
+
+  function fix_name($name, $fixed_name='', $name_length=14)
+  {
+    if ($fixed_name == '')
+      unset($fixed_name);
+    $name = htmlspecialchars(utf2iso($fixed_name ? $fixed_name : $name));
+    if (strlen($name) > $name_length)
+      $name = (substr($name, 0, $name_length) . '...');
+    return $name;
+  }
+
+  function get_flag($ip)
+  {
+    global $geoip_path;
+
+    if (file_exists($geoip_path."GeoIP.dat"))
+    {
+      $geocountry = $geoip_path."GeoIP.dat";
+      //$ip = $row['ip'];
+      $gi = geoip_open($geocountry,GEOIP_STANDARD);
+      $countryid = strtolower (geoip_country_code_by_addr($gi, $ip));
+      $country = geoip_country_name_by_addr($gi, $ip);
+      if ( !is_null($countryid) and $countryid != "") 
+        $flag = "<img src=\"images/flags/".$countryid.".gif\" title=\"".$country."\" alt=\"".$country."\">";
+      else 
+        $flag = "<img width=\"16\" height=\"11\" src=\"images/spacer.gif\" title=\"".$country."\" alt=\"".$country."\">"; 
+
+      geoip_close($gi);
+      return $flag;
+    }
+  }
+
 
   // sort an array on a key value (ie. on kills or ratio)
   // it prevents us from having to query the database again

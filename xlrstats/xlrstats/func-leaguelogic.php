@@ -242,8 +242,9 @@ function test()
   // create a league by filtering a certain skill range
   $expertleague = $league->filter_league($expertleague, 'skill', 1400, 99999);
   $tmp = "<div style='float:right;font-style:italic;'>(".count($expertleague)." players in this league)</div>";
-  
+  // Chop the league into divisions of # players
   $expertleague = $league->limit_subleague($expertleague, 10); // make this equal to the number of players drawn in a block to show all players in the league :) 
+  // draw a block with a top # players of each division 
   $league->draw_blocks($expertleague, $title="Expert League", 10);
   echo $tmp;
 

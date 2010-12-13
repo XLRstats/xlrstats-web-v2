@@ -547,7 +547,7 @@ echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" cla
       echo "<td align=\"center\"><a href=\"$link?func=map&mapid=${row['id']}\">${row['name']}</a></td>";
 
     //$mapName = strtolower($row['name']);
-    if($game == "bfbc2" || $game="moh")
+    if($game == "bfbc2" || $game == "moh")
       $row['name'] = preg_replace('/Levels\//i', '', $row['name']);
 
     echo "<td align=\"center\"><a href=\"$link?func=map&mapid=${row['id']}\">";
@@ -3316,8 +3316,8 @@ function map_short($mapid)
   else
     $gamename = $game;
 
-  if($game == "bfbc2")
-    $row['name'] = preg_replace('/Levels\//', '', $row['name']);
+  if($game == "bfbc2" || $game == "moh")
+    $row['name'] = preg_replace('/Levels\//i', '', $row['name']);
 
   get_pic("images/maps/$gamename/middle/${row['name']}");
 

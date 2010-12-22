@@ -827,7 +827,7 @@ function bfbc2_display_player_campaing_achievements($player)
 function bfbc2_display_player_online_achievements($player)
 {
   $achievements = object2array($player->achievements);
-  $onlineachs = array_slice($achievements,30,54, true);
+  $onlineachs = array_slice($achievements,30,24, true);
 
   $onlineachlist = '<table width="100%" border="0" cellspacing="1" cellpadding="0" class="outertable">
                      <tr>

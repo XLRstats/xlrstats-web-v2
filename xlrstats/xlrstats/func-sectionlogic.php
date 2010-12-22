@@ -162,13 +162,15 @@ function topplayers($sortby = "skill", $direction = "DESC", $offset = 0, $clan_n
   
     
   $query .= "ORDER BY $sortby $direction";
-
-  if ($toplist_max > 0)
-    $query .= " LIMIT $offset, $toplist_max";
-            
   $result = $coddb->sql_query($query);
   $numRows = $coddb->sql_numrows($result);
   
+  if ($toplist_max > 0)
+    $query .= " LIMIT $offset, $toplist_max";
+
+  //required again to list players limited by pager
+  $result = $coddb->sql_query($query);
+
   // Queue the gamestats for these players
   if($game == 'bfbc2') {
     if(!empty($row))

@@ -54,6 +54,7 @@ function topplayers($sortby = "skill", $direction = "DESC", $offset = 0, $clan_n
   global $rss_sortby;
   global $currentconfignumber;
   global $text;
+  global $disableRanks;
 
   $current_time = gmdate("U");
 
@@ -210,7 +211,8 @@ function topplayers($sortby = "skill", $direction = "DESC", $offset = 0, $clan_n
   {
     global $rankname;
     global $killsneeded;
-    global $rankimage;   
+    global $rankimage;
+    global $disableRanks;
     
 
     $kills =  get_rank_badge($row['kills']); 

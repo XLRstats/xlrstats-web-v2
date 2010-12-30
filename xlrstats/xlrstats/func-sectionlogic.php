@@ -222,7 +222,7 @@ function topplayers($sortby = "skill", $direction = "DESC", $offset = 0, $clan_n
     elseif ($separatorline == 1)
       echo "<tr><td colspan=\"10\" class=\"outertable\"><img src=\"images/spacer.gif\" width=\"1\" height=\"1\" alt=\"\"></td></tr>";  // This draws a one pixel line between rows
 
-    echo "<tr>";
+    echo "<tr class=\"listrow\">";
     echo "<td align=\"center\"><strong>$rank</strong></td>";
       if ($game == 'bfbc2')
         echo "<td><img src=\"http://g.bfbcs.com/2196/pc_".urlencode(preg_replace($clanpattern, '', $row['name'])).".png\" width=\"30\" height=\"30\"></td>";

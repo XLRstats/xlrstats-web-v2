@@ -75,8 +75,10 @@ function topplayers($sortby = "skill", $direction = "DESC", $offset = 0, $clan_n
         <tr class=\"outertable\">
         <td align=\"center\" width=\"40\">".$text["place"]."</td>";
   if(!$disableRanks) {
-        <td align=\"center\" width=\"30\">".$text["rank"]."</td>
+    echo "
+        <td align=\"center\" width=\"30\">".$text["rank"]."</td>";
   }
+  echo "
         <td>".$text["name"]."</td>";
 
   if (file_exists($geoip_path."GeoIP.dat"))

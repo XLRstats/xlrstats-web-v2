@@ -1308,7 +1308,7 @@ $(document).ready(function(){
   }
   echo "  				</form>
 			</td>
-			<td>" . $version_text . "
+			<td align=\"right\">" . $version_text . "
 			</td>
 		</tr>
 		</table>

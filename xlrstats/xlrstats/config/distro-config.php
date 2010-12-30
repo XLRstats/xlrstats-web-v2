@@ -118,6 +118,9 @@ $disable_configpicker = 0;
 $use_geoip = 1;
 $geoip_path = "/path/to/your/geoIP/";
 
+// Disable Rankimages on stats
+$disableRanks = False;
+
 // setting to 1 will enable all php-error reporting and phpinfo to show for debugging purposes.
 // If you find that your XLRstats is okay, set it to 0. If you need support make sure you set this to 1 before posting requests in the support forums.
 $debug = 0;

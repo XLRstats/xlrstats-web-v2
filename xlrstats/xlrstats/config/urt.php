@@ -28,7 +28,7 @@
 //*********************
 
 // Spectators name at the front page
-$spectators = "Spectators";
+$nameSpectators = "Spectators";
 
 
 //*********************

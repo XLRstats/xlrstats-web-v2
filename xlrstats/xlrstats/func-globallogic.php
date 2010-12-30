@@ -294,29 +294,29 @@ function getCurrentMapName($servstatus)
 
 function utf2iso($tekst)
 {                                        
-  $nowytekst = str_replace("%u0104","\xA1",$tekst);    //•
-  $nowytekst = str_replace("%u0106","\xC6",$nowytekst);    //∆
-  $nowytekst = str_replace("%u0118","\xCA",$nowytekst);    // 
-  $nowytekst = str_replace("%u0141","\xA3",$nowytekst);    //£
-  $nowytekst = str_replace("%u0143","\xD1",$nowytekst);    //—
-  $nowytekst = str_replace("%u00D3","\xD3",$nowytekst);    //”
-  $nowytekst = str_replace("%u015A","\xA6",$nowytekst);    //å
-  $nowytekst = str_replace("%u0179","\xAC",$nowytekst);    //è
-  $nowytekst = str_replace("%u017B","\xAF",$nowytekst);    //Ø
+  $nowytekst = str_replace("%u0104","\xA1",$tekst);    //ÔøΩ
+  $nowytekst = str_replace("%u0106","\xC6",$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace("%u0118","\xCA",$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace("%u0141","\xA3",$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace("%u0143","\xD1",$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace("%u00D3","\xD3",$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace("%u015A","\xA6",$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace("%u0179","\xAC",$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace("%u017B","\xAF",$nowytekst);    //ÔøΩ
 
-  $nowytekst = str_replace("%u0105","\xB1",$nowytekst);    //π
-  $nowytekst = str_replace("%u0107","\xE6",$nowytekst);    //Ê
-  $nowytekst = str_replace("%u0119","\xEA",$nowytekst);    //Í
-  $nowytekst = str_replace("%u0142","\xB3",$nowytekst);    //≥
-  $nowytekst = str_replace("%u0144","\xF1",$nowytekst);    //Ò
-  $nowytekst = str_replace("%u00D4","\xF3",$nowytekst);    //Û
-  $nowytekst = str_replace("%u015B","\xB6",$nowytekst);    //ú
-  $nowytekst = str_replace("%u017A","\xBC",$nowytekst);    //ü
-  $nowytekst = str_replace("%u017C","\xBF",$nowytekst);    //ø
+  $nowytekst = str_replace("%u0105","\xB1",$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace("%u0107","\xE6",$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace("%u0119","\xEA",$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace("%u0142","\xB3",$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace("%u0144","\xF1",$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace("%u00D4","\xF3",$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace("%u015B","\xB6",$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace("%u017A","\xBC",$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace("%u017C","\xBF",$nowytekst);    //ÔøΩ
 
-  $nowytekst = str_replace("%3c","<",$nowytekst);    //ø
-  $nowytekst = str_replace("%3e",">",$nowytekst);    //ø
-  $nowytekst = str_replace("%26","&",$nowytekst);    //ø
+  $nowytekst = str_replace("%3c","<",$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace("%3e",">",$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace("%26","&",$nowytekst);    //ÔøΩ
 
 
   return ($nowytekst);
@@ -324,25 +324,25 @@ function utf2iso($tekst)
 
 function utf16_2_utf8 ($nowytekst) 
 {
-  $nowytekst = str_replace('•','%u0104',$nowytekst);    //•
-  $nowytekst = str_replace('∆','%u0106',$nowytekst);    //∆
-  $nowytekst = str_replace(' ','%u0118',$nowytekst);    // 
-  $nowytekst = str_replace('£','%u0141',$nowytekst);    //£
-  $nowytekst = str_replace('—','%u0143',$nowytekst);    //—
-  $nowytekst = str_replace('”','%u00D3',$nowytekst);    //”
-  $nowytekst = str_replace('å','%u015A',$nowytekst);    //å
-  $nowytekst = str_replace('è','%u0179',$nowytekst);    //è
-  $nowytekst = str_replace('Ø','%u017B',$nowytekst);    //Ø
+  $nowytekst = str_replace('ÔøΩ','%u0104',$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace('ÔøΩ','%u0106',$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace('ÔøΩ','%u0118',$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace('ÔøΩ','%u0141',$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace('ÔøΩ','%u0143',$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace('ÔøΩ','%u00D3',$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace('ÔøΩ','%u015A',$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace('ÔøΩ','%u0179',$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace('ÔøΩ','%u017B',$nowytekst);    //ÔøΩ
 
-  $nowytekst = str_replace('π','%u0105',$nowytekst);    //π
-  $nowytekst = str_replace('Ê','%u0107',$nowytekst);    //Ê
-  $nowytekst = str_replace('Í','%u0119',$nowytekst);    //Í
-  $nowytekst = str_replace('≥','%u0142',$nowytekst);    //≥
-  $nowytekst = str_replace('Ò','%u0144',$nowytekst);    //Ò
-  $nowytekst = str_replace('Û','%u00F3',$nowytekst);    //Û
-  $nowytekst = str_replace('ú','%u015B',$nowytekst);    //ú
-  $nowytekst = str_replace('ü','%u017A',$nowytekst);    //ü
-  $nowytekst = str_replace('ø','%u017C',$nowytekst);    //ø
+  $nowytekst = str_replace('ÔøΩ','%u0105',$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace('ÔøΩ','%u0107',$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace('ÔøΩ','%u0119',$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace('ÔøΩ','%u0142',$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace('ÔøΩ','%u0144',$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace('ÔøΩ','%u00F3',$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace('ÔøΩ','%u015B',$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace('ÔøΩ','%u017A',$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace('ÔøΩ','%u017C',$nowytekst);    //ÔøΩ
 
   return ($nowytekst);
 } 
@@ -553,7 +553,7 @@ function welcometext($pop=0)
 
   $today = date('l jS \of F Y h:i:s A');
   echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\">";
-  if ($func != "server") echo "<tr><td align=\"center\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$text["welcome"]."&nbsp;&nbsp;&nbsp;<span class=\"tiny\">($today)</span></td><td width=\"40px\">".checklang($pop)."<a href=\"http://xlrstatshelp.xlr8or.com\" target=\"_blank\"><img src=\"".pathlink($pop)."images/ico/help.png\" border=\"0\" align=\"absmiddle\" title=\"Need help on XLRstats?\"></a></td></tr>";
+  if ($func != "server") echo "<tr><td align=\"center\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$text["welcome"]."&nbsp;&nbsp;&nbsp;<span class=\"tiny\">($today)</span></td><td width=\"40px\" align=\"right\">".checklang($pop)."<a href=\"http://xlrstatshelp.xlr8or.com\" target=\"_blank\"><img src=\"".pathlink($pop)."images/ico/help.png\" border=\"0\" align=\"absmiddle\" title=\"Need help on XLRstats?\"></a></td></tr>";
   echo "<tr>
       <td colspan=\"2\">
         <table align=\"center\" bgcolor=\"#99aaaa\" border=\"0\" cellpadding=\"2\" cellspacing=\"1\" width=\"100%\">
@@ -1297,9 +1297,18 @@ $(document).ready(function(){
 
 	if ($showclansearch == "1")
       echo "<input type=\"checkbox\" name=\"clansearch\" value=\"true\">".$text["clantag"]."</input>";
+  if ( file_exists(abs_pathlink($pop) . "version.txt") )
+  {
+    $version_text = file_get_contents(abs_pathlink($pop) . "version.txt");
+    $version_text = str_replace("date: ","",$version_text);
+    $versions = explode("\n", $version_text);
+    $version_text = "XLRstats " . trim($versions[0]) . "&nbsp;<br />" . trim($versions[1]) . "&nbsp;";
+  } else {
+    $version_text = "unknown XLRstats version";
+  }
   echo "  				</form>
 			</td>
-			<td><a href=\"http://www.bigbrotherbot.com\" target=\"_blank\" title=\"B3 game administration bot for cod, urbanterror, and quake3 games\"><div id=\"inea\"><div class=\"opis\">".$text["poweredby"]." </div></div></a>
+			<td>" . $version . "
 			</td>
 		</tr>
 		</table>

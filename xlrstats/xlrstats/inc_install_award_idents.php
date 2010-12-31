@@ -194,6 +194,7 @@ function closebuffer_write()
 
 function end_process()
 {
+  global $cpath;
   echo "<p class=\"precheckOK\"><strong>Your awards have been identified using the current database content.</strong></p>";
   echo "<p class=\"fontNormal\">1.) You may run \"http://www.yoursite.com/xlrstats/?func=cron\" at any time if you feel that certain awards are not good or certain weapons have only recently been used for the first time.<br />"; 
   //echo "Bookmark current URL to rerun this file later.</i></p>";

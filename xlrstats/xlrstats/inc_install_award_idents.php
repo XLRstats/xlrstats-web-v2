@@ -204,7 +204,7 @@ function end_process()
   echo "<td valign=\"top\"><table width=\"100%\" border=\"0\" cellspacing=\"5\" cellpadding=\"5\">";
   echo "<tr>";
   echo "<td>&nbsp;</td>";
-  echo "<td width=\"80\" align=\"center\" valign=\"middle\"><a href=\"index.php\">";
+  echo "<td width=\"80\" align=\"center\" valign=\"middle\"><a href=\"".$cpath."index.php\">";
   echo "<label>";
   echo "<input name=\"Next\" type=\"button\" class=\"line1\" id=\"Next\" value=\"Stats Home\" />";
   echo "</label>";

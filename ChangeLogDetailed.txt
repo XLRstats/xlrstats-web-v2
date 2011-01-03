@@ -1,3 +1,213 @@
+2010-12-22  Freelander <admin@fps-gamer.net>
+
+	* xlrstats/xlrstats/config/bfbc2.php,
+	xlrstats/xlrstats/func-bfbc2global.php: bfbc2 mappack 7 additions
+
+2010-12-22  Freelander <admin@fps-gamer.net>
+
+	* : added missing menubar.png image to cod6 template folder
+
+2010-12-22  Freelander <admin@fps-gamer.net>
+
+	* xlrstats/xlrstats/func-sectionlogic.php: fixed broken pager
+	function on toplist pages
+
+2010-12-18  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/version.txt: versioning v2.4b
+
+2010-12-13  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/func-sectionlogic.php: bugfix to display map
+	images
+
+2010-11-20  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/func-leaguelogic.php: cosmetic league
+	improvements
+
+2010-11-20  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/func-leaguelogic.php: minor fix
+
+2010-11-20  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/func-leaguelogic.php: minor improvements
+
+2010-11-20  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/func-leaguelogic.php,
+	xlrstats/xlrstats/index.php: minor cosmetic changes
+
+2010-11-20  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/func-sectionlogic.php: fix by Gammelbob:
+	Comparing players with both teamkill=0 leads to a division by zero.
+	solution in func-sectionlogic.php
+
+2010-11-20  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/func-leaguelogic.php: added some descriptions
+
+2010-11-20  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/func-leaguelogic.php,
+	xlrstats/xlrstats/index.php: Initial draft of alternative frontpage
+	with leagues
+
+2010-11-19  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/func-globallogic.php: exclude index.php from
+	stylepicker function
+
+2010-11-18  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/install/func-installer.php,
+	xlrstats/xlrstats/install/index.php: added cod6 to installer
+
+2010-11-18  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/config/awards.php,
+	xlrstats/xlrstats/inc_install_award_idents.php: cod6 awards
+
+2010-11-18  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/sig/backdrops/cod6/index.php: cod6 signature
+	backdrops and icons
+
+2010-11-17  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/config/bfbc2.php: minor change in bfbc2.php
+
+2010-11-17  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/config/cod6.php,
+	xlrstats/xlrstats/func-globallogic.php,
+	xlrstats/xlrstats/inc_install_award_idents.php: new cod6.php and
+	some cod6 additions
+
+2010-11-16  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/templates/cod6/style.css: cod6 template
+
+2010-11-06  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/config/cod6.php: added cod6.php for CoD:MW2
+
+2010-11-06  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/func-globallogic.php,
+	xlrstats/xlrstats/inc_activitygraph.php,
+	xlrstats/xlrstats/inc_historygraph_ratio_weekly.php,
+	xlrstats/xlrstats/inc_historygraph_skill_weekly.php,
+	xlrstats/xlrstats/index.php, xlrstats/xlrstats/version.txt: 
+	centralize debug checking
+
+2010-11-06  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/config/distro-config.php,
+	xlrstats/xlrstats/index.php: Changed debug flag: * 0 = no error reporting at all (default) * 1 = all errors except notices * 2 = all errors including notices (did not alter installer yet)
+
+2010-11-06  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/inc_historygraph_ratio_weekly.php,
+	xlrstats/xlrstats/inc_historygraph_skill_weekly.php: clear some php
+	notices
+
+2010-11-06  xlr8or <xlr8or@xlr8or.com>
+
+	* : commit 71e8294790ef0f72543f37b4f7dca380f73ecad5 Author: xlr8or
+	<xlr8or@xlr8or.com> Date:   Sat Nov 6 10:55:56 2010 +0100
+
+2010-11-04  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/config/moh.php,
+	xlrstats/xlrstats/func-sectionlogic.php: fixed moh usermaps and
+	added game types to moh config
+
+2010-11-03  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/config/moh.php: medal of honor mappack 1 and 2
+	additions
+
+2010-11-03  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/func-globallogic.php,
+	xlrstats/xlrstats/func-sectionlogic.php: exceptions for medal of
+	honor map names
+
+2010-11-03  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/func-awardlogic.php: fixed remote bomb fan award
+	for medal of honor
+
+2010-11-03  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/inc_install_award_idents.php: delete cache when
+	award files are re-identified
+
+2010-11-03  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/install/func-installer.php,
+	xlrstats/xlrstats/install/index.php: added moh to installer and
+	introduced new awards identification function
+
+2010-11-03  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/install/index.php: fixed a minor bug which was
+	restricting access to web installer
+
+2010-10-30  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/func-globallogic.php,
+	xlrstats/xlrstats/index.php: added function sending feedback to
+	plugin
+
+2010-10-29  xlr8or <xlr8or@xlr8or.com>
+
+	* : commit a98472bd236fe22a76d843ad5a6e5095ad4181f7 Author:
+	Freelander <freelander00@gmail.com> Date:   Fri Oct 29 20:55:22 2010
+	+0300
+
+2010-10-29  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/func-globallogic.php,
+	xlrstats/xlrstats/func-sectionlogic.php: added moh to supported
+	games and arranged hit locations for moh
+
+2010-10-29  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/sig/backdrops/moh/index.php: medal of honor
+	icons and backdrops
+
+2010-10-29  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/func-globallogic.php,
+	xlrstats/xlrstats/func-sectionlogic.php: added moh to supported
+	games and arranged hit locations for moh
+
+2010-10-29  xlr8or <xlr8or@xlr8or.com>
+
+	* xlrstats/xlrstats/config/awards.php,
+	xlrstats/xlrstats/func-awardlogic.php, xlrstats/xlrstats/index.php,
+	xlrstats/xlrstats/lib/worldmap/playergeodata.php,
+	xlrstats/xlrstats/version.txt: * More efficient version of the security patch.  * Fix worldmap bug * Versioning.
+
+2010-10-29  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/config/awards.php,
+	xlrstats/xlrstats/config/moh.php,
+	xlrstats/xlrstats/inc_install_award_idents.php: medal of honor
+	config file and awards
+
+2010-10-28  Freelander <freelander00@gmail.com>
+
+	* xlrstats/xlrstats/templates/moh/style.css: medal of honor template
+
+2010-10-27  xlr8or <xlr8or@xlr8or.com>
+
+	* ChangeLogDetailed.txt: update changelog
+
 2010-10-26  xlr8or <xlr8or@xlr8or.com>
 
 	* xlrstats/xlrstats/README.TXT, xlrstats/xlrstats/images/.htaccess,

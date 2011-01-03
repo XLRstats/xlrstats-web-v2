@@ -1,0 +1,15 @@
+Type 100 with Box Magazine<br>
+Designed and built by the Nambu Arms Manufacturing Company, the Type 100 was a robust, if unremarkable, submachine gun that was first delivered to the Imperial Army in 1942. Japan was surprisingly late to introduce the submachine gun to its armed forces.
+<br><br>
+
+Round Drum: This attachment available for the MP40, Thompson, Type 100, M1 Carbine and the PPSh-41 in Call of Duty: World at War multiplayer increases magazine size. It doubles the magazine size of a given weapon.
+<br><br>
+
+The exact name depends on the weapon, for the Thompson and the PPSh-41, it is called Round Drum, for the MP40 it is Dual Magazines, and for the Type 100 and the M1 Carbine it is called Box Magazine (though strangely if you have not unlocked the Box Magazine for the Type 100, it will say "Extended Clip" instead of Box Magazine). 
+<br><br>
+
+Cartrige: 8x22mm Nambu<br>
+Feed system: 30-round detachable box magazine<br>
+Rate of fire: 800 rpm
+
+<br><br><a href=http://en.wikipedia.org/wiki/Type_100_submachine_gun target=_blank>More about this gun online...</a><br>

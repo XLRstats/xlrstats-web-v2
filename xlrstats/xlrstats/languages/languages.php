@@ -48,6 +48,7 @@ if (isset($_COOKIE['XLR_langfile']))
 //if GeoIP is installed the language file is set according to client's IP location
 elseif (file_exists($geoip_path."GeoIP.dat")) 
 {
+  require_once("lib/geoip.inc");
   $client_ip = getvisitorip();
   $gi = geoip_open($geoip_path."GeoIP.dat", GEOIP_STANDARD);
   $lang_file = geoip_country_code_by_addr($gi, $client_ip).".php"; 

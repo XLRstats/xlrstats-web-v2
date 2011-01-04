@@ -28,7 +28,6 @@ define( '_XLREXEC', 1 );
 
 require_once('inc_mysql.php');
 require_once('func-globallogic.php');
-require_once('languages/languages.php');
 
 session_start();
 cleanglobals();
@@ -64,6 +63,7 @@ elseif (file_exists("config/statsconfig1.php"))
   }
 }
 require_once($currentconfig);
+require_once('languages/languages.php');
 
 // Determine debugmode
 getdebugmode();

@@ -54,6 +54,9 @@ function tag_start($parser, $attr, $params)
   global $supportedgames;
   global $ffa_modes;
   global $pll_noteams;
+  global $nameTeamRed;
+  global $nameTeamBlue;
+  global $nameSpectators;
 	  
   if($attr == 'CLIENT')
   {
@@ -105,6 +108,12 @@ function tag_start($parser, $attr, $params)
       $shortversion = $params['VALUE'];
     else if($params['NAME'] == "version")
       $shortversion = $params['VALUE'];
+
+    if($params['NAME'] == "g_teamnameblue")
+      $nameTeamBlue = $params['VALUE'];
+
+    if($params['NAME'] == "g_teamnamered")
+      $nameTeamRed = $params['VALUE'];
   }
   else  if($attr == 'GAME')
   {
@@ -154,6 +163,9 @@ function loadData()
   global $sv_hostname;
   global $b3_status_url; 
   global $pll_noteams;
+  global $nameTeamRed;
+  global $nameTeamBlue;
+  global $nameSpectators;
 
   $sv_privateClients = 0;
   $gameType = "";
@@ -206,9 +218,9 @@ function currentplayers()
   global $ffa_modes;
   global $gameType;
   global $text;
-  global $team1;
-  global $team2;
-  global $spectators;
+  global $nameTeamRed;
+  global $nameTeamBlue;
+  global $nameSpectators;
   
   if (!isset($pll_noteams))
     $pll_noteams = 0;
@@ -245,11 +257,11 @@ function currentplayers()
     }
   else
     {
-    echo "      <tr><td colspan=6 align=\"center\" class=\"status-blueteam\">$team2 (".count($clientsBlue).") </td></tr>";
+    echo "      <tr><td colspan=6 align=\"center\" class=\"status-blueteam\">$nameTeamBlue (".count($clientsBlue).") </td></tr>";
   	addClients($clientsBlue, "#EFFBFB");
-  	echo "      <tr><td colspan=6 align=\"center\" class=\"status-redteam\">$team1 (".count($clientsRed).") </td></tr>";
+  	echo "      <tr><td colspan=6 align=\"center\" class=\"status-redteam\">$nameTeamRed (".count($clientsRed).") </td></tr>";
   	addClients($clientsRed, "#FBEFEF");
-  	echo "      <tr><td colspan=6 align=\"center\" class=\"status-spectators\">$spectators (".count($clientsSpec).") </td></tr>";
+  	echo "      <tr><td colspan=6 align=\"center\" class=\"status-spectators\">$nameSpectators (".count($clientsSpec).") </td></tr>";
   	addClients($clientsSpec, "white");
     }
 

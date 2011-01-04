@@ -126,7 +126,7 @@ function get_stock_backdrop( $width, $height )
 	if( !$dir )	die( "Unable to open backdrop folder, please ensure this folder exists and is writable." );
 	while( $file = readdir($dir) )
 	{
-		if( $file{0} != "." )
+		if( substr($file,-4) == ".jpg" || substr($file,-4) == ".png" )
 			$backdrops[] = $file;
 	}
 	closedir($dir);

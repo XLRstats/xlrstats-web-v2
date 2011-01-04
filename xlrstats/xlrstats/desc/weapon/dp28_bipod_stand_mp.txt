@@ -1,0 +1,12 @@
+DP-28 Degtyaryov Machine Gun with Bipod<br>
+The Ruchnoy Pulemyot Degtyaryova Pekhotny (Degtyaryov hand-held infantry machine gun) or DP was a light machine gun used by the Soviet Union starting in 1928. It fired the 7.62x54mmR cartridge and was cheap and easy to manufacture - early models had fewer than 80 parts and could be built by unskilled labour. The DP was especially able to withstand dirt. In tests it was buried in sand and mud and was still capable of firing more than 500 rounds.
+<br><br>
+The Bipod is an attachment for all Machine Guns in Call of Duty: World at War and increases the weapon's accuracy if the player mounts the gun on a solid surface.
+<br><br>
+
+Cartrige: 7.62x54mmR<br>
+Rate of fire: 500 to 600 round/min<br>
+Feed system: 49 (47 in practice)<br>
+Maximum range: Approx. 800 m
+
+<br><br><a href=http://en.wikipedia.org/wiki/DP-28 target=_blank>More about this gun online...</a><br>

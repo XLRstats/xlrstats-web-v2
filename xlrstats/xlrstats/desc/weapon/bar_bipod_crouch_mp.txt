@@ -1,0 +1,12 @@
+M1918 Browning Automatic Rifle with Bipod<br>
+The BAR (short for Browning Automatic Rifle) is a family of American 7.62 mm automatic rifles (or machine rifles) and light machine guns used by the United States and numerous other countries during the 20th century. The primary variant of the BAR series is the M1918, chambered for the .30-06 Springfield (7.62x63mm) rifle cartridge and designed by John Browning in 1917 for the U.S. Expeditionary Corps in Europe as a replacement for (and improvement on) the French-made Chauchat and Hotchkiss M1909 machine guns.
+<br><br>
+The Bipod is an attachment for all Machine Guns in Call of Duty: World at War and increases the weapon's accuracy if the player mounts the gun on a solid surface.
+<br><br>
+
+Cartrige: .30-06 Springfield (7.62x63mm)<br>
+Rate of fire: 500 - 650 rounds/min<br>
+Feed system: 20-round detachable box <br>
+Maximum range: 	Approx. 550 m
+
+<br><br><a href=http://en.wikipedia.org/wiki/M1918_Browning_Automatic_Rifle target=_blank>More about this gun online...</a><br>

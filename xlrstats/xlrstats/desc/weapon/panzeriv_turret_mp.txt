@@ -1,0 +1,14 @@
+Panzer IV f<br>
+The main feature introduced with the PzKpfw IV Ausf. F was improved armor protection consisting of face-hardened, 50mm thick frontal armor on the hull, superstructure and turret, and 30mm thick sides. It became apparant that kinetic energy was the real tank-killer and what was required were guns capable of producing the high muzzle velocities. The short low-velocity 75mm KwK L/24 of early models of PzKpfw IV was replaced in Ausf. F onwards by longer-barrel weapons, much more effective against enemy armor as a hurried answer to the Soviet T-34. The Ausf. F2, armed with the the 75mm Kw.K.40 L/43, was exceptionally effective, and restored the balance of fire-power to the Afrika Korps in 1942. However Rommel could never get enough of them to restore the original dominating position of his Panzer Divisions on the battlefield.
+<br><br>	
+Produced:<br>
+462<br>
+Armament:<br>
+75mm KwK 37 L/24<br>
+2 x 7.92mm MG34 (coaxial, bow)<br>
+Speed on/off road:<br>
+42/20 km/h<br>
+Range:<br>
+250 on/350 off road<br>
+Weight:<br>
+22300 kg 

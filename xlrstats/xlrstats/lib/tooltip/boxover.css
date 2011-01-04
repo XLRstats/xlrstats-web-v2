@@ -1,0 +1,51 @@
+.bdyprts-hdr{
+    background:#CCC;
+    font-family:arial;
+    font-size:12px;
+    font-weight:bold;
+    border:1px solid #999;
+    padding:5px;
+
+    /* for IE */
+    filter:alpha(opacity=85);
+    /* CSS3 standard */
+    opacity:0.85;
+}
+
+.bdyprts-bdy {
+    background:#EEE;
+    border-left:1px solid #888;
+    border-right:1px solid #888;
+    border-bottom:1px solid #888;
+    padding:5px;
+    /* for IE */
+    filter:alpha(opacity=85);
+    /* CSS3 standard */
+    opacity:0.85;
+}
+
+.bdyprts-txtbold {
+    font-family:Arial;
+    font-size:8pt;
+    font-weight:bold;
+}
+
+.bdyprts-txt {
+    font-family:Arial;
+    font-size:8pt;
+}
+
+.admin-bdy {
+    background:#FBF7AA;
+    border-left:4px solid #F9E98E;
+    border-right:4px solid #F9E98E;
+    border-bottom:4px solid #F9E98E;
+    border-top:4px solid #F9E98E;
+    padding:5px;
+    width:200px;
+}
+.admin-txt {
+    font-family:Arial;
+    font-size:8pt;
+    color: #694c15;
+}

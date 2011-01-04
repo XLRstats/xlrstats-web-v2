@@ -1,0 +1,9 @@
+Type 100<br>
+Designed and built by the Nambu Arms Manufacturing Company, the Type 100 was a robust, if unremarkable, submachine gun that was first delivered to the Imperial Army in 1942. Japan was surprisingly late to introduce the submachine gun to its armed forces.
+<br><br>
+
+Cartrige: 8x22mm Nambu<br>
+Feed system: 30-round detachable box magazine<br>
+Rate of fire: 800 rpm
+
+<br><br><a href=http://en.wikipedia.org/wiki/Type_100_submachine_gun target=_blank>More about this gun online...</a><br>

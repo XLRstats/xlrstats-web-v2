@@ -73,12 +73,14 @@ function topplayers($sortby = "skill", $direction = "DESC", $offset = 0, $clan_n
   echo "
         <table width=\"100%\" border=\"0\" cellspacing=\"2\" cellpadding=\"0\" class=\"innertable\">
         <tr class=\"outertable\">
-        <td align=\"center\" width=\"40\">".$text["place"]."</td>
-        <td align=\"center\" width=\"30\">".$text["rank"]."</td> 
+        <td align=\"center\" width=\"40\">".$text["place"]."</td>";
+  if(!$disableRanks) {
+        <td align=\"center\" width=\"30\">".$text["rank"]."</td>
+  }
         <td>".$text["name"]."</td>";
 
   if (file_exists($geoip_path."GeoIP.dat"))
-    echo "<td width=\"20\">".$text["cntry"]."</td>";
+    echo "<td width=\"20\"></td>";
 
     $KillRatioTableWidth = 100;
 
@@ -216,12 +218,14 @@ function topplayers($sortby = "skill", $direction = "DESC", $offset = 0, $clan_n
     elseif ($separatorline == 1)
       echo "<tr><td colspan=\"10\" class=\"outertable\"><img src=\"images/spacer.gif\" width=\"1\" height=\"1\" alt=\"\"></td></tr>";  // This draws a one pixel line between rows
 
-    echo "<tr>";
+    echo "<tr class=\"listrow\">";
     echo "<td align=\"center\"><strong>$rank</strong></td>";
       if ($game == 'bfbc2')
         echo "<td><img src=\"http://g.bfbcs.com/2196/pc_".urlencode(preg_replace($clanpattern, '', $row['name'])).".png\" width=\"30\" height=\"30\"></td>";
       else 
-        echo "<td><img src=\"images/ranks/".$rankimage[$kills]."\" width=\"30\" height=\"30\" title=\"".$rankname[$kills]."\"></td>";
+        if(!$disableRanks) {
+          echo "<td><img src=\"images/ranks/".$rankimage[$kills]."\" width=\"30\" height=\"30\" title=\"".$rankname[$kills]."\"></td>";
+        }
 
     echo "<td><a href=\"$link?func=player&playerid=${row['id']}&config=${currentconfignumber}\">", htmlspecialchars(utf2iso($row['fixed_name'] ? $row['fixed_name'] : $row['name'])), "</a></td>";
 

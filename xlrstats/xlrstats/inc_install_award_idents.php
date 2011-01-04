@@ -194,6 +194,7 @@ function closebuffer_write()
 
 function end_process()
 {
+  global $cpath;
   echo "<p class=\"precheckOK\"><strong>Your awards have been identified using the current database content.</strong></p>";
   echo "<p class=\"fontNormal\">1.) You may run \"http://www.yoursite.com/xlrstats/?func=cron\" at any time if you feel that certain awards are not good or certain weapons have only recently been used for the first time.<br />"; 
   //echo "Bookmark current URL to rerun this file later.</i></p>";
@@ -204,7 +205,7 @@ function end_process()
   echo "<td valign=\"top\"><table width=\"100%\" border=\"0\" cellspacing=\"5\" cellpadding=\"5\">";
   echo "<tr>";
   echo "<td>&nbsp;</td>";
-  echo "<td width=\"80\" align=\"center\" valign=\"middle\"><a href=\"../index.php\">";
+  echo "<td width=\"80\" align=\"center\" valign=\"middle\"><a href=\"".$cpath."index.php\">";
   echo "<label>";
   echo "<input name=\"Next\" type=\"button\" class=\"line1\" id=\"Next\" value=\"Stats Home\" />";
   echo "</label>";

@@ -70,7 +70,7 @@ else
   $lang_file = checklangreplacement($lang_file);
 
     if(file_exists($lang_path."/".$lang_file)) {
-      include ($lang_path."/".$lang_file);
+      //include ($lang_path."/".$lang_file);
       }
     // reset the $lang_file back to $default_lang for effective caching of awards
     else $lang_file = $default_lang;

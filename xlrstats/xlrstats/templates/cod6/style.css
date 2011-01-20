@@ -205,10 +205,10 @@ div#page-body .page-body-img {
 	background: url(page_body_img.jpg) 50% 0 no-repeat;
 }
 div#page-footer {
-	background: url(page_footer_bg.png) 50% 100% repeat-x;
+	background: none;
 }
 div#page-footer .page-footer-img {
-	background: url(page_footer_img.jpg) 50% 100% no-repeat;
+	background: none;
 	min-height: 900px;
 }
 

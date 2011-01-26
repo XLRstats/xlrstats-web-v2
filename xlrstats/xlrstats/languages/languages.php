@@ -23,17 +23,13 @@
  *  http://www.gnu.org/copyleft/gpl.html
  ***************************************************************************/
 
-if (!isset($pop))
-  $pop = 0;
-
 if (file_exists("config/inc_constants.php")) require_once("config/inc_constants.php");
 if (file_exists("../config/inc_constants.php")) require_once("../config/inc_constants.php");
 
-$lang_path = abs_pathlink($pop)."languages";
+$lang_path = XLRSTATS_ROOT_DIR."languages";
 $default_lang = "en.php";
 
 include ($lang_path."/".$default_lang);
-
 
 if (isset($_COOKIE['XLR_langfile']))
 {
@@ -48,7 +44,7 @@ if (isset($_COOKIE['XLR_langfile']))
 //if GeoIP is installed the language file is set according to client's IP location
 elseif (file_exists($geoip_path."GeoIP.dat")) 
 {
-  require_once("lib/geoip.inc");
+  require_once(XLRSTATS_ROOT_DIR . "/lib/geoip.inc");
   $client_ip = getvisitorip();
   $gi = geoip_open($geoip_path."GeoIP.dat", GEOIP_STANDARD);
   $lang_file = geoip_country_code_by_addr($gi, $client_ip).".php"; 

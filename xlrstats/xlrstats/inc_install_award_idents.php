@@ -1125,4 +1125,108 @@ function cod6_awards()
   $buffer .= ")\";\n";
   $coddb->sql_freeresult($result);
 }
+
+function cod7_awards()
+{
+  global $t;
+  global $coddb;
+  global $buffer;
+  
+  //-- Weapons -------------------------------------------------------------------
+  $buffer .= "\n// Weapons / Means of Death --------\n";
+
+  // Nades
+  add_weaponaward("wp_nades", "'frag_grenade_mp', 'sticky_grenade_mp'"); 
+
+  // Snipers
+  $query = "SELECT id 
+            FROM ${t["weapons"]}
+            WHERE name LIKE 'dragunov_%'
+            OR name LIKE 'wa2000_%'
+            OR name LIKE 'l96a1_%'
+            OR name LIKE 'psg1_%'
+            LIMIT 0 , 100";
+  
+  $result = $coddb->sql_query($query);
+  $numrows = $coddb->sql_numrows($result);
+  
+  $buffer .= "\$wp_snipers = \"(";
+  $c = 0;
+  while ($row = $coddb->sql_fetchrow($result))
+  {
+    $c += 1;
+    $buffer .= $row["id"];
+    if($c < $numrows)
+      $buffer .=  ", ";
+  }
+  $buffer .= ")\";\n";
+  $coddb->sql_freeresult($result);
+
+  // Pistols
+  $query = "SELECT id 
+            FROM ${t["weapons"]}
+            WHERE name LIKE 'asp%'
+            OR name LIKE 'm1911%'
+            OR name LIKE 'makarov%'
+            OR name LIKE 'python%'
+            OR name LIKE 'cz75%'
+            LIMIT 0 , 30";
+  
+  $result = $coddb->sql_query($query);
+  $numrows = $coddb->sql_numrows($result);
+  
+  $buffer .= "\$wp_pistols = \"(";
+  $c = 0;
+  while ($row = $coddb->sql_fetchrow($result))
+  {
+    $c += 1;
+    $buffer .= $row["id"];
+    if($c < $numrows)
+      $buffer .=  ", ";
+  }
+  $buffer .= ")\";\n";
+  $coddb->sql_freeresult($result);
+
+
+  //hatchet (Thomahawk)
+  add_weaponaward("wp_hatchet", "'hatchet_mp'");
+  //Crossbow
+  add_weaponaward("wp_crossbow", "'crossbow_explosive_mp', 'crossbow_mp'");
+  // bomb (C4)
+  add_weaponaward("wp_bomb", "'satchel_charge_mp'"); 
+  // Claymore
+  add_weaponaward("wp_claymore", "'claymore_mp'"); 
+  // Knives
+  add_weaponaward("wp_knives", "'mod_melee'"); 
+  // Fireman (Car)
+  add_weaponaward("wp_fireman", "'destructible_car_mp'"); 
+  // Barrel Victim
+  add_weaponaward("wp_barrel", "'explodable_barrel_mp'"); 
+  // Accidents
+  add_weaponaward("wp_accidents", "'briefcase_bomb_mp', 'mod_falling', 'none'"); 
+  
+  //-- Bodyparts -----------------------------------------------------------------
+  $buffer .= "\n// Bodyparts ---------------------\n";
+  
+  // Head 
+  $query = "SELECT id 
+            FROM ${t["bodyparts"]}
+            WHERE name = 'head'
+            LIMIT 0 , 30";
+  
+  $result = $coddb->sql_query($query);
+  $numrows = $coddb->sql_numrows($result);
+  
+  $buffer .= "\$bp_head = \"(";
+  $c = 0;
+  while ($row = $coddb->sql_fetchrow($result))
+  {
+    $c += 1;
+    $buffer .= $row["id"];
+    if($c < $numrows)
+      $buffer .=  ", ";
+  }
+  $buffer .= ")\";\n";
+  $coddb->sql_freeresult($result);
+}
 ?>

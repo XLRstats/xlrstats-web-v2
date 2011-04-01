@@ -774,6 +774,52 @@ function pro_medal_dynamite()
   }
 }
 
+function pro_medal_tomahawk()
+{
+  global $currentconfignumber;
+  global $t;  //table names
+  global $wp_hatchet;
+  global $text;
+
+  $fname = __FUNCTION__;
+  $ch = new cache($fname, $currentconfignumber);
+
+  if ($ch->cval == 0)
+  {
+    $qry = " SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds ) AS total_kills
+            FROM ${t['weaponusage']}
+            JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
+            JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
+            WHERE (${t['weaponusage']}.weapon_id = $wp_hatchet)";
+
+    list($score, $playerid, $name, $players, $scores, $playerids, $flags) = CreateMedal($qry, "total_kills", "total_kills DESC", 2, "");
+    ShowMedal($text["hatchetkiller"], $text["hatchetkills"], $score, $playerid, $name, "xlr_pro_hatchet.png", $text["mosthatchetkill"], $players, $scores, $fname, $playerids, $flags, $ch);  
+  }
+}
+
+function pro_medal_crossbow()
+{
+  global $currentconfignumber;
+  global $t;  //table names
+  global $wp_crossbow;
+  global $text;
+
+  $fname = __FUNCTION__;
+  $ch = new cache($fname, $currentconfignumber);
+
+  if ($ch->cval == 0)
+  {
+    $qry = " SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, (SUM(${t['weaponusage']}.kills) / ${t['players']}.rounds ) AS total_kills
+            FROM ${t['weaponusage']}
+            JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
+            JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
+            WHERE (${t['weaponusage']}.weapon_id = $wp_crossbow)";
+
+    list($score, $playerid, $name, $players, $scores, $playerids, $flags) = CreateMedal($qry, "total_kills", "total_kills DESC", 2, "");
+    ShowMedal($text["crossbowkiller"], $text["crossbowkills"], $score, $playerid, $name, "xlr_pro_bowmaster.png", $text["mostcrossbowkill"], $players, $scores, $fname, $playerids, $flags, $ch);  
+  }
+}
+
 //------------------------------------------------------------------------------------------------------------
 
 function shame_medal_target_no_one()

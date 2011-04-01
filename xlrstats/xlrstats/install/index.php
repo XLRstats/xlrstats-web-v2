@@ -306,13 +306,14 @@ elseif (isset($step2))
     echo "<option value=\"cod4\">Call of Duty 4: MW</option>";
     echo "<option value=\"codwaw\">Call of Duty: WaW</option>";
     echo "<option value=\"cod6\">Call of Duty: MW2</option>";
+    echo "<option value=\"cod7\">Call of Duty: Black Ops</option>";
     echo "<option value=\"wop\">World of Padman</option>";
     echo "<option value=\"smg\">Smokin' Guns</option>";
     echo "<option value=\"bfbc2\">Battlefield Bad Company 2</option>";
     echo "<option value=\"moh\">Medal of Honor</option>";
     echo "</select>";
     echo "</label></td>";
-    echo "<td class=\"fontSmall\">What game? (urt, cod1, coduo, cod2, cod4, codwaw, cod6, wop, smg, bfbc2, moh)</td>";
+    echo "<td class=\"fontSmall\">What game? (urt, cod1, coduo, cod2, cod4, codwaw, cod6, cod7, wop, smg, bfbc2, moh)</td>";
     echo "</tr>";
     echo "<tr>";
     echo "<td><strong class=\"fontNormal\">Public IP:</strong></td>";

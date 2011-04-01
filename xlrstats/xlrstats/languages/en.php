@@ -166,6 +166,14 @@ $text["mostflamekill"] = "Most flamethrower kills per round";
 $text["dynamitekiller"] = "Dynamite Specialist";             //Added 03.03.2010
 $text["dynamitekills"] = "Dynamite kills p/r";               //Added 03.03.2010
 $text["mostdynamitekill"] = "Most dynamite kills per round"; //Added 03.03.2010
+$text["hatchetkiller"] = "Spirit with the Hatchet";          //Added 29.01.2011
+$text["hatchetkills"] = "Tomahawk kills p/r";                //Added 29.01.2011
+$text["mosthatchetkill"] = "Most Tomahawk kills per round";  //Added 29.01.2011
+
+$text["crossbowkiller"] = "Bowmaster";                       //Added 29.01.2011
+$text["crossbowkills"] = "Crossbow kills p/r";               //Added 29.01.2011
+$text["mostcrossbowkill"] = "Most Crossbow kills per round"; //Added 29.01.2011
+
 $text["mostkills"] = "Bone Collector";                       //Added 31.05.2010
 $text["mostkills1"] = "Kills";                               //Added 31.05.2010
 $text["mostkills2"] = "Top Killer";                          //Added 31.05.2010

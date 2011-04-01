@@ -42,14 +42,14 @@ if ($actionbased == 1)
     $pro_medals[] = 'pro_medal_action_hero';             // total actions         all (only for actionbased gametypes!)
 }
 
-$g = array('cod1', 'coduo', 'cod2', 'cod4', 'codwaw', 'cod6', 'urt', 'bfbc2', 'moh');
+$g = array('cod1', 'coduo', 'cod2', 'cod4', 'codwaw', 'cod6', 'cod7', 'urt', 'bfbc2', 'moh');
 if (in_array($game, $g))
 {
     $pro_medals[] = 'pro_medal_nade_killer';              // nade kills           cod urt bfbc2 moh
     $pro_medals[] = 'pro_medal_sniper_killer';            // sniper kills         cod urt bfbc2 moh
 }
 
-$g = array('cod1', 'coduo', 'cod2', 'cod4', 'codwaw', 'cod6', 'urt', 'smg', 'bfbc2', 'moh');
+$g = array('cod1', 'coduo', 'cod2', 'cod4', 'codwaw', 'cod6', 'cod7', 'urt', 'smg', 'bfbc2', 'moh');
 if (in_array($game, $g))
 {
     $pro_medals[] = 'pro_medal_head_hunter';              // most headshots       cod urt smg bfbc2 moh
@@ -62,13 +62,13 @@ if (in_array($game, $g))
     $pro_medals[] = 'pro_medal_bash_killer';              // bash kills           cod1 coduo cod2
 }
 
-$g = array('coduo', 'cod4', 'cod6', 'moh');
+$g = array('coduo', 'cod4', 'cod6', 'cod7', 'moh');
 if (in_array($game, $g))
 {
     $pro_medals[] = 'pro_medal_remote_bomb_fan';          // Satchell/C4 kills    coduo cod4 cod6 moh
 }
 
-$g = array('cod4', 'cod6');
+$g = array('cod4', 'cod6', 'cod7');
 if (in_array($game, $g))
 {
     $pro_medals[] = 'pro_medal_surprise_lover';           // claymore kills       cod4 cod6
@@ -86,7 +86,7 @@ if (in_array($game, $g))
     $pro_medals[] = 'pro_medal_mortal_cocktail';          // molotov kills        codwaw smg
 }
 
-$g = array('cod4', 'codwaw', 'cod6', 'urt', 'smg', 'bfbc2', 'moh');
+$g = array('cod4', 'codwaw', 'cod6', 'cod7', 'urt', 'smg', 'bfbc2', 'moh');
 if (in_array($game, $g))
 {
     $pro_medals[] = 'pro_medal_cold_weapon_killer';       // knife kills          cod4 codwaw cod6 urt smg bfbc2
@@ -100,9 +100,15 @@ if ($game == 'wop')
     $pro_medals[] = 'pro_medal_punchy_killer';            // punchy kills         wop
 }
 
-if ($game == 'smg' )
+if ($game == 'smg')
 {
     $pro_medals[] = 'pro_medal_dynamite';                 // dynamite kills       smg
+}
+
+if ($game == 'cod7')
+{
+    $pro_medals[] = 'pro_medal_tomahawk';                 // Tomahawk kills       cod7
+    $pro_medals[] = 'pro_medal_crossbow';                 // Crossbow kills       cod7
 }
 
 // Shame Medals ------------------------------------------------------------------------------------
@@ -117,14 +123,14 @@ if ($teambased == 1)
     $shame_medals[] = 'shame_medal_most_teamdeaths';      // most teamkilled      all (only for teambased gametypes!)
 }
 
-$g = array('cod1', 'coduo', 'cod2', 'cod4', 'cod6', 'codwaw', 'urt', 'bfbc2', 'moh');
+$g = array('cod1', 'coduo', 'cod2', 'cod4', 'cod6', 'cod7', 'codwaw', 'urt', 'bfbc2', 'moh');
 if (in_array($game, $g))
 {
     $shame_medals[] = 'shame_medal_nade_magneto';         // nades                cod urt bfbc2 moh
     $shame_medals[] = 'shame_medal_sniped';               // killed by snipers    cod urt bfbc2 moh
 }
 
-$g = array('cod4', 'codwaw', 'cod6', 'urt', 'smg', 'moh');
+$g = array('cod4', 'codwaw', 'cod6', 'cod7', 'urt', 'smg', 'moh');
 if (in_array($game, $g))
 {
     $shame_medals[] = 'shame_medal_def_knifes';           // knife deaths         cod4 codwaw cod6 urt smg moh
@@ -136,13 +142,13 @@ if (in_array($game, $g))
     $shame_medals[] = 'shame_medal_def_bashes';           // bash deaths          cod1 coduo cod2
 }
 
-$g = array('cod4', 'codwaw', 'cod6');
+$g = array('cod4', 'codwaw', 'cod6', 'cod7');
 if (in_array($game, $g))
 {
     $shame_medals[] = 'shame_medal_fireman';              // exploding vehicle    cod4 codwaw cod6
 }
 
-$g = array('codwaw', 'cod6');
+$g = array('codwaw', 'cod6', 'cod7');
 if (in_array($game, $g))
 {
     $shame_medals[] = 'shame_medal_barrel_deaths';        // barrel explosion     codwaw cod6

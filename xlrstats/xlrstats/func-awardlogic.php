@@ -744,7 +744,7 @@ function pro_medal_firestarter()
             FROM ${t['weaponusage']}
             JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
             JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
-            WHERE (${t['weaponusage']}.weapon_id = $wp_flamethrower)";
+            WHERE (${t['weaponusage']}.weapon_id IN $wp_flamethrower)";
 
     list($score, $playerid, $name, $players, $scores, $playerids, $flags) = CreateMedal($qry, "total_kills", "total_kills DESC", 2, "");
     ShowMedal($text["flamekiller"], $text["fthrowerkills"], $score, $playerid, $name, "xlr_pro_firestarter.png", $text["mostflamekill"], $players, $scores, $fname, $playerids, $flags, $ch);  
@@ -813,7 +813,7 @@ function pro_medal_crossbow()
             FROM ${t['weaponusage']}
             JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
             JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id
-            WHERE (${t['weaponusage']}.weapon_id = $wp_crossbow)";
+            WHERE (${t['weaponusage']}.weapon_id IN $wp_crossbow)";
 
     list($score, $playerid, $name, $players, $scores, $playerids, $flags) = CreateMedal($qry, "total_kills", "total_kills DESC", 2, "");
     ShowMedal($text["crossbowkiller"], $text["crossbowkills"], $score, $playerid, $name, "xlr_pro_bowmaster.png", $text["mostcrossbowkill"], $players, $scores, $fname, $playerids, $flags, $ch);  
@@ -1121,7 +1121,7 @@ function shame_medal_careless()
 
   if ($ch->cval == 0)
   {
-    $qry = " SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.suicides) / ${t['players']}.rounds) AS total_suicides
+    $qry = "SELECT ${t['b3_clients']}.name, ${t['players']}.id, ip, ${t['b3_clients']}.time_edit, ${t['players']}.fixed_name, rounds, (SUM(${t['weaponusage']}.suicides) / ${t['players']}.rounds) AS total_suicides
         FROM ${t['weaponusage']}
         JOIN ${t['players']} ON ${t['weaponusage']}.player_id = ${t['players']}.id
         JOIN ${t['b3_clients']} ON ${t['players']}.client_id = ${t['b3_clients']}.id

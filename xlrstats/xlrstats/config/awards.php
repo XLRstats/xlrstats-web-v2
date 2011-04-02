@@ -77,7 +77,12 @@ if (in_array($game, $g))
 if ($game == 'codwaw' )
 {
     $pro_medals[] = 'pro_medal_bouncing_betty';           // bouncing betty kills codwaw
-    $pro_medals[] = 'pro_medal_firestarter';              // flame thrower kills  codwaw
+}
+
+$g = array('codwaw', 'cod7');
+if (in_array($game, $g))
+{
+    $pro_medals[] = 'pro_medal_firestarter';              // flame thrower kills  codwaw cod7
 }
 
 $g = array('codwaw', 'smg');

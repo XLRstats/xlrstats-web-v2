@@ -1187,11 +1187,31 @@ function cod7_awards()
   $buffer .= ")\";\n";
   $coddb->sql_freeresult($result);
 
+  // Flame Thrower
+  $query = "SELECT id 
+            FROM ${t["weapons"]}
+            WHERE name LIKE 'ft_%'
+            LIMIT 0 , 30";
+  
+  $result = $coddb->sql_query($query);
+  $numrows = $coddb->sql_numrows($result);
+  
+  $buffer .= "\$wp_flamethrower = \"(";
+  $c = 0;
+  while ($row = $coddb->sql_fetchrow($result))
+  {
+    $c += 1;
+    $buffer .= $row["id"];
+    if($c < $numrows)
+      $buffer .=  ", ";
+  }
+  $buffer .= ")\";\n";
+  $coddb->sql_freeresult($result);
 
   //hatchet (Thomahawk)
   add_weaponaward("wp_hatchet", "'hatchet_mp'");
   //Crossbow
-  add_weaponaward("wp_crossbow", "'crossbow_explosive_mp', 'crossbow_mp'");
+  add_weaponaward("wp_crossbow", "'crossbow_explosive_mp', 'crossbow_mp', 'explosive_bolt_mp'");
   // bomb (C4)
   add_weaponaward("wp_bomb", "'satchel_charge_mp'"); 
   // Claymore

@@ -27,8 +27,11 @@
 // These are the standard Urban Terror settings
 //*********************
 
-// Spectators name at the front page
-$nameSpectators = "Spectators";
+// Teamnames and colors
+$team1 = "Red Dragons"; // red team
+$team2 = "SWAT"; // blue team
+$spectators = "Spectators";
+
 
 
 //*********************

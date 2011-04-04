@@ -218,9 +218,18 @@ function currentplayers()
   global $ffa_modes;
   global $gameType;
   global $text;
+  
+  global $team1;
+  global $team2;
+  global $spectators;
   global $nameTeamRed;
   global $nameTeamBlue;
   global $nameSpectators;
+
+  // Set default team names
+  $nameTeamRed = $team1;
+  $nameTeamBlue = $team2;
+  $nameSpectators = $spectators;
   
   if (!isset($pll_noteams))
     $pll_noteams = 0;

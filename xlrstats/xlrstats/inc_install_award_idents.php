@@ -1249,4 +1249,8 @@ function cod7_awards()
   $buffer .= ")\";\n";
   $coddb->sql_freeresult($result);
 }
+
+function homefront_awards()
+{}
+
 ?>

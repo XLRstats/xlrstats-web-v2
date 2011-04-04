@@ -34,7 +34,7 @@ $db_user = "";
 $db_pass = "";
 $db_db = "";
 
-// What game? (urt, cod1, coduo, cod2, cod4, codwaw, cod6, cod7, wop, smg, bfbc2)
+// What game? (urt, cod1, coduo, cod2, cod4, codwaw, cod6, cod7, wop, smg, bfbc2, homefront)
 $game = "none";
 $public_ip = "0.0.0.0:27960";
 // This is the path where B3 stores the status.xml file. May be an absolute path or an URL. (Use forward slashes / only!)

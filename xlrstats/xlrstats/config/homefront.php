@@ -1,7 +1,7 @@
 <?php
 /***************************************************************************
  * Xlrstats Webmodule
- * Webfront for XLRstats for B3 (www.bigbrotherbot.com)
+ * Webrfront for XLRstats for B3 (www.bigbrotherbot.com)
  * (c) 2004-2010 www.xlr8or.com (mailto:xlr8or@xlr8or.com)
  ***************************************************************************/
 
@@ -23,38 +23,148 @@
  *  http://www.gnu.org/copyleft/gpl.html
  ***************************************************************************/
 
-//*********************
-// These are the standard MOH settings
-//*********************
+//*******************************
+// Standard Homefront Settings
+//*******************************
 
 // Teamnames and colors
-$team1 = "Korea"; // red team
-$team2 = "U.S."; // blue team
+$team1 = "KPA"; // red team
+$team2 = "USA"; // blue team
 $spectators = "Spectators";
 
+//*********************
+// Weapons
+//*********************
 
 //*********************
-// Weapons names
+//Assault Rifles
 //*********************
 
-//Rifleman
-$w['[]'] = $text["notidentify"];
+$w['RIF_M4'] = "M4 Rifle";
+$w['RIF_ACR'] = "ACR Rifle";
+$w[''] = "SCAR-L Rifle";
+$w['RIF_M16'] = "M16 Rifle";
+$w['RIF_T3AK'] = "T3AK Rifle";
+$w[''] = "XM10 Rifle";
+
+//*********************
+//Sub Machine Guns
+//*********************
+
+$w['SMG_DIABLO'] = "PWS Diablo SMG";
+$w[''] = "Super V SMG";
+
+//*********************
+//Light Machine Guns
+//*********************
+
+$w['LMG_M249'] = "M249 LMG";
+$w['LMG_SCARMG'] = "SCAR-H LMG";
+
+//*********************
+//Sniper Rifles
+//*********************
+
+$w['SNI_M110'] = "M110 Sniper Rifle";
+$w[''] = "M200 Sniper Rifle";
+
+//*********************
+//Side Arms
+//*********************
+
+$w['PST_M9'] = "M9";
+
+//*********************
+//Downloadable Guns
+//*********************
+
+$w[''] = "870 Express Shotgun";
+
+//*********************
+//Explosives
+//*********************
+
+$w['EXP_Frag'] = "Grenade";
+$w[''] = "EMP Grenade";
+$w[''] = "Flashbang";
+$w['EXP_C4'] = "C4";
+$w['PhosphorusFire'] = "White Phosphorus Grenade";
+
+//*********************
+//Drones
+//*********************
+
+$w[''] = "MQ50 MG Wolverine";
+$w[''] = "AQ-11 Buzzard";
+$w[''] = "RQ-10 Parrot";
+$w[''] = "MQ60 AT Rhino";
+
+
+//*********************
+//Airstrikes
+//*********************
+
+$w['EXP_Hellfire'] = "Hellfire";
+$w[''] = "Cluster Bomb";
+$w[''] = "White Phosphorus";
+
+//*********************
+//Rocket Launchers
+//*********************
+
+$w[''] = "RPG Launcher";
+$w['ATW_PROX'] = "Proximity Launcher";
+
+//*********************
+// Wehicles
+//*********************
+
+//Humvee
+$w['M1114_Seat1_Bullet'] = "M1151 Humvee";
+
+//Light Armor Vehicles
+$w['LAV_Seat0_Bullet'] = "LAV Piranha";
+
+//Heavy Tank
+$w['M1A3_Seat0_Shell'] = "M1A3 Abrams";
+$w['T99_Seat0_Shell'] = "T-99 Battle Tank";
+
+//Scout Heli
+$w[''] = "AH-700 Scout";
+
+//Attack Heli
+$w['AH64D_Seat0_Missile'] = "AH-64 Apache Missile";
+$w[''] = "Z-10 Chimera";
+
+//*********************
+// Misc
+//*********************
+
+$w['CQC_M9Knife'] = "Knife";
+$w[''] = "Falling";
+$w[''] = "Bad Luck...";
+
 
 //*********************
 // Map names
 //*********************
+// Stock Homefront Maps
+$m['fl-angelisland'] = "Angel Island";
+$m['fl-borderlands'] = "Borderlands";
+$m['fl-crossroads'] = "Crossroads";
+$m['fl-culdesac'] = "Cul-de-Sac";
+$m['fl-farm'] = "Farm";
+$m['fl-harbor'] = "Green Zone";
+$m['fl-lowlands'] = "Lowlands";
+$m[''] = "Suburb";
 
-$m['None'] = "-Unknown-";
 
 //*********************
 // Event names
 //*********************
-$e[''] = "";
 
 //*********************
 // Bodypart names
 //*********************
-$b['None'] = $text["noneurt"];
-$b['body'] = $text["notidentify"];
 
 ?>

@@ -299,7 +299,7 @@ elseif (isset($step2))
     echo "<td width=\"30%\"><strong class=\"fontNormal\">Game Name:</strong></td>";
     echo "<td><label>";
     echo "<select name=\"game\" id=\"game\">";
-    echo "<option value=\"urt\">Urban Terror</option>";
+    echo "<option value=\"bfbc2\">Battlefield Bad Company 2</option>";
     echo "<option value=\"cod1\">Call of Duty</option>";
     echo "<option value=\"coduo\">Call of Duty UO</option>";
     echo "<option value=\"cod2\">Call of Duty 2</option>";
@@ -307,13 +307,14 @@ elseif (isset($step2))
     echo "<option value=\"codwaw\">Call of Duty: WaW</option>";
     echo "<option value=\"cod6\">Call of Duty: MW2</option>";
     echo "<option value=\"cod7\">Call of Duty: Black Ops</option>";
-    echo "<option value=\"wop\">World of Padman</option>";
-    echo "<option value=\"smg\">Smokin' Guns</option>";
-    echo "<option value=\"bfbc2\">Battlefield Bad Company 2</option>";
+    echo "<option value=\"homefront\">Homefront</option>";
     echo "<option value=\"moh\">Medal of Honor</option>";
+    echo "<option value=\"smg\">Smokin' Guns</option>";
+    echo "<option value=\"urt\">Urban Terror</option>";
+    echo "<option value=\"wop\">World of Padman</option>";
     echo "</select>";
     echo "</label></td>";
-    echo "<td class=\"fontSmall\">What game? (urt, cod1, coduo, cod2, cod4, codwaw, cod6, cod7, wop, smg, bfbc2, moh)</td>";
+    echo "<td class=\"fontSmall\">What game? (urt, cod1, coduo, cod2, cod4, codwaw, cod6, cod7, wop, smg, bfbc2, moh, homefront)</td>";
     echo "</tr>";
     echo "<tr>";
     echo "<td><strong class=\"fontNormal\">Public IP:</strong></td>";

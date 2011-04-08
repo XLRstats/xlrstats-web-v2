@@ -344,7 +344,7 @@ function player_bfbc2_globalstats($playerid, $dbID = false)
  
      <div class="tabbertab">
      <h2>Achievements</h2>
-      '.bfbc2_display_player_campaing_achievements($player).'<br />'
+      '.bfbc2_display_player_campaign_achievements($player).'<br />'
       .bfbc2_display_player_online_achievements($player).'
      </div>
 
@@ -752,21 +752,21 @@ function bfbc2_display_player_pins($player)
   return $pinlist;
 }
 
-function bfbc2_display_player_campaing_achievements($player)
+function bfbc2_display_player_campaign_achievements($player)
 {
   $achievements = object2array($player->achievements);
-  $campaingachs = array_slice($achievements,0,30, true);
+  $campaignachs = array_slice($achievements,0,30, true);
 
-  $campaingachlist = '<table width="100%" border="0" cellspacing="1" cellpadding="0" class="outertable">
+  $campaignachlist = '<table width="100%" border="0" cellspacing="1" cellpadding="0" class="outertable">
                      <tr>
                        <td>
                          <table width="100%" border="0" cellspacing="2" cellpadding="0" class="innertable">
                            <tr class="outertable">
-                             <td colspan="6" align="center">Your Campaing Achievement Stats</td>
+                             <td colspan="6" align="center">Your campaign Achievement Stats</td>
                            </tr>
                            <tr><td align="center">';
 
-  $campainglabels = array (
+  $campaignlabels = array (
                             "Finish 'Operation Aurora'",
                             "Finish 'Cold War'",
                             "Finish 'Heart of Darkness'",
@@ -799,29 +799,29 @@ function bfbc2_display_player_campaing_achievements($player)
                             "50 kills with shotguns"
                           );
 
-  $campaingwithlabels = array_combine($campainglabels, $campaingachs);
+  $campaignwithlabels = array_combine($campaignlabels, $campaignachs);
   $i = 0;
 
-  foreach($campaingwithlabels as $campaingach => $campaingachstats)
+  foreach($campaignwithlabels as $campaignach => $campaignachstats)
   {
     $i++;
-    $campaingachlist .= '<div class="'.(($campaingachstats['unlocked']== 1) ? 'insignia' : 'insignia locked' ).'">
-                         <div class="name">'.$campaingachstats['name'].'</div>
+    $campaignachlist .= '<div class="'.(($campaignachstats['unlocked']== 1) ? 'insignia' : 'insignia locked' ).'">
+                         <div class="name">'.$campaignachstats['name'].'</div>
                          <div class="image"><img style="padding:5px;" src="images/bc2global/achievements/ta'.sprintf("%02d", $i).'.png" /></div>
-                         <div class="criteria">'.$campaingach.'</div>
+                         <div class="criteria">'.$campaignach.'</div>
                      ';
 
-    $campaingachlist .= '</div>';
+    $campaignachlist .= '</div>';
   }
 
-  $campaingachlist .= '   </td></tr>
+  $campaignachlist .= '   </td></tr>
                          </table>
                        </td>
                      </tr>
                    </table>
                   ';
 
-  return $campaingachlist;
+  return $campaignachlist;
 }
 
 function bfbc2_display_player_online_achievements($player)

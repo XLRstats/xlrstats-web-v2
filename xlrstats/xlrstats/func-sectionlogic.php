@@ -2736,7 +2736,7 @@ function player_history_weekly_s($plid, $dbID = false)
   $link = baselink();
   $Output = "";
 
-  if (table_exists($t['history_weekly']) ==  FALSE)
+  if (!isset($t['history_weekly']) || table_exists($t['history_weekly']) ==  FALSE)
     $Output = "<p><strong>*** XLRstatsHistory ".$text["pluginnotinstalled"]." ***</strong></p>";
   elseif($dbID == false) {
     $Output = "<img src=\"inc_historygraph_skill_weekly.php?id=".$plid."&config=".$currentconfignumber."\" alt=\"\"><br>";

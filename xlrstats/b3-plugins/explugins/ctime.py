@@ -19,6 +19,7 @@ class TimeStats:
 
 #--------------------------------------------------------------------------------------------------
 class CtimePlugin(b3.plugin.Plugin):
+    requiresConfigFile=False
     _clients = {} 
     _cronTab = None
     _max_age_in_days = 31
@@ -57,8 +58,7 @@ class CtimePlugin(b3.plugin.Plugin):
                 not event.client.id or \
                 event.client.cid == None or \
                 not event.client.connected or \
-                event.client.pbid == 'WORLD' or \
-                event.client.pbid == 'Server':
+                event.client.hide:
                 return
             
             self.update_time_stats_connected(event.client)

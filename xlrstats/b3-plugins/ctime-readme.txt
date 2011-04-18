@@ -23,12 +23,11 @@ Installation:
 ###################################################################################
 
 1. Unzip the contents of this package into your B3 folder. It will
-place the .py file in b3/extplugins and the config file .xml in
-your b3/extplugins/conf folder.
+place the .py file in b3/extplugins folder.
 
 2. Create the ctime table in your database importing the ctime.sql file.
 
 3. Open your B3.xml file (in b3/conf) and add the next line in the
 <plugins> section of the file:
 
-<plugin name="ctime" config="@b3/extplugins/conf/plugin_ctime.xml"/>
+<plugin name="ctime" />

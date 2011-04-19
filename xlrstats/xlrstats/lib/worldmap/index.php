@@ -4,8 +4,29 @@ define( '_XLREXEC', 1 );
 
 include('../../func-globallogic.php');
 
-if (isset($_GET['config'])) 
-  $currentconfignumber = escape_string($_GET['config']);
+// If statsconfig.php exists, we won't enable multiconfig functionality
+if (file_exists("../../config/statsconfig.php"))
+{
+  $currentconfig = "../../config/statsconfig.php";
+  $currentconfignumber = 0;
+}
+elseif (file_exists("../../config/statsconfig1.php"))
+{
+  $currentconfig = "../../config/statsconfig1.php";
+  $currentconfignumber = 1;
+  // Was a config set in the url?
+  if (isset($_GET['config'])) 
+  {
+    $currentconfignumber = escape_string($_GET['config']);
+    $currentconfig = "../../config/statsconfig".$currentconfignumber.".php";
+    $_SESSION['currentconfignumber'] = $currentconfignumber;
+  }
+  if (isset($_SESSION['currentconfignumber']))
+  {
+    $currentconfignumber = $_SESSION['currentconfignumber'];
+    $currentconfig = "../../config/statsconfig".$currentconfignumber.".php";
+  }
+}
 
 echo "
 <!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"

@@ -193,7 +193,7 @@ function loadData()
 
   while($data = fread($fp, 4096)) 
   {
-    $data = utf16_2_utf8($data ) ;
+    $data = utf2iso($data);
     if(!xml_parse($parser, $data, feof($fp)))
     {
       // empty  

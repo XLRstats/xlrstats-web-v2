@@ -974,6 +974,10 @@ $m['mp_stadium'] = "Stadium";
 $m['mp_kowloon'] = "Kowloon";
 $m['mp_discovery'] = "Discovery";
 $m['mp_berlinwall2'] = "Berlin Wall";
+$m['mp_gridlock'] = "Convoy";
+$m['mp_hotel'] = "Hotel";
+$m['mp_outskirts'] = "Stockpile";
+$m['mp_zoo'] = "Zoo";
 
 //*********************
 // Event names

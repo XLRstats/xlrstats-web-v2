@@ -42,17 +42,17 @@ $spectators = "Spectators";
 
 $w['RIF_M4'] = "M4 Rifle";
 $w['RIF_ACR'] = "ACR Rifle";
-$w[''] = "SCAR-L Rifle";
+$w['RIF_SCAR'] = "SCAR-L Rifle";
 $w['RIF_M16'] = "M16 Rifle";
 $w['RIF_T3AK'] = "T3AK Rifle";
-$w[''] = "XM10 Rifle";
+$w['RIF_XM10'] = "XM10 Rifle";
 
 //*********************
 //Sub Machine Guns
 //*********************
 
 $w['SMG_DIABLO'] = "PWS Diablo SMG";
-$w[''] = "Super V SMG";
+$w['SMG_SV45'] = "Super V SMG";
 
 //*********************
 //Light Machine Guns
@@ -66,7 +66,7 @@ $w['LMG_SCARMG'] = "SCAR-H LMG";
 //*********************
 
 $w['SNI_M110'] = "M110 Sniper Rifle";
-$w[''] = "M200 Sniper Rifle";
+$w['SNI_M200'] = "M200 Sniper Rifle";
 
 //*********************
 //Side Arms
@@ -78,7 +78,7 @@ $w['PST_M9'] = "M9";
 //Downloadable Guns
 //*********************
 
-$w[''] = "870 Express Shotgun";
+$w['SHT_870'] = "870 Express Shotgun";
 
 //*********************
 //Explosives
@@ -130,7 +130,7 @@ $w['M1A3_Seat0_Shell'] = "M1A3 Abrams";
 $w['T99_Seat0_Shell'] = "T-99 Battle Tank";
 
 //Scout Heli
-$w[''] = "AH-700 Scout";
+$w['MD600_MiniGun'] = "AH-700 Scout";
 
 //Attack Heli
 $w['AH64D_Seat0_Missile'] = "AH-64 Apache Missile";
@@ -141,7 +141,7 @@ $w[''] = "Z-10 Chimera";
 //*********************
 
 $w['CQC_M9Knife'] = "Knife";
-$w[''] = "Falling";
+$w['Fell'] = "Falling";
 $w[''] = "Bad Luck...";
 
 

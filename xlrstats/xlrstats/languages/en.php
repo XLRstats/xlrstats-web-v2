@@ -31,7 +31,7 @@
  ***************************************************************************/
 
 //HTML charset
-$text["charset"] = "iso-8859-1";
+$text["charset"] = "utf-8";
 
 //HEADER
 $text["welcome"] = "Welcome to our statspages";

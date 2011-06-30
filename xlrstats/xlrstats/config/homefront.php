@@ -75,6 +75,13 @@ $w['SNI_M200'] = "M200 Sniper Rifle";
 $w['PST_M9'] = "M9";
 
 //*********************
+//Attachments
+//*********************
+$w['EXP_GL_Airburst'] = "Airburst Launcher (attached)";
+$w['EXP_GL_Impact'] = "Grenade Launcher (attached)";
+$w['SHT_M4Shotgun'] = "M4 Shotgun (attached)";
+
+//*********************
 //Downloadable Guns
 //*********************
 
@@ -88,62 +95,92 @@ $w['EXP_Frag'] = "Grenade";
 $w[''] = "EMP Grenade";
 $w[''] = "Flashbang";
 $w['EXP_C4'] = "C4";
-$w['PhosphorusFire'] = "White Phosphorus Grenade";
+$w['PhosphorusFireGrenade'] = "White Phosphorus Grenade";
 
 //*********************
 //Drones
 //*********************
 
-$w[''] = "MQ50 MG Wolverine";
-$w[''] = "AQ-11 Buzzard";
+$w['GAssault_Bullet'] = "MQ50 MG Wolverine";
+$w['AAssault_Missile'] = "AQ-11 Buzzard";
 $w[''] = "RQ-10 Parrot";
-$w[''] = "MQ60 AT Rhino";
-
+$w['GAntiTankDumb_Missile'] = "MQ60 AT Rhino Missile dumbfired";
+$w['GAntiTank_Missile'] = "MQ60 AT Rhino Missile locked";
+$w['DroneExplosion'] = "Drone Explosion";
 
 //*********************
 //Airstrikes
 //*********************
 
 $w['EXP_Hellfire'] = "Hellfire";
-$w[''] = "Cluster Bomb";
-$w[''] = "White Phosphorus";
+$w['EXP_Carpet'] = "Cluster Bomb";
+$w['PhosphorusFire'] = "White Phosphorus";
 
 //*********************
 //Rocket Launchers
 //*********************
 
-$w[''] = "RPG Launcher";
+$w['ATW_ATRL'] = "RPG Launcher";
 $w['ATW_PROX'] = "Proximity Launcher";
 
 //*********************
 // Wehicles
 //*********************
 
+$w['RanOver'] = "Ran Over";
+
 //Humvee
-$w['M1114_Seat1_Bullet'] = "M1151 Humvee";
+$w['M1114_Seat1_Bullet'] = "M1151 Humvee (KPA)";
+$w['Veh_50calSplash'] = "M1151 Humvee (USA)";
 
 //Light Armor Vehicles
-$w['LAV_Seat0_Bullet'] = "LAV Piranha";
+$w['LAV25_AntiAir_Missile'] = "LAV Piranha (AntiAir Missile)";
+$w['LAV_Seat0_Bullet'] = "LAV Piranha (M242 50mm Gun)";
+$w['LAV_Seat1_Rocket'] = "LAV Piranha (Rocket Launcher)";
 
 //Heavy Tank
-$w['M1A3_Seat0_Shell'] = "M1A3 Abrams";
-$w['T99_Seat0_Shell'] = "T-99 Battle Tank";
+$w['M1A3_Seat0_Shell'] = "M1A3 Abrams (120mm Cannon)";
+$w['M1A3_Seat1_Bullet'] = "M1A3 Abrams (.50 cal MG)";
+$w['T99_Seat0_Shell'] = "T-99 Battle Tank (125mm Cannon)";
+$w['T99_Seat1_Bullet'] = "T-99 Battle Tank (.50 cal MG)";
 
 //Scout Heli
-$w['MD600_MiniGun'] = "AH-700 Scout";
+$w['MD600_MiniGun'] = "MD600 (Minigun)";
+$w['MD600_MiniGunSplash'] = "MD600 (MiniGunSplash)";
 
 //Attack Heli
-$w['AH64D_Seat0_Missile'] = "AH-64 Apache Missile";
-$w[''] = "Z-10 Chimera";
+$w['AH64D_Seat0_AirToAir_Missile'] = "AH-64 Apache (Missile locked)";
+$w['AH64D_Seat0_Missile'] = "AH-64 Apache (Missile dumbfired)";
+$w['AH64D_Seat1_Bullet'] = "AH-64 Apache (30mm Cannon)";
+$w['Z10_Seat1_Bullet'] = "Z-10 Chimera (30mm Cannon)";
 
 //*********************
 // Misc
 //*********************
 
 $w['CQC_M9Knife'] = "Knife";
-$w['Fell'] = "Falling";
-$w[''] = "Bad Luck...";
 
+//*********************
+//Accidents
+//*********************
+
+$w['Crushed'] = "Crushed";
+$w['Drown'] = "Drowned";
+$w['SpawnCamp'] = "SpawnCamp";
+$w['Suicided'] = "Suicide";
+$w['Burn'] = "Burned";
+$w['Fell'] = "Fell to Death";
+$w['OutOfCombat'] = "Out Of Combat";
+$w['AbandonedVehicle'] = "Abandoned Vehicle";
+$w['VehicleCollisionPassenger'] = "Road Kill";
+$w['VehicleExplosion'] = "Exploding Vehicle";
+
+//*********************
+//unknown
+//*********************
+
+$w['EXP_GL_Bounce'] = "EXP_GL_Bounce ???";
+$w['Veh_30mmSplash'] = "Veh_30mmSplash ???";
 
 //*********************
 // Map names

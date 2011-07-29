@@ -187,13 +187,16 @@ $w['Veh_30mmSplash'] = "Veh_30mmSplash ???";
 //*********************
 // Stock Homefront Maps
 $m['fl-angelisland'] = "Angel Island";
+$m['fl-bigbox'] = "Big Box";
 $m['fl-borderlands'] = "Borderlands";
 $m['fl-crossroads'] = "Crossroads";
 $m['fl-culdesac'] = "Cul-de-Sac";
 $m['fl-farm'] = "Farm";
 $m['fl-harbor'] = "Green Zone";
 $m['fl-lowlands'] = "Lowlands";
+$m['fl-spillway'] = "Spillway";
 $m[''] = "Suburb";
+$m['None'] = "Intermission";
 
 
 //*********************

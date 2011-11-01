@@ -280,7 +280,7 @@ fwrite($fp,
 \$db_pass = \"$db_pass\";
 \$db_db = \"$db_db\";
 
-// What game? (urt, cod1, coduo, cod2, cod4, codwaw, cod6, cod7, wop, smg, bfbc2, moh, homefront)
+// What game? (urt, cod1, coduo, cod2, cod4, codwaw, cod6, cod7, wop, smg, bfbc2, moh, homefront, bf3)
 \$game = \"$game\";
 \$public_ip = \"$public_ip\";
 // This is the path where B3 stores the status.xml file. May be an absolute path or an URL. (Use forward slashes / only!)

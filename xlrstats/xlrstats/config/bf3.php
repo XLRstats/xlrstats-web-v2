@@ -33,95 +33,109 @@ $team2 = "Blue"; // blue team
 $spectators = "Spectators";
 
 
-//*********************
-// Weapons names
-//*********************
+//******************************
+// Weapons names (Main Classes)
+//******************************
 
 //Assault
-$w['M16A4'] = "M16A4 Assault Rifle";
-$w['Weapons/AK74M/AK74'] = "AK-74M Assault Rifle";
 $w['Weapons/M416/M416'] = "M416 Assault Rifle";
-$w['F2000'] = "FN2000 Assault Rifle";
 $w['AEK-971'] = "AEK-971 Assault Rifle";
-$w['AN-94 Abakan'] = "AN-94 Abakan Assault Rifle";
-//$w[''] = "AS VAL Assault Rifle";
-$w['Weapons/G3A3/G3A3'] = "G3 Assault Rifle";
+$w['M16A4'] = "M16A3 Assault Rifle";
+$w['F2000'] = "FN2000 Assault Rifle";
 $w['Weapons/KH2002/KH2002'] = "Khaybar KH-2002 Assault Rifle";
-//$w[''] = "Steyr Aug Assault Rifle";
-
+$w['AN-94 Abakan'] = "AN-94 Abakan Assault Rifle";
+$w['Weapons/AK74M/AK74'] = "AK-74M Assault Rifle";
+$w['Weapons/G3A3/G3A3'] = "G3 Assault Rifle";
 
 //Engineer (SMGs and Carbines)
-$w['Weapons/UMP45/UMP45'] = "UMP-45 Sub Machine Gun";
-$w['AKS-74u'] = "AKS 74U Sub Machine Gun";
-$w['M4A1'] = "M4A1 Carbine Rifle";
 $w['Weapons/SCAR-H/SCAR-H'] = "SCAR-H Carbine Rifle";
-$w['Weapons/G36C/G36C'] = "G36C Carbine Rifle";
-$w['SG 553 LB'] = "SG553 Carbine Rifle";
-//$w[''] = "P90 Sub Machine Gun";
-$w['MP7'] = "MP7 Sub Machine Gun";
-$w['PP-2000'] = "PP-2000 Sub Machine Gun";
-$w['MagpulPDR'] = "PDW-R Sub Machine Gun";
 $w['Weapons/A91/A91'] = "A-91 Sub Carbine Rifle";
-
-//Medic
-$w['M27IAR'] = "M27 Machine Gun";
-$w['RPK-74M'] = "RPK Machine Gun";
-$w['M249'] = "M249 Machine Gun";
-$w['M240'] = "M240 Machine Gun";
-$w['M60'] = "M60 Machine Gun";
-$w['Pecheneg'] = "PKP Pecheneg Machine Gun";
-//$w[''] = "Type 88 Machine Gun";
-//$w[''] = "MG36 Machine Gun";
+$w['Weapons/G36C/G36C'] = "G36C Carbine Rifle";
+$w['M4A1'] = "M4A1 Carbine Rifle";
+$w['AKS-74u'] = "AKS 74U Sub Machine Gun";
+$w['SG 553 LB'] = "SG553 Carbine Rifle";
 
 //Recon
-$w['Mk11'] = "MK11 Sniper Rifle";
-$w['SVD'] = "SVD Semi Automatic Sniper Rifle";
-$w['M40A5'] = "M40A5 Sniper Rifle";
 $w['SV98'] = "SV98 Bolt Action Sniper Rifle";
-//$w[''] = "M98B Bolt Action Sniper Rifle";
-$w['M39'] = "M39 Semi Automatic Sniper Rifle";
 $w['SKS'] = "SKS Semi Automatic Sniper Rifle";
-//$w[''] = "M82 Semi Automatic Sniper Rifle";
-$w['Type88'] = "Type 88 Semi Automatic Sniper Rifle";
+$w['M40A5'] = "M40A5 Sniper Rifle";
+$w['Model98B'] = "M98B Bolt Action Sniper Rifle";
+$w['Mk11'] = "MK11 MOD 0 Sniper Rifle";
+$w['SVD'] = "SVD Semi Automatic Sniper Rifle";
+$w['M39'] = "M39 Semi Automatic Sniper Rifle";
+
+//Support
+$w['M249'] = "M249 Machine Gun";
+$w['Pecheneg'] = "PKP Pecheneg Machine Gun";
+$w['M240'] = "M240B Machine Gun";
+$w['M60'] = "M60E4 Machine Gun";
+$w['M27IAR'] = "M27 IAR Machine Gun";
+$w['RPK-74M'] = "RPK Machine Gun";
+$w['Type88'] = "Type 88 Machine Gun"; //?????
+
+//******************************
+// Weapons names (General)
+//******************************
 
 //Shotguns
 $w['870MCS'] = "Remington 870 Shotgun";
-//$w[''] = "Saiga 12 Semi Automatic Shotgun";
-//$w[''] = "USAS 12 Semi Automatic Shotgun";
+$w['M1014'] = "M1014 Semi Automatic Shotgun";
+$w['Siaga20k'] = "Saiga 12 Semi Automatic Shotgun";
 $w['DAO-12'] = "DAO 12 Semi Automatic Shotgun";
-//$w[''] = "M1014 Semi Automatic Shotgun";
-//$w[''] = "SPAS-12 Pump Action Shutgun";
+$w['USAS-12'] = "USAS 12 Semi Automatic Shotgun";
 
 //Sidearms
+$w['M1911'] = "M1911 Pistol";
 $w['M9'] = "Beretta M9 Semi Automatic Pistol";
 $w['Weapons/MP443/MP443'] = "MP-443 Grach Semi Automatic Pistol";
-$w['M93R'] = "Beretta Model 93R Pistol";
-$w['M1911'] = "M1911 Pistol";
 $w['Glock18'] = "Glock 18 Fully Automatic Pistol";
-$w['Weapons/MP412Rex/MP412REX'] = "MP412 REX .357 Magnum Pistol";
 $w['Taurus .44'] = ".44 Magnum Pistol";
+$w['Weapons/MP412Rex/MP412REX'] = "MP412 REX .357 Magnum Pistol";
+$w['M93R'] = "Beretta Model 93R Pistol";
+
+//SMGs
+$w['PP-2000'] = "PP-2000 Sub Machine Gun";
+$w['Weapons/UMP45/UMP45'] = "UMP-45 Sub Machine Gun";
+$w['Weapons/MagpulPDR/MagpulPDR'] = "PDW-R Sub Machine Gun";
+$w['Weapons/P90/P90'] = "P90 Sub Machine Gun";
+$w['MP7'] = "MP7 Sub Machine Gun";
+
+//Assault
+$w['AS VAL'] = "AS VAL Assault Rifle";
+
+//******************************
+// Weapons names (Other)
+//******************************
 
 //Rocket Launchers
-$w['RPG-7'] = "RPG-7 ROcket Launcher";
-$w['SMAW'] = "SMAW Rocket Launcher";
-$w['FGM-148'] = "Javelin Anti Tank Missile Launcher";
-$w['FIM92'] = "FIM-92 Stinger Anti Air Missile Launcher";
-$w['Weapons/Sa18IGLA/Sa18IGLA'] = "SA-18 IGLA Anti Air Missile Launcher";
-//$w[''] = "AT4 Light Anti Tank Rocket Launcher";
+$w['RPG-7'] = "RPG-7 Rocket Launcher";                                     //Engineer
+$w['SMAW'] = "SMAW Rocket Launcher";                                       //Engineer
+$w['FGM-148'] = "Javelin Anti Tank Missile Launcher";                      //Engineer
+$w['FIM92'] = "FIM-92 Stinger Anti Air Missile Launcher";                  //Engineer
+$w['Weapons/Sa18IGLA/Sa18IGLA'] = "SA-18 IGLA Anti Air Missile Launcher";  //Engineer
 
 //Equipment
-$w['Weapons/Gadgets/C4/C4'] = "C4 explosives";
-$w['Weapons/Gadgets/Claymore/Claymor'] = "Claymore mine";
-$w['M15 AT Mine'] = "AT mine";
-//$w[''] = "Mortar";
-//$w[''] = "EOD Bot";
-$w['Repair Tool'] = "Repair Tool";
-$w['Medkit'] = "Defibrillator";
-$w['M26Mass'] = "M26 MASS";
-$w['M320'] = "M320 Grenade Launcher";
-$w['Weapons/Knife/Knife'] = "Knife";
-$w['M67'] = "M67 Hand Grenade";
-//$w[''] = "M18 Smoke Grenade";
+$w['Weapons/Gadgets/C4/C4'] = "C4 explosives";                  //Support
+$w['Weapons/Gadgets/Claymore/Claymor'] = "M18 Claymore";        //Support
+$w['M15 AT Mine'] = "AT mine";                                  //Engineer
+$w['Repair Tool'] = "Repair Tool";                              //Engineer
+$w['Defib'] = "Defibrillator";                                  //Assault
+$w['M26Mass'] = "M26 MASS";                                     //Assault
+$w['M320'] = "M320 Grenade Launcher";                           //Assault
+$w['Weapons/Knife/Knife'] = "Knife";                            //General
+$w['M67'] = "M67 Hand Grenade";                                 //General
+//$w[''] = "M18 Smoke Grenade";                                 //General
+//$w[''] = "M224 Mortar";                                       //Support
+//$w[''] = "EOD Bot";                                           //Engineer
+
+//Misc
+$w['SoldierCollision'] = "Soldier Collision";
+$w['Suicide'] = "Suicide";
+$w['Melee'] = "Melee";
+$w['Death'] = "Vehicle/Mortar Kill";
+$w['RoadKill'] = "Road Kill";
+$w['DamageArea'] = "Damage Area"; //?
+$w[' '] = $text["notidentify"];
 
 //*********************
 // Vehicle names
@@ -160,18 +174,6 @@ $w['M67'] = "M67 Hand Grenade";
 //$w[''] = "AAV-7A1 / Amphibious Assault Vehicle";
 
 //*********************
-// Other Weapon Names
-//*********************
-$w['SoldierCollision'] = "Soldier Collision";
-$w['Suicide'] = "Suicide";
-$w['Melee'] = "Melee";
-$w['Death'] = "Death"; //?
-$w['RoadKill'] = "Road Kill";
-$w['DamageArea'] = "Damage Area"; //?
-$w[' '] = $text["notidentify"];
-
-
-//*********************
 // Map names
 //*********************
 //Stock
@@ -184,7 +186,6 @@ $m['MP_013'] = "Damavand Peak";
 $m['MP_017'] = "Noshahar Canals";
 $m['MP_018'] = "Kharg Island";
 $m['MP_Subway'] = "Operation Metro";
-
 $m['None'] = "-Unknown-";
 
 //*********************
@@ -195,8 +196,7 @@ $e[''] = "";
 //*********************
 // Bodypart names
 //*********************
-$b['None'] = $text["noneurt"];
-$b['body'] = $text["notidentify"];
+$b['torso'] = $text["body"];
 $b['head'] = $text["head"];
 
 ?>

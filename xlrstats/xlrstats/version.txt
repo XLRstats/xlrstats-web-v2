@@ -1,2 +1,2 @@
-version: 2.5b1
-date: 01 November 2011
+version: 2.5b2
+date: 10 November 2011

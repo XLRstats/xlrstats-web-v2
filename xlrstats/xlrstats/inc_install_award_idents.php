@@ -1253,4 +1253,31 @@ function cod7_awards()
 function homefront_awards()
 {}
 
+function bf3_awards()
+{
+  global $t;
+  global $coddb;
+  global $buffer;
+  
+  //-- Weapons -------------------------------------------------------------------
+  $buffer .= "\n// Weapons / Means of Death --------\n";
+
+  // Nades
+  add_weaponaward("wp_nades", "'M67'");
+  // Snipers
+  add_weaponaward("wp_snipers", "'SV98', 'SKS', 'M40A5', 'Model98B', 'Mk11', 'SVD', 'M39'");
+  // Head
+  add_bodypartaward("bp_head", "'head'");
+  // Pistol
+  add_weaponaward("wp_pistols", "'M1911', 'M9', 'Weapons/MP443/MP443', 'Glock18', 'Taurus .44', 'Weapons/MP412Rex/MP412REX', 'M93R'");
+  // bomb (C4)
+  add_weaponaward("wp_bomb", "'Weapons/Gadgets/C4/C4'");
+  // Claymore
+  add_weaponaward("wp_claymore", "'Weapons/Gadgets/Claymore/Claymor'");
+  // Knives
+  add_weaponaward("wp_knives", "'Weapons/Knife/Knife', 'Melee'");
+  // Accidents
+  add_weaponaward("wp_accidents", "'Suicide', 'RoadKill', 'SoldierCollision'"); 
+}
+
 ?>

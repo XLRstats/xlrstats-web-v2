@@ -138,7 +138,7 @@ if(@simplexml_load_file($b3_status_url)) //do we have a valid xml file?
       if ($serverdata['Name'] == "punkBuster")
         $punkbuster = $serverdata['Value'];
 
-      if ($serverdata['Name'] == "mapName")
+      if ($serverdata['Name'] == "_mapName")
         $mapname = $serverdata['Value'];
     }
   }
@@ -158,7 +158,7 @@ if(@simplexml_load_file($b3_status_url)) //do we have a valid xml file?
       if ($serverdata['Name'] == "sv_punkbuster")
         $punkbuster = $serverdata['Value'];
 
-      if ($serverdata['Name'] == "mapName")
+      if ($serverdata['Name'] == "_mapName")
         $mapname = $serverdata['Value'];
     }
   }

@@ -28,8 +28,8 @@
 //*********************
 
 // Teamnames and colors
-$team1 = "Red"; // red team
-$team2 = "Blue"; // blue team
+$team1 = "US Marines"; // red team
+$team2 = "RU Army"; // blue team
 $spectators = "Spectators";
 
 
@@ -116,7 +116,7 @@ $w['Weapons/Sa18IGLA/Sa18IGLA'] = "SA-18 IGLA Anti Air Missile Launcher";  //Eng
 
 //Equipment
 $w['Weapons/Gadgets/C4/C4'] = "C4 explosives";                  //Support
-$w['Weapons/Gadgets/Claymore/Claymor'] = "M18 Claymore";        //Support
+$w['Weapons/Gadgets/Claymore/Claymore'] = "M18 Claymore";       //Support
 $w['M15 AT Mine'] = "AT mine";                                  //Engineer
 $w['Repair Tool'] = "Repair Tool";                              //Engineer
 $w['Defib'] = "Defibrillator";                                  //Assault
@@ -186,6 +186,11 @@ $m['MP_013'] = "Damavand Peak";
 $m['MP_017'] = "Noshahar Canals";
 $m['MP_018'] = "Kharg Island";
 $m['MP_Subway'] = "Operation Metro";
+//B2K Maps
+$m['XP1_001'] = "Strike at Karkand";
+$m['XP1_002'] = "Gulf of Oman";
+$m['XP1_003'] = "Sharqi Peninsula";
+$m['XP1_004'] = "Wake Island";
 $m['None'] = "-Unknown-";
 
 //*********************

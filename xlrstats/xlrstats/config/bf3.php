@@ -38,39 +38,58 @@ $spectators = "Spectators";
 //******************************
 
 //Assault
-$w['Weapons/M416/M416'] = "M416 Assault Rifle";
 $w['AEK-971'] = "AEK-971 Assault Rifle";
-$w['M16A4'] = "M16A3 Assault Rifle";
-$w['F2000'] = "FN2000 Assault Rifle";
-$w['Weapons/KH2002/KH2002'] = "Khaybar KH-2002 Assault Rifle";
-$w['AN-94 Abakan'] = "AN-94 Abakan Assault Rifle";
 $w['Weapons/AK74M/AK74'] = "AK-74M Assault Rifle";
-$w['Weapons/G3A3/G3A3'] = "G3 Assault Rifle";
+$w['AN-94 Abakan'] = "AN-94 Abakan Assault Rifle";
+$w['Steyr AUG'] = "AUG A3 Assault Rifle"; //CQ DLC
+$w['F2000'] = "FN2000 Assault Rifle";
+$w['FAMAS'] = "FAMAS Assault Rifle";
+$w['Weapons/G3A3/G3A3'] = "G3 Assault Rifle"; // B2K DLC
+$w['Weapons/KH2002/KH2002'] = "Khaybar KH-2002 Assault Rifle";
+$w['Weapons/XP1_L85A2/L85A2 '] = "L85A2 Assault Rifle"; // B2K DLC
+//Confusing as PRCON spits out both
+$w['M416'] = "M416 Assault Rifle";
+$w['Weapons/M416/M416'] = "M416 Assault Rifle";
+
+$w['M16A4'] = "M16A3 Assault Rifle";
+$w['SCAR-L'] = "SCAR-L Assault Rifle"; // CQ DLC
 
 //Engineer (SMGs and Carbines)
-$w['Weapons/SCAR-H/SCAR-H'] = "SCAR-H Carbine Rifle";
 $w['Weapons/A91/A91'] = "A-91 Sub Carbine Rifle";
-$w['Weapons/G36C/G36C'] = "G36C Carbine Rifle";
-$w['M4A1'] = "M4A1 Carbine Rifle";
+$w['Weapons/XP2_ACR/ACR'] = "ACW-R Carbine Rifle"; // CQ DLC
 $w['AKS-74u'] = "AKS 74U Sub Machine Gun";
-$w['SG 553 LB'] = "SG553 Carbine Rifle";
+$w['Weapons/G36C/G36C'] = "G36C Carbine Rifle";
+$w['HK53'] = "G53 Carbine Rifle"; // B2K DLC
+$w['M4A1'] = "M4A1 Carbine Rifle";
+$w['Weapons/XP2_MTAR/MTAR'] = "MTAR-21 Carbine Rifle"; // CQ DLC
+$w['QBZ-95'] = "QBZ-95 Carbine Rifle"; // B2K DLC
+$w['Weapons/SCAR-H/SCAR-H'] = "SCAR-H Carbine Rifle";
+$w['SG 553 LB'] = "SG553 Carbine Rifle"; // B2K DLC
 
 //Recon
-$w['SV98'] = "SV98 Bolt Action Sniper Rifle";
-$w['SKS'] = "SKS Semi Automatic Sniper Rifle";
+// $w[''] = "JNG-90 Sniper Rifle"; // CQ DLC
+$w['L96'] = "L96 Sniper Rifle";
+$w['M39'] = "M39 EMR Semi Automatic Sniper Rifle";
 $w['M40A5'] = "M40A5 Sniper Rifle";
+$w['M417'] = "M417 Semi Automatic Sniper Rifle"; // CQ DLC
 $w['Model98B'] = "M98B Bolt Action Sniper Rifle";
-$w['Mk11'] = "MK11 MOD 0 Sniper Rifle";
+$w['Mk11'] = "MK11 Sniper Rifle";
+$w['QBU-88'] = "QBU-88 Sniper Rifle"; // B2K DLC
+$w['SKS'] = "SKS Semi Automatic Sniper Rifle";
+$w['SV98'] = "SV98 Bolt Action Sniper Rifle";
 $w['SVD'] = "SVD Semi Automatic Sniper Rifle";
-$w['M39'] = "M39 Semi Automatic Sniper Rifle";
 
 //Support
-$w['M249'] = "M249 Machine Gun";
-$w['Pecheneg'] = "PKP Pecheneg Machine Gun";
+$w['Weapons/XP2_L86/L86'] = "L86A2 Machine Gun";  // CQ DLC
+$w['LSAT'] = "LSAT Machine Gun"; // CQ DLC
 $w['M240'] = "M240B Machine Gun";
-$w['M60'] = "M60E4 Machine Gun";
+$w['M249'] = "M249 Machine Gun";
 $w['M27IAR'] = "M27 IAR Machine Gun";
 $w['RPK-74M'] = "RPK Machine Gun";
+$w['M60'] = "M60E4 Machine Gun";
+$w['MG36'] = "MG36  Machine Gun"; // CQ DLC
+$w['Pecheneg'] = "PKP Pecheneg Machine Gun";
+$w['QBB-95'] = "QBB-95 Machine Gun"; // B2K DLC
 $w['Type88'] = "Type 88 Machine Gun"; //?????
 
 //******************************
@@ -79,10 +98,12 @@ $w['Type88'] = "Type 88 Machine Gun"; //?????
 
 //Shotguns
 $w['870MCS'] = "Remington 870 Shotgun";
-$w['M1014'] = "M1014 Semi Automatic Shotgun";
-$w['Siaga20k'] = "Saiga 12 Semi Automatic Shotgun";
 $w['DAO-12'] = "DAO 12 Semi Automatic Shotgun";
+$w['M1014'] = "M1014 Semi Automatic Shotgun";
+$w['jackhammer'] = "MK3A1 Automatic Shotgun";  // B2K DLC
+$w['Siaga20k'] = "Saiga 12 Semi Automatic Shotgun";
 $w['USAS-12'] = "USAS 12 Semi Automatic Shotgun";
+$w['SPAS-12'] = "SPAS-12 Pump Action Shutgun";  // CQ DLC
 
 //Sidearms
 $w['M1911'] = "M1911 Pistol";
@@ -94,6 +115,7 @@ $w['Weapons/MP412Rex/MP412REX'] = "MP412 REX .357 Magnum Pistol";
 $w['M93R'] = "Beretta Model 93R Pistol";
 
 //SMGs
+$w['PP-19'] = "PP-19 Sub Machine Gun";
 $w['PP-2000'] = "PP-2000 Sub Machine Gun";
 $w['Weapons/UMP45/UMP45'] = "UMP-45 Sub Machine Gun";
 $w['Weapons/MagpulPDR/MagpulPDR'] = "PDW-R Sub Machine Gun";
@@ -187,10 +209,16 @@ $m['MP_017'] = "Noshahar Canals";
 $m['MP_018'] = "Kharg Island";
 $m['MP_Subway'] = "Operation Metro";
 //B2K Maps
-$m['XP1_001'] = "Strike at Karkand";
+$m['XP1_001'] = "Strike At Karkand";
 $m['XP1_002'] = "Gulf of Oman";
 $m['XP1_003'] = "Sharqi Peninsula";
 $m['XP1_004'] = "Wake Island";
+
+$m['XP2_Factory'] = "Scrapmetal";
+$m['XP2_Office'] = "Operation 925";
+$m['XP2_Palace'] = "Donya Fortress";
+$m['XP2_Skybar'] = "Ziba Tower";
+
 $m['None'] = "-Unknown-";
 
 //*********************

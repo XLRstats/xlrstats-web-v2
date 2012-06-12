@@ -47,7 +47,7 @@ $w['FAMAS'] = "FAMAS Assault Rifle";
 $w['Weapons/G3A3/G3A3'] = "G3 Assault Rifle"; // B2K DLC
 $w['Weapons/KH2002/KH2002'] = "Khaybar KH-2002 Assault Rifle";
 $w['Weapons/XP1_L85A2/L85A2 '] = "L85A2 Assault Rifle"; // B2K DLC
-//Confusing as PRCON spits out both
+//Confusing as RCON spits out both
 $w['M416'] = "M416 Assault Rifle";
 $w['Weapons/M416/M416'] = "M416 Assault Rifle";
 
@@ -121,6 +121,7 @@ $w['Weapons/UMP45/UMP45'] = "UMP-45 Sub Machine Gun";
 $w['Weapons/MagpulPDR/MagpulPDR'] = "PDW-R Sub Machine Gun";
 $w['Weapons/P90/P90'] = "P90 Sub Machine Gun";
 $w['MP7'] = "MP7 Sub Machine Gun";
+$w['Weapons/XP2_MP5K/MP5K'] = "M5K Sub Machine Gun"; // CQ DLC
 
 //Assault
 $w['AS VAL'] = "AS VAL Assault Rifle";

@@ -67,7 +67,7 @@ $w['Weapons/SCAR-H/SCAR-H'] = "SCAR-H Carbine Rifle";
 $w['SG 553 LB'] = "SG553 Carbine Rifle"; // B2K DLC
 
 //Recon
-// $w[''] = "JNG-90 Sniper Rifle"; // CQ DLC
+$w['JNG90'] = "JNG-90 Sniper Rifle"; // CQ DLC
 $w['L96'] = "L96 Sniper Rifle";
 $w['M39'] = "M39 EMR Semi Automatic Sniper Rifle";
 $w['M40A5'] = "M40A5 Sniper Rifle";

@@ -117,25 +117,24 @@ $w['DmgType_Fell'] = "Fell";
 // Map names
 //*********************
 //Stock
-$m['ctr_canyon'] = "Canyon";
-$m['ctr_canyon_day2'] = "Canyon Day 2";
-$m['ctr_icebreaker'] = "Ice Breaker";
-$m['ctr_oilrig'] = "Oilrig";
-$m['ctr_derelict'] = "Derelict";
-$m['CTR_Rooftop'] = "Rooftop";
-$m['ctr_bridge'] = "Bridge";
-$m['ctr_bridge_day2'] = "Bridge Day 2";
-$m['ctr_chasm'] = "Chasm";
-$m['ctr_liberty'] = "Liberty";
-$m['Thrust_IceBreaker'] = "IceBreaker";
-$m['Thrust_Bridge'] = "Bridge";
-$m['Thrust_Liberty'] = "Liberty";
-$m['Thrust_Rooftop'] = "Rooftop";
-$m['Thrust_Oilrig'] = "Oilrig";
-$m['Thrust_Canyon'] = "Canyon";
-$m['Thrust_Chasm'] = "Chasm";
-$m['Thrust_Derelict'] = "Derelict";
-
+$m['CTR_Canyon'] = "Canyon (CTR)";
+$m['CTR_Canyon_Day2'] = "Canyon Day 2 (CTR)";
+$m['CTR_IceBreaker'] = "Ice Breaker (CTR)";
+$m['CTR_Oilrig'] = "Oilrig (CTR)";
+$m['CTR_Derelict'] = "Derelict (CTR)";
+$m['CTR_Rooftop'] = "Rooftop (CTR)";
+$m['CTR_Bridge'] = "Bridge (CTR)";
+$m['CTR_Bridge_Day2'] = "Bridge Day 2 (CTR)";
+$m['CTR_Chasm'] = "Chasm (CTR)";
+$m['CTR_Liberty'] = "Liberty (CTR)";
+$m['Thrust_IceBreaker'] = "IceBreaker (Thrust)";
+$m['Thrust_Bridge'] = "Bridge (Thrust)";
+$m['Thrust_Liberty'] = "Liberty (Thrust)";
+$m['Thrust_Rooftop'] = "Rooftop (Thrust)";
+$m['Thrust_Oilrig'] = "Oilrig (Thrust)";
+$m['Thrust_Canyon'] = "Canyon (Thrust)";
+$m['Thrust_Chasm'] = "Chasm (Thrust)";
+$m['Thrust_Derelict'] = "Derelict (Thrust)";
 
 $m['None'] = "-Unknown-";
 

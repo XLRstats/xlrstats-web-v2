@@ -247,7 +247,7 @@ fwrite($fp,
 "<?php
 /***************************************************************************
  * Xlrstats Webmodule
- * Webrfront for XLRstats for B3 (www.bigbrotherbot.com)
+ * Webfront for XLRstats for B3 (www.bigbrotherbot.com)
  * (c) 2004-2010 www.xlr8or.com (mailto:xlr8or@xlr8or.com)
  ***************************************************************************/
 
@@ -280,7 +280,7 @@ fwrite($fp,
 \$db_pass = \"$db_pass\";
 \$db_db = \"$db_db\";
 
-// What game? (urt, cod1, coduo, cod2, cod4, codwaw, cod6, cod7, wop, smg, bfbc2, moh, homefront, bf3)
+// What game? (urt, cod1, coduo, cod2, cod4, codwaw, cod6, cod7, wop, smg, bfbc2, moh, homefront, bf3, etc.)
 \$game = \"$game\";
 \$public_ip = \"$public_ip\";
 // This is the path where B3 stores the status.xml file. May be an absolute path or an URL. (Use forward slashes / only!)

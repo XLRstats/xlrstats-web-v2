@@ -1280,4 +1280,6 @@ function bf3_awards()
   add_weaponaward("wp_accidents", "'Suicide', 'RoadKill', 'SoldierCollision'"); 
 }
 
+function ravaged_awards()
+{}
 ?>

@@ -99,7 +99,7 @@ function topplayers($sortby = "skill", $direction = "DESC", $offset = 0, $clan_n
   echo "        <td align=\"center\">".$text["winstrk"]."</td>";
   echo "        <td align=\"center\">".$text["losstrk"]."</td>";
   echo "        </tr>";
-  
+
   if ($MaxKillRatio == 0)
   {
     // Determine the maximum ratio
@@ -115,7 +115,7 @@ function topplayers($sortby = "skill", $direction = "DESC", $offset = 0, $clan_n
     {
       $query .= " AND (${t['b3_clients']}.name like '%%$clan_name%%')";
     }
-    
+
     if ($exclude_ban) {
       $query .= " AND ${t['b3_clients']}.id NOT IN (
         SELECT distinct(target.id)
@@ -126,10 +126,10 @@ function topplayers($sortby = "skill", $direction = "DESC", $offset = 0, $clan_n
         AND ( penalties.time_expire = -1 OR penalties.time_expire > UNIX_TIMESTAMP(NOW()) )
       )";
     }
-    
+
     $query .= "ORDER BY ratio DESC, rounds ASC
         LIMIT 1";
-        
+
     $result = $coddb->sql_query($query);
     $row = $coddb->sql_fetchrow($result);
     $MaxKillRatio = sprintf("%.2f",$row['ratio']);
@@ -137,7 +137,7 @@ function topplayers($sortby = "skill", $direction = "DESC", $offset = 0, $clan_n
 
   $rank = $offset + 1;
   $rank_step = ($direction == "ASC" ? -1 : 1);
-  
+
   $query = "SELECT ${t['b3_clients']}.name, ${t['b3_clients']}.time_edit, ${t['players']}.id, kills, deaths, ratio, skill, winstreak, losestreak, rounds, fixed_name, ip
         FROM ${t['b3_clients']}, ${t['players']}
         WHERE (${t['b3_clients']}.id = ${t['players']}.client_id)
@@ -159,12 +159,12 @@ function topplayers($sortby = "skill", $direction = "DESC", $offset = 0, $clan_n
       AND ( penalties.time_expire = -1 OR penalties.time_expire > UNIX_TIMESTAMP(NOW()) )
     )";
   }
-  
-    
+
+
   $query .= "ORDER BY $sortby $direction";
   $result = $coddb->sql_query($query);
   $numRows = $coddb->sql_numrows($result);
-  
+
   if ($toplist_max > 0)
     $query .= " LIMIT $offset, $toplist_max";
 
@@ -177,11 +177,11 @@ function topplayers($sortby = "skill", $direction = "DESC", $offset = 0, $clan_n
     {
       while($row = $coddb->sql_fetchrow($result))
         $players[] = $row['name'];
-    
+
       $last_element = end($players);
-    
+
       //Build url
-    
+
       $url = "http://api.bfbcs.com/api/pc?players=";
       $clanpattern = '/\[.*\]\s/i';
       foreach ($players as $player)
@@ -191,7 +191,7 @@ function topplayers($sortby = "skill", $direction = "DESC", $offset = 0, $clan_n
           $url .= ",";
       }
       $url .= "&fields=basic";
-    
+
       //This will activate the link so the players will get queued for renewed global stats
       file_get_contents($url);
       //echo $url;
@@ -207,7 +207,7 @@ function topplayers($sortby = "skill", $direction = "DESC", $offset = 0, $clan_n
     global $rankname;
     global $killsneeded;
     global $rankimage;   
-    
+
 
     $kills =  get_rank_badge($row['kills']); 
 
@@ -264,7 +264,7 @@ function topplayers($sortby = "skill", $direction = "DESC", $offset = 0, $clan_n
       $KillRatioWidthMinus = intval($temp * 100);
       $KillRatioWidthMinusText = $text["ratio"] . " " . $temp . " - " . $KillRatioWidthMinus . $text["ofratio"];
     }
-    
+
     if ( $temp < 1 )
     {
       $KillRatioWidthPlus = "0";
@@ -275,7 +275,7 @@ function topplayers($sortby = "skill", $direction = "DESC", $offset = 0, $clan_n
       $KillRatioWidthPlus = intval( ($temp / ($MaxKillRatio/100)) );
       if ( $KillRatioWidthPlus > 100 ) 
         $KillRatioWidthPlus = 100;
-    
+
       $KillRatioWidthPlusText = $text["ratio"] . " " . $temp . " - " . $KillRatioWidthPlus . $text["ofbestratio"] . $MaxKillRatio . ")";
     }
 
@@ -308,16 +308,16 @@ function topplayers($sortby = "skill", $direction = "DESC", $offset = 0, $clan_n
     }
     elseif($ShowRatioGraph == 2) // Freelanders double ratio bar
     {
-	  echo "<td>";
+      echo "<td>";
       echo "        <table width=\"$KillRatioTableWidth\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" align=\"center\">
-  		<td bgcolor=\"#000000\" width=\"100%\" align=\"left\"><!-- ratio with minus -->
-  		<img align=\"middle\" src=\"images/bars/bar-middle/red_middle_13.png\" width=\"$KillRatioWidthMinus%\" height=\"13\" title=\"$KillRatioWidthMinusText\"><div style=\"margin-top:-13px\"><center><font size=\"1\" color=\"#FFFFFF\">$temp</font></center></div>";
-  	  echo "<tr></td><td><img src=\"images/spacer.gif\" width=\"1\" height=\"2\" alt=\"\">";
+        <td bgcolor=\"#000000\" width=\"100%\" align=\"left\"><!-- ratio with minus -->
+        <img align=\"middle\" src=\"images/bars/bar-middle/red_middle_13.png\" width=\"$KillRatioWidthMinus%\" height=\"13\" title=\"$KillRatioWidthMinusText\"><div style=\"margin-top:-13px\"><center><font size=\"1\" color=\"#FFFFFF\">$temp</font></center></div>";
+      echo "<tr></td><td><img src=\"images/spacer.gif\" width=\"1\" height=\"2\" alt=\"\">";
 
           if ($temp >= $MaxKillRatio)
           {
             echo"</td><tr><td bgcolor=\"#51260B\" width=\"100%\" align=\"left\"><!-- ratio with plus -->
-        		<img align=\"middle\" src=\"images/bars/bar-middle/yellow_middle_13.png\" width=\"$KillRatioWidthPlus%\" height=\"13\" title=\"$KillRatioWidthPlusText\"><div style=\"margin-top:-13px\"><center><font size=\"1\" color=\"#000000\">$KillRatioWidthPlus%</font></center></div>";
+                <img align=\"middle\" src=\"images/bars/bar-middle/yellow_middle_13.png\" width=\"$KillRatioWidthPlus%\" height=\"13\" title=\"$KillRatioWidthPlusText\"><div style=\"margin-top:-13px\"><center><font size=\"1\" color=\"#000000\">$KillRatioWidthPlus%</font></center></div>";
           }
           else
           {
@@ -335,15 +335,15 @@ function topplayers($sortby = "skill", $direction = "DESC", $offset = 0, $clan_n
     }
     elseif($ShowRatioGraph == 1) // Freelander inline ratiobar
     {
-	  echo "<td>";
+      echo "<td>";
     echo "        <table width=\"$KillRatioTableWidth\" cellpadding=\"1\" cellspacing=\"0\" border=\"0\" align=\"center\">
           <tr>
-      		<td bgcolor=\"#000000\" width=\"50%\" align=\"left\"><!-- ratio with minus -->
-      		<img align=\"middle\" src=\"images/bars/bar-middle/red_middle_13.png\" width=\"$KillRatioWidthMinus%\" height=\"13\" title=\"$KillRatioWidthMinusText\"><div style=\"margin-top:-13px\"><center><font size=\"1\" color=\"#FFFFFF\">$temp</font></center></div>";
+            <td bgcolor=\"#000000\" width=\"50%\" align=\"left\"><!-- ratio with minus -->
+            <img align=\"middle\" src=\"images/bars/bar-middle/red_middle_13.png\" width=\"$KillRatioWidthMinus%\" height=\"13\" title=\"$KillRatioWidthMinusText\"><div style=\"margin-top:-13px\"><center><font size=\"1\" color=\"#FFFFFF\">$temp</font></center></div>";
           if ($temp >= $MaxKillRatio)
           {
             echo"<td></td><td bgcolor=\"#51260B\" width=\"50%\" align=\"left\"><!-- ratio with plus -->
-        		<img align=\"middle\" src=\"images/bars/bar-middle/yellow_middle_13.png\" width=\"$KillRatioWidthPlus%\" height=\"13\" title=\"$KillRatioWidthPlusText\"><div style=\"margin-top:-13px\"><center><font size=\"1\" color=\"#000000\">$KillRatioWidthPlus%</font></center></div>";
+                <img align=\"middle\" src=\"images/bars/bar-middle/yellow_middle_13.png\" width=\"$KillRatioWidthPlus%\" height=\"13\" title=\"$KillRatioWidthPlusText\"><div style=\"margin-top:-13px\"><center><font size=\"1\" color=\"#000000\">$KillRatioWidthPlus%</font></center></div>";
           }
           else
           {
@@ -391,7 +391,7 @@ function topweapons($showplayercount = false, $sortby = "kills", $direction = "D
   global $t;  //table names
   global $w;  //weapon aliases
   global $text;
-  
+
   global $weaplist_max;
 
   $sortfields = array("kills", "teamkills", "suicides");
@@ -416,10 +416,10 @@ echo "
   if ($showplayercount == true)
     echo "<td>Nr of players</td>";
   echo "</tr>";
-  
+
   $rank = $offset + 1;
   $rank_step = ($direction == "ASC" ? -1 : 1);
-  
+
   $query = "SELECT id, name, kills, teamkills, suicides
       FROM ${t['weapons']}
       ORDER BY $sortby $direction";
@@ -428,7 +428,7 @@ echo "
   if ($weaplist_max > 0)
     $query .= " LIMIT $offset, $weaplist_max";
   //  $query .= " OFFSET $offset";
-  
+
   $result = $coddb->sql_query($query);
   while ($row = $coddb->sql_fetchrow($result))
   {
@@ -440,9 +440,9 @@ echo "
       echo "<td><a href=\"$link?func=weapon&weaponid=${row['id']}\">".$w[ $row['name'] ]."</a></td>";
     else
       echo "<td><a href=\"$link?func=weapon&weaponid=${row['id']}\">${row['name']}</a></td>";
-      
+
     //$weaponName = strtolower( $row['name']);
-    
+
     echo "<td align=\"center\"><a href=\"$link?func=weapon&weaponid=${row['id']}\">";
     // catch cod1, coduo and cod2 in one imagefolder
     if ($game == "cod1" && !file_exists("images/weapons/cod1/"))
@@ -467,12 +467,12 @@ echo "
 
     get_pic("images/weapons/$gamename/small/$weapon_name");
     echo "</a></td>";
-      
+
     echo "<td align=\"center\">", $row['kills'] ? $row['kills'] : "", "</td>";
-    
+
     if ($showplayercount == true)
       echo "<td>Unknown</td>";
-    
+
     echo "</tr>";
     $rank += $rank_step;
   }
@@ -493,11 +493,11 @@ function topmaps($showplayercount = false, $sortby = "kills", $direction = "DESC
   global $game;
   global $separatorline;
   global $text;
-  
+
   global $t;  //table names
   global $m;  //map aliases
   global $maplist_max;
-  
+
   $sortfields = array("kills", "teamkills", "suicides", "rounds");
   $sortby = strtolower($sortby);
   if (! in_array($sortby, $sortfields))
@@ -518,10 +518,10 @@ echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" cla
   if ($showplayercount == true)
     echo "<td align=\"center\">Nr of players</td>";
   echo "</tr>";
-  
+
   $rank = $offset + 1;
   $rank_step = ($direction == "ASC" ? -1 : 1);
-  
+
   $query = "SELECT name, kills, teamkills, suicides, rounds, id 
       FROM ${t['maps']}
       ORDER BY $sortby $direction";
@@ -531,7 +531,7 @@ echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" cla
 
   if ($maplist_max > 0)
     $query .= " LIMIT $offset, $maplist_max";
-  
+
   $result = $coddb->sql_query($query);
   while ($row = $coddb->sql_fetchrow($result))
   {
@@ -567,10 +567,10 @@ echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" cla
     //echo "<td align=\"center\">", $row['teamkills'] ? $row['teamkills'] : "", "</td>";
     //echo "<td align=\"center\">", $row['suicides'] ? $row['suicides'] : "", "</td>";
     echo "<td align=\"center\">", $row['rounds'] ? $row['rounds'] : "", "</td>";
-    
+
     if ($showplayercount == true)
       echo "<td>Unknown</td>";
-    
+
     echo "</tr>";
     $rank += $rank_step;
   }
@@ -609,7 +609,7 @@ function player_rank($playerid, $dbID)
               WHERE client_id = $playerid AND hide = 0
               LIMIT 1";        
   }
-  
+
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   if ($row == false) return;  // no result given: does not exist or is hidden. Anyway, return whence thou camest!
@@ -656,19 +656,19 @@ function player_badges($playerid, $dbID = false)
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   $playerid = $row['id'];  
-    
+
   global $rankname;
   global $killsneeded;
   global $rankimage;
   global $text;
-  
+
   $kills =  get_rank_badge($row['kills']); 
   $next = 0;
   $percent = 100;
   $neexed = 0;
   $previmage = $kills -1;
   $nextimage = $kills + 1;
-  
+
   if( $kills == count( $killsneeded)-1)
   {
     $next = $kills;        
@@ -686,7 +686,7 @@ function player_badges($playerid, $dbID = false)
     $next = $kills;
     $percent = 100;
   }
-  
+
   echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td>";
   echo "    <table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"innertable\">";
   echo "        <tr class=\"outertable\">";
@@ -705,7 +705,7 @@ function player_badges($playerid, $dbID = false)
 
   else
     echo $text["none"];
-  
+
   echo "             </font></td> ";
   echo "             <td class=\"highlight\" colspan=\"1\" align=\"center\"><font class=\"fontNormal\" size=\"2\" face=\"Geneva, Arial, Helvetica, sans-serif\"><img src=\"images/ranks/".$rankimage[$kills]."\" style=\"background-color: white;\" width=\"112\" height=\"112\" border=\"1\"></font></td> ";
 
@@ -820,7 +820,7 @@ function player_compare_item($player1, $player2, $citem="skill", $cbar=true, $sw
 
   global $main_width;
   $cwidth = ($main_width / $columns) - 200;
-  
+
   if (!is_numeric($player1[$citem]) || !is_numeric($player2[$citem]))
   {
     $cbar = false;
@@ -861,7 +861,7 @@ function player_compare_item($player1, $player2, $citem="skill", $cbar=true, $sw
       $cbarcolor2 = "green";
       $ccounter1++;
     }
-  
+
     if ($switchwinner)
     {
       if ($cclass1 == "attention")
@@ -884,9 +884,9 @@ function player_compare_item($player1, $player2, $citem="skill", $cbar=true, $sw
       }
     }
   }
-  
+
   opentablerow(100);
-  
+
   echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"innertable\">";
   if ($cbar)
   {
@@ -956,7 +956,7 @@ function player_short_comparison($playerid)
   $row = $coddb->sql_fetchrow($result);
   if ($row == false)
     return;
-  
+
   $coddb->sql_query("START TRANSACTION");
   $coddb->sql_query("BEGIN");
   $coddb->sql_query("SET @place = 0");
@@ -969,8 +969,8 @@ function player_short_comparison($playerid)
                     OR (${t['players']}.rounds > $minrounds))
                 AND (${t['players']}.hide = 0)
                 AND ($current_time - ${t['b3_clients']}.time_edit  < $timelimit)";
-                
-   
+
+
    if ($exclude_ban) {
       $query4 .= " AND ${t['b3_clients']}.id NOT IN (
         SELECT distinct(target.id)
@@ -988,7 +988,7 @@ function player_short_comparison($playerid)
   $result4 = $coddb->sql_query($query4);
   $row4 = $coddb->sql_fetchrow($result4);
   $coddb->sql_query("ROLLBACK");
- 
+
   $playerrank = $row4['place'] ? $row4['place'] : "n.a.";
 
   if (($playerrank == "n.a.") && (($row['kills'] <= $minkills) || ($row['rounds'] <= $minrounds) || ($current_time - $row4['time_edit'] >= $timelimit)))
@@ -1006,7 +1006,7 @@ function player_short_comparison($playerid)
     $playerrankdef = $text["congrats"];
   else
     $playerrankdef = $text["trytobetop"];
-  
+
   $cplayer['playerrank'] = $playerrank;
   $cplayer['playerrankdef'] = $playerrankdef;
 
@@ -1077,7 +1077,7 @@ function player_short_comparison($playerid)
   {
     for ($group=0; $groupbits >= (1<<$group); $group++);
         $group = 1 << ($group-1);
-  
+
     $query2 = "SELECT name FROM ${t['b3_groups']} WHERE id=$group";
     $result2 = $coddb->sql_query($query2);
     if ($coddb->sql_numrows($result2) > 0)
@@ -1097,7 +1097,7 @@ function player_short_comparison($playerid)
             WHERE ${t['players']}.id = $playerid
               AND ${t['b3_aliases']}.client_id = ${t['players']}.client_id
               AND hide = 0";
-  
+
   $result3 = $coddb->sql_query($query3);
   if ($row['group_bits'] < $aliashide_level)
   {
@@ -1168,7 +1168,7 @@ function player_short($playerid, $dbID = false)
   if ($row == false)
     return;
 
-  
+
   $databaseid = $row['databaseid'];
   $playerskill = $row['skill'];
   $playerid = $row['id'];
@@ -1177,7 +1177,7 @@ function player_short($playerid, $dbID = false)
   $current_time = time();
   $timelimit = $maxdays*60*60*24;
 
- 
+
   $coddb->sql_query("START TRANSACTION");
   $coddb->sql_query("BEGIN");
   $coddb->sql_query("SET @place = 0");
@@ -1190,8 +1190,8 @@ function player_short($playerid, $dbID = false)
                     OR (${t['players']}.rounds > $minrounds))
                 AND (${t['players']}.hide = 0)
                 AND ($current_time - ${t['b3_clients']}.time_edit  < $timelimit)";
-                
-   
+
+
    if ($exclude_ban) {
       $query4 .= " AND ${t['b3_clients']}.id NOT IN (
         SELECT distinct(target.id)
@@ -1209,7 +1209,7 @@ function player_short($playerid, $dbID = false)
   $result4 = $coddb->sql_query($query4);
   $row4 = $coddb->sql_fetchrow($result4);
   $coddb->sql_query("ROLLBACK");
- 
+
   $playerrank = $row4['place'] ? $row4['place'] : "n.a.";
   /*if ($row4['place'] == "")
     $playerrank = "n.a.";
@@ -1231,8 +1231,8 @@ function player_short($playerid, $dbID = false)
     $playerrankdef = $text["congrats"];
   else
     $playerrankdef = $text["trytobetop"];
-  
- 
+
+
   if (file_exists($geoip_path."GeoIP.dat"))
   {
     $geocountry = $geoip_path."GeoIP.dat";
@@ -1369,7 +1369,7 @@ function player_short($playerid, $dbID = false)
     echo "<span class=\"highlight\">$playername</span> ".$text["conctfrom"]." ";
     echo $flag." ";
     echo "<span class=\"highlight\">$country.</span><br/><br/>";
-    
+
   }
 // Getting the aliases for the player. Could be more than one!
 
@@ -1420,7 +1420,7 @@ function player_weapons_s($playerid, $dbID = false)
   $link = baselink();
   global $coddb;
   global $separatorline;
-     
+
   global $t; // table names from config
   global $w; // weapon names from config
   global $text;
@@ -1436,7 +1436,7 @@ function player_weapons_s($playerid, $dbID = false)
             <td width=\"100\" colspan=\"2\" align=\"center\">".$text["yourdeath"]."</td>
             <td width=\"100\" colspan=\"2\" align=\"center\">".$text["yoursuicide"]."</td>
     ";
-    
+
     if($dbID == false)
     {
       $query = "SELECT id, kills, deaths, suicides, teamkills, teamdeaths 
@@ -1456,14 +1456,14 @@ function player_weapons_s($playerid, $dbID = false)
   $row = $coddb->sql_fetchrow($result);
   if ($row == false) 
       return;  // no result given: does not exist or is hidden. Anyway, return whence thou camest!
-     
+
   $playerid = $row['id'];
   $kills = $row['kills'];
   $deaths = $row['deaths'];
   $suicides = $row['suicides'];
   $teamkills = $row['teamkills'];
   $teamdeaths = $row['teamdeaths'];
-  
+
   $query = "SELECT ${t['weapons']}.name, ${t['weapons']}.id, ${t['weaponusage']}.kills, 
                 ${t['weaponusage']}.deaths, ${t['weaponusage']}.suicides, 
                 ${t['weaponusage']}.teamkills, ${t['weaponusage']}.teamdeaths
@@ -1474,7 +1474,7 @@ function player_weapons_s($playerid, $dbID = false)
 
 
   $result = $coddb->sql_query($query);
-  
+
   while ($row = $coddb->sql_fetchrow($result))
   {      
     if ($separatorline == 1)
@@ -1483,7 +1483,7 @@ function player_weapons_s($playerid, $dbID = false)
 
     $Output .= "<tr>
     ";
-           
+
     if (isset($w[$row['name']]))
       $Output .= "<td align=\"left\"><a href=\"$link?func=weapon&weaponid=${row['id']}\">".$w[ $row['name'] ]."</a></td>
       ";
@@ -1492,9 +1492,9 @@ function player_weapons_s($playerid, $dbID = false)
       ";
       // $outtmp ="  <td align=\"center\">", $row['kills'] ? $row['kills'] : "", "</td>";
       $Output .= "  <td align=\"center\">";
-  
+
       // echo "  <td align=\"center\">", $row['kills'] ? $row['kills'] : "", "</td>";     
- 
+
     if($row['kills'] ==  "" || $row['kills'] ==  0)
     {
      $Output .= "</td>
@@ -1505,9 +1505,9 @@ function player_weapons_s($playerid, $dbID = false)
      $Output .= $row['kills']."</td> 
      ";      
     }
-    
+
     $ratiola = 0;
-    
+
     if ( ($kills > 0) && ($row['kills'] > 0) )
     {
       $ratiola = $temp = sprintf("%.2f", $row['kills']/($kills/100));
@@ -1516,7 +1516,7 @@ function player_weapons_s($playerid, $dbID = false)
     }
     else
       $Output .= "  </td>";                                                                 
-     
+
     $Output .= "<td align=\"left\">
       <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" align=\"center\">
         <tr>
@@ -1525,7 +1525,7 @@ function player_weapons_s($playerid, $dbID = false)
         if($ratiola > 0.00 )
             $Output .= "<img align=\"middle\" src=\"images/bars/bar-small/green_left_9.png\" width=\"4\" height=\"9\" title=\"$ratiola % of total kills\"><img align=\"middle\" src=\"images/bars/bar-small/green_middle_9.png\" width=".$temp."%\" height=\"9\" alt=".$ratiola." title=\"$ratiola % of total kills\"><img align=\"middle\" src=\"images/bars/bar-small/green_right_9.png\" width=\"4\" height=\"9\"  title=\"$ratiola %\" ></td>
             ";
-              
+
     $Output .= "    </td>
       </tr>
     </table>
@@ -1545,7 +1545,7 @@ function player_weapons_s($playerid, $dbID = false)
      $Output .= $row['deaths']."</td> 
      ";      
     }
-    
+
     if ( ($deaths > 0) && ($row['deaths'] > 0) )
     {
       $temp = sprintf("%.2f", 100*$row['deaths']/$deaths);
@@ -1569,7 +1569,7 @@ function player_weapons_s($playerid, $dbID = false)
      $Output .= $row['suicides']."</td> 
      ";      
     }
-    
+
     if ( ($suicides > 0) && ($row['suicides'] > 0) )
     {
       $temp = sprintf("%.2f", 100*$row['suicides']/$suicides);
@@ -1600,11 +1600,11 @@ function player_weapons($playerid, $dbID = false)
   $link = baselink();
   global $coddb;
   global $separatorline;
-     
+
   global $t; // table names from config
   global $w; // weapon names from config
   global $text;
-  
+
 echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">".$text["weapachieve"]."</td></tr><tr><td>
       <table width=\"100%\" border=\"0\" cellspacing=\"2\" cellpadding=\"0\" class=\"innertable\">
       <tr class=\"outertable\">
@@ -1616,7 +1616,7 @@ echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" cla
       <!--    <td colspan=\"2\" align=\"center\">".$text["teamkills"]."</td> -->
       <!--    <td colspan=\"2\" align=\"center\">".$text["teamdeaths"]."</td></tr> -->
      ";
-  
+
   if($dbID == false)
   {
     $query = "SELECT id, kills, deaths, suicides, teamkills, teamdeaths 
@@ -1636,14 +1636,14 @@ echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" cla
   $row = $coddb->sql_fetchrow($result);
   if ($row == false) 
     return;  // no result given: does not exist or is hidden. Anyway, return whence thou camest!
-  
+
   $playerid = $row['id'];
   $kills = $row['kills'];
   $deaths = $row['deaths'];
   $suicides = $row['suicides'];
   $teamkills = $row['teamkills'];
   $teamdeaths = $row['teamdeaths'];
-  
+
   $query = "SELECT ${t['weapons']}.name, ${t['weapons']}.id, ${t['weaponusage']}.kills, 
                 ${t['weaponusage']}.deaths, ${t['weaponusage']}.suicides, 
                 ${t['weaponusage']}.teamkills, ${t['weaponusage']}.teamdeaths
@@ -1654,34 +1654,34 @@ echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" cla
 
 
   $result = $coddb->sql_query($query);
-  
+
   while ($row = $coddb->sql_fetchrow($result))
   {
     if ($separatorline == 1)
       echo "<tr><td colspan=\"11\" class=\"outertable\"><img src=\"images/spacer.gif\" width=\"1\" height=\"1\" alt=\"\"></td></tr>";  // This draws a one pixel line between rows
     echo "<tr>";
-    
+
     if (isset($w[$row['name']]))
       echo "<td><a href=\"$link?func=weapon&weaponid=${row['id']}\">".$w[ $row['name'] ]."</a></td>";
     else
       echo "<td><a href=\"$link?func=weapon&weaponid=${row['id']}\">${row['name']}</a></td>";
-      
+
     echo "  <td align=\"center\">", $row['kills'] ? $row['kills'] : "", "</td>";
-    
+
     $ratiola = 0;
-    
+
     if ( ($kills > 0) && ($row['kills'] > 0) )
       $ratiola = $temp = sprintf("%.2f", $row['kills']/($kills/100));
     else
       echo "  </td>";
-  
+
     echo "<td align=\"center\">
       <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" align=\"center\">
         <tr>
         <td  width=\"100%\">";
     if($ratiola > 0.00 )
       echo "<img align=\"middle\" src=\"images/bars/bar-small/green_left_9.png\" width=\"\" height=\"9\" title=\"$ratiola %\"><img align=\"middle\" src=\"images/bars/bar-small/green_middle_9.png\" width=".$ratiola."%\" height=\"9\" alt=".$ratiola." title=\"$ratiola %\"><img align=\"middle\" src=\"images/bars/bar-small/green_right_9.png\" width=\"\" height=\"9\"  title=\"$ratiola %\" ></td>";
-        
+
     echo "  </td>
             </tr>
           </table>
@@ -1806,6 +1806,44 @@ function displayTooltip($hitloc, $hitlocname="")
     $text['torso_lower'] = $text["torso"];
   }
 
+  if($game == 'ravaged' or $game == 'wop')
+  {
+    if (!isset($hitloc['body'])) $hitloc['body'] = array(0,0,0,0,);
+
+      $hitloc['head'] = $hitloc['body'];
+      $text['head'] = $text["body"];
+      $hitloc['neck'] = $hitloc['body'];
+      $text['neck'] = $text['body'];
+      $hitloc['torso_upper'] = $hitloc['body'];
+      $text['torso_upper'] = $text['body'];
+      $hitloc['torso_lower'] = $hitloc['body'];
+      $text['torso_lower'] = $text["body"];
+      $hitloc['left_arm_upper'] = $hitloc['body'];
+      $text['left_arm_upper'] = $text['body'];
+      $hitloc['left_arm_lower'] = $hitloc['body'];
+      $text['left_arm_lower'] = $text['body'];
+      $hitloc['left_hand'] = $hitloc['body'];
+      $text['left_hand'] = $text['body'];
+      $hitloc['right_arm_upper'] = $hitloc['body'];
+      $text['right_arm_upper'] = $text['body'];
+      $hitloc['right_arm_lower'] = $hitloc['body'];
+      $text['right_arm_lower'] = $text['body'];
+      $hitloc['right_hand'] = $hitloc['body'];
+      $text['right_hand'] = $text['body'];
+      $hitloc['left_leg_upper'] = $hitloc['body'];
+      $text['left_leg_upper'] = $text['body'];
+      $hitloc['left_leg_lower'] = $hitloc['body'];
+      $text['left_leg_lower'] = $text['body'];
+      $hitloc['left_foot'] = $hitloc['body'];
+      $text['left_foot'] = $text['body'];
+      $hitloc['right_leg_upper'] = $hitloc['body'];
+      $text['right_leg_upper'] = $text['body'];
+      $hitloc['right_leg_lower'] = $hitloc['body'];
+      $text['right_leg_lower'] = $text['body'];
+      $hitloc['right_foot'] = $hitloc['body'];
+      $text['right_foot'] = $text['body'];
+  }
+
   if($game != 'wop')
   {
     $title = "cssbody=[bdyprts-bdy] cssheader=[bdyprts-hdr] 
@@ -1846,7 +1884,7 @@ function player_bodyparts_s($playerid, $dbID = false)
 {
   $Output = "";              
   $link = baselink();
-    
+
   global $coddb;
   global $separatorline;
   global $t; // table names from config
@@ -1855,7 +1893,7 @@ function player_bodyparts_s($playerid, $dbID = false)
   global $groupbits;
   global $text;
   //<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">Hitzones</td></tr><tr><td>   
-  
+
   $Output = 
 "  <table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr valign=\"top\"><td>  
     <table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td>
@@ -1888,7 +1926,7 @@ function player_bodyparts_s($playerid, $dbID = false)
     $suicides = $row['suicides'];
     $teamkills = $row['teamkills'];
     $teamdeaths = $row['teamdeaths'];
-  
+
     $query = "SELECT ${t['bodyparts']}.name, ${t['bodyparts']}.id, ${t['playerbody']}.kills, 
             ${t['playerbody']}.deaths, ${t['playerbody']}.suicides, 
             ${t['playerbody']}.teamkills, ${t['playerbody']}.teamdeaths
@@ -1896,7 +1934,7 @@ function player_bodyparts_s($playerid, $dbID = false)
             WHERE ${t['playerbody']}.player_id = $playerid
             AND ${t['bodyparts']}.id = ${t['playerbody']}.bodypart_id
             ORDER BY ${t['playerbody']}.kills DESC";
-  
+
 
     $result = $coddb->sql_query($query);
 
@@ -1933,7 +1971,7 @@ function player_bodyparts_s($playerid, $dbID = false)
         $Output .= $row['kills']."</td>
         ";
       }
-  
+
       if ( ($kills > 0) && ($row['kills'] > 0) )
       {
         $temp = sprintf("%.2f", 100*$row['kills']/$kills);
@@ -2264,8 +2302,8 @@ function player_bodyparts_s($playerid, $dbID = false)
         </tr>
         </table> 
     ";
-    
-    
+
+
     return $Output;                                                            // Closing extra border-table
 }  
 
@@ -2285,12 +2323,12 @@ function player_bodyparts($playerid, $dbID = false)
 {
 
   $link = baselink();
-    
+
   global $coddb;
   global $separatorline;
   global $t; // table names from config
   global $b; // bodypart names from config
-  
+
 echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">Hitzones</td></tr><tr><td>
 <table width=\"100%\" border=\"0\" cellspacing=\"2\" cellpadding=\"0\" class=\"innertable\">
   <tr class=\"outertable\">
@@ -2318,14 +2356,14 @@ echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" cla
   }
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
-  
+
   $playerid =  $row['id'];
   $kills = $row['kills'];
   $deaths = $row['deaths'];
   $suicides = $row['suicides'];
   $teamkills = $row['teamkills'];
   $teamdeaths = $row['teamdeaths'];
-  
+
   $query = "SELECT ${t['bodyparts']}.name, ${t['playerbody']}.kills, 
                 ${t['playerbody']}.deaths, ${t['playerbody']}.suicides, 
                 ${t['playerbody']}.teamkills, ${t['playerbody']}.teamdeaths
@@ -2333,7 +2371,7 @@ echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" cla
             WHERE ${t['playerbody']}.player_id = $playerid
                 AND ${t['bodyparts']}.id = ${t['playerbody']}.bodypart_id
             ORDER BY ${t['playerbody']}.kills DESC";
-  
+
 
   $result = $coddb->sql_query($query);
   while ($row = $coddb->sql_fetchrow($result))
@@ -2378,7 +2416,7 @@ function player_maps_s($playerid, $dbID = false)
   global $separatorline;
   global $text;
   global $game;
-    
+
   global $t; // table names from config
   global $m; // map names from config
     //<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">Map achievements</td></tr><tr><td>
@@ -2413,14 +2451,14 @@ function player_maps_s($playerid, $dbID = false)
   $row = $coddb->sql_fetchrow($result);
   if ($row == false) 
       return;  // no result given: does not exist or is hidden. Anyway, return whence thou camest!
-  
+
   $playerid =  $row['id'];
   $kills = $row['kills'];
   $deaths = $row['deaths'];
   $suicides = $row['suicides'];
   $teamkills = $row['teamkills'];
   $teamdeaths = $row['teamdeaths'];
-  
+
   $query = "SELECT ${t['maps']}.name, ${t['maps']}.id, ${t['playermaps']}.kills, 
                 ${t['playermaps']}.deaths, ${t['playermaps']}.suicides, 
                 ${t['playermaps']}.teamkills, ${t['playermaps']}.teamdeaths,
@@ -2462,7 +2500,7 @@ function player_maps_s($playerid, $dbID = false)
       $Output .= $row['rounds']."</td>
       "; 
     }
-    
+
     $Output .= "  <td align=\"center\">";
     if($row['kills'] == "")
     {
@@ -2474,7 +2512,7 @@ function player_maps_s($playerid, $dbID = false)
       $Output .= $row['kills']."</td>
       "; 
     }
-        
+
     if ( ($kills > 0) && ($row['kills'] > 0) )
     {
       $temp = sprintf("%.2f", 100*$row['kills']/$kills);
@@ -2498,7 +2536,7 @@ function player_maps_s($playerid, $dbID = false)
       $Output .= $row['deaths']."</td>
       "; 
     }
-     
+
     if ( ($deaths > 0) && ($row['deaths'] > 0) )
     {
       $temp = sprintf("%.2f", 100*$row['deaths']/$deaths);
@@ -2510,7 +2548,7 @@ function player_maps_s($playerid, $dbID = false)
       $Output .= "  <td></td>
       ";
     }
-    
+
     $Output .= "  <td align=\"center\">";
     if($row['suicides'] == "")
     {
@@ -2522,7 +2560,7 @@ function player_maps_s($playerid, $dbID = false)
       $Output .= $row['suicides']."</td>
       "; 
     }
-    
+
     if ( ($suicides > 0) && ( $row['suicides'] > 0) )
     {
       $temp = sprintf("%.2f", 100*$row['suicides']/$suicides);
@@ -2534,7 +2572,7 @@ function player_maps_s($playerid, $dbID = false)
       $Output .= "  <td></td>
       ";
     }
-    
+
     $Output .= "  <td align=\"center\">";
     if($row['teamkills'] == "")
     {
@@ -2546,7 +2584,7 @@ function player_maps_s($playerid, $dbID = false)
       $Output .= $row['teamkills']."</td>
       "; 
     }
-    
+
     if ( ($teamkills > 0) && ($row['teamkills'] > 0) )
     {
       $temp = sprintf("%.2f", 100*$row['teamkills']/$teamkills);
@@ -2569,7 +2607,7 @@ function player_maps_s($playerid, $dbID = false)
       $Output .= $row['teamdeaths']."</td>
       "; 
     }
-    
+
     if ( ($teamdeaths > 0) && ( $row['teamdeaths'] > 0 ) )
     {
       $temp = sprintf("%.2f", 100*$row['teamdeaths']/$teamdeaths);
@@ -2598,10 +2636,10 @@ function player_maps($playerid, $dbID = false)
   global $coddb;
   global $separatorline;
   global $text;
-    
+
   global $t; // table names from config
   global $m; // bodypart names from config
-  
+
 echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">Map achievements</td></tr><tr><td>
       <table width=\"100%\" border=\"0\" cellspacing=\"2\" cellpadding=\"0\" class=\"innertable\">
         <tr class=\"outertable\">
@@ -2631,14 +2669,14 @@ echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" cla
   $row = $coddb->sql_fetchrow($result);
   if ($row == false) 
     return;  // no result given: does not exist or is hidden. Anyway, return whence thou camest!
-  
+
   $playerid =  $row['id'];
   $kills = $row['kills'];
   $deaths = $row['deaths'];
   $suicides = $row['suicides'];
   $teamkills = $row['teamkills'];
   $teamdeaths = $row['teamdeaths'];
-  
+
   $query = "SELECT ${t['maps']}.name, ${t['maps']}.id, ${t['playermaps']}.kills, 
                 ${t['playermaps']}.deaths, ${t['playermaps']}.suicides, 
                 ${t['playermaps']}.teamkills, ${t['playermaps']}.teamdeaths,
@@ -2721,7 +2759,7 @@ function player_activity_s($plid, $dbID = false)
     $Output = "<img src=\"inc_activitygraph.php?id=".$plid."&config=".$currentconfignumber."\" alt=\"\"><br>";
   else 
     $Output = "<img src=\"inc_activitygraph.php?dbid=".$plid."&config=".$currentconfignumber."\" alt=\"\"><br>";         
-  
+
   return $Output;
 }
 
@@ -2746,7 +2784,7 @@ function player_history_weekly_s($plid, $dbID = false)
     $Output = "<img src=\"inc_historygraph_skill_weekly.php?dbid=".$plid."&config=".$currentconfignumber."\" alt=\"\"><br>";
     $Output .= "<img src=\"inc_historygraph_ratio_weekly.php?dbid=".$plid."&config=".$currentconfignumber."\" alt=\"\"><br>";
     }
-  
+
   return $Output;
 }
 
@@ -2758,7 +2796,7 @@ function player_actions_s($playerid, $dbID = false)
   global $t; //table names from config
   global $e; //action (event) names from config
   global $text;
-  
+
   $Output = "
   <table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td>
     <table width=\"100%\" border=\"0\" cellspacing=\"2\" cellpadding=\"0\" class=\"innertable\">
@@ -2789,7 +2827,7 @@ function player_actions_s($playerid, $dbID = false)
 
   if ($row == false) 
     return;  // no result given: does not exist or is hidden. Anyway, return whence thou camest!
-        
+
   $playerid =  $row['id'];
 
   //query sum of actions of the player - to be used in percentage calculation
@@ -2810,7 +2848,7 @@ function player_actions_s($playerid, $dbID = false)
             ORDER BY ${t['playeractions']}.count DESC";
 
   $result = $coddb->sql_query($query);
-  
+
   while ($row = $coddb->sql_fetchrow($result))
   {
     if ($separatorline == 1)
@@ -2836,7 +2874,7 @@ function player_actions_s($playerid, $dbID = false)
     }
     else
       $Output .= "<td></td>";                                                                 
-     
+
         if($ratio_actions > 0.00 )
             $Output .= "<td align=\"left\"><img align=\"middle\" src=\"images/bars/bar-small/green_left_9.png\" width=\"4\" height=\"9\" title=\"$ratio_actions % ".$text["ofyouractions"]." $total_actions\"><img align=\"middle\" src=\"images/bars/bar-small/green_middle_9.png\" width=".$temp."%\" height=\"9\" alt=".$ratio_actions." title=\"$ratio_actions % ".$text["ofyouractions"]." $total_actions\"><img align=\"middle\" src=\"images/bars/bar-small/green_right_9.png\" width=\"4\" height=\"9\"  title=\"$ratio_actions % ".$text["ofyouractions"]." $total_actions\" ></td>
             ";
@@ -2872,7 +2910,7 @@ function player_opponents_s($playerid, $dbID = false)
             <td width=\"75\" colspan=\"2\" align=\"center\">".$text["yourkill"]."</td>
             <td width=\"150\" align=\"center\">".$text["yourkdratio"]."</td>
             ";
-    
+
     if($dbID == false)
     {
       $query = "SELECT id, kills, deaths 
@@ -2887,18 +2925,18 @@ function player_opponents_s($playerid, $dbID = false)
                 WHERE client_id = $playerid AND hide = 0
                 LIMIT 1";        
     }
- 
+
     $result = $coddb->sql_query($query);
     $row = $coddb->sql_fetchrow($result);
-    
+
     if ($row == false) 
       return;  // no result given: does not exist or is hidden. Anyway, return whence thou camest!
-        
+
     $playerid =  $row['id'];
- 
+
     $kills = $row['kills'];
     $deaths = $row['deaths'];
-  
+
     $query = "SELECT ${t['opponents']}.target_id, ${t['opponents']}.kills,
                      ${t['opponents']}.retals, ${t['players']}.fixed_name,
                      ${t['b3_clients']}.name
@@ -2925,10 +2963,10 @@ function player_opponents_s($playerid, $dbID = false)
     ";
     $Output .= "<td align=\"left\"><a href=\"$link?func=player&playerid=${row['target_id']}&config=${currentconfignumber}\">
     ";//, $row['fixed_name'] ? $row['fixed_name'] : $row['name'], "</a></td>
-    
+
     $Output .= htmlspecialchars(utf2iso($row['fixed_name'] ? $row['fixed_name'] : $row['name']));
     $tempname = htmlspecialchars(utf2iso($row['fixed_name'] ? $row['fixed_name'] : $row['name']));
-      
+
     $Output .= " </a></td>";
     $Output .= "  <td align=\"center\" title=\"$tempname killed you ${row['retals']} times.\">${row['retals']}</td>
     ";
@@ -2975,18 +3013,18 @@ function player_opponents_s($playerid, $dbID = false)
       $Output .= "  <td></td>
       ";
     }
-      
+
     $Output .= "</tr>
     ";
   }
-  
+
   $Output .= "</table>
   ";
   $Output .= "</td></tr><tr><td class=\"tiny\" align =\"right\">".$text["whosyourenemy"]."
   ";
   $Output .= "</td></tr></table>
   ";     // Closing extra border-table
-  
+
   return $Output;
 }
 
@@ -2995,7 +3033,7 @@ function player_opponents($playerid, $dbID = false)
 {
 
   $link = baselink();
-  
+
   global $coddb;
   global $separatorline;
   global $t; // table names from config
@@ -3026,15 +3064,15 @@ function player_opponents($playerid, $dbID = false)
             WHERE client_id = $playerid AND hide = 0
             LIMIT 1";   
 }
- 
+
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
   if ($row == false) return;  // no result given: does not exist or is hidden. Anyway, return whence thou camest!
   $playerid =  $row['id'];
- 
+
   $kills = $row['kills'];
   $deaths = $row['deaths'];
-  
+
   $query = "SELECT ${t['opponents']}.target_id, ${t['opponents']}.kills,
                    ${t['opponents']}.retals, ${t['players']}.fixed_name,
                    ${t['b3_clients']}.name
@@ -3079,10 +3117,10 @@ function player_opponents($playerid, $dbID = false)
     }
     else
       echo "  <td></td>";
-      
+
     echo "</tr>";
   }
-  
+
   echo "</table>";
   echo "</td></tr><tr><td class=\"tiny\" align =\"right\">".$text["whosyourenemy"]."";
   echo "</td></tr></table>";     // Closing extra border-table
@@ -3100,13 +3138,13 @@ function weapon_short($weaponid)
 {
 
   $link = baselink();
-    
+
   global $coddb;
   global $game;
   global $t; // table names from config
   global $w; // weapon aliases
   global $text;
- 
+
   $query = "SELECT * 
             FROM ${t['weapons']}
             WHERE id = $weaponid
@@ -3166,7 +3204,7 @@ function weapon_players($weaponid)
   global $exclude_ban;
   global $currentconfignumber;
   global $text;
-  
+
 echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">".$text["playerweaponstats"]."</td></tr><tr><td>
       <table width=\"100%\" border=\"0\" cellspacing=\"2\" cellpadding=\"0\" class=\"innertable\">
         <tr class=\"outertable\">
@@ -3185,13 +3223,13 @@ echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" cla
 
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
-  
+
   $kills = $row['kills'];
   //$deaths = $row['deaths'];
   $suicides = $row['suicides'];
   $teamkills = $row['teamkills'];
   //$teamdeaths = $row['teamdeaths'];
-    
+
   $query = "SELECT ${t['b3_clients']}.name, ${t['weaponusage']}.player_id, ${t['weaponusage']}.kills, 
                 ${t['weaponusage']}.deaths, ${t['weaponusage']}.suicides, 
                 ${t['weaponusage']}.teamkills, ${t['weaponusage']}.teamdeaths,
@@ -3203,7 +3241,7 @@ echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" cla
                 AND (${t['weaponusage']}.kills > $weap_minkills
                     OR ${t['weaponusage']}.suicides > $weap_minkills)
                 AND ${t['players']}.hide = 0";
-   
+
    if ($exclude_ban) {
       $query .= " AND ${t['b3_clients']}.id NOT IN (
         SELECT distinct(target.id)
@@ -3214,7 +3252,7 @@ echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" cla
         AND ( penalties.time_expire = -1 OR penalties.time_expire > UNIX_TIMESTAMP(NOW()) )
       )";
     }           
-    
+
     $query .= " ORDER BY ${t['weaponusage']}.kills DESC, ${t['weaponusage']}.suicides DESC";
 
   $result = $coddb->sql_query($query);
@@ -3282,7 +3320,7 @@ function map_short($mapid)
 {
 
   $link = baselink();
-     
+
   global $coddb;
   global $game;
   global $separatorline;
@@ -3341,7 +3379,7 @@ function map_players($mapid)
   global $exclude_ban;
   global $currentconfignumber;
   global $text;
-  
+
 echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" class=\"outertable\"><tr><td align=\"center\">".$text["playermapstats"]."</td></tr><tr><td>
       <table width=\"100%\" border=\"0\" cellspacing=\"2\" cellpadding=\"0\" class=\"innertable\">
         <tr class=\"outertable\">
@@ -3359,14 +3397,14 @@ echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" cla
 
   $result = $coddb->sql_query($query);
   $row = $coddb->sql_fetchrow($result);
-  
+
   $kills = $row['kills'];
 //  $deaths = $row['deaths'];
   $suicides = $row['suicides'];
   $teamkills = $row['teamkills'];
   $rounds = $row['rounds'];
 //  $teamdeaths = $row['teamdeaths'];
-  
+
   $query = "SELECT ${t['b3_clients']}.name, ${t['playermaps']}.player_id, ${t['playermaps']}.kills, 
                 ${t['playermaps']}.suicides, 
                 ${t['playermaps']}.teamkills,
@@ -3379,7 +3417,7 @@ echo "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" cla
                 AND ${t['b3_clients']}.id = ${t['players']}.client_id
                 AND ( ${t['playermaps']}.kills > $map_minkills
                      OR ${t['playermaps']}.rounds > $map_minrounds )";
-                     
+
     if ($exclude_ban) {
       $query .= " AND ${t['b3_clients']}.id NOT IN (
         SELECT distinct(target.id)

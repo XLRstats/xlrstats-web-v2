@@ -29,7 +29,7 @@ defined( '_XLREXEC' ) or die( 'Restricted access' );
 $clientsRed  = array();
 $clientsBlue  = array();
 $clientsSpec  = array();
-$supportedgames = array('cod', 'coduo', 'cod2', 'cod4', 'cod5', 'etpro', 'iourt41', 'smg', 'wop', 'bfbc2', 'moh', 'cod6', 'cod7', 'homefront', 'bf3'); // B3 parsernames
+$supportedgames = array('cod', 'coduo', 'cod2', 'cod4', 'cod5', 'etpro', 'iourt41', 'smg', 'wop', 'bfbc2', 'moh', 'cod6', 'cod7', 'homefront', 'bf3', 'ravaged'); // B3 parsernames
 $ffa_modes = array('dm', 'ffa', 'syc-ffa');
 
 $sv_privateClients = 0;
@@ -294,29 +294,29 @@ function getCurrentMapName($servstatus)
 
 function utf2iso($tekst)
 {                                        
-  $nowytekst = str_replace("%u0104","\xA1",$tekst);    //•
-  $nowytekst = str_replace("%u0106","\xC6",$nowytekst);    //∆
-  $nowytekst = str_replace("%u0118","\xCA",$nowytekst);    // 
-  $nowytekst = str_replace("%u0141","\xA3",$nowytekst);    //£
-  $nowytekst = str_replace("%u0143","\xD1",$nowytekst);    //—
-  $nowytekst = str_replace("%u00D3","\xD3",$nowytekst);    //”
-  $nowytekst = str_replace("%u015A","\xA6",$nowytekst);    //å
-  $nowytekst = str_replace("%u0179","\xAC",$nowytekst);    //è
-  $nowytekst = str_replace("%u017B","\xAF",$nowytekst);    //Ø
+  $nowytekst = str_replace("%u0104","\xA1",$tekst);    //ÔøΩ
+  $nowytekst = str_replace("%u0106","\xC6",$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace("%u0118","\xCA",$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace("%u0141","\xA3",$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace("%u0143","\xD1",$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace("%u00D3","\xD3",$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace("%u015A","\xA6",$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace("%u0179","\xAC",$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace("%u017B","\xAF",$nowytekst);    //ÔøΩ
 
-  $nowytekst = str_replace("%u0105","\xB1",$nowytekst);    //π
-  $nowytekst = str_replace("%u0107","\xE6",$nowytekst);    //Ê
-  $nowytekst = str_replace("%u0119","\xEA",$nowytekst);    //Í
-  $nowytekst = str_replace("%u0142","\xB3",$nowytekst);    //≥
-  $nowytekst = str_replace("%u0144","\xF1",$nowytekst);    //Ò
-  $nowytekst = str_replace("%u00D4","\xF3",$nowytekst);    //Û
-  $nowytekst = str_replace("%u015B","\xB6",$nowytekst);    //ú
-  $nowytekst = str_replace("%u017A","\xBC",$nowytekst);    //ü
-  $nowytekst = str_replace("%u017C","\xBF",$nowytekst);    //ø
+  $nowytekst = str_replace("%u0105","\xB1",$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace("%u0107","\xE6",$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace("%u0119","\xEA",$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace("%u0142","\xB3",$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace("%u0144","\xF1",$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace("%u00D4","\xF3",$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace("%u015B","\xB6",$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace("%u017A","\xBC",$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace("%u017C","\xBF",$nowytekst);    //ÔøΩ
 
-  $nowytekst = str_replace("%3c","<",$nowytekst);    //ø
-  $nowytekst = str_replace("%3e",">",$nowytekst);    //ø
-  $nowytekst = str_replace("%26","&",$nowytekst);    //ø
+  $nowytekst = str_replace("%3c","<",$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace("%3e",">",$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace("%26","&",$nowytekst);    //ÔøΩ
 
 
   return ($nowytekst);
@@ -324,25 +324,25 @@ function utf2iso($tekst)
 
 function utf16_2_utf8 ($nowytekst) 
 {
-  $nowytekst = str_replace('•','%u0104',$nowytekst);    //•
-  $nowytekst = str_replace('∆','%u0106',$nowytekst);    //∆
-  $nowytekst = str_replace(' ','%u0118',$nowytekst);    // 
-  $nowytekst = str_replace('£','%u0141',$nowytekst);    //£
-  $nowytekst = str_replace('—','%u0143',$nowytekst);    //—
-  $nowytekst = str_replace('”','%u00D3',$nowytekst);    //”
-  $nowytekst = str_replace('å','%u015A',$nowytekst);    //å
-  $nowytekst = str_replace('è','%u0179',$nowytekst);    //è
-  $nowytekst = str_replace('Ø','%u017B',$nowytekst);    //Ø
+  $nowytekst = str_replace('ÔøΩ','%u0104',$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace('ÔøΩ','%u0106',$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace('ÔøΩ','%u0118',$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace('ÔøΩ','%u0141',$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace('ÔøΩ','%u0143',$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace('ÔøΩ','%u00D3',$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace('ÔøΩ','%u015A',$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace('ÔøΩ','%u0179',$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace('ÔøΩ','%u017B',$nowytekst);    //ÔøΩ
 
-  $nowytekst = str_replace('π','%u0105',$nowytekst);    //π
-  $nowytekst = str_replace('Ê','%u0107',$nowytekst);    //Ê
-  $nowytekst = str_replace('Í','%u0119',$nowytekst);    //Í
-  $nowytekst = str_replace('≥','%u0142',$nowytekst);    //≥
-  $nowytekst = str_replace('Ò','%u0144',$nowytekst);    //Ò
-  $nowytekst = str_replace('Û','%u00F3',$nowytekst);    //Û
-  $nowytekst = str_replace('ú','%u015B',$nowytekst);    //ú
-  $nowytekst = str_replace('ü','%u017A',$nowytekst);    //ü
-  $nowytekst = str_replace('ø','%u017C',$nowytekst);    //ø
+  $nowytekst = str_replace('ÔøΩ','%u0105',$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace('ÔøΩ','%u0107',$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace('ÔøΩ','%u0119',$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace('ÔøΩ','%u0142',$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace('ÔøΩ','%u0144',$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace('ÔøΩ','%u00F3',$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace('ÔøΩ','%u015B',$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace('ÔøΩ','%u017A',$nowytekst);    //ÔøΩ
+  $nowytekst = str_replace('ÔøΩ','%u017C',$nowytekst);    //ÔøΩ
 
   return ($nowytekst);
 } 

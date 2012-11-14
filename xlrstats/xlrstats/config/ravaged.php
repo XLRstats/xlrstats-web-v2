@@ -111,6 +111,9 @@ $w['UTDmgType_VehicleCollision'] = "Crushed by Vehicle";
 $w['R_DmgType_OutOfCombat'] = "Out of Bounds";
 $w['DmgType_Suicided'] = "Suicides";
 $w['DmgType_Fell'] = "Fell";
+$w['R_DmgType_Axe'] = "Axe";
+$w['KillZDamageType'] = "Kill Z Damage";	
+$w['DamageType'] = "Kill Damage";
 
 
 //*********************
